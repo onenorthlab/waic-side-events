@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router'
-import { Calendar, Users, Plus, LogOut, User, Clock } from 'lucide-react'
+import { Calendar, Plus, LogOut, User, Clock } from 'lucide-react'
 import { useAuth } from '@/lib/auth-context'
 import { useI18n } from '@/lib/i18n'
 import { Button } from '@/components/ui/button'
@@ -34,15 +34,6 @@ export function Header({ showCreate = false }: { showCreate?: boolean }) {
             className="flex items-center gap-1.5 font-medium text-ink/80 hover:text-ink dark:text-white/80 dark:hover:text-white [&.active]:font-semibold [&.active]:text-ink dark:[&.active]:text-white"
           >
             <Clock size={16} /> 日程
-          </Link>
-          <Link
-            to="/communities"
-            className="flex items-center gap-1.5 font-medium text-ink/80 hover:text-ink dark:text-white/80 dark:hover:text-white [&.active]:font-semibold [&.active]:text-ink dark:[&.active]:text-white"
-          >
-            <Users size={16} /> {t('nav.communities')}
-            <span className="rounded bg-black/8 px-1.5 py-0.5 text-[10px] font-semibold tracking-wide text-ink/60 dark:bg-white/10 dark:text-white/60">
-              BETA
-            </span>
           </Link>
         </nav>
 

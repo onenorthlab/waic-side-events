@@ -9,9 +9,7 @@ function interpolate(s: string, vars?: Record<string, string | number>): string 
 const M: Record<string, string> = {
   // 导航 / 通用
   'nav.events': '活动',
-  'nav.communities': '社区',
   'nav.createEvent': '创建活动',
-  'nav.createCommunity': '创建社区',
   'nav.signUpLogin': '注册 / 登录',
   'nav.logout': '退出登录',
   'nav.managedEvents': '我管理的活动',
@@ -58,29 +56,6 @@ const M: Record<string, string> = {
   'detail.speakers': '嘉宾',
   'detail.showAllSpeakers': '查看全部 {n} 位嘉宾',
   'detail.noDescription': '暂无简介。',
-
-  // Communities
-  'communities.title': '社区',
-  'communities.pickup': '精选社区',
-  'communities.searchPlaceholder': '按组织名或标签搜索',
-  'communities.count': '{n} 个社区',
-  'communities.empty': '未找到社区',
-  'communities.members': '{n} 名成员',
-  'communities.followers': '{n} 名关注者',
-  'communities.join': '加入',
-  'communities.requestJoin': '申请加入',
-  'communities.website': '官网',
-  'communities.back': '← 返回社区',
-  'communities.notFound': '未找到该社区',
-  'communities.chat': '聊天',
-
-  // Playlists
-  'playlists.title': '活动播单',
-  'playlists.pickup': '精选播单',
-  'playlists.count': '{n} 个播单',
-  'playlists.eventCount': '{n} 个活动',
-  'playlists.back': '← 返回播单',
-  'playlists.notFound': '未找到该播单',
 
   // 地图
   'map.viewEvent': '查看活动 →',

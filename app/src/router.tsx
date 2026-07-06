@@ -2,10 +2,6 @@ import { createRootRoute, createRoute, createRouter, Outlet, redirect } from '@t
 import { EventsListPage } from './routes/EventsList'
 import { EventsMapPage } from './routes/EventsMap'
 import { EventDetailPage } from './routes/EventDetail'
-import { CommunitiesListPage } from './routes/CommunitiesList'
-import { CommunityDetailPage } from './routes/CommunityDetail'
-import { PlaylistsListPage } from './routes/PlaylistsList'
-import { PlaylistDetailPage } from './routes/PlaylistDetail'
 import { SchedulesPage } from './routes/SchedulesPage'
 import { ManagedEventsListPage } from './routes/ManagedEventsList'
 import { EventCreatePage } from './routes/EventCreate'
@@ -45,10 +41,6 @@ const eventsRoute = createRoute({
 
 const eventsMapRoute = createRoute({ getParentRoute: () => rootRoute, path: '/events/maps', component: EventsMapPage })
 const schedulesRoute = createRoute({ getParentRoute: () => rootRoute, path: '/schedules', component: SchedulesPage })
-const communitiesRoute = createRoute({ getParentRoute: () => rootRoute, path: '/communities', component: CommunitiesListPage })
-const communityDetailRoute = createRoute({ getParentRoute: () => rootRoute, path: '/communities/$slug', component: CommunityDetailPage })
-const playlistsRoute = createRoute({ getParentRoute: () => rootRoute, path: '/playlists', component: PlaylistsListPage })
-const playlistDetailRoute = createRoute({ getParentRoute: () => rootRoute, path: '/playlists/$id', component: PlaylistDetailPage })
 
 // 活动详情:归档真实路由是 /en/<slug>;切片单 locale,简化为 /<slug>(放最后, 让静态路由优先)
 const detailRoute = createRoute({
@@ -128,10 +120,6 @@ const routeTree = rootRoute.addChildren([
   eventsRoute,
   eventsMapRoute,
   schedulesRoute,
-  communitiesRoute,
-  communityDetailRoute,
-  playlistsRoute,
-  playlistDetailRoute,
   loginRoute,
   registerRoute,
   manageEventsRoute,

@@ -5,14 +5,12 @@ import Database from 'better-sqlite3'
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { events, communities, playlists, users, participants, tickets } from './schema'
-import { CREATE_EVENTS, CREATE_COMMUNITIES, CREATE_PLAYLISTS, CREATE_USERS, CREATE_PARTICIPANTS, CREATE_TICKETS } from './schema'
+import { events, users, participants, tickets } from './schema'
+import { CREATE_EVENTS, CREATE_USERS, CREATE_PARTICIPANTS, CREATE_TICKETS } from './schema'
 import seedEvents from '../data/events.json'
-import seedCommunities from '../data/communities.json'
-import seedPlaylists from '../data/playlists.json'
 
-export const schema = { events, communities, playlists, users, participants, tickets }
-export { events, communities, playlists, users, participants, tickets }
+export const schema = { events, users, participants, tickets }
+export { events, users, participants, tickets }
 export { sql } from 'drizzle-orm'
 
 let sqliteDb: ReturnType<typeof drizzleSqlite> | null = null
@@ -28,8 +26,6 @@ function initSqlite() {
   sqliteDb = drizzleSqlite(sqliteRaw, { schema })
 
   sqliteRaw.exec(CREATE_EVENTS)
-  sqliteRaw.exec(CREATE_COMMUNITIES)
-  sqliteRaw.exec(CREATE_PLAYLISTS)
   sqliteRaw.exec(CREATE_USERS)
   sqliteRaw.exec(CREATE_PARTICIPANTS)
   sqliteRaw.exec(CREATE_TICKETS)
@@ -85,52 +81,6 @@ function initSqlite() {
     for (let i = 0; i < rows.length; i += CHUNK) sqliteDb.insert(events).values(rows.slice(i, i + CHUNK)).run()
     const n = (sqliteRaw.prepare('SELECT COUNT(*) AS c FROM events').get() as { c: number }).c
     console.error(`[db] seeded ${n} events → ${DB_PATH}`)
-  }
-
-  if ((sqliteRaw.prepare('SELECT COUNT(*) AS c FROM communities').get() as { c: number }).c === 0) {
-    const rows = (seedCommunities as any[]).map((c) => ({
-      id: c.id,
-      slug: c.slug || c.id,
-      name: c.name,
-      description: c.description ?? null,
-      logoUrl: c.logoUrl ?? null,
-      logoDarkUrl: c.logoDarkUrl ?? null,
-      visibility: c.visibility ?? null,
-      joinType: c.joinType ?? null,
-      enabledChat: !!c.enabledChat,
-      memberCount: c.memberCount ?? 0,
-      followersCount: c.followersCount ?? 0,
-      featured: !!c.featured,
-      websiteUrl: c.websiteUrl ?? null,
-      tags: c.tags ?? [],
-      customNavigation: c.customNavigation ?? null,
-      createdBy: c.createdBy ?? null,
-      createdAt: c.createdAt ?? null,
-      updatedAt: c.updatedAt ?? null,
-      data: c,
-    }))
-    for (let i = 0; i < rows.length; i += 50) sqliteDb.insert(communities).values(rows.slice(i, i + 50)).run()
-    console.error(`[db] seeded ${rows.length} communities`)
-  }
-
-  if ((sqliteRaw.prepare('SELECT COUNT(*) AS c FROM playlists').get() as { c: number }).c === 0) {
-    const rows = (seedPlaylists as any[]).map((p) => ({
-      id: p.id,
-      communityId: p.communityId ?? null,
-      name: p.name,
-      description: p.description ?? null,
-      thumbnailImageUrl: p.thumbnailImageUrl ?? null,
-      itemCount: p.itemCount ?? 0,
-      featured: !!p.featured,
-      sticky: !!p.sticky,
-      sortOrder: p.sortOrder ?? 0,
-      community: p.community ?? null,
-      createdAt: p.createdAt ?? null,
-      updatedAt: p.updatedAt ?? null,
-      data: p,
-    }))
-    for (let i = 0; i < rows.length; i += 50) sqliteDb.insert(playlists).values(rows.slice(i, i + 50)).run()
-    console.error(`[db] seeded ${rows.length} playlists`)
   }
 
   return sqliteDb

@@ -47,11 +47,8 @@ export function Footer() {
           <Link to="/events" className={linkCls}>
             {t('nav.events')}
           </Link>
-          <Link to="/communities" className={linkCls}>
-            {t('nav.communities')}
-          </Link>
-          <Link to="/playlists" className={linkCls}>
-            {t('playlists.title')}
+          <Link to="/schedules" className={linkCls}>
+            日程
           </Link>
         </Col>
 

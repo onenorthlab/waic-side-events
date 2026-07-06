@@ -1,5 +1,4 @@
-// 极简命令式 toast。用途:给"本公开面切片未包含"的控件(登录/创建活动/Communities 等
-// 登录后功能)一个诚实反馈 —— 满足"无死控件"(点了有反应)且不臆造功能。
+// 极简命令式 toast。用途:给尚未实现的控件一个诚实反馈 —— 满足"无死控件"(点了有反应)且不臆造功能。
 let host: HTMLDivElement | null = null
 
 export function toast(msg: string) {

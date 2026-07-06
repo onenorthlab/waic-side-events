@@ -71,64 +71,6 @@ CREATE INDEX IF NOT EXISTS idx_events_slug ON events(slug);
 CREATE INDEX IF NOT EXISTS idx_events_start ON events(start_date);
 `
 
-// communities 表 —— 列名对齐 api.4s.link 真实 Community(14~19字段)。
-export const communities = sqliteTable('communities', {
-  id: text('id').primaryKey(),
-  slug: text('slug').notNull(),
-  name: text('name').notNull(),
-  description: text('description'),
-  logoUrl: text('logo_url'),
-  logoDarkUrl: text('logo_dark_url'),
-  visibility: text('visibility'), // PUBLIC | ...
-  joinType: text('join_type'),
-  enabledChat: integer('enabled_chat', { mode: 'boolean' }),
-  memberCount: integer('member_count'),
-  followersCount: integer('followers_count'),
-  featured: integer('featured', { mode: 'boolean' }),
-  websiteUrl: text('website_url'),
-  tags: text('tags', { mode: 'json' }),
-  customNavigation: text('custom_navigation', { mode: 'json' }),
-  createdBy: text('created_by', { mode: 'json' }),
-  createdAt: text('created_at'),
-  updatedAt: text('updated_at'),
-  data: text('data', { mode: 'json' }),
-})
-
-// playlists 表 —— 对齐真实 Playlist(12字段)。
-export const playlists = sqliteTable('playlists', {
-  id: text('id').primaryKey(),
-  communityId: text('community_id'),
-  name: text('name').notNull(),
-  description: text('description'),
-  thumbnailImageUrl: text('thumbnail_image_url'),
-  itemCount: integer('item_count'),
-  featured: integer('featured', { mode: 'boolean' }),
-  sticky: integer('sticky', { mode: 'boolean' }),
-  sortOrder: integer('sort_order'),
-  community: text('community', { mode: 'json' }),
-  createdAt: text('created_at'),
-  updatedAt: text('updated_at'),
-  data: text('data', { mode: 'json' }),
-})
-
-export const CREATE_COMMUNITIES = `
-CREATE TABLE IF NOT EXISTS communities (
-  id TEXT PRIMARY KEY, slug TEXT NOT NULL, name TEXT NOT NULL, description TEXT,
-  logo_url TEXT, logo_dark_url TEXT, visibility TEXT, join_type TEXT, enabled_chat INTEGER,
-  member_count INTEGER, followers_count INTEGER, featured INTEGER, website_url TEXT,
-  tags TEXT, custom_navigation TEXT, created_by TEXT, created_at TEXT, updated_at TEXT, data TEXT
-);
-CREATE INDEX IF NOT EXISTS idx_comm_slug ON communities(slug);
-`
-
-export const CREATE_PLAYLISTS = `
-CREATE TABLE IF NOT EXISTS playlists (
-  id TEXT PRIMARY KEY, community_id TEXT, name TEXT NOT NULL, description TEXT,
-  thumbnail_image_url TEXT, item_count INTEGER, featured INTEGER, sticky INTEGER,
-  sort_order INTEGER, community TEXT, created_at TEXT, updated_at TEXT, data TEXT
-);
-`
-
 // users 表 —— 平台用户/组织者
 export const users = sqliteTable('users', {
   id: text('id').primaryKey(),

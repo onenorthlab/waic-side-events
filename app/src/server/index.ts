@@ -1,7 +1,6 @@
 import { Hono } from 'hono'
 import { zValidator } from '@hono/zod-validator'
 import { z } from 'zod'
-import { COMMUNITIES, PLAYLISTS } from './data'
 import tagsUsage from '../data/tags-usage.json'
 import authApp from './auth'
 import manageApp from './manage'
@@ -200,58 +199,6 @@ app.post('/api/events/:slug/register', zValidator('json', registerSchema), async
   }
 
   return c.json({ ok: true, status: participant.status })
-})
-
-// —— Communities ——
-app.get('/api/communities', (c) => {
-  const page = Math.max(1, parseInt(c.req.query('page') || '1', 10))
-  const perPage = Math.min(60, Math.max(1, parseInt(c.req.query('perPage') || '12', 10)))
-  const featured = c.req.query('featured') === 'true'
-  const tag = c.req.query('tag') || ''
-  const q = (c.req.query('q') || '').toLowerCase().trim()
-
-  let rows = COMMUNITIES.slice().sort((a, b) => b.memberCount - a.memberCount)
-  if (featured) rows = rows.filter((r) => r.featured)
-  if (tag) rows = rows.filter((r) => r.tags.some((t: any) => (t?.name || t) === tag))
-  if (q) rows = rows.filter((r) => r.name.toLowerCase().includes(q) || r.description.toLowerCase().includes(q))
-
-  const totalCount = rows.length
-  const slice = rows.slice((page - 1) * perPage, page * perPage)
-  return c.json({
-    communities: slice.map((r) => r.data),
-    pageInfo: { totalCount, totalPages: Math.max(1, Math.ceil(totalCount / perPage)), page, perPage },
-  })
-})
-
-app.get('/api/communities/:slug', (c) => {
-  const slug = c.req.param('slug')
-  const row = COMMUNITIES.find((r) => r.slug === slug) || COMMUNITIES.find((r) => r.id === slug)
-  if (!row) return c.json({ error: 'not_found' }, 404)
-  return c.json(row.data)
-})
-
-// —— Playlists ——
-app.get('/api/playlists', (c) => {
-  const page = Math.max(1, parseInt(c.req.query('page') || '1', 10))
-  const perPage = Math.min(60, Math.max(1, parseInt(c.req.query('perPage') || '12', 10)))
-  const featured = c.req.query('featured') === 'true'
-
-  let rows = PLAYLISTS.slice().sort((a, b) => Number(b.sticky) - Number(a.sticky) || b.itemCount - a.itemCount)
-  if (featured) rows = rows.filter((r) => r.featured)
-
-  const totalCount = rows.length
-  const slice = rows.slice((page - 1) * perPage, page * perPage)
-  return c.json({
-    playlists: slice.map((r) => r.data),
-    pageInfo: { totalCount, totalPages: Math.max(1, Math.ceil(totalCount / perPage)), page, perPage },
-  })
-})
-
-app.get('/api/playlists/:id', (c) => {
-  const id = c.req.param('id')
-  const row = PLAYLISTS.find((r) => r.id === id)
-  if (!row) return c.json({ error: 'not_found' }, 404)
-  return c.json(row.data)
 })
 
 app.get('/api/amap/place', async (c) => {
