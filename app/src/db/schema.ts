@@ -1,7 +1,6 @@
 import { sqliteTable, text, integer } from 'drizzle-orm/sqlite-core'
 
-// events 表 —— 列名对齐 api.4s.link 真实 Event 字段(见 capture/4s-auth/contracts/DATA-MODEL.md)。
-// 标量字段=列(可查询/排序/筛选); 结构化/关系字段=JSON 列; `data`=完整原始对象(响应契约保真)。
+// events 表 —— 标量字段=列(可查询/排序/筛选); 结构化/关系字段=JSON 列; `data`=完整对象快照。
 export interface Schedule {
   date: string
   startTime: string

@@ -69,7 +69,7 @@ const M: Record<string, string> = {
   'footer.terms': '服务条款',
   'footer.privacy': '隐私政策',
   'footer.commercial': '特定商业交易法标注',
-  'footer.rights': '© 2026 4S. 保留所有权利。',
+  'footer.rights': '© 2026 WAIC Side Events',
 
   // 后台管理
   'admin.dashboard': '数据概览',

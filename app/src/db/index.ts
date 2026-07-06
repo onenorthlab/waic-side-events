@@ -19,7 +19,7 @@ let sqliteRaw: Database.Database | null = null
 function initSqlite() {
   if (sqliteDb) return sqliteDb
   const __dir = path.dirname(fileURLToPath(import.meta.url))
-  const DB_PATH = path.join(__dir, '../../data/4s.db')
+  const DB_PATH = path.join(__dir, '../../data/app.db')
   fs.mkdirSync(path.dirname(DB_PATH), { recursive: true })
   sqliteRaw = new Database(DB_PATH)
   sqliteRaw.pragma('journal_mode = WAL')

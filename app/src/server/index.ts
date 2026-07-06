@@ -49,7 +49,7 @@ const eventPublicFields = (r: any) => ({
   organizerContact: r.organizerContact,
 })
 
-// 契约对齐 api.4s.link。前端走 /api/*, 与真实路径一一对应。
+// 公开 API。前端统一走 /api/*。
 // —— Events ——
 app.get('/api/events', async (c) => {
   const db = getDb(c.env)

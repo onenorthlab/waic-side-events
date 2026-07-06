@@ -1,6 +1,6 @@
-// 类型对齐 api.4s.link 真实 Event(见 capture/4s-auth/contracts/DATA-MODEL.md)。
+// 活动数据模型。标量字段可查询/排序，结构化字段存 JSON。
 export interface Schedule {
-  date: string // YYYY-MM-DD (JST wall-clock)
+  date: string // YYYY-MM-DD (Asia/Shanghai 墙钟)
   startTime: string // HH:mm
   endTime: string
 }
