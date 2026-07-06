@@ -120,7 +120,7 @@
 ### Milestone 8：项目整理与交接
 
 - 将项目从混有 4s-replica 旧资料的 `/Users/kane/4s-replica-work/` 中拆出。
-- 新建干净目录：`~/Projects/waic-side-events/`。
+- 新建干净目录：`/Users/kane/Desktop/project/waic-side-events/`。
 - 保留 `app/`、`docs/`、`README.md`、`.gitignore`。
 - 重新初始化 Git 仓库并推送到 `https://github.com/onenorthlab/waic-side-events`。
 - 创建飞书交接文档，记录架构、操作、Skill、地图、反馈、已知限制与下一步。
@@ -193,7 +193,7 @@
 - **管理后台**：https://waic-side-events.ingle.workers.dev/manage/login
 - **管理员账号**：`admin@waic.events` / `Admin1234!`
 - **GitHub 仓库**：https://github.com/onenorthlab/waic-side-events
-- **本地目录**：`~/Projects/waic-side-events`
+- **本地目录**：`/Users/kane/Desktop/project/waic-side-events`
 - **飞书交接文档**：https://onenorth.feishu.cn/docx/EXBod5boooBO0bxxevicf0RSn6d
 - **Agent Skill**：`~/.agents/skills/waic-event-creator/`
 
