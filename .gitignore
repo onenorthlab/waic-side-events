@@ -1,0 +1,25 @@
+# Secrets
+.env
+.env.*
+
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+dist/
+dist-server/
+*.tsbuildinfo
+
+# Local database / runtime artifacts
+*.db
+*.db-shm
+*.db-wal
+**/.wrangler/
+**/cookies.txt
+
+# OS / Editor
+.DS_Store
+*.log
+.vscode/
+.idea/

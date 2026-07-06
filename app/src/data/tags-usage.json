@@ -1,0 +1,3542 @@
+{
+  "groups": [
+    {
+      "entity": "event",
+      "category": null,
+      "tags": [
+        {
+          "name": "スタートアップ",
+          "count": 134
+        },
+        {
+          "name": "交流会",
+          "count": 69
+        },
+        {
+          "name": "IVS",
+          "count": 65
+        },
+        {
+          "name": "VC",
+          "count": 53
+        },
+        {
+          "name": "IVS2026",
+          "count": 51
+        },
+        {
+          "name": "ネットワーキング",
+          "count": 47
+        },
+        {
+          "name": "AI",
+          "count": 45
+        },
+        {
+          "name": "CVC",
+          "count": 41
+        },
+        {
+          "name": "起業家",
+          "count": 37
+        },
+        {
+          "name": "サイドイベント",
+          "count": 36
+        },
+        {
+          "name": "事業会社",
+          "count": 36
+        },
+        {
+          "name": "ミートアップ",
+          "count": 27
+        },
+        {
+          "name": "M&A",
+          "count": 23
+        },
+        {
+          "name": "資金調達",
+          "count": 22
+        },
+        {
+          "name": "投資家",
+          "count": 21
+        },
+        {
+          "name": "人事",
+          "count": 20
+        },
+        {
+          "name": "採用",
+          "count": 18
+        },
+        {
+          "name": "新規事業",
+          "count": 16
+        },
+        {
+          "name": "オープンイノベーション",
+          "count": 15
+        },
+        {
+          "name": "エンタメ",
+          "count": 14
+        },
+        {
+          "name": "HR",
+          "count": 11
+        },
+        {
+          "name": "イノベーション",
+          "count": 11
+        },
+        {
+          "name": "エンジニア",
+          "count": 10
+        },
+        {
+          "name": "京都",
+          "count": 10
+        },
+        {
+          "name": "大企業",
+          "count": 10
+        },
+        {
+          "name": "経営者",
+          "count": 10
+        },
+        {
+          "name": "起業",
+          "count": 10
+        },
+        {
+          "name": "Startup",
+          "count": 9
+        },
+        {
+          "name": "グローバル",
+          "count": 9
+        },
+        {
+          "name": "ワークショップ",
+          "count": 9
+        },
+        {
+          "name": "meetup",
+          "count": 8
+        },
+        {
+          "name": "ピッチ",
+          "count": 8
+        },
+        {
+          "name": "マーケティング",
+          "count": 7
+        },
+        {
+          "name": "中小企業",
+          "count": 7
+        },
+        {
+          "name": "地方創生",
+          "count": 7
+        },
+        {
+          "name": "学生",
+          "count": 7
+        },
+        {
+          "name": "CTO",
+          "count": 6
+        },
+        {
+          "name": "networking",
+          "count": 6
+        },
+        {
+          "name": "startup",
+          "count": 6
+        },
+        {
+          "name": "シード",
+          "count": 6
+        },
+        {
+          "name": "マネジメント",
+          "count": 6
+        },
+        {
+          "name": "人材育成",
+          "count": 6
+        },
+        {
+          "name": "壁打ち",
+          "count": 6
+        },
+        {
+          "name": "投資",
+          "count": 6
+        },
+        {
+          "name": "朝活",
+          "count": 6
+        },
+        {
+          "name": "組織開発",
+          "count": 6
+        },
+        {
+          "name": "DeepTech",
+          "count": 5
+        },
+        {
+          "name": "DX",
+          "count": 5
+        },
+        {
+          "name": "Global",
+          "count": 5
+        },
+        {
+          "name": "OpenInnovation",
+          "count": 5
+        },
+        {
+          "name": "ウェルビーイング",
+          "count": 5
+        },
+        {
+          "name": "クリエイター",
+          "count": 5
+        },
+        {
+          "name": "コーチング",
+          "count": 5
+        },
+        {
+          "name": "トークセッション",
+          "count": 5
+        },
+        {
+          "name": "マインドフルネス",
+          "count": 5
+        },
+        {
+          "name": "事業開発",
+          "count": 5
+        },
+        {
+          "name": "交流",
+          "count": 5
+        },
+        {
+          "name": "共創",
+          "count": 5
+        },
+        {
+          "name": "無料",
+          "count": 5
+        },
+        {
+          "name": "自治体",
+          "count": 5
+        },
+        {
+          "name": "AIエージェント",
+          "count": 4
+        },
+        {
+          "name": "Blockchain",
+          "count": 4
+        },
+        {
+          "name": "CORE",
+          "count": 4
+        },
+        {
+          "name": "CxO",
+          "count": 4
+        },
+        {
+          "name": "IPO",
+          "count": 4
+        },
+        {
+          "name": "ivs",
+          "count": 4
+        },
+        {
+          "name": "IVSオフィシャルサイドイベント",
+          "count": 4
+        },
+        {
+          "name": "IVSサイドイベント",
+          "count": 4
+        },
+        {
+          "name": "SUM",
+          "count": 4
+        },
+        {
+          "name": "アート",
+          "count": 4
+        },
+        {
+          "name": "コンテンツ",
+          "count": 4
+        },
+        {
+          "name": "サステナビリティ",
+          "count": 4
+        },
+        {
+          "name": "スタートアップマーケット",
+          "count": 4
+        },
+        {
+          "name": "ソーシャル",
+          "count": 4
+        },
+        {
+          "name": "デザイナー",
+          "count": 4
+        },
+        {
+          "name": "バー",
+          "count": 4
+        },
+        {
+          "name": "ベンチャー",
+          "count": 4
+        },
+        {
+          "name": "ロボット",
+          "count": 4
+        },
+        {
+          "name": "事業連携",
+          "count": 4
+        },
+        {
+          "name": "学生起業家",
+          "count": 4
+        },
+        {
+          "name": "生成AI",
+          "count": 4
+        },
+        {
+          "name": "組織課題",
+          "count": 4
+        },
+        {
+          "name": "経営",
+          "count": 4
+        },
+        {
+          "name": "途中参加OK",
+          "count": 4
+        },
+        {
+          "name": "開発",
+          "count": 4
+        },
+        {
+          "name": "AgenticAI",
+          "count": 3
+        },
+        {
+          "name": "CelebrateDiversity",
+          "count": 3
+        },
+        {
+          "name": "CFO",
+          "count": 3
+        },
+        {
+          "name": "CORE限定",
+          "count": 3
+        },
+        {
+          "name": "CXO",
+          "count": 3
+        },
+        {
+          "name": "English",
+          "count": 3
+        },
+        {
+          "name": "EnglishSpeakersWelcome",
+          "count": 3
+        },
+        {
+          "name": "ERP",
+          "count": 3
+        },
+        {
+          "name": "ESG",
+          "count": 3
+        },
+        {
+          "name": "global",
+          "count": 3
+        },
+        {
+          "name": "GX",
+          "count": 3
+        },
+        {
+          "name": "ivs2026",
+          "count": 3
+        },
+        {
+          "name": "MBA",
+          "count": 3
+        },
+        {
+          "name": "Networking",
+          "count": 3
+        },
+        {
+          "name": "Onchain",
+          "count": 3
+        },
+        {
+          "name": "PR",
+          "count": 3
+        },
+        {
+          "name": "tetratokyo",
+          "count": 3
+        },
+        {
+          "name": "VentureBuilding",
+          "count": 3
+        },
+        {
+          "name": "アーリー",
+          "count": 3
+        },
+        {
+          "name": "インド",
+          "count": 3
+        },
+        {
+          "name": "インパクト",
+          "count": 3
+        },
+        {
+          "name": "インパクト投資",
+          "count": 3
+        },
+        {
+          "name": "エコシステム",
+          "count": 3
+        },
+        {
+          "name": "エンゲージメント",
+          "count": 3
+        },
+        {
+          "name": "おひとりさま歓迎",
+          "count": 3
+        },
+        {
+          "name": "カンファレンス",
+          "count": 3
+        },
+        {
+          "name": "クリエイティブ",
+          "count": 3
+        },
+        {
+          "name": "クローズド勉強会",
+          "count": 3
+        },
+        {
+          "name": "ゲーム",
+          "count": 3
+        },
+        {
+          "name": "コミュニケーション",
+          "count": 3
+        },
+        {
+          "name": "セキュリティ",
+          "count": 3
+        },
+        {
+          "name": "ディープテック",
+          "count": 3
+        },
+        {
+          "name": "ファイナンス",
+          "count": 3
+        },
+        {
+          "name": "ベンチャーデット",
+          "count": 3
+        },
+        {
+          "name": "ランチ",
+          "count": 3
+        },
+        {
+          "name": "事務",
+          "count": 3
+        },
+        {
+          "name": "伝統工芸",
+          "count": 3
+        },
+        {
+          "name": "創造性",
+          "count": 3
+        },
+        {
+          "name": "地方銀行",
+          "count": 3
+        },
+        {
+          "name": "大学",
+          "count": 3
+        },
+        {
+          "name": "大学生",
+          "count": 3
+        },
+        {
+          "name": "女性起業家",
+          "count": 3
+        },
+        {
+          "name": "官民連携",
+          "count": 3
+        },
+        {
+          "name": "広報",
+          "count": 3
+        },
+        {
+          "name": "文化",
+          "count": 3
+        },
+        {
+          "name": "新規事業開発",
+          "count": 3
+        },
+        {
+          "name": "日本酒",
+          "count": 3
+        },
+        {
+          "name": "海外展開",
+          "count": 3
+        },
+        {
+          "name": "相談会",
+          "count": 3
+        },
+        {
+          "name": "研修",
+          "count": 3
+        },
+        {
+          "name": "社会課題解決",
+          "count": 3
+        },
+        {
+          "name": "組織診断",
+          "count": 3
+        },
+        {
+          "name": "行政",
+          "count": 3
+        },
+        {
+          "name": "認知科学",
+          "count": 3
+        },
+        {
+          "name": "越境",
+          "count": 3
+        },
+        {
+          "name": "退職",
+          "count": 3
+        },
+        {
+          "name": "関西",
+          "count": 3
+        },
+        {
+          "name": "青森",
+          "count": 3
+        },
+        {
+          "name": "7月3日",
+          "count": 2
+        },
+        {
+          "name": "AI活用",
+          "count": 2
+        },
+        {
+          "name": "AI駆動開発",
+          "count": 2
+        },
+        {
+          "name": "Claude",
+          "count": 2
+        },
+        {
+          "name": "Crypto",
+          "count": 2
+        },
+        {
+          "name": "Deeptech",
+          "count": 2
+        },
+        {
+          "name": "EM",
+          "count": 2
+        },
+        {
+          "name": "Founder",
+          "count": 2
+        },
+        {
+          "name": "international",
+          "count": 2
+        },
+        {
+          "name": "IP",
+          "count": 2
+        },
+        {
+          "name": "IVS2026 オフィシャルサイドイベント",
+          "count": 2
+        },
+        {
+          "name": "IVS2026サイドイベント",
+          "count": 2
+        },
+        {
+          "name": "JV",
+          "count": 2
+        },
+        {
+          "name": "LP",
+          "count": 2
+        },
+        {
+          "name": "Meatup",
+          "count": 2
+        },
+        {
+          "name": "Meetup",
+          "count": 2
+        },
+        {
+          "name": "paypay",
+          "count": 2
+        },
+        {
+          "name": "PdM",
+          "count": 2
+        },
+        {
+          "name": "pitch",
+          "count": 2
+        },
+        {
+          "name": "PM",
+          "count": 2
+        },
+        {
+          "name": "PMI",
+          "count": 2
+        },
+        {
+          "name": "R&D",
+          "count": 2
+        },
+        {
+          "name": "RPO",
+          "count": 2
+        },
+        {
+          "name": "SNSマーケティング",
+          "count": 2
+        },
+        {
+          "name": "Sun*",
+          "count": 2
+        },
+        {
+          "name": "UPDATE",
+          "count": 2
+        },
+        {
+          "name": "VPoE",
+          "count": 2
+        },
+        {
+          "name": "Web3",
+          "count": 2
+        },
+        {
+          "name": "Z Venture Capital",
+          "count": 2
+        },
+        {
+          "name": "アート思考",
+          "count": 2
+        },
+        {
+          "name": "アップデート",
+          "count": 2
+        },
+        {
+          "name": "アフリカ",
+          "count": 2
+        },
+        {
+          "name": "インバウンド",
+          "count": 2
+        },
+        {
+          "name": "インパクトスタートアップ",
+          "count": 2
+        },
+        {
+          "name": "エクイティ",
+          "count": 2
+        },
+        {
+          "name": "エンジニア採用",
+          "count": 2
+        },
+        {
+          "name": "エンターテインメント",
+          "count": 2
+        },
+        {
+          "name": "お賽銭",
+          "count": 2
+        },
+        {
+          "name": "カルチャー",
+          "count": 2
+        },
+        {
+          "name": "キャリア",
+          "count": 2
+        },
+        {
+          "name": "グロース",
+          "count": 2
+        },
+        {
+          "name": "グロービス",
+          "count": 2
+        },
+        {
+          "name": "コーヒー",
+          "count": 2
+        },
+        {
+          "name": "コミュニティ",
+          "count": 2
+        },
+        {
+          "name": "コンサル",
+          "count": 2
+        },
+        {
+          "name": "シリーズA",
+          "count": 2
+        },
+        {
+          "name": "スタディーツアー",
+          "count": 2
+        },
+        {
+          "name": "ステーブルコイン",
+          "count": 2
+        },
+        {
+          "name": "セッション",
+          "count": 2
+        },
+        {
+          "name": "ゼブラ",
+          "count": 2
+        },
+        {
+          "name": "ゼブラ企業",
+          "count": 2
+        },
+        {
+          "name": "ダンス",
+          "count": 2
+        },
+        {
+          "name": "デット",
+          "count": 2
+        },
+        {
+          "name": "バイオ",
+          "count": 2
+        },
+        {
+          "name": "ハッカソン",
+          "count": 2
+        },
+        {
+          "name": "ビジネス",
+          "count": 2
+        },
+        {
+          "name": "ビジネススクール",
+          "count": 2
+        },
+        {
+          "name": "ビジネスリトリート",
+          "count": 2
+        },
+        {
+          "name": "ピッチイベント",
+          "count": 2
+        },
+        {
+          "name": "フードテック",
+          "count": 2
+        },
+        {
+          "name": "ファンマーケ",
+          "count": 2
+        },
+        {
+          "name": "ブラジル",
+          "count": 2
+        },
+        {
+          "name": "ブランディング",
+          "count": 2
+        },
+        {
+          "name": "プレシード",
+          "count": 2
+        },
+        {
+          "name": "ブロックチェーン",
+          "count": 2
+        },
+        {
+          "name": "ヘルスケア",
+          "count": 2
+        },
+        {
+          "name": "ボードゲーム",
+          "count": 2
+        },
+        {
+          "name": "ボドゲ",
+          "count": 2
+        },
+        {
+          "name": "まちづくり",
+          "count": 2
+        },
+        {
+          "name": "モーニング",
+          "count": 2
+        },
+        {
+          "name": "ランニング",
+          "count": 2
+        },
+        {
+          "name": "リバースピッチ",
+          "count": 2
+        },
+        {
+          "name": "中国",
+          "count": 2
+        },
+        {
+          "name": "事業提携",
+          "count": 2
+        },
+        {
+          "name": "事業相談",
+          "count": 2
+        },
+        {
+          "name": "事業責任者",
+          "count": 2
+        },
+        {
+          "name": "二夜連続開催",
+          "count": 2
+        },
+        {
+          "name": "京都大学",
+          "count": 2
+        },
+        {
+          "name": "人材",
+          "count": 2
+        },
+        {
+          "name": "伝統文化",
+          "count": 2
+        },
+        {
+          "name": "体験",
+          "count": 2
+        },
+        {
+          "name": "体験型",
+          "count": 2
+        },
+        {
+          "name": "健康",
+          "count": 2
+        },
+        {
+          "name": "公式サイドイベント",
+          "count": 2
+        },
+        {
+          "name": "公認",
+          "count": 2
+        },
+        {
+          "name": "出資検討",
+          "count": 2
+        },
+        {
+          "name": "前夜祭",
+          "count": 2
+        },
+        {
+          "name": "創業者",
+          "count": 2
+        },
+        {
+          "name": "医療",
+          "count": 2
+        },
+        {
+          "name": "半導体",
+          "count": 2
+        },
+        {
+          "name": "台湾",
+          "count": 2
+        },
+        {
+          "name": "地域課題",
+          "count": 2
+        },
+        {
+          "name": "地域金融機関",
+          "count": 2
+        },
+        {
+          "name": "地方",
+          "count": 2
+        },
+        {
+          "name": "売り手",
+          "count": 2
+        },
+        {
+          "name": "大学生向け",
+          "count": 2
+        },
+        {
+          "name": "女性",
+          "count": 2
+        },
+        {
+          "name": "学生イベント",
+          "count": 2
+        },
+        {
+          "name": "宗教",
+          "count": 2
+        },
+        {
+          "name": "官民共創",
+          "count": 2
+        },
+        {
+          "name": "対話",
+          "count": 2
+        },
+        {
+          "name": "広告",
+          "count": 2
+        },
+        {
+          "name": "挑戦者",
+          "count": 2
+        },
+        {
+          "name": "支援機関",
+          "count": 2
+        },
+        {
+          "name": "日本",
+          "count": 2
+        },
+        {
+          "name": "業務効率化",
+          "count": 2
+        },
+        {
+          "name": "海外事業",
+          "count": 2
+        },
+        {
+          "name": "海外投資",
+          "count": 2
+        },
+        {
+          "name": "社会課題",
+          "count": 2
+        },
+        {
+          "name": "神戸",
+          "count": 2
+        },
+        {
+          "name": "組織コーチング",
+          "count": 2
+        },
+        {
+          "name": "経済",
+          "count": 2
+        },
+        {
+          "name": "職人",
+          "count": 2
+        },
+        {
+          "name": "脱炭素",
+          "count": 2
+        },
+        {
+          "name": "自治体連携",
+          "count": 2
+        },
+        {
+          "name": "若手起業家",
+          "count": 2
+        },
+        {
+          "name": "買い手",
+          "count": 2
+        },
+        {
+          "name": "農林水産",
+          "count": 2
+        },
+        {
+          "name": "銀行",
+          "count": 2
+        },
+        {
+          "name": "防衛",
+          "count": 2
+        },
+        {
+          "name": "飲み会",
+          "count": 2
+        },
+        {
+          "name": "飲み放題",
+          "count": 2
+        },
+        {
+          "name": "鴨川",
+          "count": 2
+        },
+        {
+          "name": "#IVS2026",
+          "count": 1
+        },
+        {
+          "name": "#QUINTBRIDGE",
+          "count": 1
+        },
+        {
+          "name": "#エコシステム",
+          "count": 1
+        },
+        {
+          "name": "#オープンイノベーション",
+          "count": 1
+        },
+        {
+          "name": "#サウナ",
+          "count": 1
+        },
+        {
+          "name": "#スタートアップ",
+          "count": 1
+        },
+        {
+          "name": "#ソーシャルサウナ",
+          "count": 1
+        },
+        {
+          "name": "#交流会",
+          "count": 1
+        },
+        {
+          "name": "#共創",
+          "count": 1
+        },
+        {
+          "name": "#関西",
+          "count": 1
+        },
+        {
+          "name": "♯愛知",
+          "count": 1
+        },
+        {
+          "name": "100年企業",
+          "count": 1
+        },
+        {
+          "name": "1987年",
+          "count": 1
+        },
+        {
+          "name": "1988年",
+          "count": 1
+        },
+        {
+          "name": "1989年",
+          "count": 1
+        },
+        {
+          "name": "20代",
+          "count": 1
+        },
+        {
+          "name": "2次会",
+          "count": 1
+        },
+        {
+          "name": "500Global",
+          "count": 1
+        },
+        {
+          "name": "7月2日",
+          "count": 1
+        },
+        {
+          "name": "ai",
+          "count": 1
+        },
+        {
+          "name": "AI agent",
+          "count": 1
+        },
+        {
+          "name": "AIOps",
+          "count": 1
+        },
+        {
+          "name": "AIネイティブ",
+          "count": 1
+        },
+        {
+          "name": "AI企業導入",
+          "count": 1
+        },
+        {
+          "name": "AI導入",
+          "count": 1
+        },
+        {
+          "name": "AI駆動",
+          "count": 1
+        },
+        {
+          "name": "Angel Bridge",
+          "count": 1
+        },
+        {
+          "name": "B2Bマーケティング",
+          "count": 1
+        },
+        {
+          "name": "beer",
+          "count": 1
+        },
+        {
+          "name": "biotechnology",
+          "count": 1
+        },
+        {
+          "name": "BtoB",
+          "count": 1
+        },
+        {
+          "name": "CAIO",
+          "count": 1
+        },
+        {
+          "name": "CHRO",
+          "count": 1
+        },
+        {
+          "name": "circularity",
+          "count": 1
+        },
+        {
+          "name": "Claudecode",
+          "count": 1
+        },
+        {
+          "name": "ClaudeCode",
+          "count": 1
+        },
+        {
+          "name": "Climate",
+          "count": 1
+        },
+        {
+          "name": "Climatetech",
+          "count": 1
+        },
+        {
+          "name": "CLUB",
+          "count": 1
+        },
+        {
+          "name": "CMO",
+          "count": 1
+        },
+        {
+          "name": "Co-Creation",
+          "count": 1
+        },
+        {
+          "name": "codex",
+          "count": 1
+        },
+        {
+          "name": "Codex",
+          "count": 1
+        },
+        {
+          "name": "conference",
+          "count": 1
+        },
+        {
+          "name": "Corporates",
+          "count": 1
+        },
+        {
+          "name": "CPA",
+          "count": 1
+        },
+        {
+          "name": "CPO",
+          "count": 1
+        },
+        {
+          "name": "Creative",
+          "count": 1
+        },
+        {
+          "name": "Creators World",
+          "count": 1
+        },
+        {
+          "name": "Culture-Preneur",
+          "count": 1
+        },
+        {
+          "name": "culturepreneur",
+          "count": 1
+        },
+        {
+          "name": "CVC/VC",
+          "count": 1
+        },
+        {
+          "name": "Cxo",
+          "count": 1
+        },
+        {
+          "name": "CxO,",
+          "count": 1
+        },
+        {
+          "name": "dance",
+          "count": 1
+        },
+        {
+          "name": "Deephouse",
+          "count": 1
+        },
+        {
+          "name": "DeNA",
+          "count": 1
+        },
+        {
+          "name": "Design",
+          "count": 1
+        },
+        {
+          "name": "DG Daiwa Ventures",
+          "count": 1
+        },
+        {
+          "name": "DigitalAsset",
+          "count": 1
+        },
+        {
+          "name": "Disco",
+          "count": 1
+        },
+        {
+          "name": "DJ",
+          "count": 1
+        },
+        {
+          "name": "DJナイト",
+          "count": 1
+        },
+        {
+          "name": "eat",
+          "count": 1
+        },
+        {
+          "name": "ecosystem",
+          "count": 1
+        },
+        {
+          "name": "Energy",
+          "count": 1
+        },
+        {
+          "name": "Englishspeaking",
+          "count": 1
+        },
+        {
+          "name": "enterprise",
+          "count": 1
+        },
+        {
+          "name": "entrepreneur",
+          "count": 1
+        },
+        {
+          "name": "Entrepreneur",
+          "count": 1
+        },
+        {
+          "name": "environment",
+          "count": 1
+        },
+        {
+          "name": "esports",
+          "count": 1
+        },
+        {
+          "name": "Exit",
+          "count": 1
+        },
+        {
+          "name": "EXIT",
+          "count": 1
+        },
+        {
+          "name": "FERMENTATION",
+          "count": 1
+        },
+        {
+          "name": "FGN",
+          "count": 1
+        },
+        {
+          "name": "figma",
+          "count": 1
+        },
+        {
+          "name": "FinGuard",
+          "count": 1
+        },
+        {
+          "name": "Fintech",
+          "count": 1
+        },
+        {
+          "name": "FoF",
+          "count": 1
+        },
+        {
+          "name": "food",
+          "count": 1
+        },
+        {
+          "name": "founder",
+          "count": 1
+        },
+        {
+          "name": "Founders",
+          "count": 1
+        },
+        {
+          "name": "Framer",
+          "count": 1
+        },
+        {
+          "name": "freee",
+          "count": 1
+        },
+        {
+          "name": "Gaming",
+          "count": 1
+        },
+        {
+          "name": "GDP1%",
+          "count": 1
+        },
+        {
+          "name": "Genspark",
+          "count": 1
+        },
+        {
+          "name": "HANAMII",
+          "count": 1
+        },
+        {
+          "name": "health",
+          "count": 1
+        },
+        {
+          "name": "HIPHOP",
+          "count": 1
+        },
+        {
+          "name": "HIRAC FUND",
+          "count": 1
+        },
+        {
+          "name": "House",
+          "count": 1
+        },
+        {
+          "name": "impact",
+          "count": 1
+        },
+        {
+          "name": "Institution",
+          "count": 1
+        },
+        {
+          "name": "intrapreneur",
+          "count": 1
+        },
+        {
+          "name": "Investment",
+          "count": 1
+        },
+        {
+          "name": "Investors",
+          "count": 1
+        },
+        {
+          "name": "Invite-Only",
+          "count": 1
+        },
+        {
+          "name": "IoT",
+          "count": 1
+        },
+        {
+          "name": "IT人材",
+          "count": 1
+        },
+        {
+          "name": "ivs2026オフィシャルサイドイベント",
+          "count": 1
+        },
+        {
+          "name": "IVS2027",
+          "count": 1
+        },
+        {
+          "name": "IVS26サイドイベント",
+          "count": 1
+        },
+        {
+          "name": "ivsサイドイベント",
+          "count": 1
+        },
+        {
+          "name": "IVSに行くぞ",
+          "count": 1
+        },
+        {
+          "name": "IVSプレイベント",
+          "count": 1
+        },
+        {
+          "name": "IVS公式イベント",
+          "count": 1
+        },
+        {
+          "name": "IVS公式サイドイベント",
+          "count": 1
+        },
+        {
+          "name": "IVS公認サイドイベント",
+          "count": 1
+        },
+        {
+          "name": "IVS明治会",
+          "count": 1
+        },
+        {
+          "name": "IVS案内所",
+          "count": 1
+        },
+        {
+          "name": "JapanisBack",
+          "count": 1
+        },
+        {
+          "name": "JapanToGlobal",
+          "count": 1
+        },
+        {
+          "name": "kyoto",
+          "count": 1
+        },
+        {
+          "name": "Kyoto",
+          "count": 1
+        },
+        {
+          "name": "KYOTO",
+          "count": 1
+        },
+        {
+          "name": "KYOTO INNOVATORS NIGHT",
+          "count": 1
+        },
+        {
+          "name": "lifesciences",
+          "count": 1
+        },
+        {
+          "name": "LiveDJ",
+          "count": 1
+        },
+        {
+          "name": "lobbyai",
+          "count": 1
+        },
+        {
+          "name": "local",
+          "count": 1
+        },
+        {
+          "name": "longevity",
+          "count": 1
+        },
+        {
+          "name": "LP出資",
+          "count": 1
+        },
+        {
+          "name": "M＆A",
+          "count": 1
+        },
+        {
+          "name": "Marketing",
+          "count": 1
+        },
+        {
+          "name": "MatchaRave",
+          "count": 1
+        },
+        {
+          "name": "MBB",
+          "count": 1
+        },
+        {
+          "name": "MEETUP",
+          "count": 1
+        },
+        {
+          "name": "mobileapp",
+          "count": 1
+        },
+        {
+          "name": "Music",
+          "count": 1
+        },
+        {
+          "name": "MUSIC",
+          "count": 1
+        },
+        {
+          "name": "Mリーグ",
+          "count": 1
+        },
+        {
+          "name": "NewConnection",
+          "count": 1
+        },
+        {
+          "name": "NIGHT",
+          "count": 1
+        },
+        {
+          "name": "NIKKEI",
+          "count": 1
+        },
+        {
+          "name": "NIKKEI THE PITCH",
+          "count": 1
+        },
+        {
+          "name": "NINJA PITCH",
+          "count": 1
+        },
+        {
+          "name": "Overseas",
+          "count": 1
+        },
+        {
+          "name": "Partnerships",
+          "count": 1
+        },
+        {
+          "name": "pasta",
+          "count": 1
+        },
+        {
+          "name": "Payment",
+          "count": 1
+        },
+        {
+          "name": "Payments",
+          "count": 1
+        },
+        {
+          "name": "PeopleEnrichPeopleesLive",
+          "count": 1
+        },
+        {
+          "name": "Podcast",
+          "count": 1
+        },
+        {
+          "name": "poker",
+          "count": 1
+        },
+        {
+          "name": "PRNight",
+          "count": 1
+        },
+        {
+          "name": "QOL",
+          "count": 1
+        },
+        {
+          "name": "RAMENTECH",
+          "count": 1
+        },
+        {
+          "name": "SBI",
+          "count": 1
+        },
+        {
+          "name": "SDGs",
+          "count": 1
+        },
+        {
+          "name": "Shimonoseki",
+          "count": 1
+        },
+        {
+          "name": "social",
+          "count": 1
+        },
+        {
+          "name": "Softbank",
+          "count": 1
+        },
+        {
+          "name": "SPIKESサイドイベント",
+          "count": 1
+        },
+        {
+          "name": "Stablecoin",
+          "count": 1
+        },
+        {
+          "name": "Start up",
+          "count": 1
+        },
+        {
+          "name": "STARTUP",
+          "count": 1
+        },
+        {
+          "name": "Startups",
+          "count": 1
+        },
+        {
+          "name": "STATIONAi",
+          "count": 1
+        },
+        {
+          "name": "sustainability",
+          "count": 1
+        },
+        {
+          "name": "Sworkers",
+          "count": 1
+        },
+        {
+          "name": "Synapse Festival",
+          "count": 1
+        },
+        {
+          "name": "Taiwan",
+          "count": 1
+        },
+        {
+          "name": "talksession",
+          "count": 1
+        },
+        {
+          "name": "TechGALA",
+          "count": 1
+        },
+        {
+          "name": "TIB",
+          "count": 1
+        },
+        {
+          "name": "TOB",
+          "count": 1
+        },
+        {
+          "name": "TOBIRA MeetUp",
+          "count": 1
+        },
+        {
+          "name": "TUNAGARI HUB",
+          "count": 1
+        },
+        {
+          "name": "U25",
+          "count": 1
+        },
+        {
+          "name": "UPSIDER",
+          "count": 1
+        },
+        {
+          "name": "UUNight",
+          "count": 1
+        },
+        {
+          "name": "UX",
+          "count": 1
+        },
+        {
+          "name": "UZABASE",
+          "count": 1
+        },
+        {
+          "name": "Valuation",
+          "count": 1
+        },
+        {
+          "name": "Vanta",
+          "count": 1
+        },
+        {
+          "name": "VCナイト",
+          "count": 1
+        },
+        {
+          "name": "VCリバースピッチ",
+          "count": 1
+        },
+        {
+          "name": "VC壁打ち",
+          "count": 1
+        },
+        {
+          "name": "Venture Cafe Tokyo",
+          "count": 1
+        },
+        {
+          "name": "VoiceAI",
+          "count": 1
+        },
+        {
+          "name": "VS2026",
+          "count": 1
+        },
+        {
+          "name": "walking",
+          "count": 1
+        },
+        {
+          "name": "WAU",
+          "count": 1
+        },
+        {
+          "name": "wellness",
+          "count": 1
+        },
+        {
+          "name": "WeWork",
+          "count": 1
+        },
+        {
+          "name": "workinginjapan",
+          "count": 1
+        },
+        {
+          "name": "WORLDKYOTO",
+          "count": 1
+        },
+        {
+          "name": "Y Combinator",
+          "count": 1
+        },
+        {
+          "name": "ＺＩＮＥ",
+          "count": 1
+        },
+        {
+          "name": "ZOZO",
+          "count": 1
+        },
+        {
+          "name": "ZOZOユーザーが使いそう",
+          "count": 1
+        },
+        {
+          "name": "ZVC",
+          "count": 1
+        },
+        {
+          "name": "アイドル",
+          "count": 1
+        },
+        {
+          "name": "アクセラ",
+          "count": 1
+        },
+        {
+          "name": "アジア",
+          "count": 1
+        },
+        {
+          "name": "アトツギ",
+          "count": 1
+        },
+        {
+          "name": "アニメ",
+          "count": 1
+        },
+        {
+          "name": "アニメーション",
+          "count": 1
+        },
+        {
+          "name": "アフターイベント",
+          "count": 1
+        },
+        {
+          "name": "アフターサイドイベント",
+          "count": 1
+        },
+        {
+          "name": "アフターパーティー",
+          "count": 1
+        },
+        {
+          "name": "アプリ",
+          "count": 1
+        },
+        {
+          "name": "アプリマーケティング",
+          "count": 1
+        },
+        {
+          "name": "アメリカ起業",
+          "count": 1
+        },
+        {
+          "name": "アントレプレナーシップ教育",
+          "count": 1
+        },
+        {
+          "name": "アントレ教員",
+          "count": 1
+        },
+        {
+          "name": "イノベーター",
+          "count": 1
+        },
+        {
+          "name": "イマーシブ",
+          "count": 1
+        },
+        {
+          "name": "インキュベーション施設",
+          "count": 1
+        },
+        {
+          "name": "インフラ",
+          "count": 1
+        },
+        {
+          "name": "ヴィーガン",
+          "count": 1
+        },
+        {
+          "name": "エージェント",
+          "count": 1
+        },
+        {
+          "name": "エアモビリティ",
+          "count": 1
+        },
+        {
+          "name": "エクイティストーリー",
+          "count": 1
+        },
+        {
+          "name": "エリアブランディング",
+          "count": 1
+        },
+        {
+          "name": "エンジェル投資",
+          "count": 1
+        },
+        {
+          "name": "エンジェル投資家",
+          "count": 1
+        },
+        {
+          "name": "エンプラセールス",
+          "count": 1
+        },
+        {
+          "name": "オーバーツーリズム",
+          "count": 1
+        },
+        {
+          "name": "オフィシャルサイドイベント",
+          "count": 1
+        },
+        {
+          "name": "おりん",
+          "count": 1
+        },
+        {
+          "name": "オンチェーン",
+          "count": 1
+        },
+        {
+          "name": "オンチェーン金融",
+          "count": 1
+        },
+        {
+          "name": "お寺",
+          "count": 1
+        },
+        {
+          "name": "お寺フェス",
+          "count": 1
+        },
+        {
+          "name": "お祭り",
+          "count": 1
+        },
+        {
+          "name": "キャリアフェア",
+          "count": 1
+        },
+        {
+          "name": "クラウドワークス",
+          "count": 1
+        },
+        {
+          "name": "グリーンテック",
+          "count": 1
+        },
+        {
+          "name": "クリエティブ",
+          "count": 1
+        },
+        {
+          "name": "クリプト",
+          "count": 1
+        },
+        {
+          "name": "グロービス経営大学院",
+          "count": 1
+        },
+        {
+          "name": "ケア",
+          "count": 1
+        },
+        {
+          "name": "コーポレート",
+          "count": 1
+        },
+        {
+          "name": "コト消費",
+          "count": 1
+        },
+        {
+          "name": "コワーキング",
+          "count": 1
+        },
+        {
+          "name": "サウジアラビア",
+          "count": 1
+        },
+        {
+          "name": "サウナ",
+          "count": 1
+        },
+        {
+          "name": "サウンドメディテーション",
+          "count": 1
+        },
+        {
+          "name": "サンフランシスコ",
+          "count": 1
+        },
+        {
+          "name": "しくじりBAR",
+          "count": 1
+        },
+        {
+          "name": "システム",
+          "count": 1
+        },
+        {
+          "name": "じっくり",
+          "count": 1
+        },
+        {
+          "name": "ジャーナリング",
+          "count": 1
+        },
+        {
+          "name": "ジョイントベンチャー",
+          "count": 1
+        },
+        {
+          "name": "シリアルアントレプレナー",
+          "count": 1
+        },
+        {
+          "name": "シリコンバレー",
+          "count": 1
+        },
+        {
+          "name": "シンギングボウル",
+          "count": 1
+        },
+        {
+          "name": "スターチアップ",
+          "count": 1
+        },
+        {
+          "name": "スタートアップカンファレンス",
+          "count": 1
+        },
+        {
+          "name": "スタートアップキャリア",
+          "count": 1
+        },
+        {
+          "name": "スタートアップスタジオ",
+          "count": 1
+        },
+        {
+          "name": "スタートアップピッチ",
+          "count": 1
+        },
+        {
+          "name": "スタートアップ投資",
+          "count": 1
+        },
+        {
+          "name": "スタートアップ政策",
+          "count": 1
+        },
+        {
+          "name": "スタジアム運営",
+          "count": 1
+        },
+        {
+          "name": "スナック",
+          "count": 1
+        },
+        {
+          "name": "スペシャルティコーヒー",
+          "count": 1
+        },
+        {
+          "name": "スポーツ",
+          "count": 1
+        },
+        {
+          "name": "スポーツクラブ経営",
+          "count": 1
+        },
+        {
+          "name": "スポーツビジネス",
+          "count": 1
+        },
+        {
+          "name": "スポーツリーグ運営",
+          "count": 1
+        },
+        {
+          "name": "スマブラ",
+          "count": 1
+        },
+        {
+          "name": "セールス",
+          "count": 1
+        },
+        {
+          "name": "セクシャルウェルネス",
+          "count": 1
+        },
+        {
+          "name": "ソフトバンク",
+          "count": 1
+        },
+        {
+          "name": "ツアー",
+          "count": 1
+        },
+        {
+          "name": "つながりの場",
+          "count": 1
+        },
+        {
+          "name": "デザイン",
+          "count": 1
+        },
+        {
+          "name": "デザインシステム",
+          "count": 1
+        },
+        {
+          "name": "デザイン思考",
+          "count": 1
+        },
+        {
+          "name": "デプロイ",
+          "count": 1
+        },
+        {
+          "name": "トークショー",
+          "count": 1
+        },
+        {
+          "name": "ドリンク付き",
+          "count": 1
+        },
+        {
+          "name": "ドローン",
+          "count": 1
+        },
+        {
+          "name": "ネイチャーポジティブ",
+          "count": 1
+        },
+        {
+          "name": "ノーコード",
+          "count": 1
+        },
+        {
+          "name": "パーティー",
+          "count": 1
+        },
+        {
+          "name": "パスタ",
+          "count": 1
+        },
+        {
+          "name": "バックオフィス",
+          "count": 1
+        },
+        {
+          "name": "ハンターハンター",
+          "count": 1
+        },
+        {
+          "name": "バンド",
+          "count": 1
+        },
+        {
+          "name": "ビール",
+          "count": 1
+        },
+        {
+          "name": "ビジネスデザイナー",
+          "count": 1
+        },
+        {
+          "name": "フード",
+          "count": 1
+        },
+        {
+          "name": "ファイナンスミックス",
+          "count": 1
+        },
+        {
+          "name": "ファインバブル",
+          "count": 1
+        },
+        {
+          "name": "ファッション",
+          "count": 1
+        },
+        {
+          "name": "ファンド",
+          "count": 1
+        },
+        {
+          "name": "ファンド投資",
+          "count": 1
+        },
+        {
+          "name": "ファンド業務",
+          "count": 1
+        },
+        {
+          "name": "フィジカルAI",
+          "count": 1
+        },
+        {
+          "name": "フィットネス",
+          "count": 1
+        },
+        {
+          "name": "フィンガーフード",
+          "count": 1
+        },
+        {
+          "name": "フェス",
+          "count": 1
+        },
+        {
+          "name": "フットサル",
+          "count": 1
+        },
+        {
+          "name": "ブランド戦略",
+          "count": 1
+        },
+        {
+          "name": "フリードリンク",
+          "count": 1
+        },
+        {
+          "name": "プレイベント",
+          "count": 1
+        },
+        {
+          "name": "プレゼンテーション",
+          "count": 1
+        },
+        {
+          "name": "プロジェクト",
+          "count": 1
+        },
+        {
+          "name": "プロマーケット",
+          "count": 1
+        },
+        {
+          "name": "プロンプトバトル",
+          "count": 1
+        },
+        {
+          "name": "ペット",
+          "count": 1
+        },
+        {
+          "name": "ベンチャースタジオ",
+          "count": 1
+        },
+        {
+          "name": "ポーカー",
+          "count": 1
+        },
+        {
+          "name": "ボイスケア",
+          "count": 1
+        },
+        {
+          "name": "ホリエモン",
+          "count": 1
+        },
+        {
+          "name": "マーケター",
+          "count": 1
+        },
+        {
+          "name": "まち歩き",
+          "count": 1
+        },
+        {
+          "name": "マネージャー以上",
+          "count": 1
+        },
+        {
+          "name": "マネーフォワード",
+          "count": 1
+        },
+        {
+          "name": "マネタイズ",
+          "count": 1
+        },
+        {
+          "name": "マレーシア",
+          "count": 1
+        },
+        {
+          "name": "ミドル",
+          "count": 1
+        },
+        {
+          "name": "メーカー",
+          "count": 1
+        },
+        {
+          "name": "メディア",
+          "count": 1
+        },
+        {
+          "name": "メンタリング",
+          "count": 1
+        },
+        {
+          "name": "モノづくり",
+          "count": 1
+        },
+        {
+          "name": "モビリティ",
+          "count": 1
+        },
+        {
+          "name": "ユーザベース",
+          "count": 1
+        },
+        {
+          "name": "ゆるい",
+          "count": 1
+        },
+        {
+          "name": "ゆるっと",
+          "count": 1
+        },
+        {
+          "name": "ヨガ",
+          "count": 1
+        },
+        {
+          "name": "ライフスタイル",
+          "count": 1
+        },
+        {
+          "name": "ライフステージの変化",
+          "count": 1
+        },
+        {
+          "name": "ライブ配信",
+          "count": 1
+        },
+        {
+          "name": "ランチ交流会",
+          "count": 1
+        },
+        {
+          "name": "リーダーシップ研修",
+          "count": 1
+        },
+        {
+          "name": "リトリート",
+          "count": 1
+        },
+        {
+          "name": "リファラル",
+          "count": 1
+        },
+        {
+          "name": "ルール形成",
+          "count": 1
+        },
+        {
+          "name": "レイター",
+          "count": 1
+        },
+        {
+          "name": "ローカル",
+          "count": 1
+        },
+        {
+          "name": "ローカルゼブラ",
+          "count": 1
+        },
+        {
+          "name": "ロジカルシンキング",
+          "count": 1
+        },
+        {
+          "name": "ロビー活動",
+          "count": 1
+        },
+        {
+          "name": "上場",
+          "count": 1
+        },
+        {
+          "name": "上場社長",
+          "count": 1
+        },
+        {
+          "name": "上場起業家",
+          "count": 1
+        },
+        {
+          "name": "下関市",
+          "count": 1
+        },
+        {
+          "name": "九州",
+          "count": 1
+        },
+        {
+          "name": "事業承継",
+          "count": 1
+        },
+        {
+          "name": "事業計画",
+          "count": 1
+        },
+        {
+          "name": "二次会",
+          "count": 1
+        },
+        {
+          "name": "交渉",
+          "count": 1
+        },
+        {
+          "name": "京大吉田寮",
+          "count": 1
+        },
+        {
+          "name": "京町家",
+          "count": 1
+        },
+        {
+          "name": "京都スタートアップ酒場",
+          "count": 1
+        },
+        {
+          "name": "京都ナイト",
+          "count": 1
+        },
+        {
+          "name": "京都企業",
+          "count": 1
+        },
+        {
+          "name": "京都信用金庫",
+          "count": 1
+        },
+        {
+          "name": "京都市",
+          "count": 1
+        },
+        {
+          "name": "京都府",
+          "count": 1
+        },
+        {
+          "name": "人的資本",
+          "count": 1
+        },
+        {
+          "name": "人脈",
+          "count": 1
+        },
+        {
+          "name": "介護",
+          "count": 1
+        },
+        {
+          "name": "仏教",
+          "count": 1
+        },
+        {
+          "name": "仕事と家庭の両立",
+          "count": 1
+        },
+        {
+          "name": "仕事相談",
+          "count": 1
+        },
+        {
+          "name": "仲裁",
+          "count": 1
+        },
+        {
+          "name": "仲間",
+          "count": 1
+        },
+        {
+          "name": "企業価値",
+          "count": 1
+        },
+        {
+          "name": "企業向け",
+          "count": 1
+        },
+        {
+          "name": "企業課題",
+          "count": 1
+        },
+        {
+          "name": "休息",
+          "count": 1
+        },
+        {
+          "name": "休憩",
+          "count": 1
+        },
+        {
+          "name": "会話型AI",
+          "count": 1
+        },
+        {
+          "name": "会館飲み",
+          "count": 1
+        },
+        {
+          "name": "伝統",
+          "count": 1
+        },
+        {
+          "name": "住民実証",
+          "count": 1
+        },
+        {
+          "name": "体験型エンタメ",
+          "count": 1
+        },
+        {
+          "name": "体験型サービス",
+          "count": 1
+        },
+        {
+          "name": "体験設計",
+          "count": 1
+        },
+        {
+          "name": "信用組合",
+          "count": 1
+        },
+        {
+          "name": "信用金庫",
+          "count": 1
+        },
+        {
+          "name": "優先株",
+          "count": 1
+        },
+        {
+          "name": "先輩起業家",
+          "count": 1
+        },
+        {
+          "name": "全員参加してね！",
+          "count": 1
+        },
+        {
+          "name": "全国起業部",
+          "count": 1
+        },
+        {
+          "name": "内閣官房",
+          "count": 1
+        },
+        {
+          "name": "写真",
+          "count": 1
+        },
+        {
+          "name": "写真心理学",
+          "count": 1
+        },
+        {
+          "name": "写経",
+          "count": 1
+        },
+        {
+          "name": "出入り自由",
+          "count": 1
+        },
+        {
+          "name": "出版",
+          "count": 1
+        },
+        {
+          "name": "副業",
+          "count": 1
+        },
+        {
+          "name": "創業前",
+          "count": 1
+        },
+        {
+          "name": "創業前後",
+          "count": 1
+        },
+        {
+          "name": "創薬",
+          "count": 1
+        },
+        {
+          "name": "勉強会",
+          "count": 1
+        },
+        {
+          "name": "北九州",
+          "count": 1
+        },
+        {
+          "name": "医療機器",
+          "count": 1
+        },
+        {
+          "name": "千葉道場",
+          "count": 1
+        },
+        {
+          "name": "南座",
+          "count": 1
+        },
+        {
+          "name": "参加無料",
+          "count": 1
+        },
+        {
+          "name": "参加費無料",
+          "count": 1
+        },
+        {
+          "name": "同世代",
+          "count": 1
+        },
+        {
+          "name": "同志社大学",
+          "count": 1
+        },
+        {
+          "name": "同時通訳",
+          "count": 1
+        },
+        {
+          "name": "和歌山",
+          "count": 1
+        },
+        {
+          "name": "和食",
+          "count": 1
+        },
+        {
+          "name": "問題解決力",
+          "count": 1
+        },
+        {
+          "name": "営業",
+          "count": 1
+        },
+        {
+          "name": "国産インフラ",
+          "count": 1
+        },
+        {
+          "name": "土木",
+          "count": 1
+        },
+        {
+          "name": "地域企業",
+          "count": 1
+        },
+        {
+          "name": "地域創生",
+          "count": 1
+        },
+        {
+          "name": "地域課題解決",
+          "count": 1
+        },
+        {
+          "name": "地域間連携",
+          "count": 1
+        },
+        {
+          "name": "地方創成",
+          "count": 1
+        },
+        {
+          "name": "地酒飲み放題",
+          "count": 1
+        },
+        {
+          "name": "地銀",
+          "count": 1
+        },
+        {
+          "name": "坐禅",
+          "count": 1
+        },
+        {
+          "name": "堀江貴文",
+          "count": 1
+        },
+        {
+          "name": "場づくり",
+          "count": 1
+        },
+        {
+          "name": "声",
+          "count": 1
+        },
+        {
+          "name": "夜会",
+          "count": 1
+        },
+        {
+          "name": "夜更かし",
+          "count": 1
+        },
+        {
+          "name": "大人も参加可能",
+          "count": 1
+        },
+        {
+          "name": "大学発",
+          "count": 1
+        },
+        {
+          "name": "大学発スタートアップ",
+          "count": 1
+        },
+        {
+          "name": "大学院",
+          "count": 1
+        },
+        {
+          "name": "大手事業会社",
+          "count": 1
+        },
+        {
+          "name": "大阪大学",
+          "count": 1
+        },
+        {
+          "name": "太秦映画村",
+          "count": 1
+        },
+        {
+          "name": "失敗",
+          "count": 1
+        },
+        {
+          "name": "契約書",
+          "count": 1
+        },
+        {
+          "name": "女子大生",
+          "count": 1
+        },
+        {
+          "name": "女性経営者",
+          "count": 1
+        },
+        {
+          "name": "婚活",
+          "count": 1
+        },
+        {
+          "name": "子育て",
+          "count": 1
+        },
+        {
+          "name": "子連れ",
+          "count": 1
+        },
+        {
+          "name": "学生OK",
+          "count": 1
+        },
+        {
+          "name": "学生団体",
+          "count": 1
+        },
+        {
+          "name": "学生限定",
+          "count": 1
+        },
+        {
+          "name": "宇宙",
+          "count": 1
+        },
+        {
+          "name": "完全招待制",
+          "count": 1
+        },
+        {
+          "name": "実証",
+          "count": 1
+        },
+        {
+          "name": "実践型",
+          "count": 1
+        },
+        {
+          "name": "小規模イベント",
+          "count": 1
+        },
+        {
+          "name": "小規模交流会",
+          "count": 1
+        },
+        {
+          "name": "少人数",
+          "count": 1
+        },
+        {
+          "name": "岡山",
+          "count": 1
+        },
+        {
+          "name": "川邊健太郎",
+          "count": 1
+        },
+        {
+          "name": "広島",
+          "count": 1
+        },
+        {
+          "name": "延長",
+          "count": 1
+        },
+        {
+          "name": "建築",
+          "count": 1
+        },
+        {
+          "name": "建設",
+          "count": 1
+        },
+        {
+          "name": "弁護士",
+          "count": 1
+        },
+        {
+          "name": "強み発見",
+          "count": 1
+        },
+        {
+          "name": "待ってます＼(^o^)／",
+          "count": 1
+        },
+        {
+          "name": "応援者",
+          "count": 1
+        },
+        {
+          "name": "怪談",
+          "count": 1
+        },
+        {
+          "name": "愛知県",
+          "count": 1
+        },
+        {
+          "name": "感性",
+          "count": 1
+        },
+        {
+          "name": "成長企業",
+          "count": 1
+        },
+        {
+          "name": "成長戦略",
+          "count": 1
+        },
+        {
+          "name": "戦略",
+          "count": 1
+        },
+        {
+          "name": "戦略17分野",
+          "count": 1
+        },
+        {
+          "name": "技術担当役員",
+          "count": 1
+        },
+        {
+          "name": "担当者",
+          "count": 1
+        },
+        {
+          "name": "拠点開設",
+          "count": 1
+        },
+        {
+          "name": "採用担当",
+          "count": 1
+        },
+        {
+          "name": "採用支援",
+          "count": 1
+        },
+        {
+          "name": "推し活",
+          "count": 1
+        },
+        {
+          "name": "放送局CVC",
+          "count": 1
+        },
+        {
+          "name": "政治",
+          "count": 1
+        },
+        {
+          "name": "政策渉外",
+          "count": 1
+        },
+        {
+          "name": "文化体験",
+          "count": 1
+        },
+        {
+          "name": "文化醸成",
+          "count": 1
+        },
+        {
+          "name": "日本成長戦略",
+          "count": 1
+        },
+        {
+          "name": "日本発コンテンツ",
+          "count": 1
+        },
+        {
+          "name": "日経",
+          "count": 1
+        },
+        {
+          "name": "早期離職",
+          "count": 1
+        },
+        {
+          "name": "早稲田ビジネススクール",
+          "count": 1
+        },
+        {
+          "name": "明治がやっぱりナンバーワン",
+          "count": 1
+        },
+        {
+          "name": "明治大学",
+          "count": 1
+        },
+        {
+          "name": "普及",
+          "count": 1
+        },
+        {
+          "name": "暗号資産",
+          "count": 1
+        },
+        {
+          "name": "書籍",
+          "count": 1
+        },
+        {
+          "name": "書籍プレゼント",
+          "count": 1
+        },
+        {
+          "name": "朝",
+          "count": 1
+        },
+        {
+          "name": "朝ヨガ",
+          "count": 1
+        },
+        {
+          "name": "朝食",
+          "count": 1
+        },
+        {
+          "name": "木造",
+          "count": 1
+        },
+        {
+          "name": "本",
+          "count": 1
+        },
+        {
+          "name": "本屋",
+          "count": 1
+        },
+        {
+          "name": "本音トーク",
+          "count": 1
+        },
+        {
+          "name": "東アジア",
+          "count": 1
+        },
+        {
+          "name": "東北",
+          "count": 1
+        },
+        {
+          "name": "東北県人会",
+          "count": 1
+        },
+        {
+          "name": "東急不動産",
+          "count": 1
+        },
+        {
+          "name": "東海",
+          "count": 1
+        },
+        {
+          "name": "東証",
+          "count": 1
+        },
+        {
+          "name": "柿の葉寿司",
+          "count": 1
+        },
+        {
+          "name": "核融合",
+          "count": 1
+        },
+        {
+          "name": "標準化",
+          "count": 1
+        },
+        {
+          "name": "横浜",
+          "count": 1
+        },
+        {
+          "name": "次世代",
+          "count": 1
+        },
+        {
+          "name": "歌舞伎",
+          "count": 1
+        },
+        {
+          "name": "武蔵小杉",
+          "count": 1
+        },
+        {
+          "name": "歴史",
+          "count": 1
+        },
+        {
+          "name": "毎日開催",
+          "count": 1
+        },
+        {
+          "name": "気軽に",
+          "count": 1
+        },
+        {
+          "name": "決裁者",
+          "count": 1
+        },
+        {
+          "name": "法務",
+          "count": 1
+        },
+        {
+          "name": "法律",
+          "count": 1
+        },
+        {
+          "name": "法律事務所",
+          "count": 1
+        },
+        {
+          "name": "法話",
+          "count": 1
+        },
+        {
+          "name": "海外",
+          "count": 1
+        },
+        {
+          "name": "海外人材",
+          "count": 1
+        },
+        {
+          "name": "深津貴之",
+          "count": 1
+        },
+        {
+          "name": "渋谷",
+          "count": 1
+        },
+        {
+          "name": "渥美奈津子",
+          "count": 1
+        },
+        {
+          "name": "熊本市",
+          "count": 1
+        },
+        {
+          "name": "環境",
+          "count": 1
+        },
+        {
+          "name": "町家",
+          "count": 1
+        },
+        {
+          "name": "発酵",
+          "count": 1
+        },
+        {
+          "name": "登壇",
+          "count": 1
+        },
+        {
+          "name": "益戸佑輔",
+          "count": 1
+        },
+        {
+          "name": "睡眠",
+          "count": 1
+        },
+        {
+          "name": "研究",
+          "count": 1
+        },
+        {
+          "name": "研究者",
+          "count": 1
+        },
+        {
+          "name": "研究開発",
+          "count": 1
+        },
+        {
+          "name": "社交場",
+          "count": 1
+        },
+        {
+          "name": "社会人大学院生",
+          "count": 1
+        },
+        {
+          "name": "社会人学生",
+          "count": 1
+        },
+        {
+          "name": "社会実装",
+          "count": 1
+        },
+        {
+          "name": "社会貢献",
+          "count": 1
+        },
+        {
+          "name": "社寺修繕",
+          "count": 1
+        },
+        {
+          "name": "祈り",
+          "count": 1
+        },
+        {
+          "name": "神戸大学",
+          "count": 1
+        },
+        {
+          "name": "禅",
+          "count": 1
+        },
+        {
+          "name": "福岡",
+          "count": 1
+        },
+        {
+          "name": "立ち飲みビュッフェ",
+          "count": 1
+        },
+        {
+          "name": "立命館大学",
+          "count": 1
+        },
+        {
+          "name": "筋トレ",
+          "count": 1
+        },
+        {
+          "name": "管理部",
+          "count": 1
+        },
+        {
+          "name": "素材",
+          "count": 1
+        },
+        {
+          "name": "組織戦略",
+          "count": 1
+        },
+        {
+          "name": "経営大学院",
+          "count": 1
+        },
+        {
+          "name": "経営改革",
+          "count": 1
+        },
+        {
+          "name": "老舗企業",
+          "count": 1
+        },
+        {
+          "name": "自分軸",
+          "count": 1
+        },
+        {
+          "name": "自動車",
+          "count": 1
+        },
+        {
+          "name": "自然",
+          "count": 1
+        },
+        {
+          "name": "自然環境",
+          "count": 1
+        },
+        {
+          "name": "自然資本",
+          "count": 1
+        },
+        {
+          "name": "航空",
+          "count": 1
+        },
+        {
+          "name": "般若心経",
+          "count": 1
+        },
+        {
+          "name": "芋煮",
+          "count": 1
+        },
+        {
+          "name": "英語",
+          "count": 1
+        },
+        {
+          "name": "藤野英人",
+          "count": 1
+        },
+        {
+          "name": "融資",
+          "count": 1
+        },
+        {
+          "name": "行政・支援機関",
+          "count": 1
+        },
+        {
+          "name": "表現",
+          "count": 1
+        },
+        {
+          "name": "補助金",
+          "count": 1
+        },
+        {
+          "name": "製造業",
+          "count": 1
+        },
+        {
+          "name": "複業",
+          "count": 1
+        },
+        {
+          "name": "西陣",
+          "count": 1
+        },
+        {
+          "name": "西陣織",
+          "count": 1
+        },
+        {
+          "name": "規制",
+          "count": 1
+        },
+        {
+          "name": "観光DX",
+          "count": 1
+        },
+        {
+          "name": "訴訟",
+          "count": 1
+        },
+        {
+          "name": "話場",
+          "count": 1
+        },
+        {
+          "name": "説明会",
+          "count": 1
+        },
+        {
+          "name": "謎解き",
+          "count": 1
+        },
+        {
+          "name": "買収",
+          "count": 1
+        },
+        {
+          "name": "資本政策",
+          "count": 1
+        },
+        {
+          "name": "起業サークル",
+          "count": 1
+        },
+        {
+          "name": "起業のコーポレート業務",
+          "count": 1
+        },
+        {
+          "name": "起業予定",
+          "count": 1
+        },
+        {
+          "name": "起業家サークル",
+          "count": 1
+        },
+        {
+          "name": "起業家向け",
+          "count": 1
+        },
+        {
+          "name": "起業家教育",
+          "count": 1
+        },
+        {
+          "name": "起業志望",
+          "count": 1
+        },
+        {
+          "name": "起業準備中",
+          "count": 1
+        },
+        {
+          "name": "起業部",
+          "count": 1
+        },
+        {
+          "name": "身体",
+          "count": 1
+        },
+        {
+          "name": "身体性",
+          "count": 1
+        },
+        {
+          "name": "軽食付き",
+          "count": 1
+        },
+        {
+          "name": "迷ったら",
+          "count": 1
+        },
+        {
+          "name": "途中入退場歓迎",
+          "count": 1
+        },
+        {
+          "name": "連続起業家",
+          "count": 1
+        },
+        {
+          "name": "運動",
+          "count": 1
+        },
+        {
+          "name": "都市",
+          "count": 1
+        },
+        {
+          "name": "量子コンピューター",
+          "count": 1
+        },
+        {
+          "name": "金融",
+          "count": 1
+        },
+        {
+          "name": "長寿",
+          "count": 1
+        },
+        {
+          "name": "長崎",
+          "count": 1
+        },
+        {
+          "name": "開発者",
+          "count": 1
+        },
+        {
+          "name": "開発部門長",
+          "count": 1
+        },
+        {
+          "name": "関西出身",
+          "count": 1
+        },
+        {
+          "name": "関西出身者",
+          "count": 1
+        },
+        {
+          "name": "関西大学",
+          "count": 1
+        },
+        {
+          "name": "限定CORE",
+          "count": 1
+        },
+        {
+          "name": "離婚",
+          "count": 1
+        },
+        {
+          "name": "離職",
+          "count": 1
+        },
+        {
+          "name": "静岡",
+          "count": 1
+        },
+        {
+          "name": "非認知",
+          "count": 1
+        },
+        {
+          "name": "韓国",
+          "count": 1
+        },
+        {
+          "name": "音声",
+          "count": 1
+        },
+        {
+          "name": "音声レター",
+          "count": 1
+        },
+        {
+          "name": "音楽",
+          "count": 1
+        },
+        {
+          "name": "音楽イベント",
+          "count": 1
+        },
+        {
+          "name": "食",
+          "count": 1
+        },
+        {
+          "name": "食事",
+          "count": 1
+        },
+        {
+          "name": "食品",
+          "count": 1
+        },
+        {
+          "name": "餃子",
+          "count": 1
+        },
+        {
+          "name": "駅空間活用",
+          "count": 1
+        },
+        {
+          "name": "高市内閣",
+          "count": 1
+        },
+        {
+          "name": "高度人材",
+          "count": 1
+        },
+        {
+          "name": "鶏のから揚げ",
+          "count": 1
+        },
+        {
+          "name": "麻雀",
+          "count": 1
+        }
+      ]
+    }
+  ]
+}

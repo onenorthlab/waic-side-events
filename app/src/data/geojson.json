@@ -1,0 +1,1009 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "MultiPoint",
+        "coordinates": [
+          [
+            135.7809608,
+            35.012936
+          ],
+          [
+            135.7694265,
+            35.0118482
+          ]
+        ]
+      },
+      "properties": {
+        "eventId": "78f8cbe5-9be8-4801-b669-aef2cdd14ab6",
+        "slug": "ivs26",
+        "title": "IVS2026",
+        "languages": {
+          "en": {
+            "description": "<h1><strong>Innovation Three days to accelerate it</strong></h1><p style=\"text-align: left;\">IVS is one of Japan’s largest startup conferences, launched in 2007. Startups, investors, major corporations, and creators from Japan and abroad gather in one place, and in 2026 it will be held in Kyoto under the theme “Japan is Back.”<br><br>This year, we are introducing two areas: the culmination edition of the “IVS” area—an evolution of IVS2023, IVS2024, and IVS2025 held in Kyoto (Kyoto City Kangyokan Miyakomesse and ROHM Theatre Kyoto)—and a newly established Reiwa-era, fully invitation-only IVS “IVS CORE” area (Hotel Okura Kyoto). The event will be held across these two areas.</p><p style=\"text-align: left;\"><a target=\"_blank\" rel=\"noopener noreferrer\" class=\"RichTextEditor_link__45VBs\" href=\"https://www.ivs.events/en/\"><strong>Official Website</strong></a></p>"
+          }
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7796128,
+          35.0081359
+        ]
+      },
+      "properties": {
+        "eventId": "d418e5ae-581f-49d6-8cff-2a5938547a64",
+        "slug": "d418e5ae-581f-49d6-8cff-2a5938547a64",
+        "title": "本機界隈。｜本屋 源泉 京都湧出"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7809608,
+          35.012935999999996
+        ]
+      },
+      "properties": {
+        "eventId": "ead8ca10-8b7d-47bb-905f-091181d15b19",
+        "slug": "ead8ca10-8b7d-47bb-905f-091181d15b19",
+        "title": "\"IVS Global Gateway\" powered by Venture Cafe Tokyo",
+        "languages": {
+          "en": {
+            "title": "\"IVS Global Gateway\" powered by Venture Cafe Tokyo"
+          }
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.75941029999998,
+          35.007109199999995
+        ]
+      },
+      "properties": {
+        "eventId": "1fbffd77-5b05-4a96-aa3a-6d7d5ce34949",
+        "slug": "1fbffd77-5b05-4a96-aa3a-6d7d5ce34949",
+        "title": "【休憩所】コワーキングスペースOPEN DAY：IVS全日開催！"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7694357,
+          35.0106804
+        ]
+      },
+      "properties": {
+        "eventId": "b488bc84-0748-4911-b218-dd31eae1d423",
+        "slug": "b488bc84-0748-4911-b218-dd31eae1d423",
+        "title": "【誰でも参加OK】 IVS案内所 ｜ IVS期間中毎日開催！"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7672067,
+          34.994980999999996
+        ]
+      },
+      "properties": {
+        "eventId": "995376a3-093e-4fca-80f6-72186b5c1a6b",
+        "slug": "995376a3-093e-4fca-80f6-72186b5c1a6b",
+        "title": "朝活もくもくDev会 ☕️ カフェで作業＆カジュアル交流会 in 京都"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7766668,
+          35.004550699999996
+        ]
+      },
+      "properties": {
+        "eventId": "0d8d675f-c57b-44b5-aa00-aa1395a5dbcf",
+        "slug": "0d8d675f-c57b-44b5-aa00-aa1395a5dbcf",
+        "title": "朝から本を読み切らないと出られない部屋"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.77176409999998,
+          35.029858499999996
+        ]
+      },
+      "properties": {
+        "eventId": "8530c071-9bb3-40d5-8e23-8345c409b510",
+        "slug": "8530c071-9bb3-40d5-8e23-8345c409b510",
+        "title": "【鴨川モーニング リトリート】　音に耳を澄ます朝　- マインドフルネス・ジャーナリング・対話を通じて 自分自身とつながる90分-"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.763512,
+          35.0084904
+        ]
+      },
+      "properties": {
+        "eventId": "5011c01d-8fc6-4e8c-a84e-d4a834682e2f",
+        "slug": "inodatest2026",
+        "title": "VCキャピタリスト向け勉強会"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7737036,
+          34.9800511
+        ]
+      },
+      "properties": {
+        "eventId": "3fc1879d-cffd-4fc2-b51c-91eb98b00b9b",
+        "slug": "3fc1879d-cffd-4fc2-b51c-91eb98b00b9b",
+        "title": "京都 de 朝活！お寺で写経の会"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7599798,
+          35.009774
+        ]
+      },
+      "properties": {
+        "eventId": "fd8634b7-2ae6-4089-955e-b3fc779cb6a0",
+        "slug": "xdeal_vol1",
+        "title": "XDEAL | 経営者のための M&A 特化型カンファレンス"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7875028,
+          35.0106866
+        ]
+      },
+      "properties": {
+        "eventId": "060cf502-c263-4123-849d-f0b46c1ed7d1",
+        "slug": "060cf502-c263-4123-849d-f0b46c1ed7d1",
+        "title": "【満員御礼】経営者・戦略人事・人材開発担当者・CVC・VCのための“メンバーが変わり、現場が動き出す“組織変革ワークショップ"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.75882719999998,
+          35.0047156
+        ]
+      },
+      "properties": {
+        "eventId": "5c26675e-dc40-4d0a-aebc-71149487b9a9",
+        "slug": "cxo_org_session0703",
+        "title": "【CxO・人事限定｜組織開発のプロによる組織診断】 ★7月3日開催"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7809608,
+          35.012935999999996
+        ]
+      },
+      "properties": {
+        "eventId": "037cbbf3-0f20-4d84-97ff-d7dfa1207774",
+        "slug": "037cbbf3-0f20-4d84-97ff-d7dfa1207774",
+        "title": "スタートアップ、中小企業を助けるERPパッケージの紹介！！"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7663858,
+          35.0075827
+        ]
+      },
+      "properties": {
+        "eventId": "449509c3-6e21-483c-9c88-d20a9c8618b6",
+        "slug": "plexma2026-03",
+        "title": "【各回20名限定！ 7/3（金）10:30開始】 自分の会社、どうやったら高く売れる？　売却後のキャリアはどう拓ける？ ～EBITDA11倍超で譲渡し、上場企業のCAIOになった起業家のリアル～"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7692547,
+          35.0106562
+        ]
+      },
+      "properties": {
+        "eventId": "13bcb3c1-d07b-434b-9d21-e872b5f4190f",
+        "slug": "ivs-ma-event",
+        "title": "【オフレコ】M&Aの作法 - 売り方、売られ方、そして次の起業"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7809608,
+          35.012935999999996
+        ]
+      },
+      "properties": {
+        "eventId": "4fea6ff2-6f16-400e-9876-bb8312c0aec5",
+        "slug": "4fea6ff2-6f16-400e-9876-bb8312c0aec5",
+        "title": "IVS Global Ecosystem Gathering",
+        "languages": {
+          "en": {
+            "description": "<p>The <strong>IVS Global Ecosystem Gathering</strong> brings together startup ecosystems and communities from around the world with startups, investors, and key ecosystem players in Japan.</p><p>Representatives from each participating country or community will first give a <strong>one-minute introduction</strong> about their ecosystem, activities, and opportunities for collaboration. This will be followed by an open networking session, creating opportunities for international collaboration, investment, and meaningful cross-border connections.</p><p><strong>Date &amp; Time:</strong> July 3, 11:00–12:00<br><strong>Venue:</strong> IVS Meetup Area, 3rd Floor, Miyako Messe<br><strong>Language:</strong> English</p><p><strong>Program</strong><br>11:00–11:05 Opening<br>11:05–11:20 One-minute introductions by global ecosystems<br>11:20–12:00 Open networking</p><p></p>"
+          }
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7614722,
+          34.9964722
+        ]
+      },
+      "properties": {
+        "eventId": "d0c0e3dd-e606-43fb-b330-de8f3d90838a",
+        "slug": "stcl2026-day3",
+        "title": "【残席わずか！】 ”スタートアップの女性キャリア”を語ろう繋がろう 〜等身大の話をしよう。ランチタイム交流会＊〜"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7763168,
+          35.013960600000004
+        ]
+      },
+      "properties": {
+        "eventId": "6523c77c-8c43-4351-ad3d-9ef686c89a33",
+        "slug": "6523c77c-8c43-4351-ad3d-9ef686c89a33",
+        "title": "<現在50名まだ🍕あります>【学生・社会人歓迎／朝ごはん/ゆるランチdeネットワーキング】〜Willを語ろう、ピッツアが焼けるまで〜本格ピッツア学生キッチンカーwith全国の学生団体"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.77926259999998,
+          35.0138256
+        ]
+      },
+      "properties": {
+        "eventId": "55297742-5777-48a5-9e49-992567411879",
+        "slug": "55297742-5777-48a5-9e49-992567411879",
+        "title": "【当日zoomリンク更新済み】【投資家向けイベント】GPとLPのこれまでとこれから【満員御礼のため参加締め切りました】（フェムトパートナーズ磯崎哲也ｘグリーベンチャーズ中尾俊輔）"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7874379,
+          35.0107721
+        ]
+      },
+      "properties": {
+        "eventId": "66985a0f-d7a5-4e13-a103-6f3b8c855814",
+        "slug": "studio10x_260703",
+        "title": "日本庭園を見ながらAIを活用して思考を研ぎ澄ませ！！ 爆速で『事業アイデア／MVP』を生み出す超実践ブートキャンプ"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7809608,
+          35.012935999999996
+        ]
+      },
+      "properties": {
+        "eventId": "6df8f8f1-9602-47b5-96e1-f7b3bf966eb4",
+        "slug": "6df8f8f1-9602-47b5-96e1-f7b3bf966eb4",
+        "title": "【受付終了】 IVS After Lounge ～起業家がゆるっと集まる交流会～"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7692547,
+          35.0106562
+        ]
+      },
+      "properties": {
+        "eventId": "313de048-df1b-40d6-80a4-5698972ae853",
+        "slug": "ivs-livestreamingapp-event",
+        "title": "【オフレコ】ファンは、なぜ・いくら払うのか  ― 配信エンタメ起業の「ここだけ」の話 ―"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7697595,
+          35.003452599999996
+        ]
+      },
+      "properties": {
+        "eventId": "1f82c1c5-5b6c-4a0d-b02c-89a4df11db95",
+        "slug": "ainativevchakobune",
+        "title": "【満席】もはや”AI/DX化”とは呼べない 〜HAKOBUNE栗島による”AIネイティブVC”の運営実態 全部見せ 2026〜【VC/CVC/事業会社限定】"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7692547,
+          35.0106562
+        ]
+      },
+      "properties": {
+        "eventId": "9ef67866-0b9e-4499-a2af-9e8ac0863922",
+        "slug": "global-entrepreneurs-investors-kyoto-2026",
+        "title": "グローバル起業家・投資家交流会 (Global Entrepreneurs & Investors Kyoto 2026) ― インド・アフリカ・ブラジル・中国〜 50億人市場の熱、京都で爆発！ India, Africa, Brazil, China - 5 Billion People Market, One Stage!"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7760142,
+          35.017938699999995
+        ]
+      },
+      "properties": {
+        "eventId": "b0672044-c1e1-43f0-be82-175616254c09",
+        "slug": "b0672044-c1e1-43f0-be82-175616254c09",
+        "title": "【現在130名 | 15:14更新】7/3（金） 昼の決裁者縁結び交流会 まだまだ参加お待ちしております"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7692547,
+          35.0106562
+        ]
+      },
+      "properties": {
+        "eventId": "ca34101e-721c-4b5e-8e16-50b44bf32fe9",
+        "slug": "cfo_night_ivs",
+        "title": "CFO語らNight（ナイトではない） in IVS京都2026 大交流会　sponsored by　CPAエクセレントパートナーズ＆フリー"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7584335,
+          34.987936
+        ]
+      },
+      "properties": {
+        "eventId": "203e4561-5e23-47a6-9a7a-81da9f15550e",
+        "slug": "goodbyemeetup",
+        "title": "【京都から帰る前、最後にやりきりませんか？】 グッバイミートアップ 〜もう一歩キッカケを得てから京都を後にしよう！〜 by Gazelle Capital・情報戦略テクノロジー"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7697595,
+          35.003452599999996
+        ]
+      },
+      "properties": {
+        "eventId": "6723735c-6307-4804-9074-4382f4bf2a08",
+        "slug": "6723735c-6307-4804-9074-4382f4bf2a08",
+        "title": "日本の課題、あなたなら、どう解く？｜HANAMII × IVS Side Event"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7548719,
+          35.0086518
+        ]
+      },
+      "properties": {
+        "eventId": "14bf22b3-e38f-49cf-8fab-3056d454deb9",
+        "slug": "ivsexpertnight2026",
+        "title": "IVS専門家NIGHT 2026"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.76580389999998,
+          34.9894508
+        ]
+      },
+      "properties": {
+        "eventId": "675a2db4-a417-4cf8-9b25-9116ba05b902",
+        "slug": "675a2db4-a417-4cf8-9b25-9116ba05b902",
+        "title": "IVS的・瀬戸芸ファン交流会　〜アートとビジネス、地方創生目線で瀬戸芸を見る〜"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7663858,
+          35.0075827
+        ]
+      },
+      "properties": {
+        "eventId": "d207da64-bd1a-47e6-bba9-eddb14410022",
+        "slug": "plexma2026-04",
+        "title": "【各回20名限定！ 7/3（金）16:15開始】 自分の会社、どうやったら高く売れる？　売却後のキャリアはどう拓ける？ ～EBITDA11倍超で譲渡し、上場企業のCAIOになった起業家のリアル～"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.768125,
+          35.0116574
+        ]
+      },
+      "properties": {
+        "eventId": "4ec45221-e2f7-4781-8048-5100c7fb4f39",
+        "slug": "atotsugi",
+        "title": "～伝統と革新の交差点～ 京都からはじまる事業承継イノベーションMeet up 2026"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.76814009999998,
+          35.011248
+        ]
+      },
+      "properties": {
+        "eventId": "51ca39fb-b446-40be-8f69-6adc1437c83f",
+        "slug": "ematch",
+        "title": "ematch@KYOTO for Friendship & Business with アトツギ縁日"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7766668,
+          35.004550699999996
+        ]
+      },
+      "properties": {
+        "eventId": "bfd2ba51-5153-4d56-a69b-4131a4952c2f",
+        "slug": "marketing-meetup",
+        "title": "夜は短し集えよマーケター"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7582994,
+          35.003172
+        ]
+      },
+      "properties": {
+        "eventId": "ef97c444-0466-4f5d-bb6a-65174a2f6450",
+        "slug": "tokyulandivs0703",
+        "title": "【定員になり申込受付を終了しました】東急不動産×IVS in 京都！ 都市×DeepTech×エンタメで創る「社会実装」最前線　– “FULL BLOOM” Global Co Creation Night"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7396758,
+          35.0343362
+        ]
+      },
+      "properties": {
+        "eventId": "1bb627dc-7512-4bcf-b302-34ae9fd94be9",
+        "slug": "1bb627dc-7512-4bcf-b302-34ae9fd94be9",
+        "title": "【起業家・投資家　藤野英人と「希望の糸」を考える】　フッシー×MegamiのMosaic Night 〜 糸が交わる、西陣の一夜 〜　【軽食・ワンドリンクつき】"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.76438489999998,
+          34.9952374
+        ]
+      },
+      "properties": {
+        "eventId": "3be1ece9-7c59-4e5d-8300-aa054c314283",
+        "slug": "mimeetupkyoto",
+        "title": "【満員御礼】Monozukuri Innovation Meet Up in Kyoto 〜製造業オープンイノベーション2.0、スタートアップの社会実装を加速する新モデル〜"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.758423,
+          35.002857999999996
+        ]
+      },
+      "properties": {
+        "eventId": "db88fe36-863f-4ced-92d0-75a6c9120083",
+        "slug": "db88fe36-863f-4ced-92d0-75a6c9120083",
+        "title": "Global Life Science Startup Pitch & Networking @KYOTO",
+        "languages": {
+          "en": {
+            "description": "<p>As a side event to “IVS Kyoto,” one of Japan’s largest startup conferences, we are hosting a global matching event for the life sciences sector in Kyoto!<br><br>At this event, eight cutting-edge life sciences startups from overseas—invited to Japan by JETRO Osaka—will take the stage. In addition to each company’s innovative business pitch, we plan to feature a few presentations about overseas life sciences ecosystem by overseas government agencies.<br><br>Following the pitches, we’ve set aside time for networking, where presenting companies, ecosystem stakeholders, and all participants can connect deeply across borders.<br><br>We warmly welcome companies seeking to collaborate with overseas startups, investors and researchers eager to engage with the latest technologies, and anyone who wants to help shape the future of life sciences together.</p><h2><strong><u>Event Overview</u></strong></h2><p><strong>Date &amp; Time: </strong>Friday, July 3, 2026, 18:00–20:30<strong><br>Venue: </strong>Kyoto Economic Center, 6th Floor, Conference Room 6D<strong><br>Organizers / Co-organizers: </strong>JETRO Osaka, JETRO Kyoto, Kyoto City, ASTEM (Advanced Scientific Technology &amp; Management Research Institute of Kyoto)<strong><br>Support: </strong>Osaka Prefecture<strong><br>Admission: </strong>Free<br><strong>Capacity: </strong>80 people (first-come-first-served basis)</p><h2><strong><u>Time Table</u></strong></h2><p>　18:00　Opening<br>　18:05　About the Kyoto City Life Sciences Ecosystem<br>　18:15　Overseas Startup Presentations (4 companies)<br>　18:35　Presentations on Global Life Sciences Ecosystem by Government Agencies (TBD)<br>　18:50　Overseas Startup Presentations (4 companies)<br>　19:10　Networking (light refreshments &amp; drinks) @Conference Room 6C<br>　20:30　Closing<br>★ Content is subject to change.<br>★ Japanese cuisine will be served during the networking session.</p><h3><strong><u>Featured Startups</u></strong></h3><p><strong>① </strong><a target=\"_blank\" rel=\"noopener noreferrer\" class=\"RichTextEditor-module-scss-module__JCxAjG__link\" href=\"https://cansenseltd.com/\"><strong>CanSense</strong></a> (UK)<br>A UK-based biomedical startup aiming for the early detection of colorectal cancer through a blood test powered by AI and spectroscopy.<br><br><strong>② </strong><a target=\"_blank\" rel=\"noopener noreferrer\" class=\"RichTextEditor-module-scss-module__JCxAjG__link\" href=\"https://www.cellprothera.com/en/home/\"><strong>CellProthera</strong></a> (France)<br>A biotechnology company developing stem cell–based regenerative medicine for purposes such as regenerating cardiac tissue after myocardial infarction.<br><br><strong>③ </strong><a target=\"_blank\" rel=\"noopener noreferrer\" class=\"RichTextEditor-module-scss-module__JCxAjG__link\" href=\"https://www.myomarmolecular.ca/\"><strong>Myomar Molecular</strong></a> (Canada)<br>A healthtech company developing biomarker diagnostic technology (notably a urine test) to detect and monitor muscle health and early signs of muscle atrophy.<br><br><strong>④ </strong><a target=\"_blank\" rel=\"noopener noreferrer\" class=\"RichTextEditor-module-scss-module__JCxAjG__link\" href=\"https://netri.com/\"><strong>NETRI</strong></a> (France)<br>A biotech company that predicts the efficacy and safety of drugs using “organs-on-chip” technology combining neurons with AI.<br><br><strong>⑤ </strong><a target=\"_blank\" rel=\"noopener noreferrer\" class=\"RichTextEditor-module-scss-module__JCxAjG__link\" href=\"https://www.reveal-genomics.com/\"><strong>REVEAL GENOMICS</strong></a> (Spain)<br>A biotechnology company developing genomic diagnostic technology to provide optimal treatment options for cancer patients, starting with breast cancer.<br><br><strong>⑥ </strong><a target=\"_blank\" rel=\"noopener noreferrer\" class=\"RichTextEditor-module-scss-module__JCxAjG__link\" href=\"https://www.swiftpharma.eu/\"><strong>SwiftPharma</strong></a> (Belgium)<br>A biotech company that uses plants as bioreactors to produce non-animal-derived pharmaceutical proteins—such as vaccines and antibodies—in a low-cost, sustainable way.<br><br><strong>⑦ </strong><a target=\"_blank\" rel=\"noopener noreferrer\" class=\"RichTextEditor-module-scss-module__JCxAjG__link\" href=\"https://www.viamab.com/\"><strong>Viamab Therapeutics</strong></a> (UK)<br>Developing the world’s first RAGE-targeting antibody-drug conjugate (ADC), focused primarily on metastatic colorectal cancer, with clinical trials set to begin soon.<br><br><strong>⑧ </strong><a target=\"_blank\" rel=\"noopener noreferrer\" class=\"RichTextEditor-module-scss-module__JCxAjG__link\" href=\"https://ziliahealth.com/\"><strong>ZILIA</strong></a> (Canada)<br>A medical technology company that uses spectroscopy and AI to non-invasively measure biomarkers such as intraocular oxygen saturation, aiming for the early diagnosis of ocular and systemic diseases.<br><br>※ For detailed materials and pitch decks on each startup, please see the link below:<br><a target=\"_blank\" rel=\"noopener noreferrer\" class=\"RichTextEditor-module-scss-module__JCxAjG__link\" href=\"https://www5.jetro.go.jp/newsletter/osd/2026/20260526_HealthX_Connect_Osaka.pdf\">https://www5.jetro.go.jp/newsletter/osd/2026/20260526_HealthX_Connect_Osaka.pdf</a></p><p>※ Your personal information will be properly managed in accordance with JETRO’s privacy policy. For more details, please refer to “<a target=\"_blank\" rel=\"noopener noreferrer\" class=\"RichTextEditor-module-scss-module__JCxAjG__link\" href=\"https://www.jetro.go.jp/privacy/\">Protection of Personal Information</a>.”</p>"
+          }
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7695402,
+          35.0084783
+        ]
+      },
+      "properties": {
+        "eventId": "0c5b4e98-3c7d-4a40-ae5b-df51c5525ed4",
+        "slug": "ivsmeiji",
+        "title": "IVS明治会"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7401799,
+          34.9950608
+        ]
+      },
+      "properties": {
+        "eventId": "0eb6f4dc-23f5-4ec6-956f-f529698e1013",
+        "slug": "0eb6f4dc-23f5-4ec6-956f-f529698e1013",
+        "title": "Borderless Night - Global Meetup for AI, Tech & Startups"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.769735,
+          35.003462
+        ]
+      },
+      "properties": {
+        "eventId": "4a425a2a-65a1-45b9-972e-b87d921314ea",
+        "slug": "lobbyai",
+        "title": "【満員御礼】はじめての官民連携 Meetup Night！〜自治体×スタートアップ×VCが出会う夜〜（無料・ドリンク軽食付き）"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7692547,
+          35.0106562
+        ]
+      },
+      "properties": {
+        "eventId": "5d169571-1580-428b-a5e0-f01fbde0e47c",
+        "slug": "ivs2026-angel-investor-meetup",
+        "title": "OASISエンジェル会in IVS｜第8回、京都特別編"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7874379,
+          35.0107721
+        ]
+      },
+      "properties": {
+        "eventId": "0f5e53fe-4f30-450d-a137-0a06adf1bf74",
+        "slug": "value481_ivs20260703",
+        "title": "「Shikujiri is Back」 ～スタートアップは一度死にかけるが、生き残った者だけが知る景色がある～"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7694357,
+          35.0106804
+        ]
+      },
+      "properties": {
+        "eventId": "f346b83f-4946-45e3-9320-760ce4bf0a0d",
+        "slug": "kyoto_innobators_night",
+        "title": "KYOTO INNOVATORS NIGHT 2026"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7845032,
+          35.0117145
+        ]
+      },
+      "properties": {
+        "eventId": "c1ccfcd2-e68c-41bd-8db4-1b73291e34ca",
+        "slug": "zelo-ivs2026",
+        "title": "【法律事務所ZeLo主催】Exit戦略の最新トレンドも学べる！スタートアップ×CVC・事業会社MEETUP"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7706671,
+          35.0077104
+        ]
+      },
+      "properties": {
+        "eventId": "d737d09d-64a8-49a8-916c-1fdbc798230c",
+        "slug": "d737d09d-64a8-49a8-916c-1fdbc798230c",
+        "title": "学生起業家ナイトvol.2"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.76007049999998,
+          34.981251
+        ]
+      },
+      "properties": {
+        "eventId": "ce11a7d1-4b8f-44d4-abc7-9b56f72a4f08",
+        "slug": "talk",
+        "title": "帰る前に、語る会 📍京都駅前",
+        "languages": {
+          "en": {
+            "description": "<h1><strong>\"Reflection Session\" to Light the Future<br></strong>Before heading home, let's wrap up.</h1><p><br>Before you leave Kyoto, join us for a relaxed reflection session.</p><p>We've reserved a small venue just a <strong>4-minute walk from Kyoto Station</strong>, making it easy to stop by before your heading home.</p><hr><h2>About</h2><p>This isn't about reflecting on the past for its own sake. It's about using reflection to shape what comes next.</p><p>We want to turn the energy and inspiration from IVS into concrete action before everyone returns to their daily routine.</p><p>To be honest, we have no idea how many people will come, so we've intentionally chosen a cozy venue.</p><p>Even if you can't join us in person, we'd still love to hear your thoughts. If you register, we'll send you a short reflection form so you can participate remotely.</p><p>At the venue, we'll look back on our IVS experience together while taking time to reflect individually.</p><p>Think of it as <strong>solo camping... done together.</strong></p><p>Our reflection is intentionally simple:</p><p><strong>① What did you gain during these three days?</strong><br>→ Your highlights, discoveries, and happy moments.</p><p><strong>② What could you have done better?</strong><br>→ Lessons, missed opportunities, and things to improve.</p><p><strong>③ So... what will you do next?</strong><br>→ Three actions you'll take immediately, plus one long-term commitment.</p><p>Share as much or as little as you'd like.</p><p>This event is also part of an experiment for our AI development. Responses will be collected and analyzed only in anonymized form. By participating, you acknowledge and agree to this.</p><hr><h2>Who Should Join</h2><ul><li><p>IVS participants</p></li><li><p>Startup founders</p></li><li><p>Corporate innovators</p></li><li><p>Investors</p></li><li><p>Ecosystem builders</p></li><li><p>Anyone interested in startups, innovation, or global business</p></li></ul><hr><h2>Feel free to bring your own food and drinks.</h2><p>Drop in casually, stay as long as you like.</p><p><strong>Admission is free.</strong><br>If you enjoy the event, you're welcome to leave a small donation in the contribution box.</p><hr><h2>Date &amp; Time</h2><p><strong>Friday, July 3, 2026</strong><br><strong>7:00 PM – 9:00 PM</strong></p><hr><h2>Venue</h2><p><strong>LEAF Kyoto (Small Meeting Room)</strong><br>24-22 Higashikujo Kitakarasuma-cho, Minami-ku, Kyoto</p><p>(4-minute walk from Kyoto Station)</p><hr><h2>Admission</h2><p>Free</p><p>Bring your own food and drinks.</p><hr><h2>Capacity</h2><p>Max <strong>15</strong> people at the venue.<br><br>*If you cannot attend in person, you can still participate by simply submitting the form (no real-time attendance required). Details will be announced at <a target=\"_blank\" rel=\"noopener noreferrer\" class=\"RichTextEditor-module-scss-module__JCxAjG__link\" href=\"https://www.tetratokyo.com/ivs2026\">https://www.tetratokyo.com/ivs2026</a> and via 4S message around 7 PM on July 3rd. Please register today for those form-submitting participation.</p><hr><h2>Hosted by</h2><p><strong>Tetra Tokyo</strong></p><hr><h2>Notes</h2><ul><li><p>A valid <strong>IVS 2026</strong> pass (IVS PASS, IVS PASS STUDENT, CORE PASS, or CORE PASS Startup) is required.</p></li><li><p>No alcohol for minors.</p></li><li><p>No smoking inside the venue.</p></li><li><p>No religious solicitation, MLM, or sales activities.</p></li><li><p>Photos and videos may be taken during the event. Please let us know in advance if you prefer not to appear.</p></li><li><p>Harassment of any kind will not be tolerated.</p></li></ul><hr><h2>Sister Event #1</h2><p><strong>July 1 (Day 1 of IVS)</strong></p><p>Our late-night side event returns to the exact same venue as last year. Casual, unpolished, and somehow it worked—so we're doing it again.<br><a target=\"_blank\" rel=\"noopener noreferrer\" class=\"RichTextEditor-module-scss-module__JCxAjG__link\" href=\"https://4s.link/en/cat1\">https://4s.link/en/cat1</a></p><hr><h2>Sister Event #2</h2><p><strong>July 2 (Day 2 of IVS)</strong></p><p>The same format returns for Day 2, this time in a slightly shorter one-hour version.<br><a target=\"_blank\" rel=\"noopener noreferrer\" class=\"RichTextEditor-module-scss-module__JCxAjG__link\" href=\"https://4s.link/en/cat2\">https://4s.link/en/cat2</a></p>"
+          },
+          "ja": {
+            "title": "Before heading home, let's wrap up."
+          }
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.77026139999998,
+          35.0050781
+        ]
+      },
+      "properties": {
+        "eventId": "33aaaa41-38dd-40b5-aef0-728482eec976",
+        "slug": "33aaaa41-38dd-40b5-aef0-728482eec976",
+        "title": "勝手にIVS大反省会！！ 「Japan is back」って、結局どうやったらホンマに起きるんや！？"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.72112959999998,
+          35.0235106
+        ]
+      },
+      "properties": {
+        "eventId": "d29eee7d-c88f-4286-9316-6bed6da1a8cb",
+        "slug": "d29eee7d-c88f-4286-9316-6bed6da1a8cb",
+        "title": "Matcha & Minds – IVS After Hours at Zakka-in"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7702081,
+          35.0042268
+        ]
+      },
+      "properties": {
+        "eventId": "be1cba11-0ab8-483b-8ed6-ae70280a8c90",
+        "slug": "be1cba11-0ab8-483b-8ed6-ae70280a8c90",
+        "title": "Creators World  session 6"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7641365,
+          35.006615
+        ]
+      },
+      "properties": {
+        "eventId": "3779ed91-7511-4333-8444-9003c726d259",
+        "slug": "kaerenight3rd",
+        "title": "【毎年恒例一番最後のイベント】IVSから帰れNight 3rd"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7596091,
+          35.009992
+        ]
+      },
+      "properties": {
+        "eventId": "2e28986e-2d43-46e4-a2a5-c74098e809dd",
+        "slug": "gpt55",
+        "title": "【AIネイティブ企業研究会】個人で月間170億トークンを活用して見えたAI時代の会社OS"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7661008,
+          35.00289
+        ]
+      },
+      "properties": {
+        "eventId": "d9c35a57-15ca-46e4-9b5e-fec1c1c6c0c6",
+        "slug": "d9c35a57-15ca-46e4-9b5e-fec1c1c6c0c6",
+        "title": "【IVS Official Side Event】Impact Kyoto Hackathon 2026: Agentic AI for Japan's Future",
+        "languages": {
+          "ja": {
+            "title": "【IVS Official Side Event】インパクト京都ハッカソン2026：日本の未来のためのエージェント型AI"
+          }
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7511372,
+          35.025494
+        ]
+      },
+      "properties": {
+        "eventId": "e589f4f2-5e61-483d-96e2-21eb137bb7ee",
+        "slug": "e589f4f2-5e61-483d-96e2-21eb137bb7ee",
+        "title": "京産たてむすび会〜集え、京産大 卒業生〜 7/4 13:30~"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.5610037,
+          34.810184
+        ]
+      },
+      "properties": {
+        "eventId": "2805b4a4-9f19-4766-8aec-a0328c4c716e",
+        "slug": "transpose",
+        "title": "【Transpose x 立命館大学 x 大阪大学VC】AIハッカソン第３弾 - c0mpiled開催！"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.7025,
+          35.656515999999996
+        ]
+      },
+      "properties": {
+        "eventId": "d2db7926-e7a3-4791-a4d6-8408bbeb1928",
+        "slug": "gate-to-global-south-2026",
+        "title": "GATE TO GLOBAL SOUTH 2026 ― グローバルサウス大交流！インド・アフリカ・中国・ブラジル、世界で最も勢いのある市場を日本で体験！",
+        "languages": {
+          "en": {
+            "title": "GATE TO GLOBAL SOUTH 2026 ― Experience the World's Most Dynamic Markets — India, Africa, China, & Brazil — Right Here in Japan!"
+          }
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          132.45876149999998,
+          34.394138399999996
+        ]
+      },
+      "properties": {
+        "eventId": "3db86c91-026d-42b7-88a5-976ea8c3b47c",
+        "slug": "3db86c91-026d-42b7-88a5-976ea8c3b47c",
+        "title": "現地の”熱狂”を、広島に持ち帰れ！  IVS 2026アフターパーティー@イノベーション・ハブひろしまCamps"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.74369199999998,
+          35.6618006
+        ]
+      },
+      "properties": {
+        "eventId": "87bfc799-09be-444c-adc6-1ac70f1edd5f",
+        "slug": "87bfc799-09be-444c-adc6-1ac70f1edd5f",
+        "title": "Deeptech Gate〜ディープテック起業家のためのアクセラレーションプログラム相談会〜"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.7032207,
+          35.657163499999996
+        ]
+      },
+      "properties": {
+        "eventId": "59efe34b-4f09-4831-b0d3-74cfe544d2b2",
+        "slug": "nano-banana-workshop",
+        "title": "🍌 Nano Banana AI Creator Workshop & CM Challenge"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.6985617,
+          35.6568718
+        ]
+      },
+      "properties": {
+        "eventId": "53de5e09-c21f-4615-921c-81985aea4273",
+        "slug": "53de5e09-c21f-4615-921c-81985aea4273",
+        "title": "「仕事と家庭、自分なりの納得解の作り方」〜スタートアップパパママの実例から考える〜"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.75427910000002,
+          35.6705332
+        ]
+      },
+      "properties": {
+        "eventId": "32809548-6a4b-43c8-b958-3018948f86d4",
+        "slug": "32809548-6a4b-43c8-b958-3018948f86d4",
+        "title": "インドに進出する日本企業が直面する法律上・規制上の課題を読み解く【参加無料】"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          135.7582994,
+          35.003172
+        ]
+      },
+      "properties": {
+        "eventId": "94257e35-619e-4c00-8331-eeaafbc1a636",
+        "slug": "94257e35-619e-4c00-8331-eeaafbc1a636",
+        "title": "VC壁打ち！ジャフコ グループ丹羽 泰之"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          139.7314575,
+          35.6742711
+        ]
+      },
+      "properties": {
+        "eventId": "84419aad-a5d5-49bb-8976-f1adaab603a7",
+        "slug": "84419aad-a5d5-49bb-8976-f1adaab603a7",
+        "title": "FRONTIER Meetup for Startups Sponsored Officci -IVS2026お疲れ様交流会 -"
+      }
+    }
+  ]
+}

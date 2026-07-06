@@ -1,0 +1,282 @@
+[
+  {
+    "id": "60c1071b-ea03-4d7e-bd62-2d031d0184f3",
+    "communityId": "e77bdf9d-22e6-46b5-86f9-8bcb923aeb7f",
+    "name": "【7/2】当日ドタ参OK！必ず繋がれる事前・事後接続リアルイベント",
+    "description": "会うべき人と必ず会えるコーディネーター付きイベント",
+    "thumbnailImageUrl": "https://static.4s.link/communities/e77bdf9d-22e6-46b5-86f9-8bcb923aeb7f/playlists/60c1071b-ea03-4d7e-bd62-2d031d0184f3/thumbnail/1782919668013-ig2ny59nco.webp",
+    "sortOrder": 0,
+    "sticky": false,
+    "featured": false,
+    "createdAt": "2026-06-23T04:03:32.382Z",
+    "updatedAt": "2026-07-01T15:30:11.518Z",
+    "itemCount": 1,
+    "community": {
+      "id": "e77bdf9d-22e6-46b5-86f9-8bcb923aeb7f",
+      "name": "IVS期間中の出会いを設計するコミュニティ！",
+      "slug": "e77bdf9d-22e6-46b5-86f9-8bcb923aeb7f"
+    }
+  },
+  {
+    "id": "309e10ab-6476-4484-b24a-bd3128b1c556",
+    "communityId": "a9deba4f-ff2d-4031-8c36-b2ef5d0cd354",
+    "name": "今夜はここで決まり！Sun*がおすすめするイベントリスト！",
+    "description": null,
+    "thumbnailImageUrl": "https://static.4s.link/communities/a9deba4f-ff2d-4031-8c36-b2ef5d0cd354/playlists/309e10ab-6476-4484-b24a-bd3128b1c556/thumbnail/1782884814937-etrauygqmcm.webp",
+    "sortOrder": 1,
+    "sticky": false,
+    "featured": false,
+    "createdAt": "2026-07-01T05:46:42.951Z",
+    "updatedAt": "2026-07-01T05:46:58.372Z",
+    "itemCount": 7,
+    "community": {
+      "id": "a9deba4f-ff2d-4031-8c36-b2ef5d0cd354",
+      "name": "foobar*（Sun Asterisk）",
+      "slug": "sun-asterisk-foobar"
+    }
+  },
+  {
+    "id": "8aed694f-fc3a-4459-ab02-e3917e38b089",
+    "communityId": "46c3d5b3-d46e-44de-9ad4-3267700a5389",
+    "name": "CreatorLabo Tokyo",
+    "description": "CreatorLabo Events in Tokyo area",
+    "thumbnailImageUrl": "https://static.4s.link/communities/46c3d5b3-d46e-44de-9ad4-3267700a5389/playlists/8aed694f-fc3a-4459-ab02-e3917e38b089/thumbnail/1782865613805-of1y6ifcgzj.webp",
+    "sortOrder": 0,
+    "sticky": false,
+    "featured": false,
+    "createdAt": "2026-07-01T00:06:32.988Z",
+    "updatedAt": "2026-07-01T00:26:55.174Z",
+    "itemCount": 5,
+    "community": {
+      "id": "46c3d5b3-d46e-44de-9ad4-3267700a5389",
+      "name": "CreatorLabo",
+      "slug": "creatorlabo"
+    }
+  },
+  {
+    "id": "023aaa21-77a0-4d2a-96ae-d21a05a1c076",
+    "communityId": "a9deba4f-ff2d-4031-8c36-b2ef5d0cd354",
+    "name": "ネットワーキングするなら Sun*2026 Event picks",
+    "description": "2026年に開催するfoobar*のイベントプレイリスト！",
+    "thumbnailImageUrl": "https://static.4s.link/communities/a9deba4f-ff2d-4031-8c36-b2ef5d0cd354/playlists/023aaa21-77a0-4d2a-96ae-d21a05a1c076/thumbnail/1781232685076-bgjj8bjpham.webp",
+    "sortOrder": 0,
+    "sticky": false,
+    "featured": false,
+    "createdAt": "2026-06-12T02:41:58.382Z",
+    "updatedAt": "2026-06-30T04:21:08.189Z",
+    "itemCount": 7,
+    "community": {
+      "id": "a9deba4f-ff2d-4031-8c36-b2ef5d0cd354",
+      "name": "foobar*（Sun Asterisk）",
+      "slug": "sun-asterisk-foobar"
+    }
+  },
+  {
+    "id": "6fff5708-cd5d-4a88-8425-26c4a3cee1a9",
+    "communityId": "1e017ae3-16de-45b2-8da6-b9d62849e120",
+    "name": "IVS Meetup",
+    "description": "みやこメッセ 3F - IVS Meet up 会場内で開催される公式サイドイベント一覧のプレイリストです。",
+    "thumbnailImageUrl": "https://static.4s.link/communities/1e017ae3-16de-45b2-8da6-b9d62849e120/playlists/6fff5708-cd5d-4a88-8425-26c4a3cee1a9/thumbnail/1781992546390-ynl9igs6ad.webp",
+    "sortOrder": 1,
+    "sticky": true,
+    "featured": true,
+    "createdAt": "2026-05-27T16:01:03.256Z",
+    "updatedAt": "2026-06-27T12:01:05.516Z",
+    "itemCount": 9,
+    "community": {
+      "id": "1e017ae3-16de-45b2-8da6-b9d62849e120",
+      "name": "IVS",
+      "slug": "ivs_community",
+      "languages": {
+        "en": {
+          "description": "IVS is Japan's largest startup conference, launched in 2007. It brings together founders, investors, corporates, public-sector leaders, and students around the creation of new businesses.\n\nOriginally an invitation-only, closed conference held across Japan, IVS transitioned to a ticketed format in 2023. Now based in Kyoto, it has grown to welcome 10,000 attendees annually and has become a platform for the entire startup ecosystem.\n\nNo new business starts alone. IVS exists to create the connections between those who hold the technology, capital, customers, and experience needed to build it. The program features sessions led by frontline practitioners, a Startup Market with 300 companies from Japan and abroad, and an ever-expanding range of side events organized by participants themselves. IVS LAUNCHPAD has drawn over 5,000 cumulative entries; of its past presenters, more than 60 companies have exited and over 100 have raised more than 1 billion yen.\n\nAcross three days, planned encounters and unexpected ones intersect, sparking turning points for businesses. Every participant takes a step toward solving social challenges and shaping new industries.\n\n\"A catalyst for the next generation.\" \nThat is our mission."
+        }
+      }
+    }
+  },
+  {
+    "id": "9f3d7cd2-29ce-4ccd-9a2d-81e805049138",
+    "communityId": "8fdd6162-439e-4545-918b-93fc0515c19c",
+    "name": "IVS SOCIAL EVENT",
+    "description": "ソーシャルにまつわるイベントを集めます。",
+    "thumbnailImageUrl": "https://static.4s.link/communities/8fdd6162-439e-4545-918b-93fc0515c19c/playlists/9f3d7cd2-29ce-4ccd-9a2d-81e805049138/thumbnail/1781500391652-0fdy1c57l7of.webp",
+    "sortOrder": 0,
+    "sticky": false,
+    "featured": false,
+    "createdAt": "2026-06-15T05:10:51.971Z",
+    "updatedAt": "2026-06-25T11:02:29.223Z",
+    "itemCount": 17,
+    "community": {
+      "id": "8fdd6162-439e-4545-918b-93fc0515c19c",
+      "name": "IVS SOCIAL(ソーシャルイベントまとめました)",
+      "slug": "ivs-social"
+    }
+  },
+  {
+    "id": "695d4926-26ff-48f1-928a-a1c3965820e5",
+    "communityId": "1e017ae3-16de-45b2-8da6-b9d62849e120",
+    "name": "IVS2026 オフィシャルサイドイベント",
+    "description": "京都で7月1〜3日に行われる日本最大規模のスタートアップイベント「IVS2026」のオフィシャルサイドイベントリストです。",
+    "languages": {
+      "en": {
+        "name": "IVS2026 OFFICIAL SIDE EVENT",
+        "description": "This is the official side event list for IVS2026 — Japan's largest startup event, taking place in Kyoto from July 1–3."
+      }
+    },
+    "thumbnailImageUrl": "https://static.4s.link/communities/1e017ae3-16de-45b2-8da6-b9d62849e120/playlists/695d4926-26ff-48f1-928a-a1c3965820e5/thumbnail/1778562901739-kwm10fmvsbq.webp",
+    "sortOrder": 0,
+    "sticky": true,
+    "featured": true,
+    "createdAt": "2026-05-12T05:13:25.225Z",
+    "updatedAt": "2026-06-25T04:38:02.730Z",
+    "itemCount": 330,
+    "community": {
+      "id": "1e017ae3-16de-45b2-8da6-b9d62849e120",
+      "name": "IVS",
+      "slug": "ivs_community",
+      "languages": {
+        "en": {
+          "description": "IVS is Japan's largest startup conference, launched in 2007. It brings together founders, investors, corporates, public-sector leaders, and students around the creation of new businesses.\n\nOriginally an invitation-only, closed conference held across Japan, IVS transitioned to a ticketed format in 2023. Now based in Kyoto, it has grown to welcome 10,000 attendees annually and has become a platform for the entire startup ecosystem.\n\nNo new business starts alone. IVS exists to create the connections between those who hold the technology, capital, customers, and experience needed to build it. The program features sessions led by frontline practitioners, a Startup Market with 300 companies from Japan and abroad, and an ever-expanding range of side events organized by participants themselves. IVS LAUNCHPAD has drawn over 5,000 cumulative entries; of its past presenters, more than 60 companies have exited and over 100 have raised more than 1 billion yen.\n\nAcross three days, planned encounters and unexpected ones intersect, sparking turning points for businesses. Every participant takes a step toward solving social challenges and shaping new industries.\n\n\"A catalyst for the next generation.\" \nThat is our mission."
+        }
+      }
+    }
+  },
+  {
+    "id": "6446d3b4-409b-4ec4-b776-23c0683710b3",
+    "communityId": "0c195534-d176-46f4-9346-6c053c37c40d",
+    "name": "東海に関わりのあるIVSサイドイベント",
+    "description": "東海企業が主催、共催、登壇しているIVSのサイドイベントをまとめています。",
+    "thumbnailImageUrl": "https://static.4s.link/communities/0c195534-d176-46f4-9346-6c053c37c40d/playlists/6446d3b4-409b-4ec4-b776-23c0683710b3/thumbnail/1782263023984-szilzxh8qw.webp",
+    "sortOrder": 0,
+    "sticky": false,
+    "featured": false,
+    "createdAt": "2026-06-24T00:55:24.271Z",
+    "updatedAt": "2026-06-24T01:14:10.527Z",
+    "itemCount": 9,
+    "community": {
+      "id": "0c195534-d176-46f4-9346-6c053c37c40d",
+      "name": "愛知・東海エリア「裏」攻略ミーティング",
+      "slug": "0c195534-d176-46f4-9346-6c053c37c40d"
+    }
+  },
+  {
+    "id": "f900c9e7-ba84-4cd3-9eea-127f0b68b10a",
+    "communityId": "ddbddd11-a2d3-4129-99e5-fc8de52e90a2",
+    "name": "IVS Global Events (For International Attendees)",
+    "description": "Side event guide for international attendees & global startups at IVS2026. Connect, network & scale!\nIVS2026の海外ゲスト＆世界へ挑むスタートアップのためのサイドイベント集。ここから世界へ繋がりましょう！",
+    "thumbnailImageUrl": "https://static.4s.link/communities/ddbddd11-a2d3-4129-99e5-fc8de52e90a2/playlists/f900c9e7-ba84-4cd3-9eea-127f0b68b10a/thumbnail/1781791491361-tz8lr66lnhf.webp",
+    "sortOrder": 0,
+    "sticky": false,
+    "featured": true,
+    "createdAt": "2026-06-16T02:30:41.073Z",
+    "updatedAt": "2026-06-21T11:24:20.201Z",
+    "itemCount": 24,
+    "community": {
+      "id": "ddbddd11-a2d3-4129-99e5-fc8de52e90a2",
+      "name": "IVS GLOBAL EVENT（For International Attendees）",
+      "slug": "global"
+    }
+  },
+  {
+    "id": "c5d6d617-2936-4c71-95a2-8a47eeaba30e",
+    "communityId": "0464b0e1-c383-475a-addf-30f3026c7b93",
+    "name": "極楽NIGHT IN 大本山 金戒光明寺",
+    "description": "■ THE 極楽 NIGHT\n7月2日18時より京都・くろ谷金戒光明寺で開催。\n仏教エンタメ系バンドTHE南無ズやH1法話グランプリ2023優勝者が登場する、仏教×音楽×笑いの総合ライブフェスです。\n\n法話、般若心経EDM、漫才、怪談、仏教エンタメコミックバンド演奏など、お寺ならではの文化体験を楽しみながら交流できます。\n\nhttps://4s.link/ja/thegokurakunight",
+    "thumbnailImageUrl": "https://static.4s.link/communities/0464b0e1-c383-475a-addf-30f3026c7b93/playlists/c5d6d617-2936-4c71-95a2-8a47eeaba30e/thumbnail/1781231372469-0owa3kptm5f.webp",
+    "sortOrder": 0,
+    "sticky": false,
+    "featured": false,
+    "createdAt": "2026-06-12T02:24:43.509Z",
+    "updatedAt": "2026-06-12T02:33:39.340Z",
+    "itemCount": 2,
+    "community": {
+      "id": "0464b0e1-c383-475a-addf-30f3026c7b93",
+      "name": "神社仏閣・史跡好き at IVS",
+      "slug": "0464b0e1-c383-475a-addf-30f3026c7b93",
+      "languages": {
+        "en": {
+          "name": "Shrines, Temples, History & Historic Sites at IVS",
+          "description": "This is a community for IVS participants who are interested in shrines, temples, history, historic sites, and Japanese culture.\n\nShrines and temples can open up many conversations: tourism, local community building, cultural content, inbound travel, art, urban development, and business development.\n\nWhether you are deeply knowledgeable or simply curious, you are very welcome. Since we are gathering in Kyoto, let’s connect through conversations about shrines, temples, history, and Japanese culture.\n\nRelated Side Events\n\n■ Talk Session: “Oshi and Prayer”\nJuly 2, 2026, 11:00 AM / Konkai Komyoji Temple\n1 km from Miyako Messe, about 9 minutes by bus\n\nA talk session exploring the intersection of religion, idols, oshi-katsu, and prayer, featuring Kentaro Kawabe, former Chairman of LY Corporation / LINE Yahoo, as a special guest.\nhttps://4s.link/ja/ositoinori\n\n■ THE GOKURAKU NIGHT\nJuly 2, 2026, 6:00 PM / Konkai Komyoji Temple\n\nA live festival combining Buddhism, music, comedy, and ghost stories, featuring THE NAMUZ, who held a 1,000-person solo concert at Yokohama Kannai Hall, as well as the 2023 H1 Dharma Talk Grand Prix Champion and more.\nhttps://4s.link/ja/thegokurakunight\n\nCo-hosted by:\nMihotoke\nHidemasa Kawamura\nJokyu Takahashi"
+        }
+      }
+    }
+  },
+  {
+    "id": "bea2f2fe-c97b-44f5-8f79-3b4d57c397b5",
+    "communityId": "b6239d4b-e057-4712-9efa-186dbb8f24a4",
+    "name": "RUNNNIG Event",
+    "description": null,
+    "thumbnailImageUrl": "https://static.4s.link/communities/b6239d4b-e057-4712-9efa-186dbb8f24a4/playlists/bea2f2fe-c97b-44f5-8f79-3b4d57c397b5/thumbnail/1780893738118-1395kuf33mjp.webp",
+    "sortOrder": 0,
+    "sticky": false,
+    "featured": false,
+    "createdAt": "2026-06-02T11:45:43.728Z",
+    "updatedAt": "2026-06-08T04:42:23.534Z",
+    "itemCount": 1,
+    "community": {
+      "id": "b6239d4b-e057-4712-9efa-186dbb8f24a4",
+      "name": "TORICO Running Club",
+      "slug": "torico-runningclub"
+    }
+  },
+  {
+    "id": "c33a8d5f-7f91-4b9e-9ea7-f762217959ff",
+    "communityId": "48fa283d-4d20-4ed3-bf15-c1800d3f5910",
+    "name": "主要スタートアップ＆イノベーション関連イベントカレンダー",
+    "description": "日本国内と海外の主なスタートアップやイノベーション関連のイベントカレンダーです。",
+    "languages": {
+      "en": {
+        "name": "Major Startup & Innovation Events Calendar",
+        "description": "This calendar features major startup and innovation events from Japan and around the world."
+      }
+    },
+    "thumbnailImageUrl": "https://static.4s.link/communities/48fa283d-4d20-4ed3-bf15-c1800d3f5910/playlists/c33a8d5f-7f91-4b9e-9ea7-f762217959ff/thumbnail/1778640864849-ec8n6fjw66d.webp",
+    "sortOrder": 0,
+    "sticky": false,
+    "featured": false,
+    "createdAt": "2026-05-13T01:27:50.796Z",
+    "updatedAt": "2026-05-26T03:23:06.675Z",
+    "itemCount": 32,
+    "community": {
+      "id": "48fa283d-4d20-4ed3-bf15-c1800d3f5910",
+      "name": "4S,Inc.",
+      "slug": "4s_community"
+    }
+  },
+  {
+    "id": "2e8744b0-5e51-4c56-bbc5-dc3b237e182c",
+    "communityId": "48fa283d-4d20-4ed3-bf15-c1800d3f5910",
+    "name": "SPIKES オフィシャルサイドイベント",
+    "description": "SPIKES に関するオフィシャルサイドイベントです。\nhttps://spikes.4s.link/",
+    "thumbnailImageUrl": "https://static.4s.link/communities/48fa283d-4d20-4ed3-bf15-c1800d3f5910/playlists/2e8744b0-5e51-4c56-bbc5-dc3b237e182c/thumbnail/1779359814655-anhu7yg21oo.webp",
+    "sortOrder": 1,
+    "sticky": false,
+    "featured": false,
+    "createdAt": "2026-05-21T10:35:58.883Z",
+    "updatedAt": "2026-05-21T11:03:32.461Z",
+    "itemCount": 9,
+    "community": {
+      "id": "48fa283d-4d20-4ed3-bf15-c1800d3f5910",
+      "name": "4S,Inc.",
+      "slug": "4s_community"
+    }
+  },
+  {
+    "id": "486b517a-1379-410b-b820-3a15588f9770",
+    "communityId": "eef63363-1296-4e6c-a588-47d1a5c81975",
+    "name": "Spoon & Spice  Summer 2026",
+    "description": "2026年夏シーズンのカレーイベントまとめ",
+    "thumbnailImageUrl": "https://static.4s.link/communities/eef63363-1296-4e6c-a588-47d1a5c81975/playlists/486b517a-1379-410b-b820-3a15588f9770/thumbnail/1778576568690-qazc10tdmf.webp",
+    "sortOrder": 0,
+    "sticky": false,
+    "featured": false,
+    "createdAt": "2026-05-12T06:27:09.082Z",
+    "updatedAt": "2026-05-12T09:03:00.185Z",
+    "itemCount": 4,
+    "community": {
+      "id": "eef63363-1296-4e6c-a588-47d1a5c81975",
+      "name": "Curry Society",
+      "slug": "curry-society"
+    }
+  }
+]

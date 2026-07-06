@@ -1,0 +1,2231 @@
+[
+  {
+    "id": "ab6b10cc-9bef-4762-a590-c874c6509806",
+    "name": "IVS高専界隈",
+    "description": "IVSに関連する高専界隈の人、繋がりましょ〜！",
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/ab6b10cc-9bef-4762-a590-c874c6509806/logo/1782971359782-oaz41rx78kn.webp",
+    "logoDarkUrl": "https://static.4s.link/communities/ab6b10cc-9bef-4762-a590-c874c6509806/logo-dark/1782971365282-4qw1uxdyny9.webp",
+    "slug": "ab6b10cc-9bef-4762-a590-c874c6509806",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 6,
+    "followersCount": 0,
+    "tags": [
+      {
+        "id": "b6efc2d7-be2c-4d75-a225-fb48f5052b1d",
+        "name": "高専",
+        "category": null,
+        "order": 0
+      },
+      {
+        "id": "ec533155-b908-4fce-ba1f-2cab53c3c6bb",
+        "name": "スタートアップ",
+        "category": null,
+        "order": 1
+      },
+      {
+        "id": "53e9eec2-400c-465f-b1f3-04530986ec69",
+        "name": "起業家",
+        "category": null,
+        "order": 2
+      }
+    ],
+    "websiteUrl": "https://kosencom.commmune.com/",
+    "customNavigation": null,
+    "createdAt": "2026-07-02T05:45:40.983Z",
+    "updatedAt": "2026-07-02T05:50:53.812Z",
+    "createdBy": {
+      "id": "37c4ba48-3081-702c-1e57-7f6e9fbca729",
+      "firstName": "Nomura",
+      "lastName": "Taiki",
+      "nativeName": "野村 泰暉",
+      "languages": [
+        "ja",
+        "en"
+      ],
+      "lang": "ja",
+      "avatarUrl": "https://static.4s.link/avatars/37c4ba48-3081-702c-1e57-7f6e9fbca729/1780232427528-sxq524aoasr.webp",
+      "coverImageUrl": null,
+      "slug": "yasu10ki",
+      "title": "テックランチャー株式会社 代表取締役",
+      "bio": null,
+      "followersCount": 0,
+      "followingCount": 0,
+      "tags": [],
+      "industryTags": [],
+      "skillTags": [],
+      "hobbyTags": []
+    }
+  },
+  {
+    "id": "23fa23e7-14d2-4205-a963-d4823377c088",
+    "name": "SETES Lab | グローバルキャラクターIPコミュニティ",
+    "description": "私たちAudAiは韓国でAIボーカルキャラクターIP事業を行っています。 キャラクターIPのグローバル化に関心のある方を歓迎します！",
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/23fa23e7-14d2-4205-a963-d4823377c088/logo/1782889314719-m1mm2lve0bj.webp",
+    "logoDarkUrl": "https://static.4s.link/communities/23fa23e7-14d2-4205-a963-d4823377c088/logo-dark/1782889551267-skgrr7h3eyn.webp",
+    "slug": "23fa23e7-14d2-4205-a963-d4823377c088",
+    "featured": false,
+    "enabledChat": true,
+    "memberCount": 7,
+    "followersCount": 0,
+    "tags": [
+      {
+        "id": "4f88f53e-25d1-474d-8f2c-d969864e4d99",
+        "name": "韓国",
+        "category": null,
+        "order": 0
+      },
+      {
+        "id": "084ade91-c56d-4661-aadd-e4d03b2f7ce9",
+        "name": "グローバル",
+        "category": null,
+        "order": 1
+      },
+      {
+        "id": "1869bd1d-6bea-4de8-9c73-853ea3e32097",
+        "name": "エンタメ",
+        "category": null,
+        "order": 2
+      },
+      {
+        "id": "ec6f7705-e957-4caf-826c-8a8097c183ee",
+        "name": "キャラクター",
+        "category": null,
+        "order": 3
+      },
+      {
+        "id": "5ffc9534-e1ad-4f38-8d88-0bc33807ede6",
+        "name": "AI",
+        "category": null,
+        "order": 4
+      },
+      {
+        "id": "11a38787-07db-42c1-a06c-f6e86bd5f505",
+        "name": "IP",
+        "category": null,
+        "order": 5
+      }
+    ],
+    "websiteUrl": "https://setes-lab.com/",
+    "customNavigation": null,
+    "createdAt": "2026-07-01T07:01:51.969Z",
+    "updatedAt": "2026-07-01T08:45:25.175Z",
+    "createdBy": {
+      "id": "67d42ae8-20d1-7028-fdff-dc6a9958477f",
+      "firstName": "JINJAE",
+      "lastName": "PARK",
+      "nativeName": "박진재",
+      "languages": [
+        "ko",
+        "ja"
+      ],
+      "lang": "ko",
+      "avatarUrl": "https://static.4s.link/avatars/67d42ae8-20d1-7028-fdff-dc6a9958477f/1782205054910-1suoqu2dvpc.webp",
+      "coverImageUrl": null,
+      "slug": "Ardehide",
+      "title": "Art Director",
+      "bio": null,
+      "followersCount": 0,
+      "followingCount": 0,
+      "tags": [],
+      "industryTags": [],
+      "skillTags": [],
+      "hobbyTags": []
+    }
+  },
+  {
+    "id": "87dda4bb-f000-46ea-af5a-cc2a54381b09",
+    "name": "東大松尾研SUに興味ある会",
+    "description": "東大松尾研SUを理解して、AI事業をより進めましょう",
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/87dda4bb-f000-46ea-af5a-cc2a54381b09/logo/1782883164291-179syy8xnh5.webp",
+    "logoDarkUrl": null,
+    "slug": "87dda4bb-f000-46ea-af5a-cc2a54381b09",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 3,
+    "followersCount": 0,
+    "tags": [
+      {
+        "id": "7c36f245-7243-4784-9c2b-c2327dc092d0",
+        "name": "生成AI",
+        "category": null,
+        "order": 0
+      },
+      {
+        "id": "26cb24fe-3a07-4e0d-a9a9-7535d648bb5a",
+        "name": "東大松尾研",
+        "category": null,
+        "order": 1
+      },
+      {
+        "id": "58d8e19d-a57c-48bd-8042-2aa0dcb24d55",
+        "name": "量子アルゴリズム",
+        "category": null,
+        "order": 2
+      },
+      {
+        "id": "96f416d8-09f9-466d-951b-af2856f18d6d",
+        "name": "原子力",
+        "category": null,
+        "order": 3
+      },
+      {
+        "id": "ae582e37-2597-4c26-81d4-7dce8dd77c1d",
+        "name": "製薬",
+        "category": null,
+        "order": 4
+      }
+    ],
+    "websiteUrl": null,
+    "customNavigation": null,
+    "createdAt": "2026-07-01T05:19:24.018Z",
+    "updatedAt": "2026-07-01T05:46:12.528Z",
+    "createdBy": {
+      "id": "2784fa18-80c1-707d-24c9-af9785ac2f1c",
+      "firstName": "kazunori",
+      "lastName": "miyamoto",
+      "nativeName": "日本語",
+      "languages": [
+        "ja"
+      ],
+      "lang": "ja",
+      "avatarUrl": "https://static.4s.link/avatars/2784fa18-80c1-707d-24c9-af9785ac2f1c/1782129272487-cbmjaszhwji.webp",
+      "coverImageUrl": null,
+      "slug": "EQUESmiyamoto",
+      "title": "株式会社EQUES 執行役員",
+      "bio": "東大松尾研SU EQUESにて執行役員をしております。\n介護系SU企業&売却経験あり",
+      "followersCount": 0,
+      "followingCount": 0,
+      "tags": [],
+      "industryTags": [],
+      "skillTags": [],
+      "hobbyTags": []
+    }
+  },
+  {
+    "id": "46c3d5b3-d46e-44de-9ad4-3267700a5389",
+    "name": "CreatorLabo",
+    "description": "世界最先端のAIと日本市場をつなぐ、東京発のキュレーション型コミュニティ。開発から映像・デザインまで、本当にフィットするツールだけを厳選し、日本のAI実装を加速させる。",
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/46c3d5b3-d46e-44de-9ad4-3267700a5389/logo/1782867599586-82nmy4xz84i.webp",
+    "logoDarkUrl": "https://static.4s.link/communities/46c3d5b3-d46e-44de-9ad4-3267700a5389/logo-dark/1782867585190-zh2ol60jkls.webp",
+    "slug": "creatorlabo",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 4,
+    "followersCount": 0,
+    "tags": [
+      {
+        "id": "ae7529ba-2a1b-4d67-a71a-039e994b3d5c",
+        "name": "AIワークショップ",
+        "category": null,
+        "order": 0
+      },
+      {
+        "id": "215b32ac-e5c3-481a-8c54-6b7a43474f71",
+        "name": "クリエイティブ",
+        "category": null,
+        "order": 1
+      },
+      {
+        "id": "f99274f3-bdf1-43d8-b662-1219f524b821",
+        "name": "Startup",
+        "category": null,
+        "order": 2
+      },
+      {
+        "id": "721c3623-8750-4409-b56d-315ea8ac56ce",
+        "name": "東京発",
+        "category": null,
+        "order": 3
+      },
+      {
+        "id": "22c88fbc-06cb-4fcc-bd35-41165c95a3ac",
+        "name": "AIクリエイター",
+        "category": null,
+        "order": 4
+      },
+      {
+        "id": "8bc01dcb-5ec0-4ec4-9070-4ab0fea59734",
+        "name": "共創コミュニティ",
+        "category": null,
+        "order": 5
+      },
+      {
+        "id": "6f372fea-fc0d-4d47-8517-d428a5f87cf5",
+        "name": "ハッカソン",
+        "category": null,
+        "order": 6
+      }
+    ],
+    "websiteUrl": "https://creatorlabo.com",
+    "customNavigation": {
+      "items": [
+        {
+          "id": "cnav-1782866121615-8yywerb",
+          "url": "https://luma.com/creatorlabo",
+          "title": "Events"
+        },
+        {
+          "id": "cnav-1782866182104-of2ftcb",
+          "url": "https://x.com/creatorlabo_",
+          "title": "X Profile"
+        }
+      ]
+    },
+    "createdAt": "2026-07-01T00:05:14.949Z",
+    "updatedAt": "2026-07-03T00:35:22.854Z",
+    "createdBy": {
+      "id": "17e44a98-3051-706b-dead-c7d3e7e4a283",
+      "firstName": "Billy",
+      "lastName": "QIU",
+      "nativeName": "仇英華",
+      "languages": [
+        "ja",
+        "en",
+        "zh-Hans",
+        "zh-Hant"
+      ],
+      "lang": "zh-Hans",
+      "avatarUrl": "https://static.4s.link/avatars/17e44a98-3051-706b-dead-c7d3e7e4a283/1780489500060-ugfi4bk7zbq.webp",
+      "coverImageUrl": null,
+      "slug": "billyqiu",
+      "title": null,
+      "bio": null,
+      "followersCount": 0,
+      "followingCount": 0,
+      "tags": [],
+      "industryTags": [],
+      "skillTags": [],
+      "hobbyTags": []
+    }
+  },
+  {
+    "id": "5dc5ae2d-f505-45af-8783-0c9fb61fdd5f",
+    "name": "アートとユーモア",
+    "description": "『生きづらさを面白さに転換する』をミッションに掲げる株式会社すみなすがお届け\n\nアートとユーモアで、世界を面白く \" すみなす \" コミュニティです！\n\nついふざけてしまう人、ずっと笑っていたい人、アートや表現に興味がある人はここに集合ー🎉\n\nみんなでワイワイ、アートとユーモアで繋がりましょう🤤",
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/5dc5ae2d-f505-45af-8783-0c9fb61fdd5f/logo/1782815723708-wqgppykvjnj.webp",
+    "logoDarkUrl": "https://static.4s.link/communities/5dc5ae2d-f505-45af-8783-0c9fb61fdd5f/logo-dark/1782815899716-roeapf4zl2i.webp",
+    "slug": "5dc5ae2d-f505-45af-8783-0c9fb61fdd5f",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 8,
+    "followersCount": 0,
+    "tags": [
+      {
+        "id": "cd2f4c03-29b8-4fd8-9951-70f53169f01f",
+        "name": "アート",
+        "category": null,
+        "order": 0
+      },
+      {
+        "id": "68d8245e-3e07-453b-8a19-a39222608fc9",
+        "name": "表現",
+        "category": null,
+        "order": 1
+      },
+      {
+        "id": "4ac8e0dd-6fd2-4df3-b000-dd2a28abe5ce",
+        "name": "ユーモア",
+        "category": null,
+        "order": 2
+      },
+      {
+        "id": "fa76bb07-e528-423b-97b5-b6448391cbe0",
+        "name": "笑い",
+        "category": null,
+        "order": 3
+      },
+      {
+        "id": "bce1cbd2-39bd-45a9-afba-805445da0f5d",
+        "name": "繋がる",
+        "category": null,
+        "order": 4
+      },
+      {
+        "id": "3e997434-1a25-4c93-9798-8f216f4a0b1f",
+        "name": "仲間",
+        "category": null,
+        "order": 5
+      },
+      {
+        "id": "822e9b07-3290-407e-89b1-e0ca5129d88c",
+        "name": "友達づくり",
+        "category": null,
+        "order": 6
+      },
+      {
+        "id": "2aedea4c-99d0-4c38-a216-d5d21609e5ec",
+        "name": "面白い人と繋がりたい",
+        "category": null,
+        "order": 7
+      }
+    ],
+    "websiteUrl": "https://suminasu.jp/",
+    "customNavigation": null,
+    "createdAt": "2026-06-30T10:35:23.445Z",
+    "updatedAt": "2026-06-30T10:38:20.755Z",
+    "createdBy": {
+      "id": "f7e4fa78-f071-7076-2c1d-ff6f26042ae4",
+      "firstName": "Fumihiko",
+      "lastName": "Nishimura",
+      "nativeName": "西村史彦",
+      "languages": [
+        "ja"
+      ],
+      "lang": "ja",
+      "avatarUrl": "https://static.4s.link/uploads/userProfileImage/20250618/0711/dca84b14-cad6-4b34-ae5a-0ce196f9cb8b.png",
+      "coverImageUrl": null,
+      "slug": "fuuuming_genius",
+      "title": "株式会社すみなす　代表取締役",
+      "bio": "「全員、天才。なんてありえる」の旗を掲げ、つくることを通じて「生きづらさ」を「面白さ」へと転換するアートスタジオ『GENIUSLAB』や、「自分をこわし、自分をつくる」をコンセプトにしたアートコーチングプログラム『MY genius』を展開。\nJ-Startup KYUSHU 、アントレプレナーシップ推進大使に\n選定、Forbes JAPAN NEXT100に選出。\n生きづらさを面白さに転換するアーティストたちの生き様を届けるPodcast番組『We are GENIUS ! 』も配信中。\n#カナダでレゲエ歌ってました\n#芸人未遂\n#コーヒーとウイスキーが好き",
+      "followersCount": 0,
+      "followingCount": 0,
+      "tags": [],
+      "industryTags": [],
+      "skillTags": [],
+      "hobbyTags": []
+    }
+  },
+  {
+    "id": "f8def33d-c2cc-4d0a-8b6d-42e173b01785",
+    "name": "スタートアップのエンプラ攻略の武器にSOC2を",
+    "description": "SOC2について語りましょう",
+    "languages": null,
+    "joinType": "APPROVAL_REQUIRED",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/f8def33d-c2cc-4d0a-8b6d-42e173b01785/logo/1782793508498-a6i5ah59uyg.webp",
+    "logoDarkUrl": null,
+    "slug": "f8def33d-c2cc-4d0a-8b6d-42e173b01785",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 3,
+    "followersCount": 0,
+    "tags": [
+      {
+        "id": "54b674c2-c730-4235-bc34-952994c6f690",
+        "name": "セキュリティ",
+        "category": null,
+        "order": 0
+      },
+      {
+        "id": "13c0d741-098d-4fdb-a582-d69fdecd788d",
+        "name": "SOC2",
+        "category": null,
+        "order": 1
+      },
+      {
+        "id": "abf232d6-e730-421c-a7d7-023b2fa14bcf",
+        "name": "エンタープライズ",
+        "category": null,
+        "order": 2
+      },
+      {
+        "id": "cf39bf1f-606e-48d8-a29d-02bb6dd49405",
+        "name": "スタートアップ",
+        "category": null,
+        "order": 3
+      },
+      {
+        "id": "3c700ea4-0b57-4f64-a52e-10af4126d1f0",
+        "name": "SaaS",
+        "category": null,
+        "order": 4
+      },
+      {
+        "id": "8cdcc0bc-652b-44a9-9c25-bce2b7925c30",
+        "name": "クラウド",
+        "category": null,
+        "order": 5
+      }
+    ],
+    "websiteUrl": "https://prtimes.jp/main/html/rd/p/000000151.000089471.html",
+    "customNavigation": null,
+    "createdAt": "2026-06-30T04:25:08.376Z",
+    "updatedAt": "2026-06-30T04:25:58.015Z",
+    "createdBy": {
+      "id": "c784faa8-20e1-70c7-38fb-340be2d1a945",
+      "firstName": "Yoshihiko",
+      "lastName": "Shibue",
+      "nativeName": "Yoshihiko Shibue",
+      "languages": [
+        "ja"
+      ],
+      "lang": "ja",
+      "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocLQCZUAHJXr6WhvXo9qZxEG58nnzVLat1KuzrgO8IN89VPj84M=s96-c",
+      "coverImageUrl": null,
+      "slug": "SOC2_Shibue",
+      "title": "スタートアップのエンプラ攻略にはSOC2 & CHRO",
+      "bio": "パチプロから人生をスタート。2007年にSIerに第2新卒で入社し、金融システムの保守運用エンジニアからサラリーマンキャリアが始まる。\n\nLinuxのHDEにてセキュリティSaaS、さくらインターネットではIaaSなどクラウド領域中心のキャリアを歩み、セールス、テクニカルサポート、スタートアップ支援などの役割に従事。\n\nその後、HENNGE(旧HDE)に出戻り、DLP/IdP領域SaaSのHead of CSとしてリカーリング基盤の確立を。\n\n複業でVoCに特化したSaaS事業(RINNNE)を起業するが撤退し、2021年 マネーフォワードのグループ企業にて情シス向けのSaaS管理サービスのマネーフォワードAdminaの立ち上げに携わり、Japan COOを務める。\n\n現在はSecureNaviにJoinし、CHRO及び新規事業をやってます。\n\n好きなプロトコル/ポート/偉人はSMTP/25/本田圭佑です。",
+      "followersCount": 0,
+      "followingCount": 0,
+      "tags": [],
+      "industryTags": [],
+      "skillTags": [],
+      "hobbyTags": []
+    }
+  },
+  {
+    "id": "b7b6fd39-e365-43bc-8040-feade00cbe85",
+    "name": "アグリ・フードテック",
+    "description": "食や農、フードテックなどのイノベーションや新規事業に興味がある方、関係者",
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/b7b6fd39-e365-43bc-8040-feade00cbe85/logo/1782785207071-1qt8bku3zhc.webp",
+    "logoDarkUrl": null,
+    "slug": "b7b6fd39-e365-43bc-8040-feade00cbe85",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 3,
+    "followersCount": 0,
+    "tags": [],
+    "websiteUrl": "https://food-tech.maff.go.jp/",
+    "customNavigation": null,
+    "createdAt": "2026-06-30T02:06:46.948Z",
+    "updatedAt": "2026-06-30T02:06:47.942Z",
+    "createdBy": {
+      "id": "a7046ae8-9061-7095-2b5e-47c8129bafe2",
+      "firstName": "KAZUKI",
+      "lastName": "YOSHIDA",
+      "nativeName": "吉田和樹",
+      "languages": [
+        "ja"
+      ],
+      "lang": "ja",
+      "avatarUrl": "https://static.4s.link/avatars/a7046ae8-9061-7095-2b5e-47c8129bafe2/1782444551572-hwlv2hm5i3t.webp",
+      "coverImageUrl": null,
+      "slug": "kazukiyo1001",
+      "title": "農林水産省 新事業・食品産業部（MAFF）",
+      "bio": "農林水産省でフードテックやスタートアップ支援、政策立案。",
+      "followersCount": 0,
+      "followingCount": 0,
+      "tags": [],
+      "industryTags": [],
+      "skillTags": [],
+      "hobbyTags": []
+    }
+  },
+  {
+    "id": "2fdb269e-ccad-4443-8990-dd17e02f158c",
+    "name": "沖縄好きコミュティ",
+    "description": "沖縄好き同士で語り合いましょう！",
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/2fdb269e-ccad-4443-8990-dd17e02f158c/logo/1782743118477-gfu93oqbtck.webp",
+    "logoDarkUrl": null,
+    "slug": "2fdb269e-ccad-4443-8990-dd17e02f158c",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 10,
+    "followersCount": 0,
+    "tags": [
+      {
+        "id": "88b7aacd-b567-4230-9b17-e61c3a66e726",
+        "name": "沖縄",
+        "category": null,
+        "order": 0
+      },
+      {
+        "id": "a4696eaa-660b-4a30-a6af-132e209198fa",
+        "name": "スタートアップ",
+        "category": null,
+        "order": 1
+      },
+      {
+        "id": "c356dd3f-b10b-4134-9d74-defd6b265338",
+        "name": "ベンチャー",
+        "category": null,
+        "order": 2
+      },
+      {
+        "id": "78f5d6ee-b414-401b-8542-2ba78bae101d",
+        "name": "資金調達",
+        "category": null,
+        "order": 3
+      },
+      {
+        "id": "8d413f93-d9df-4c52-9949-0b9dadfe21b9",
+        "name": "M＆A",
+        "category": null,
+        "order": 4
+      },
+      {
+        "id": "1c5d6c54-df2a-458f-ac25-8b719ef14261",
+        "name": "IPO",
+        "category": null,
+        "order": 5
+      },
+      {
+        "id": "cf9ba966-ec9a-4426-8117-4a2039d1082a",
+        "name": "地域創生",
+        "category": null,
+        "order": 6
+      },
+      {
+        "id": "1b562c8f-6953-4fbd-85ca-a5f198395718",
+        "name": "地方創生",
+        "category": null,
+        "order": 7
+      },
+      {
+        "id": "a1506846-5aac-498f-abaa-c63c06306f5e",
+        "name": "インパクト投資",
+        "category": null,
+        "order": 8
+      },
+      {
+        "id": "4b1250ed-ef4f-41b4-9c7d-c0a30a797754",
+        "name": "社会起業家",
+        "category": null,
+        "order": 9
+      },
+      {
+        "id": "956858a5-f33a-4773-9315-01e3920000aa",
+        "name": "社会課題解決",
+        "category": null,
+        "order": 10
+      },
+      {
+        "id": "d6edaab2-269e-4be9-876e-1cf762bd3944",
+        "name": "スポーツ",
+        "category": null,
+        "order": 11
+      }
+    ],
+    "websiteUrl": "https://ryukyuasteeda.jp/",
+    "customNavigation": null,
+    "createdAt": "2026-06-29T14:25:18.327Z",
+    "updatedAt": "2026-06-29T14:27:26.521Z",
+    "createdBy": {
+      "id": "3774bae8-60c1-7091-7eca-fad371361d08",
+      "firstName": "Shusaku",
+      "lastName": "Hayakawa",
+      "nativeName": "早川周作",
+      "languages": [
+        "en"
+      ],
+      "lang": "ja",
+      "avatarUrl": "https://static.4s.link/avatars/3774bae8-60c1-7091-7eca-fad371361d08/1780882356229-xzsgyv0pmw.webp",
+      "coverImageUrl": null,
+      "slug": "shusakuhayakawa",
+      "title": "琉球アスティーダスポーツクラブ株式会社",
+      "bio": "ビジネス×スポーツで世界へ！ Ｔリーグ「琉球アスティーダ」運営会社代表取締役 ベンチャー約90社で法務・財務・営業支援の ビジネス経験で、スポーツ業界の発展へ！ 琉球大学客員教授 /秋田大学客員教授 /明治大学MBAビジネススクール講師",
+      "followersCount": 0,
+      "followingCount": 0,
+      "tags": [],
+      "industryTags": [],
+      "skillTags": [],
+      "hobbyTags": []
+    }
+  },
+  {
+    "id": "0d3f23e4-0245-4a3d-9d82-0ec30c84d239",
+    "name": "Nomadic Wolf Community",
+    "description": "A global community connecting founders, builders, developers, creators, researchers, investors, and learners across AI, Web3, blockchain, startups, and emerging technologies. Learn together, collaborate on projects, discover opportunities, attend events, and build meaningful global connections.",
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/0d3f23e4-0245-4a3d-9d82-0ec30c84d239/logo/1782723489905-o6sbtwfns2d.webp",
+    "logoDarkUrl": null,
+    "slug": "0d3f23e4-0245-4a3d-9d82-0ec30c84d239",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 12,
+    "followersCount": 0,
+    "tags": [],
+    "websiteUrl": "https://x.com/NomadicWolfX",
+    "customNavigation": null,
+    "createdAt": "2026-06-29T08:58:08.574Z",
+    "updatedAt": "2026-06-29T08:58:13.158Z",
+    "createdBy": {
+      "id": "07c48a98-0011-7083-b130-163e03a9c973",
+      "firstName": "Hasanalam",
+      "lastName": "Attar",
+      "nativeName": "Hasanalam Attar",
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "lang": "en",
+      "avatarUrl": "https://lh3.googleusercontent.com/a/ACg8ocKoox2h8K3oku-sQPeMh9p4_Qtj4xb0h8o2bI7pP3g57gR_ECK7=s96-c",
+      "coverImageUrl": null,
+      "slug": "Nomadic-Wolf",
+      "title": "Founder | Nomadic Wolf Labs | Web3 & AI Ecosystem Builder",
+      "bio": "Founder of Nomadic Wolf Labs and a Web3, AI & Blockchain Ecosystem Builder. Passionate about connecting founders, developers, investors, and researchers across emerging technologies. Active attendee of major global events including India Blockchain Week, Polygon Connect, AWS Summit, Black Swan AI Summit, and Berlin Blockchain Week. Exploring AI agents, decentralized infrastructure, digital identity, and real-world asset tokenization while documenting innovation and fostering community collaborations. Open to partnerships, knowledge sharing, and building impactful technology with global communities.",
+      "followersCount": 0,
+      "followingCount": 0,
+      "tags": [],
+      "industryTags": [],
+      "skillTags": [],
+      "hobbyTags": []
+    }
+  },
+  {
+    "id": "cd51e70c-2ae6-49d9-8458-1af3de14eee4",
+    "name": "JOBS CAMP",
+    "description": "JOBS CAMP生集まろ！",
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/cd51e70c-2ae6-49d9-8458-1af3de14eee4/logo/1782641231825-7m545u76yhg.webp",
+    "logoDarkUrl": null,
+    "slug": "cd51e70c-2ae6-49d9-8458-1af3de14eee4",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 12,
+    "followersCount": 0,
+    "tags": [
+      {
+        "id": "cb204727-8196-4128-8f24-a0fac40dc52e",
+        "name": "スタートアップ",
+        "category": null,
+        "order": 0
+      },
+      {
+        "id": "79267a95-bc74-4a66-8831-4d5ec31e3957",
+        "name": "マーケティング",
+        "category": null,
+        "order": 1
+      },
+      {
+        "id": "5035dc04-009d-4509-ae17-66a85caf988e",
+        "name": "資金調達",
+        "category": null,
+        "order": 2
+      },
+      {
+        "id": "c72d7b1e-f41d-4314-ab93-838fdd905bf9",
+        "name": "VC",
+        "category": null,
+        "order": 3
+      },
+      {
+        "id": "559ab812-d699-466e-bc6c-a6dd32db99c1",
+        "name": "起業家",
+        "category": null,
+        "order": 4
+      },
+      {
+        "id": "4131b0d9-e596-41b4-8921-87e298bf3b2c",
+        "name": "若手起業家",
+        "category": null,
+        "order": 5
+      }
+    ],
+    "websiteUrl": null,
+    "customNavigation": null,
+    "createdAt": "2026-06-28T10:07:11.663Z",
+    "updatedAt": "2026-06-28T10:13:47.867Z",
+    "createdBy": {
+      "id": "37543a18-f0b1-70a6-9ddd-9ff431a4109f",
+      "firstName": "Riku",
+      "lastName": "Moriyama",
+      "nativeName": "森山 陸",
+      "languages": [
+        "ja"
+      ],
+      "lang": "ja",
+      "avatarUrl": "https://static.4s.link/avatars/37543a18-f0b1-70a6-9ddd-9ff431a4109f/1782631199972-h164a942ys6.webp",
+      "coverImageUrl": null,
+      "slug": "riku_moriyama",
+      "title": "株式会社オプト チームマネージャー",
+      "bio": "オプトに新卒入社後はデータおよびアプリマーケティング領域を軸に、事業成長に直結する施策設計から実行・改善まで一気通貫で推進。スタートアップから大手企業まで幅広い顧客に対し、GA4・Firebase・GTM・BigQuery・MMP（Adjust／AppsFlyer）等を活用したWeb／アプリ横断の計測基盤構築、データ分析および活用支援を担当。単なる分析に留まらず、事業KPIから逆算した施策設計・実装・運用改善まで踏み込み、成果創出にコミットしてきた。\n\n現在はCXコンサルティングを主軸としつつ、アプリパフォーマンス領域を兼務。アプリのグロースハック支援を新たな提供価値として確立すべく、ケイパビリティ構築、サービス設計、提案活動、対外発信を推進。加えて、AppsFlyer・Adjust等の知見を活かしたアプリ広告運用にも従事し、人材領域を中心に広告主の獲得効率およびLTV最大化を支援している。",
+      "followersCount": 0,
+      "followingCount": 0,
+      "tags": [],
+      "industryTags": [],
+      "skillTags": [],
+      "hobbyTags": []
+    }
+  },
+  {
+    "id": "2d55d510-869e-4881-abc8-dc5fc2aeec27",
+    "name": "W　M　A　T　C　H　A",
+    "description": "日本茶・抹茶・〇〇ティーを愛する方のスペース\n\n何をやるかは、実はあなた次第です。\nテーマは、「50年先も、美味しい日本茶が飲めるのか？」\n\nご興味のある方には、7/7 or 7/8に弊社の管理する茶畑をご案内します。（京都府和束町）\n共に、「50年先の日本茶」に参加しましょう！",
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/2d55d510-869e-4881-abc8-dc5fc2aeec27/logo/1782586221549-3l71rble4t4.webp",
+    "logoDarkUrl": null,
+    "slug": "2d55d510-869e-4881-abc8-dc5fc2aeec27",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 8,
+    "followersCount": 0,
+    "tags": [
+      {
+        "id": "8e018160-29e6-4a36-b3cd-8202f25db6a8",
+        "name": "Matcha",
+        "category": null,
+        "order": 0
+      },
+      {
+        "id": "79522d4b-cd76-4921-8408-a9f0c9ccad3a",
+        "name": "Tea",
+        "category": null,
+        "order": 1
+      },
+      {
+        "id": "55e8cde1-da53-4805-8895-a658918c020f",
+        "name": "Wazuka",
+        "category": null,
+        "order": 2
+      }
+    ],
+    "websiteUrl": "https://wmatcha-co.vercel.app/",
+    "customNavigation": null,
+    "createdAt": "2026-06-27T18:50:21.326Z",
+    "updatedAt": "2026-06-30T16:59:07.625Z",
+    "createdBy": {
+      "id": "b7f44a28-b011-7013-316e-121a34aa742d",
+      "firstName": "Toshi",
+      "lastName": "Taketani",
+      "nativeName": "竹谷俊哉",
+      "languages": [],
+      "lang": "ja",
+      "avatarUrl": "https://static.4s.link/avatars/b7f44a28-b011-7013-316e-121a34aa742d/1782573930419-ha4jeymlkd.webp",
+      "coverImageUrl": null,
+      "slug": "wmatchaco",
+      "title": "Re-founder / Tea Producer",
+      "bio": "和束町にある七畝の茶園を管理しています。\n「50年先も、美味しい日本茶が飲めるのか？」\n\nお茶づくりを学びながら、流通をデザインしています。",
+      "followersCount": 0,
+      "followingCount": 0,
+      "tags": [],
+      "industryTags": [],
+      "skillTags": [],
+      "hobbyTags": []
+    }
+  },
+  {
+    "id": "03daf18d-fdbc-4255-9b95-277acce6cf19",
+    "name": "つながりの場〜TUNAGARI HUB〜",
+    "description": "TSUNAGARI HUB project（つながりの場）は、「人との出会いが人生を豊かにする」を理念に、多世代・多国籍・多分野の人々がつながり、学び合い、助け合い、共創できる「第3の居場所」です。\n\n単なる交流会ではなく、人と人との信頼関係を育み、新たな事業・採用・地域連携・社会課題解決へと発展する共創の機会を創出しています。起業家、経営者、会社員、学生、クリエイター、エンジニア、自治体、教育機関など、多様なバックグラウンドを持つ方々が集い、それぞれの強みを活かしたコラボレーションが日々生ます。\n\n定期的な交流会やテーマ別イベント、勉強会、フィールドワークなどを開催し、オンライン・オフラインを組み合わせながら全国・海外とのネットワークも拡大しています。\n\nIVSでは、スタートアップや投資家、企業、自治体との新たな出会いを通じて、未来につながる共創プロジェクトを創出したいと考えています。「人を紹介できる方」「一緒に事業を創りたい方」「採用・協業・スポンサー・地域連携に興味のある方」はぜひお気軽にお声がけください。\n\n人と人とのつながりから、新しい価値と未来を共に創っていきましょう。",
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/03daf18d-fdbc-4255-9b95-277acce6cf19/logo/1782537240474-ofom1vcdoqq.webp",
+    "logoDarkUrl": "https://static.4s.link/communities/03daf18d-fdbc-4255-9b95-277acce6cf19/logo-dark/1782537243613-du3xio63sj.webp",
+    "slug": "03daf18d-fdbc-4255-9b95-277acce6cf19",
+    "featured": false,
+    "enabledChat": true,
+    "memberCount": 22,
+    "followersCount": 0,
+    "tags": [
+      {
+        "id": "d45188a2-e98c-42be-8c71-1be705c501d0",
+        "name": "仲間",
+        "category": null,
+        "order": 0
+      },
+      {
+        "id": "80098cd4-5f73-4568-b20b-3bac605a1ef0",
+        "name": "つながりの場",
+        "category": null,
+        "order": 1
+      },
+      {
+        "id": "94036663-5f70-4f7d-a616-8b240b2988ec",
+        "name": "共創",
+        "category": null,
+        "order": 2
+      },
+      {
+        "id": "8b6f6f52-a6d0-4189-ae2b-ae2afd88bb0a",
+        "name": "コミュニティー",
+        "category": null,
+        "order": 3
+      },
+      {
+        "id": "5a47267f-1876-44e7-8ee6-e17888afda39",
+        "name": "TUNAGARIHUB",
+        "category": null,
+        "order": 4
+      },
+      {
+        "id": "ad4082df-24c8-4fde-9a76-8ec4c330bab1",
+        "name": "Networking",
+        "category": null,
+        "order": 5
+      },
+      {
+        "id": "35c72548-6970-4487-8bb8-ac33df0a8d17",
+        "name": "CoCreation",
+        "category": null,
+        "order": 6
+      },
+      {
+        "id": "15b2d4e8-1811-420f-a08f-1ac1cd41cc39",
+        "name": "Startup",
+        "category": null,
+        "order": 7
+      },
+      {
+        "id": "5bb3e95c-4db3-4411-8f29-814e30b69293",
+        "name": "スタートアップ",
+        "category": null,
+        "order": 8
+      },
+      {
+        "id": "7dc6f368-15f1-4604-80d5-776a41096f68",
+        "name": "Entrepreneur",
+        "category": null,
+        "order": 9
+      },
+      {
+        "id": "d496b347-391b-4352-8b47-4a36002b594a",
+        "name": "PeopleEnrichPeoplesLive",
+        "category": null,
+        "order": 10
+      }
+    ],
+    "websiteUrl": "https://www.instagram.com/chiyo_tuna?igsh=ZGNwNmY1djk3bHAx&utm_source=qr",
+    "customNavigation": null,
+    "createdAt": "2026-06-27T05:05:57.680Z",
+    "updatedAt": "2026-06-29T13:12:22.051Z",
+    "createdBy": {
+      "id": "07446ac8-d041-7002-2337-e75fa294b6e7",
+      "firstName": "YOHEI",
+      "lastName": "HINO",
+      "nativeName": "日野陽平",
+      "languages": [
+        "ja"
+      ],
+      "lang": "ja",
+      "avatarUrl": "https://static.4s.link/avatars/07446ac8-d041-7002-2337-e75fa294b6e7/1781115456781-u7q66wd57kn.webp",
+      "coverImageUrl": null,
+      "slug": "BOND",
+      "title": "『つながりの場』主宰・代表   ライフコンサルタント / イベントプロデューサー / 自己紹介分析カード創業者",
+      "bio": "日野 陽平（BOND）プロフィール\n\nTSUNAGARI HUB project（つながりの場） Founder & CEO\n\n元消防士として約10年間勤務し、東日本大震災では最前線で救助活動に従事。消防士として、多くの人命救助や災害対応に携わる。\n\n退職後はライフコンサルタントとして、仕事・人間関係・恋愛・家庭・地域活動・キャリアなど幅広い分野で累計5,000名以上の相談支援を実施。自身も離婚、病気、事業の失敗、大切な人との死別など様々な困難を経験し、「人とのつながりが人生を支える力になる」ことを実感する。\n\n現在はコミュニティプロデューサーとして、TSUNAGARI HUB project（つながりの場）を立ち上げ、多世代・多国籍・多分野の人々がつながり、学び、助け合い、共創できる居場所づくりに取り組んでいる。\n\nまた、「人との出会いが人生を豊かにする」を理念に、ビジネス・趣味・チャリティを分断せずに融合した新しいコミュニティモデルの構築を目指し、東京を拠点に全国・世界へ展開を進めている。\n\n趣味はゴルフ、テニス、サーフィン、旅行、温泉、映画鑑賞、スポーツ観戦、写真撮影、美味しいものを食べること。新しい人との出会いや学びを何より大切にしている。\n\n【ビジョン】\n孤立・孤独・分断のない社会を実現し、誰もが安心して挑戦し、助け合いながら成長できる世界を創る。\n\n【ミッション】\n多世代・多国籍・多分野の人々をつなぎ、新たな共創と可能性を生み出す「つながりのHUB」を全国・世界へ広げる。",
+      "followersCount": 0,
+      "followingCount": 0,
+      "tags": [],
+      "industryTags": [],
+      "skillTags": [],
+      "hobbyTags": []
+    }
+  },
+  {
+    "id": "3f93d36f-f6df-4916-adbd-4814cd16645d",
+    "name": "ホリエモンファンコミュニティ",
+    "description": "ホリエモンファン集まれ",
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/3f93d36f-f6df-4916-adbd-4814cd16645d/logo/1782450915149-xy3hi387fi.webp",
+    "logoDarkUrl": null,
+    "slug": "3f93d36f-f6df-4916-adbd-4814cd16645d",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 2,
+    "followersCount": 0,
+    "tags": []
+  },
+  {
+    "id": "2e8a9e37-f238-4e64-9730-15359c27597a",
+    "name": "スタートアップパパママ情報交換部",
+    "description": null,
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/2e8a9e37-f238-4e64-9730-15359c27597a/logo/1782439671777-sz95a0l6yf.webp",
+    "logoDarkUrl": null,
+    "slug": "2e8a9e37-f238-4e64-9730-15359c27597a",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 4,
+    "followersCount": 0,
+    "tags": []
+  },
+  {
+    "id": "1d49b670-1e96-44ce-b7c1-bbd405286c8c",
+    "name": "Synapse Circle",
+    "description": "**Synapse Circle** は、Synapse Festivalから生まれる共鳴と実践のコミュニティ。\n\nフェスで終わらない。\n日常に戻ったあとも、人生が少し動き続けるための場所です。\n\n音楽、旅、挑戦、ウェルネス、対話。\n異なるリズムを持つ人たちが集まり、出会い、混ざり、新しい関係や挑戦を育てていく。\n\n参加者ではなく、一緒につくる仲間になる。\nイベントに来るだけでなく、企画したり、集まったり、誰かを誘ったり、表現したりする。\n\n世界を移動するノマドも、起業家も、カルチャー好きも、踊る人も。\n肩書きではなく、その人らしい生き方でつながる。\n\n目指すのは、コミュニティを増やすことではない。\n人生を踊る人たちの交差点になること。\n\n**Where EN Happens.\nRise Together.**",
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/1d49b670-1e96-44ce-b7c1-bbd405286c8c/logo/1782291203671-zsgwe3be3z.webp",
+    "logoDarkUrl": null,
+    "slug": "1d49b670-1e96-44ce-b7c1-bbd405286c8c",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 3,
+    "followersCount": 0,
+    "tags": []
+  },
+  {
+    "id": "ea57fb35-291e-4714-a622-7539410302ad",
+    "name": "地ビールのみ隊",
+    "description": "お酒が好きな方、地酒・地ビールを一緒にのみませんか",
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/ea57fb35-291e-4714-a622-7539410302ad/logo/1782282106612-s9odkqlv2cj.webp",
+    "logoDarkUrl": null,
+    "slug": "ea57fb35-291e-4714-a622-7539410302ad",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 3,
+    "followersCount": 0,
+    "tags": []
+  },
+  {
+    "id": "9c6d052b-6a4a-400e-9aa6-d36b2befd6e7",
+    "name": "広島LOVE",
+    "description": "広島出身の方、広島のお好み焼、カープ、サンフレッチェをこよなく愛する方。\n\nどこでも広島のお好み焼が食べたいｗ\n都内ではカープ、ソニア、剛毅、ほじゃひが好きです。\n毎週食べたい、毎日食べたいｗ",
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/9c6d052b-6a4a-400e-9aa6-d36b2befd6e7/logo/1782259947603-ar67jbdw73n.webp",
+    "logoDarkUrl": null,
+    "slug": "9c6d052b-6a4a-400e-9aa6-d36b2befd6e7",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 6,
+    "followersCount": 0,
+    "tags": [
+      {
+        "id": "f5d80efe-0dae-4e6c-9ec2-d80e0931ebc4",
+        "name": "広島",
+        "category": null,
+        "order": 0
+      },
+      {
+        "id": "4816475b-3458-446c-a3cd-c60782788fee",
+        "name": "サンフレッチェ",
+        "category": null,
+        "order": 1
+      },
+      {
+        "id": "98407605-40a2-4eee-93fb-6e4504eecfbb",
+        "name": "カープ",
+        "category": null,
+        "order": 2
+      },
+      {
+        "id": "79a10b88-53f0-41a2-8b95-0dcdeef13e5e",
+        "name": "お好み焼",
+        "category": null,
+        "order": 3
+      },
+      {
+        "id": "5adc7a43-2054-4f98-b28e-15577e05dd2b",
+        "name": "じゃけぇ",
+        "category": null,
+        "order": 4
+      }
+    ]
+  },
+  {
+    "id": "e77bdf9d-22e6-46b5-86f9-8bcb923aeb7f",
+    "name": "IVS期間中の出会いを設計するコミュニティ！",
+    "description": "IVS期間中、「誰に会うべきかわからない」「会いたい人に会えない」「会って終わりになってしまう」といった課題を解決するための、スタートアップファウンダー向けコミュニティです。\n\n本コミュニティでは、VC・CVC・事業会社・先輩起業家・専門家などとの接点づくりを、StartPassが仲介役となり、ネットワークを活用しながら、IVS期間中の面談機会や継続的な接点づくりを支援します。\n\nまた、7月2日（木）には、京都 蔦屋書店 SHARE LOUNGEにて、「成果につながる、ファウンダー面談会」を開催します。\n\n事前相談をもとに、VC・CVC・事業会社・先輩起業家との面談機会を設計し、13:00〜18:00は個別面談、18:00〜20:00は懇親会を予定しています。コミュニティで生まれたつながりを、リアルな面談と継続的な関係構築につなげる場としてご活用ください。\n\n■ リアルイベント参加申し込み\nhttps://4s.link/ja/7a8c7b44-58c9-4f3d-8597-0bd8a54ff3e5\n\n交流だけで終わず、会うべき人と出会い、次の一歩につながるコミュニティを目指します。",
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/e77bdf9d-22e6-46b5-86f9-8bcb923aeb7f/logo/1782187372530-uw90k8o6xq.webp",
+    "logoDarkUrl": null,
+    "slug": "e77bdf9d-22e6-46b5-86f9-8bcb923aeb7f",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 30,
+    "followersCount": 0,
+    "tags": [
+      {
+        "id": "77e87c73-efd0-45a1-862c-d9218a6e3da2",
+        "name": "メンタリング",
+        "category": null,
+        "order": 0
+      },
+      {
+        "id": "3332bc20-2da9-41b6-9b89-c57ab7f607f1",
+        "name": "マッチング",
+        "category": null,
+        "order": 1
+      },
+      {
+        "id": "3f9fa6ea-e897-4bd4-ad4b-e2e18880ae56",
+        "name": "資金調達",
+        "category": null,
+        "order": 2
+      },
+      {
+        "id": "7eed9ff7-c762-4a5c-a804-4179e71abbc1",
+        "name": "事業会社",
+        "category": null,
+        "order": 3
+      },
+      {
+        "id": "93b20781-98b6-4858-a107-9a868ad61803",
+        "name": "協業",
+        "category": null,
+        "order": 4
+      },
+      {
+        "id": "b7e753b5-a8dd-4ed7-a836-365bcf2cf742",
+        "name": "VC",
+        "category": null,
+        "order": 5
+      },
+      {
+        "id": "aebf8ede-7bda-42d8-bb79-e9f8b0542e82",
+        "name": "CVC",
+        "category": null,
+        "order": 6
+      }
+    ]
+  },
+  {
+    "id": "d6abfeef-cddb-4b24-ae67-65dd981a1276",
+    "name": "Stripe と決済や収益、価格戦略について話すコミュニティ",
+    "description": null,
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/d6abfeef-cddb-4b24-ae67-65dd981a1276/logo/1782116487812-ibbemrtpnm9.webp",
+    "logoDarkUrl": null,
+    "slug": "d6abfeef-cddb-4b24-ae67-65dd981a1276",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 6,
+    "followersCount": 0,
+    "tags": []
+  },
+  {
+    "id": "79225c2d-0036-4824-a853-a30df2864f37",
+    "name": "三田会",
+    "description": "慶應義塾大学のOB/OG、現役生のためのグループです。\n明治会のサイドイベントがあったので、三田会もつくってみますか・・・という感じで、試しに作ってみました。もし・・・もし需要があれば、7/3か、それ以降の東京とかでmeetupしましょう。",
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/79225c2d-0036-4824-a853-a30df2864f37/logo/1782113344458-ea58ffltxfg.webp",
+    "logoDarkUrl": null,
+    "slug": "79225c2d-0036-4824-a853-a30df2864f37",
+    "featured": false,
+    "enabledChat": true,
+    "memberCount": 40,
+    "followersCount": 0,
+    "tags": [
+      {
+        "id": "be31edc1-3f0e-4e25-9a55-0708f16a76ea",
+        "name": "三田会",
+        "category": null,
+        "order": 0
+      },
+      {
+        "id": "f8382bac-c203-4545-bbe2-f1342f96fb5a",
+        "name": "慶應義塾大学",
+        "category": null,
+        "order": 1
+      },
+      {
+        "id": "3035b33e-e763-4343-8249-3d787c57a4a9",
+        "name": "慶応",
+        "category": null,
+        "order": 2
+      },
+      {
+        "id": "8054d63f-1ec7-439e-b1ed-7724e97453e5",
+        "name": "慶應",
+        "category": null,
+        "order": 3
+      },
+      {
+        "id": "7ed81350-0687-4245-9954-fc16d2ddd5a5",
+        "name": "スタートアップ",
+        "category": null,
+        "order": 4
+      },
+      {
+        "id": "bac8aa25-e817-4155-84d1-192286260654",
+        "name": "投資家",
+        "category": null,
+        "order": 5
+      },
+      {
+        "id": "4d279a21-4661-47dd-8680-7cf0453baae0",
+        "name": "オープンイノベーション",
+        "category": null,
+        "order": 6
+      },
+      {
+        "id": "42389643-1c88-429c-b5e8-3fa7e5941c8e",
+        "name": "塾生も歓迎",
+        "category": null,
+        "order": 7
+      }
+    ]
+  },
+  {
+    "id": "0c195534-d176-46f4-9346-6c053c37c40d",
+    "name": "愛知・東海エリア「裏」攻略ミーティング",
+    "description": "日本最大の製造業集積地で、事業をスケールする方法を教えあいましょう。フィジカルAiなどに興味のある方も大歓迎です。\n\nサイドイベント\nhttps://4s.link/ja/4bc39573-3f08-4923-9d8e-fd4f287547fa",
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/0c195534-d176-46f4-9346-6c053c37c40d/logo/1782102984561-4kjmxkz6qn.webp",
+    "logoDarkUrl": null,
+    "slug": "0c195534-d176-46f4-9346-6c053c37c40d",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 17,
+    "followersCount": 0,
+    "tags": []
+  },
+  {
+    "id": "0b2b6e21-3e7b-4a6c-9ceb-290c56688eb7",
+    "name": "KDDI ∞ Labo",
+    "description": "事業共創プラットフォーム「KDDI ∞ Labo」はスタートアップと多様な大企業のアセットを連携させて事業支援を行い、社会にインパクトのある新たな事業を創出します。",
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/0b2b6e21-3e7b-4a6c-9ceb-290c56688eb7/logo/1781851648240-rlf0e5s16me.webp",
+    "logoDarkUrl": "https://static.4s.link/communities/0b2b6e21-3e7b-4a6c-9ceb-290c56688eb7/logo-dark/1781851651592-7iin7fr37on.webp",
+    "slug": "open-innovation-program_mugenlabo",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 23,
+    "followersCount": 0,
+    "tags": [
+      {
+        "id": "b8a5dcb2-9b3b-4794-94db-f376eb733008",
+        "name": "オープンイノベーション",
+        "category": null,
+        "order": 0
+      },
+      {
+        "id": "50cf8cb4-fccf-43a9-87d9-b0c13ecd7c44",
+        "name": "スタートアップ",
+        "category": null,
+        "order": 1
+      },
+      {
+        "id": "6048bcb1-21ab-4ad4-8158-a4c4e630942a",
+        "name": "KDDI",
+        "category": null,
+        "order": 2
+      }
+    ]
+  },
+  {
+    "id": "bf0d8fe5-7ae7-42ad-88bb-5edbf68fdeee",
+    "name": "官民連携 Goodness!!!",
+    "description": "官民連携、政策、自治体連携、社会課題解決に関心のある人が集まる場です。スタートアップ、行政、自治体、議員・秘書、政策担当、Public Affairsに関わる方など、IVSでゆるくつながりましょう。",
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/bf0d8fe5-7ae7-42ad-88bb-5edbf68fdeee/logo/1781775291897-h8m7w19q4eq.webp",
+    "logoDarkUrl": null,
+    "slug": "bf0d8fe5-7ae7-42ad-88bb-5edbf68fdeee",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 48,
+    "followersCount": 0,
+    "tags": [
+      {
+        "id": "52e302e2-37ed-468e-aa95-0e01c495ad1e",
+        "name": "自治体",
+        "category": null,
+        "order": 0
+      },
+      {
+        "id": "9eb9bbda-613e-49a0-82dc-9b6bf56643ba",
+        "name": "行政",
+        "category": null,
+        "order": 1
+      },
+      {
+        "id": "dda2b3c4-8161-484a-8c54-e0c0c1bf833c",
+        "name": "スタートアップ",
+        "category": null,
+        "order": 2
+      },
+      {
+        "id": "339ee6f7-8651-49f3-b322-f27623f45e2c",
+        "name": "ネットワーキング",
+        "category": null,
+        "order": 3
+      },
+      {
+        "id": "6f291163-f1e0-4609-97d2-cd1a83af2248",
+        "name": "地方創生",
+        "category": null,
+        "order": 4
+      },
+      {
+        "id": "964f1603-7add-4664-9743-924f4a8f3229",
+        "name": "官民連携",
+        "category": null,
+        "order": 5
+      },
+      {
+        "id": "743a4792-9298-471d-8db5-e50ad9ef9cc1",
+        "name": "パブリックアフェアーズ",
+        "category": null,
+        "order": 6
+      },
+      {
+        "id": "aa466ba6-eaa5-49ab-97c9-8f6076ebe551",
+        "name": "官民共創",
+        "category": null,
+        "order": 7
+      },
+      {
+        "id": "3b8c606d-12c2-42b8-b956-feea6064e9f3",
+        "name": "政治",
+        "category": null,
+        "order": 8
+      }
+    ]
+  },
+  {
+    "id": "c3eaf8ae-403a-4da4-8242-5d294b1dbab6",
+    "name": "ADK",
+    "description": "「ファングロースパートナー」のビジョンのもと、広告・マーケティング領域に留まらず、事業やブランドのトランスフォーメーション、データアナリティクスやテクノロジープラットフォームの整備等、様々な課題に対しての解決に向けた、最適な戦略提案からアイデア開発、実行までを統合的に支援。顧客体験の仕組み全体を設計し、さらなるビジネス成長への貢献と、新たな価値の創造を目指します。",
+    "languages": null,
+    "joinType": "INVITATION_ONLY",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/c3eaf8ae-403a-4da4-8242-5d294b1dbab6/logo/1781769577937-kqzkbfcplpb.webp",
+    "logoDarkUrl": null,
+    "slug": "c3eaf8ae-403a-4da4-8242-5d294b1dbab6",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 2,
+    "followersCount": 0,
+    "tags": []
+  },
+  {
+    "id": "4a880c05-7540-4d0c-826d-6131627f0c3e",
+    "name": "法律事務所ZeLo",
+    "description": null,
+    "languages": null,
+    "joinType": "INVITATION_ONLY",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/4a880c05-7540-4d0c-826d-6131627f0c3e/logo/1781680205192-gpx3ueq5dx5.webp",
+    "logoDarkUrl": null,
+    "slug": "4a880c05-7540-4d0c-826d-6131627f0c3e",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 1,
+    "followersCount": 0,
+    "tags": []
+  },
+  {
+    "id": "488c8714-d78c-4cd0-b3c9-63bdf8abbf71",
+    "name": "サウナ×スナックかなこ 定期貸切コミュニティー",
+    "description": "青物横丁にある謎施設「サウナ×スナックかなこ」が好きすぎて、定期的に貸切を行っています。サウナとお酒で盛り上がれる天才か？と思う組み合わせ。しかも貸切だともっと自由度が上がるのです。",
+    "languages": null,
+    "joinType": "INVITATION_ONLY",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/488c8714-d78c-4cd0-b3c9-63bdf8abbf71/logo/1781596794927-y1vsqs1lq6.webp",
+    "logoDarkUrl": null,
+    "slug": "saunakanako",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 8,
+    "followersCount": 0,
+    "tags": [
+      {
+        "id": "64ed4833-4c74-4b40-9e1a-7fa85d30ea9c",
+        "name": "サウナ",
+        "category": null,
+        "order": 0
+      },
+      {
+        "id": "83f265af-44cb-4615-898f-1b84257c2412",
+        "name": "スナック",
+        "category": null,
+        "order": 1
+      },
+      {
+        "id": "f699b8ac-553e-42ee-ba36-9c271e0ec874",
+        "name": "貸切",
+        "category": null,
+        "order": 2
+      }
+    ]
+  },
+  {
+    "id": "ddbddd11-a2d3-4129-99e5-fc8de52e90a2",
+    "name": "IVS GLOBAL EVENT（For International Attendees）",
+    "description": "The ultimate guide to official and unofficial side events for international attendees, global-minded startups, and VCs at IVS Kyoto. Discover cross-border networking, pitch sessions, and exclusive gatherings designed to accelerate your global growth. Connect, collaborate, and expand your ecosystem here!\n\nIVS京都に参加する海外ゲスト、そしてグローバル展開を目指すスタートアップやVCのためのサイドイベントをまとめて紹介します。国際的なネットワーキング、ピッチイベント、クロスボーダーなコミュニティ交流を通じて、世界への繋がりをここから広げましょう！\n\nPresented by 『Startup Now』",
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/ddbddd11-a2d3-4129-99e5-fc8de52e90a2/logo/1781576840191-53k7j8jqu4l.webp",
+    "logoDarkUrl": "https://static.4s.link/communities/ddbddd11-a2d3-4129-99e5-fc8de52e90a2/logo-dark/1781578605401-ztrbl9yj70h.webp",
+    "slug": "global",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 47,
+    "followersCount": 0,
+    "tags": [
+      {
+        "id": "0effccf1-508b-449d-b66d-d755882cc5ce",
+        "name": "global",
+        "category": null,
+        "order": 0
+      },
+      {
+        "id": "b29541f9-e6b3-4627-aeb2-82e6b752f13f",
+        "name": "グローバル",
+        "category": null,
+        "order": 1
+      },
+      {
+        "id": "7e1b1bd6-b7b9-4954-b744-020ac7e8e8e7",
+        "name": "English",
+        "category": null,
+        "order": 2
+      },
+      {
+        "id": "a729c675-7934-470b-b326-30164331df33",
+        "name": "英語",
+        "category": null,
+        "order": 3
+      },
+      {
+        "id": "295be44e-69f5-4e3b-b9ef-2fd3fc7cb050",
+        "name": "Meetup",
+        "category": null,
+        "order": 4
+      },
+      {
+        "id": "37daf374-7ed2-437a-ab92-747c00c6c46e",
+        "name": "交流会",
+        "category": null,
+        "order": 5
+      },
+      {
+        "id": "f12d2c19-f5c6-4aa7-97c7-92863fb24cf4",
+        "name": "Session",
+        "category": null,
+        "order": 6
+      },
+      {
+        "id": "438e217f-f455-4da6-ae95-f76613a2f941",
+        "name": "セッション",
+        "category": null,
+        "order": 7
+      }
+    ]
+  },
+  {
+    "id": "9f46dd70-14d0-4e47-abed-ec570ffc67b4",
+    "name": "AI Ops Manager",
+    "description": "AI Ops Managerは、組織を“AIネイティブ”に変革するためのAI人材プラットフォームです。実績豊富なプロAI人材が御社の内部メンバーとして参画し、業務フローの再設計からAIツール導入、現場定着・運用までを一気通貫で支援。急成長中のスタートアップから日本を代表するエンタープライズまで、最短即日アサインで成果ベースのAI活用を伴走します。\n\nAI Ops Manager is the execution-focused AI partner trusted by startups and enterprises to make their organizations AI-native. Embed senior AI talent as internal team members and scale faster with end-to-end support across workflow redesign, implementation, and adoption.⁠",
+    "languages": null,
+    "joinType": "INVITATION_ONLY",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/9f46dd70-14d0-4e47-abed-ec570ffc67b4/logo/1781568862751-7im583905wy.webp",
+    "logoDarkUrl": "https://static.4s.link/communities/9f46dd70-14d0-4e47-abed-ec570ffc67b4/logo-dark/1781568867705-ch0uas89hw.webp",
+    "slug": "ai-ops-manager",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 2,
+    "followersCount": 0,
+    "tags": []
+  },
+  {
+    "id": "f073f50c-9df2-4357-a90e-745287da82a1",
+    "name": "ボーリング部",
+    "description": "ボーリングをします。",
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/f073f50c-9df2-4357-a90e-745287da82a1/logo/1781504638052-br2i0oxle8.webp",
+    "logoDarkUrl": null,
+    "slug": "f073f50c-9df2-4357-a90e-745287da82a1",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 2,
+    "followersCount": 0,
+    "tags": []
+  },
+  {
+    "id": "8fdd6162-439e-4545-918b-93fc0515c19c",
+    "name": "IVS SOCIAL(ソーシャルイベントまとめました)",
+    "description": "社会課題解決を目的とする方々の集まりです。具体的にはゼブラ/ローカルゼブラ/インパクトスタートアップ/インパクト投資/NPO/支援機関/などなど社会課題解決を志向していれば参加可能です。",
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/8fdd6162-439e-4545-918b-93fc0515c19c/logo/1781500222920-34mprpe8cfh.webp",
+    "logoDarkUrl": "https://static.4s.link/communities/8fdd6162-439e-4545-918b-93fc0515c19c/logo-dark/1781500232126-hjirarh185t.webp",
+    "slug": "ivs-social",
+    "featured": false,
+    "enabledChat": true,
+    "memberCount": 45,
+    "followersCount": 0,
+    "tags": [
+      {
+        "id": "93af892f-6a61-4f76-afd5-7a32bfc01e98",
+        "name": "ソーシャル",
+        "category": null,
+        "order": 0
+      },
+      {
+        "id": "618da07e-c05c-4535-9d62-de01e74a9f3f",
+        "name": "社会課題解決",
+        "category": null,
+        "order": 1
+      },
+      {
+        "id": "6da3066e-1ba2-4179-a72d-f8f793b11907",
+        "name": "ゼブラ",
+        "category": null,
+        "order": 2
+      },
+      {
+        "id": "b7a47772-217f-4ab5-b4fc-6c07eb345e64",
+        "name": "ローカルゼブラ",
+        "category": null,
+        "order": 3
+      },
+      {
+        "id": "c97b77f2-79ee-491a-b160-73d27565560b",
+        "name": "地銀",
+        "category": null,
+        "order": 4
+      },
+      {
+        "id": "b99f88be-e99f-4d08-91b0-8fb98fbd0d55",
+        "name": "金融",
+        "category": null,
+        "order": 5
+      },
+      {
+        "id": "bc434862-f622-41a9-be10-2d02fd59cd21",
+        "name": "インパクト",
+        "category": null,
+        "order": 6
+      },
+      {
+        "id": "407fa310-3d04-464a-9783-ad3413603605",
+        "name": "インパクトスタートアップ",
+        "category": null,
+        "order": 7
+      },
+      {
+        "id": "8083dfdd-54b8-483e-9fd1-1473dba84281",
+        "name": "インパクト投資",
+        "category": null,
+        "order": 8
+      },
+      {
+        "id": "34be75fb-e296-4524-8b69-acc16ac3fcdf",
+        "name": "社会課題",
+        "category": null,
+        "order": 9
+      },
+      {
+        "id": "61d50734-528e-4247-81f6-abfd83840b41",
+        "name": "地域課題",
+        "category": null,
+        "order": 10
+      }
+    ]
+  },
+  {
+    "id": "a9deba4f-ff2d-4031-8c36-b2ef5d0cd354",
+    "name": "foobar*（Sun Asterisk）",
+    "description": "Sun*が運営するコミュニティfoobar*です！\n7/1(水)、7/2(木)にサイドイベントを主催します🍻ビールが好きな開発・新規事業に携わる皆さん！ぜひ一緒に語り合いましょう！\n\n◉7/1(水) 17:00 - 21:30\n【IVS Dev & Craft Night by Figma & Sun*】\n@イタリアンビアパブ ICHI－YA\n\n◉7/2(木) 17:00 - 21:30\n【電脳ギョーザ倶楽部】\n@夷川餃子なかじま本店",
+    "languages": null,
+    "joinType": "APPROVAL_REQUIRED",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/a9deba4f-ff2d-4031-8c36-b2ef5d0cd354/logo/1781232091446-jnd2kshcd1e.webp",
+    "logoDarkUrl": "https://static.4s.link/communities/a9deba4f-ff2d-4031-8c36-b2ef5d0cd354/logo-dark/1781234312541-u7txia0ejv9.webp",
+    "slug": "sun-asterisk-foobar",
+    "featured": false,
+    "enabledChat": true,
+    "memberCount": 12,
+    "followersCount": 0,
+    "tags": [
+      {
+        "id": "b147e9a4-856c-4ee3-ac52-144cc45c833d",
+        "name": "新規事業",
+        "category": null,
+        "order": 0
+      },
+      {
+        "id": "979b1fa6-e38b-45eb-bdcb-d8e5f6b04e94",
+        "name": "価値創造",
+        "category": null,
+        "order": 1
+      },
+      {
+        "id": "d26589eb-a0e8-4c1a-8ece-39e9eeab718f",
+        "name": "事業会社",
+        "category": null,
+        "order": 2
+      },
+      {
+        "id": "24280797-f830-4f46-951f-a3bc7e307847",
+        "name": "システム開発",
+        "category": null,
+        "order": 3
+      },
+      {
+        "id": "911e8fc9-c1e6-4139-a626-28ea06bc2bc3",
+        "name": "事業開発",
+        "category": null,
+        "order": 4
+      },
+      {
+        "id": "a2633c9f-a928-4c7d-b6a1-ff58cdf7576b",
+        "name": "エンジニア",
+        "category": null,
+        "order": 5
+      },
+      {
+        "id": "7f8247df-67bb-48c3-8f4c-a3cce24132e6",
+        "name": "デザイナー",
+        "category": null,
+        "order": 6
+      },
+      {
+        "id": "3e1ea843-0455-4aa5-b2cb-fec7b2978a63",
+        "name": "PM",
+        "category": null,
+        "order": 7
+      },
+      {
+        "id": "cb4d8ee6-a07b-4fbb-963e-9660985ab1d7",
+        "name": "ビジネスデザイナー",
+        "category": null,
+        "order": 8
+      },
+      {
+        "id": "3c30f10a-bab5-4289-89be-5987fd0ba327",
+        "name": "AI駆動開発",
+        "category": null,
+        "order": 9
+      },
+      {
+        "id": "3058972f-86b1-455d-b0eb-580aaacc625b",
+        "name": "プラグイン",
+        "category": null,
+        "order": 10
+      },
+      {
+        "id": "51ddedcc-1ea0-490a-b511-0ccde60bcbbc",
+        "name": "デザインシステム",
+        "category": null,
+        "order": 11
+      }
+    ]
+  },
+  {
+    "id": "0464b0e1-c383-475a-addf-30f3026c7b93",
+    "name": "神社仏閣・史跡好き at IVS",
+    "description": "神社やお寺、歴史、史跡、日本文化に興味のあるIVS参加者のための交流コミュニティです\n\n観光、地域づくり、文化コンテンツ、インバウンド、アート、まちづくり、事業開発など、神社仏閣をきっかけに話せるテーマはたくさんあります\n\n詳しい人も、少し興味があるだけの人も歓迎です\n京都に来たこの機会に、神社仏閣・歴史・日本文化の話でつながりましょう\n\n関連サイドイベント\n\n■ トークセッション『推しと祈り』\n2026年7月2日（木）11:00〜／金戒光明寺（みやこめっせから1km バス9分）\nLINEヤフー前会長川邊健太郎氏を特別ゲストに迎え、宗教、アイドル、推し活、祈りの交差点を考えるトークセッションです\nhttps://4s.link/ja/ositoinori\n\n■ THE 極楽 NIGHT\n2026年7月2日（木）18:00〜／金戒光明寺\n横浜関内大ホール1000人ワンマン THE南無ズ\nH1法話グランプリ2023チャンピョンなど\n仏教×音楽×漫才×怪談の総合ライブフェスです\nhttps://4s.link/ja/thegokurakunight\n\n共同運営\nみほとけ　河村英昌　高橋淨休",
+    "languages": {
+      "en": {
+        "name": "Shrines, Temples, History & Historic Sites at IVS",
+        "description": "This is a community for IVS participants who are interested in shrines, temples, history, historic sites, and Japanese culture.\n\nShrines and temples can open up many conversations: tourism, local community building, cultural content, inbound travel, art, urban development, and business development.\n\nWhether you are deeply knowledgeable or simply curious, you are very welcome. Since we are gathering in Kyoto, let’s connect through conversations about shrines, temples, history, and Japanese culture.\n\nRelated Side Events\n\n■ Talk Session: “Oshi and Prayer”\nJuly 2, 2026, 11:00 AM / Konkai Komyoji Temple\n1 km from Miyako Messe, about 9 minutes by bus\n\nA talk session exploring the intersection of religion, idols, oshi-katsu, and prayer, featuring Kentaro Kawabe, former Chairman of LY Corporation / LINE Yahoo, as a special guest.\nhttps://4s.link/ja/ositoinori\n\n■ THE GOKURAKU NIGHT\nJuly 2, 2026, 6:00 PM / Konkai Komyoji Temple\n\nA live festival combining Buddhism, music, comedy, and ghost stories, featuring THE NAMUZ, who held a 1,000-person solo concert at Yokohama Kannai Hall, as well as the 2023 H1 Dharma Talk Grand Prix Champion and more.\nhttps://4s.link/ja/thegokurakunight\n\nCo-hosted by:\nMihotoke\nHidemasa Kawamura\nJokyu Takahashi"
+      }
+    },
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/0464b0e1-c383-475a-addf-30f3026c7b93/logo/1781230538967-2u6z3c5i97x.webp",
+    "logoDarkUrl": "https://static.4s.link/communities/0464b0e1-c383-475a-addf-30f3026c7b93/logo-dark/1781232181163-ikak5dzsb.webp",
+    "slug": "0464b0e1-c383-475a-addf-30f3026c7b93",
+    "featured": false,
+    "enabledChat": true,
+    "memberCount": 24,
+    "followersCount": 0,
+    "tags": [
+      {
+        "id": "946e73a8-c08d-4811-9442-882259472ffe",
+        "name": "神社",
+        "category": null,
+        "order": 0
+      },
+      {
+        "id": "e8fa2f56-527a-47a7-ba40-84c68b9a95a2",
+        "name": "仏教",
+        "category": null,
+        "order": 1
+      },
+      {
+        "id": "ed8f4002-4d9e-4986-96e7-da907553d16a",
+        "name": "歴史",
+        "category": null,
+        "order": 2
+      },
+      {
+        "id": "6a8711a3-ae91-4635-b010-67c17ac8e3d8",
+        "name": "日本文化",
+        "category": null,
+        "order": 3
+      },
+      {
+        "id": "443a8f25-764a-4966-954e-d66d1e7fbe5a",
+        "name": "アイドル",
+        "category": null,
+        "order": 4
+      }
+    ]
+  },
+  {
+    "id": "ef53a87b-a016-4b40-9816-2c1f2d5d7dbe",
+    "name": "Framer",
+    "description": "Framerは、YC関連企業の55%が採用するグローバルで勢いのあるAIサイトビルダーです。デザイナーとマーケターがより高速に、高品質なWebサイトを公開でき、急成長中のスタートアップからFortune 500に名を連ねる大企業まで、世界中の多くの企業で採用されています。\n\nFramer is a fast-growing global AI site builder used by 55% of YC-affiliated companies. It enables designers and marketers to publish high-quality websites faster, and is adopted by companies around the world, from rapidly growing startups to Fortune 500 enterprises.",
+    "languages": null,
+    "joinType": "INVITATION_ONLY",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/ef53a87b-a016-4b40-9816-2c1f2d5d7dbe/logo/1781507212430-j5jqsqiyuw.webp",
+    "logoDarkUrl": "https://static.4s.link/communities/ef53a87b-a016-4b40-9816-2c1f2d5d7dbe/logo-dark/1781507213973-027rg5hfhabd.webp",
+    "slug": "framer",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 3,
+    "followersCount": 0,
+    "tags": [
+      {
+        "id": "a5d0946c-fa00-4de8-b0fd-6911e922e360",
+        "name": "Design",
+        "category": null,
+        "order": 0
+      },
+      {
+        "id": "57e09415-a9b3-482e-ae11-e221ff1da3e3",
+        "name": "AI",
+        "category": null,
+        "order": 1
+      },
+      {
+        "id": "ff136cbd-ee00-4291-9b45-4f2d052d10bf",
+        "name": "Creative",
+        "category": null,
+        "order": 2
+      }
+    ]
+  },
+  {
+    "id": "e2349c16-36dd-463a-a2d1-284b0923ebbc",
+    "name": "NPO/ソーシャルビジネス",
+    "description": "NPO、社会起業家の方！興味がある方でも！\n経済性×社会性を両立し、希望に満ち溢れたミライを！",
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/e2349c16-36dd-463a-a2d1-284b0923ebbc/logo/1781093615654-uufp6k7lode.webp",
+    "logoDarkUrl": null,
+    "slug": "e2349c16-36dd-463a-a2d1-284b0923ebbc",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 19,
+    "followersCount": 0,
+    "tags": [
+      {
+        "id": "04346bce-b57c-4fe3-a739-abbe7a0dfb06",
+        "name": "NPO",
+        "category": null,
+        "order": 0
+      },
+      {
+        "id": "d8f4dd82-2644-484c-b685-62387dc28a54",
+        "name": "社会起業家",
+        "category": null,
+        "order": 1
+      },
+      {
+        "id": "052e2099-4255-4af4-8189-22f4fc7df0e9",
+        "name": "ソーシャルビジネス",
+        "category": null,
+        "order": 2
+      }
+    ]
+  },
+  {
+    "id": "8e270cdf-1e3b-4d26-ac1c-3cc80a11a94e",
+    "name": "スナック🍶大好き",
+    "description": "しぶいスナックの鉄の扉を開けるのが好きな方🍶スナックにいってみたい方🍶\n\nスナックは世界平和のヒントがつまっていると感じています🕊\n老若男女、立場役割がちがうひとがゆるく集い、その場をつくっていく。一期一会。\n分断ではなくゆるい越境。",
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/8e270cdf-1e3b-4d26-ac1c-3cc80a11a94e/logo/1781092609803-25puhi04gyfj.webp",
+    "logoDarkUrl": null,
+    "slug": "8e270cdf-1e3b-4d26-ac1c-3cc80a11a94e",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 9,
+    "followersCount": 0,
+    "tags": [
+      {
+        "id": "d043b519-d0bc-44ca-8dbe-9beac14e44f1",
+        "name": "スナック",
+        "category": null,
+        "order": 0
+      },
+      {
+        "id": "25a82d0d-f1b7-43f0-b57f-18835414fa36",
+        "name": "酒",
+        "category": null,
+        "order": 1
+      }
+    ]
+  },
+  {
+    "id": "198a48f8-c9aa-418b-8fa4-72bb689288de",
+    "name": "暇なフリーランス&経営者のためのバドミントンサークル",
+    "description": "平日の昼間にバドミントンをやりたい人たちが集まるところです。\n場所：関西",
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/198a48f8-c9aa-418b-8fa4-72bb689288de/logo/1781005874928-zkh5ds6wgff.webp",
+    "logoDarkUrl": null,
+    "slug": "198a48f8-c9aa-418b-8fa4-72bb689288de",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 3,
+    "followersCount": 0,
+    "tags": []
+  },
+  {
+    "id": "56a15ab9-f124-4b5d-be20-8bafc10dcbfb",
+    "name": "SGgrow",
+    "description": "インド・ナイジェリア・日本を中心に、ベンチャー投資・支援事業を展開しています。また、日本企業の海外展開や海外企業の日本進出もお手伝いしています。\n\nWe do startup investment and direct support for businesses centered in India, Nigeria, and Japan, helping Japanese companies expand overseas, and foreign companies enter the Japanese market.",
+    "languages": null,
+    "joinType": "INVITATION_ONLY",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/56a15ab9-f124-4b5d-be20-8bafc10dcbfb/logo/1780997829630-apad4lahr2j.webp",
+    "logoDarkUrl": "https://static.4s.link/communities/56a15ab9-f124-4b5d-be20-8bafc10dcbfb/logo-dark/1780998106265-c7opxzedood.webp",
+    "slug": "sggrow",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 3,
+    "followersCount": 0,
+    "tags": []
+  },
+  {
+    "id": "63ec26ba-4450-45af-a488-dec662ea4711",
+    "name": "おいしいお店にいこう！",
+    "description": "おいしいお店の情報共有をしましょう！\nIVS期間中、タイミングが合えば一緒に行きましょう！\n\nProduced by Foodies Prime",
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/63ec26ba-4450-45af-a488-dec662ea4711/logo/1780980971953-s6qa9mj2p2.webp",
+    "logoDarkUrl": "https://static.4s.link/communities/63ec26ba-4450-45af-a488-dec662ea4711/logo-dark/1780981474306-xrquzburfim.webp",
+    "slug": "foodies-prime",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 22,
+    "followersCount": 0,
+    "tags": [
+      {
+        "id": "64904f04-5024-48ff-95ec-452bb37d20be",
+        "name": "IVS",
+        "category": null,
+        "order": 0
+      },
+      {
+        "id": "faeac5d4-e644-496d-a202-a398ffd6a0c1",
+        "name": "グルメ",
+        "category": null,
+        "order": 1
+      }
+    ]
+  },
+  {
+    "id": "c389c7b4-2763-4a72-afb5-f7bf9a8fdb5d",
+    "name": "【有志】グロービス経営大学院",
+    "description": "グロービス経営大学院の在校生・卒業生の有志コミュニティです。",
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/c389c7b4-2763-4a72-afb5-f7bf9a8fdb5d/logo/1780921426261-d9gbg0dg46t.webp",
+    "logoDarkUrl": null,
+    "slug": "c389c7b4-2763-4a72-afb5-f7bf9a8fdb5d",
+    "featured": false,
+    "enabledChat": true,
+    "memberCount": 14,
+    "followersCount": 0,
+    "tags": []
+  },
+  {
+    "id": "ab74a94e-7986-42dd-8eaa-5385b5f74b27",
+    "name": "【有志】始動Next Innovator",
+    "description": "始動Next Innovatorの有志コミュニティです。",
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/ab74a94e-7986-42dd-8eaa-5385b5f74b27/logo/1780920705967-n1ivt11q1af.webp",
+    "logoDarkUrl": null,
+    "slug": "ab74a94e-7986-42dd-8eaa-5385b5f74b27",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 11,
+    "followersCount": 0,
+    "tags": []
+  },
+  {
+    "id": "01627788-7a2e-48a0-82e9-97bb49b0adac",
+    "name": "AI Dreamers Production (ADP)",
+    "description": "〜AIで夢を叶えよう！〜\n\nAI Dreamers Production（ADP）は、\n日本最大級のAI活用セミナー・コミュニティのひとつです。\n\n【ADPの実績】\n✅ 累計参加申込者数 32,000名突破\n✅ 100名以上のAI講師との対談・登壇実績\n✅ Peatixフォロワー数 6,600名以上（AI団体上位）\n✅ Genspark第1期公式アンバサダー就任（2025年2月）\n✅ AI活用イベント・セミナーを毎月複数回開催",
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/01627788-7a2e-48a0-82e9-97bb49b0adac/logo/1780820303926-bvos9mbmct.webp",
+    "logoDarkUrl": "https://static.4s.link/communities/01627788-7a2e-48a0-82e9-97bb49b0adac/logo-dark/1780820351182-8h4zchportu.webp",
+    "slug": "01627788-7a2e-48a0-82e9-97bb49b0adac",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 14,
+    "followersCount": 0,
+    "tags": [
+      {
+        "id": "c3964909-b49d-4299-b9cc-2ee1ace58e5a",
+        "name": "AI",
+        "category": null,
+        "order": 0
+      },
+      {
+        "id": "2a791f67-62f3-4ca4-9223-3f1a0cd91131",
+        "name": "Genspark",
+        "category": null,
+        "order": 1
+      },
+      {
+        "id": "574d286a-20db-434c-8ddc-ce36cc516e0e",
+        "name": "副業",
+        "category": null,
+        "order": 2
+      },
+      {
+        "id": "1de9d2f5-0d58-4bad-b91f-e3b0768c666a",
+        "name": "起業",
+        "category": null,
+        "order": 3
+      }
+    ]
+  },
+  {
+    "id": "82841ccd-724a-43ca-88ad-b632c617e337",
+    "name": "Mental Scale-up Alliance",
+    "description": null,
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": null,
+    "logoDarkUrl": null,
+    "slug": "82841ccd-724a-43ca-88ad-b632c617e337",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 2,
+    "followersCount": 0,
+    "tags": []
+  },
+  {
+    "id": "b6239d4b-e057-4712-9efa-186dbb8f24a4",
+    "name": "TORICO Running Club",
+    "description": "普段走っている人も走っていない人もこの機会に走って気持ちよくIVSに臨みましょう！",
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/b6239d4b-e057-4712-9efa-186dbb8f24a4/logo/1780307236920-m28gfrxwgy.webp",
+    "logoDarkUrl": null,
+    "slug": "torico-runningclub",
+    "featured": false,
+    "enabledChat": true,
+    "memberCount": 16,
+    "followersCount": 0,
+    "tags": [
+      {
+        "id": "1c6ccb82-c171-4970-852a-825c1c099dd6",
+        "name": "runningclub",
+        "category": null,
+        "order": 0
+      },
+      {
+        "id": "36c008ca-68c6-48a5-8ede-f4b23aa8d331",
+        "name": "ランニングクラブ",
+        "category": null,
+        "order": 1
+      }
+    ]
+  },
+  {
+    "id": "fa752b3e-b3ea-4227-b047-9e7dfe1d7485",
+    "name": "サウナ好き",
+    "description": "♨️せっかくIVSに参加したので、朝サウナや、夜サウナや、サウナside eventを参加者でご一緒したい、、、という超緩いコミュニティ\n(写真はイメージです)",
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/fa752b3e-b3ea-4227-b047-9e7dfe1d7485/logo/1780184758540-qyc9wk0p5w.webp",
+    "logoDarkUrl": null,
+    "slug": "fa752b3e-b3ea-4227-b047-9e7dfe1d7485",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 40,
+    "followersCount": 0,
+    "tags": []
+  },
+  {
+    "id": "d4e21af9-f68d-4d4c-b626-f9b724c8738a",
+    "name": "Gugen Lab",
+    "description": "AI系イベントならGugen Labから探しましょう",
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/d4e21af9-f68d-4d4c-b626-f9b724c8738a/logo/1780138593790-4z170sj1j6e.webp",
+    "logoDarkUrl": null,
+    "slug": "d4e21af9-f68d-4d4c-b626-f9b724c8738a",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 4,
+    "followersCount": 0,
+    "tags": []
+  },
+  {
+    "id": "c249ab23-78c6-4a59-a065-ef53ca6eefd7",
+    "name": "青森県",
+    "description": "経済産業部　企業立地・創出課　創業・起業支援グループ",
+    "languages": {
+      "en": {
+        "name": "Aomori Prefecture"
+      }
+    },
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/c249ab23-78c6-4a59-a065-ef53ca6eefd7/logo/1780042166260-3tujo68fapa.webp",
+    "logoDarkUrl": null,
+    "slug": "aomoriprefecture",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 13,
+    "followersCount": 0,
+    "tags": [
+      {
+        "id": "aaad9e58-77b0-4b5f-b446-4e23e9bd9ef3",
+        "name": "青森",
+        "category": null,
+        "order": 0
+      }
+    ]
+  },
+  {
+    "id": "5fec2528-884d-43cc-a55b-2736e187cba3",
+    "name": "CVC VS CVC",
+    "description": null,
+    "languages": null,
+    "joinType": "INVITATION_ONLY",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/5fec2528-884d-43cc-a55b-2736e187cba3/logo/1780019029366-jxvg7wdtsj.webp",
+    "logoDarkUrl": "https://static.4s.link/communities/5fec2528-884d-43cc-a55b-2736e187cba3/logo-dark/1780019132218-f7jszpt7m9.webp",
+    "slug": "cvcvscvc",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 2,
+    "followersCount": 0,
+    "tags": [
+      {
+        "id": "6e1804e4-54d5-4d19-ba0b-c009bcf7dd81",
+        "name": "CVC",
+        "category": null,
+        "order": 0
+      }
+    ]
+  },
+  {
+    "id": "4f6945ca-f3d7-41f3-afc2-4ceaadd1f640",
+    "name": "Japan TACOS Patrol",
+    "description": "NO TACOS NO LIFE\nタコスを食べたい。タコスを愛している。そんなあなたは即加入。タコスイベントをやります。",
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/4f6945ca-f3d7-41f3-afc2-4ceaadd1f640/logo/1779935966955-b9mcb4l9hns.webp",
+    "logoDarkUrl": null,
+    "slug": "tacosjapan",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 14,
+    "followersCount": 0,
+    "tags": [
+      {
+        "id": "e90bfe36-5227-482c-81fb-019b6f115592",
+        "name": "TACOS",
+        "category": null,
+        "order": 0
+      },
+      {
+        "id": "17febc16-db12-4f83-8a07-a1723c5e0f26",
+        "name": "グルメ",
+        "category": null,
+        "order": 1
+      }
+    ]
+  },
+  {
+    "id": "d76dd723-e753-494e-92b6-52a8485a0bee",
+    "name": "Women AI Initiative Japan",
+    "description": "「すべての女性がAIで、その先へ。」Women AI Initiative Japan（WAIJ）は、AI時代の働き方を再定義し、すべての女性が自律的に人生を選択できる社会の実現を推進する一般社団法人です。女性が参加するコミュニティを運営し、産学官連携を通じて、AIリテラシー・スキルの習得支援や活躍機会の創出、啓発活動などを展開しています。多様な背景や志向を持つ女性のキャリア形成を後押しすることを目指します。",
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/d76dd723-e753-494e-92b6-52a8485a0bee/logo/1779935324510-g51izvyt2q.webp",
+    "logoDarkUrl": null,
+    "slug": "waij",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 20,
+    "followersCount": 0,
+    "tags": [
+      {
+        "id": "b01c015d-dda9-4e74-a527-eebe9b0774a4",
+        "name": "WOMAN",
+        "category": null,
+        "order": 0
+      },
+      {
+        "id": "aef80ecb-7335-426e-a22b-a223a0cc84c6",
+        "name": "AI",
+        "category": null,
+        "order": 1
+      }
+    ]
+  },
+  {
+    "id": "d9e0e0c2-cf3b-4a96-bb8c-226c5c875cbd",
+    "name": "学生起業家ナイトコミュニティ",
+    "description": "学生起業家ナイトコミュニティは、これからの日本のスタートアップエコシステムを担う学生起業家・学生起業志望者・若手挑戦者が集い、互いに刺激を受けながら次の挑戦へ踏み出すための場です。\n\nIVSには多様な起業家、投資家、事業会社、行政、大学関係者が集まりますが、学生にとっては、第一線のスタートアップ関係者と接点を持つ一方で、同世代の挑戦者同士が本音でつながる場も非常に重要だと考えています。",
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/d9e0e0c2-cf3b-4a96-bb8c-226c5c875cbd/logo/1779525365219-fbgsvqiozoc.webp",
+    "logoDarkUrl": null,
+    "slug": "d9e0e0c2-cf3b-4a96-bb8c-226c5c875cbd",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 14,
+    "followersCount": 0,
+    "tags": []
+  },
+  {
+    "id": "48fa283d-4d20-4ed3-bf15-c1800d3f5910",
+    "name": "4S,Inc.",
+    "description": "Growth Community Design Studio",
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/48fa283d-4d20-4ed3-bf15-c1800d3f5910/logo/1778574804758-x4hxna2ve.webp",
+    "logoDarkUrl": "https://static.4s.link/communities/48fa283d-4d20-4ed3-bf15-c1800d3f5910/logo-dark/1778575037947-5o5rc6i357n.webp",
+    "slug": "4s_community",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 32,
+    "followersCount": 0,
+    "tags": []
+  },
+  {
+    "id": "eef63363-1296-4e6c-a588-47d1a5c81975",
+    "name": "Curry Society",
+    "description": "美味いカレーが食べたい。それだけ。",
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/eef63363-1296-4e6c-a588-47d1a5c81975/logo/1778576985336-083o789usbhk.webp",
+    "logoDarkUrl": "https://static.4s.link/communities/eef63363-1296-4e6c-a588-47d1a5c81975/logo-dark/1778576997069-lt4dx8gm3g.webp",
+    "slug": "curry-society",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 24,
+    "followersCount": 0,
+    "tags": [
+      {
+        "id": "6638dc83-903f-4ebf-80b5-bbfd7ae59fcd",
+        "name": "カレー",
+        "category": null,
+        "order": 0
+      }
+    ]
+  },
+  {
+    "id": "ab44c2af-cfd8-4f52-a776-2dd1eb38a5e8",
+    "name": "IVS 広報 / PR",
+    "description": "IVSの広報担当やスタートアップの広報担当、VCの広報担当、PR代理店などが集まった広報 / PRのコミュニティです。\n\nIVSでの広報 / PR周りのサイドイベントなどを企画運営していきます。広報 / PRパーソンはとりあえず参加していただけますと。CxOも、広報じゃない方々も大歓迎です！",
+    "languages": null,
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/ab44c2af-cfd8-4f52-a776-2dd1eb38a5e8/logo/1778564190468-2ueqz9wvcye.webp",
+    "logoDarkUrl": "https://static.4s.link/communities/ab44c2af-cfd8-4f52-a776-2dd1eb38a5e8/logo-dark/1778564202815-9cx5suylpjp.webp",
+    "slug": "public_relations",
+    "featured": false,
+    "enabledChat": false,
+    "memberCount": 50,
+    "followersCount": 0,
+    "tags": [
+      {
+        "id": "79ebd74d-5203-4bf9-8d9b-86fc42137158",
+        "name": "広報",
+        "category": null,
+        "order": 0
+      },
+      {
+        "id": "3f52a7a1-3c87-4db9-881d-8040b59d448b",
+        "name": "PR",
+        "category": null,
+        "order": 1
+      },
+      {
+        "id": "df21e57d-646e-426b-97ae-e131e9a78e11",
+        "name": "スタートアップ",
+        "category": null,
+        "order": 2
+      }
+    ]
+  },
+  {
+    "id": "1e017ae3-16de-45b2-8da6-b9d62849e120",
+    "name": "IVS",
+    "description": "IVSは2007年に始まった日本最大規模のスタートアップカンファレンスです。\n起業家、投資家、事業会社、行政、学生など、新規事業創出を軸に集まります。\n\nかつては招待制のクローズドカンファレンスとして全国で開催してきましたが、2023年からチケット制に変更。京都を拠点に年1万人規模へ拡大し、スタートアップエコシステム全体のプラットフォームとして成長してきました。\n\n新しい事業は一人でははじめられません。技術、資金、顧客、経験を持つ人たちの接点をつくるためにIVSは存在しています。最前線の登壇者によるセッション、国内外300社のスタートアップマーケット、年々拡大する参加者発のサイドイベント。「IVS LAUNCHPAD」は累計エントリー5,000社以上、過去登壇企業のうち60社以上がEXIT、100社以上が10億円以上の資金調達を実現しています。\n\n3日間のうちに、計画した出会いと予期せぬ出会いが交差し、事業の転換点が生まれます。\n社会課題の解決と新しい産業への一歩を、すべての参加者に。\n\n「次世代の、起爆剤に。」\nこれが私たちのミッションです。",
+    "languages": {
+      "en": {
+        "description": "IVS is Japan's largest startup conference, launched in 2007. It brings together founders, investors, corporates, public-sector leaders, and students around the creation of new businesses.\n\nOriginally an invitation-only, closed conference held across Japan, IVS transitioned to a ticketed format in 2023. Now based in Kyoto, it has grown to welcome 10,000 attendees annually and has become a platform for the entire startup ecosystem.\n\nNo new business starts alone. IVS exists to create the connections between those who hold the technology, capital, customers, and experience needed to build it. The program features sessions led by frontline practitioners, a Startup Market with 300 companies from Japan and abroad, and an ever-expanding range of side events organized by participants themselves. IVS LAUNCHPAD has drawn over 5,000 cumulative entries; of its past presenters, more than 60 companies have exited and over 100 have raised more than 1 billion yen.\n\nAcross three days, planned encounters and unexpected ones intersect, sparking turning points for businesses. Every participant takes a step toward solving social challenges and shaping new industries.\n\n\"A catalyst for the next generation.\" \nThat is our mission."
+      }
+    },
+    "joinType": "FREE_JOIN",
+    "visibility": "PUBLIC",
+    "logoUrl": "https://static.4s.link/communities/1e017ae3-16de-45b2-8da6-b9d62849e120/logo/1779936621747-wcrs4c2ssj.webp",
+    "logoDarkUrl": "https://static.4s.link/communities/1e017ae3-16de-45b2-8da6-b9d62849e120/logo-dark/1779936332821-4xi9btpeubl.webp",
+    "slug": "ivs_community",
+    "featured": true,
+    "enabledChat": true,
+    "memberCount": 351,
+    "followersCount": 0,
+    "tags": [
+      {
+        "id": "3bdf6e16-2d83-4d1a-bdab-a87b03216943",
+        "name": "IVS",
+        "category": null,
+        "order": 0
+      },
+      {
+        "id": "8d100f2d-d6d8-48e1-b19e-8bc9bde9c396",
+        "name": "スタートアップ",
+        "category": null,
+        "order": 1
+      },
+      {
+        "id": "4413e820-2dc7-4a4e-a5e0-65e527e321dc",
+        "name": "カンファレンス",
+        "category": null,
+        "order": 2
+      }
+    ]
+  }
+]
