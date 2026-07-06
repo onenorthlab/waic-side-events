@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "waic-dev",
-      "runtimeExecutable": "pnpm",
-      "runtimeArgs": ["--dir", "app", "dev"],
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "set -a; source \"$HOME/.claude/kane.env\" 2>/dev/null; set +a; exec pnpm --dir app dev"],
       "port": 5173
     }
   ]

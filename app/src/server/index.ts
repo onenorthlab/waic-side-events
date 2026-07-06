@@ -201,6 +201,43 @@ app.post('/api/events/:slug/register', zValidator('json', registerSchema), async
   return c.json({ ok: true, status: participant.status })
 })
 
+// 防盗链图片代理：仅放行微信图床（qpic/qlogo），带 Referer 取图后透传。
+// 主办方公众号里的原图/海报靠它在站内原样呈现。
+const PROXY_ALLOWED_HOSTS = ['qpic.cn', 'qlogo.cn']
+app.get('/api/images/proxy', async (c) => {
+  const raw = c.req.query('url') || ''
+  let target: URL
+  try {
+    target = new URL(raw)
+  } catch {
+    return c.json({ error: 'invalid_url' }, 400)
+  }
+  if (target.protocol !== 'https:' && target.protocol !== 'http:') return c.json({ error: 'invalid_url' }, 400)
+  const allowed = PROXY_ALLOWED_HOSTS.some((d) => target.hostname === d || target.hostname.endsWith('.' + d))
+  if (!allowed) return c.json({ error: 'host_not_allowed' }, 403)
+
+  try {
+    const upstream = await fetch(target.toString(), {
+      headers: {
+        'User-Agent':
+          'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36',
+        Referer: 'https://mp.weixin.qq.com/',
+      },
+    })
+    if (!upstream.ok) return c.json({ error: 'upstream_failed' }, 502)
+    const contentType = upstream.headers.get('content-type') || 'image/jpeg'
+    if (!contentType.startsWith('image/')) return c.json({ error: 'not_an_image' }, 502)
+    return new Response(upstream.body, {
+      headers: {
+        'Content-Type': contentType,
+        'Cache-Control': 'public, max-age=86400, s-maxage=604800',
+      },
+    })
+  } catch {
+    return c.json({ error: 'proxy_failed' }, 502)
+  }
+})
+
 app.get('/api/amap/place', async (c) => {
   const key = (c.env as any)?.AMAP_KEY
   if (!key) return c.json({ error: 'amap_key_not_configured' }, 500)

@@ -6,10 +6,12 @@ import { events, participants, tickets } from '@/db/schema'
 import { eq, desc, and, sql as sqlExpr } from 'drizzle-orm'
 import { requireAuth } from '@/lib/auth'
 import { sendEmail, registrationApprovedEmail } from '@/lib/email'
+import importApp from './import'
 
 const createEventSchema = z.object({
   title: z.string().min(1),
   description: z.string().optional(),
+  descriptionFormat: z.enum(['html', 'markdown']).optional(),
   eventType: z.enum(['ONSITE', 'ONLINE', 'HYBRID']).default('ONSITE'),
   timezone: z.string().default('Asia/Shanghai'),
   date: z.string().optional(),
@@ -29,6 +31,7 @@ const createEventSchema = z.object({
 const updateEventSchema = z.object({
   title: z.string().min(1).optional(),
   description: z.string().optional(),
+  descriptionFormat: z.enum(['html', 'markdown']).optional(),
   catchphrase: z.string().optional(),
   eventType: z.enum(['ONSITE', 'ONLINE', 'HYBRID']).optional(),
   timezone: z.string().optional(),
@@ -78,6 +81,9 @@ app.use('*', async (c, next) => {
   }
 })
 
+// 外部来源导入（公众号/网页/纯文本 → 活动草稿）
+app.route('/import', importApp)
+
 app.get('/events', async (c) => {
   const db = getDb(c.env)
   const user = await requireAuth(c)
@@ -122,6 +128,7 @@ app.post('/events', zValidator('json', createEventSchema), async (c) => {
     title: body.title,
     catchphrase: null,
     description: body.description || '',
+    descriptionFormat: body.descriptionFormat || null,
     eventType: body.eventType,
     state: 'DRAFT',
     timezone: body.timezone,
@@ -213,6 +220,7 @@ app.patch('/events/:id', zValidator('json', updateEventSchema), async (c) => {
     ...prevData,
     ...(body.title !== undefined && { title: body.title }),
     ...(body.description !== undefined && { description: body.description }),
+    ...(body.descriptionFormat !== undefined && { descriptionFormat: body.descriptionFormat }),
     ...(body.catchphrase !== undefined && { catchphrase: body.catchphrase }),
     ...(body.eventType !== undefined && { eventType: body.eventType }),
     ...(body.timezone !== undefined && { timezone: body.timezone }),
