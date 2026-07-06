@@ -40,11 +40,13 @@ export async function sendEmail(
   }
 }
 
-export function registrationConfirmedEmail(eventTitle: string, eventUrl: string) {
+export function registrationConfirmedEmail(eventTitle: string, eventUrl: string, ticketUrl?: string) {
+  const ticketHtml = ticketUrl ? `<p><b>您的电子票：</b><a href="${ticketUrl}">${ticketUrl}</a><br/>入场时向工作人员出示票面二维码。</p>` : ''
+  const ticketText = ticketUrl ? `\n\n您的电子票：${ticketUrl}\n入场时向工作人员出示票面二维码。` : ''
   return {
     subject: `【报名成功】${eventTitle}`,
-    html: `<p>您好，</p><p>您已成功报名 <b>${eventTitle}</b>。</p><p>活动详情：<a href="${eventUrl}">${eventUrl}</a></p><p>期待与您见面！</p>`,
-    text: `您好，\n\n您已成功报名 ${eventTitle}。\n\n活动详情：${eventUrl}\n\n期待与您见面！`,
+    html: `<p>您好，</p><p>您已成功报名 <b>${eventTitle}</b>。</p>${ticketHtml}<p>活动详情：<a href="${eventUrl}">${eventUrl}</a></p><p>期待与您见面！</p>`,
+    text: `您好，\n\n您已成功报名 ${eventTitle}。${ticketText}\n\n活动详情：${eventUrl}\n\n期待与您见面！`,
   }
 }
 
@@ -56,10 +58,12 @@ export function registrationPendingEmail(eventTitle: string) {
   }
 }
 
-export function registrationApprovedEmail(eventTitle: string, eventUrl: string) {
+export function registrationApprovedEmail(eventTitle: string, eventUrl: string, ticketUrl?: string) {
+  const ticketHtml = ticketUrl ? `<p><b>您的电子票：</b><a href="${ticketUrl}">${ticketUrl}</a><br/>入场时向工作人员出示票面二维码。</p>` : ''
+  const ticketText = ticketUrl ? `\n\n您的电子票：${ticketUrl}\n入场时向工作人员出示票面二维码。` : ''
   return {
     subject: `【报名通过】${eventTitle}`,
-    html: `<p>您好，</p><p>恭喜！您的 <b>${eventTitle}</b> 报名申请已通过审核。</p><p>活动详情：<a href="${eventUrl}">${eventUrl}</a></p><p>期待与您见面！</p>`,
-    text: `您好，\n\n恭喜！您的 ${eventTitle} 报名申请已通过审核。\n\n活动详情：${eventUrl}\n\n期待与您见面！`,
+    html: `<p>您好，</p><p>恭喜！您的 <b>${eventTitle}</b> 报名申请已通过审核。</p>${ticketHtml}<p>活动详情：<a href="${eventUrl}">${eventUrl}</a></p><p>期待与您见面！</p>`,
+    text: `您好，\n\n恭喜！您的 ${eventTitle} 报名申请已通过审核。${ticketText}\n\n活动详情：${eventUrl}\n\n期待与您见面！`,
   }
 }

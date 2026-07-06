@@ -3,6 +3,8 @@ import { EventsListPage } from './routes/EventsList'
 import { EventsMapPage } from './routes/EventsMap'
 import { EventDetailPage } from './routes/EventDetail'
 import { SchedulesPage } from './routes/SchedulesPage'
+import { TicketPage } from './routes/TicketPage'
+import { CheckinPage } from './routes/admin/CheckinPage'
 import { ManagedEventsListPage } from './routes/ManagedEventsList'
 import { EventCreatePage } from './routes/EventCreate'
 import { LoginPage } from './routes/Login'
@@ -41,6 +43,7 @@ const eventsRoute = createRoute({
 
 const eventsMapRoute = createRoute({ getParentRoute: () => rootRoute, path: '/events/maps', component: EventsMapPage })
 const schedulesRoute = createRoute({ getParentRoute: () => rootRoute, path: '/schedules', component: SchedulesPage })
+const ticketRoute = createRoute({ getParentRoute: () => rootRoute, path: '/ticket/$token', component: TicketPage })
 
 // 活动详情:归档真实路由是 /en/<slug>;切片单 locale,简化为 /<slug>(放最后, 让静态路由优先)
 const detailRoute = createRoute({
@@ -100,6 +103,7 @@ function placeholder(titleKey: string) {
 }
 
 const adminParticipantsRoute = createRoute({ getParentRoute: () => adminLayoutRoute, path: '/participants', component: ParticipantsPage })
+const adminCheckinRoute = createRoute({ getParentRoute: () => adminLayoutRoute, path: '/checkin', component: CheckinPage })
 const adminMeetingsRoute = createRoute({ getParentRoute: () => adminLayoutRoute, path: '/meetings', component: placeholder('admin.meetings') })
 const adminTicketsRoute = createRoute({ getParentRoute: () => adminLayoutRoute, path: '/tickets', component: TicketsPage })
 const adminPaymentsRoute = createRoute({ getParentRoute: () => adminLayoutRoute, path: '/payments', component: placeholder('admin.payments') })
@@ -120,6 +124,7 @@ const routeTree = rootRoute.addChildren([
   eventsRoute,
   eventsMapRoute,
   schedulesRoute,
+  ticketRoute,
   loginRoute,
   registerRoute,
   manageEventsRoute,
@@ -128,6 +133,7 @@ const routeTree = rootRoute.addChildren([
   adminLayoutRoute.addChildren([
     adminDashboardRoute,
     adminParticipantsRoute,
+    adminCheckinRoute,
     adminMeetingsRoute,
     adminTicketsRoute,
     adminPaymentsRoute,

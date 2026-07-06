@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams, useRouterState, Outlet } from '@tanstack/react-router'
 import { useI18n } from '@/lib/i18n'
+import { BrandMark } from '@/components/Brand'
 import {
   LayoutDashboard,
   Users,
@@ -20,6 +21,7 @@ import {
   UserCog,
   ChevronLeft,
   ExternalLink,
+  ScanLine,
 } from 'lucide-react'
 
 interface NavItem {
@@ -48,6 +50,7 @@ export function AdminLayout() {
   const nav: NavItem[] = [
     { to: `${base}/dashboard`, label: t('admin.dashboard'), icon: <LayoutDashboard size={18} /> },
     { to: `${base}/participants`, label: t('admin.participants'), icon: <Users size={18} /> },
+    { to: `${base}/checkin`, label: '现场签到', icon: <ScanLine size={18} /> },
     { to: `${base}/meetings`, label: t('admin.meetings'), icon: <MessageSquare size={18} /> },
     { to: `${base}/tickets`, label: t('admin.tickets'), icon: <Ticket size={18} /> },
     { to: `${base}/payments`, label: t('admin.payments'), icon: <CreditCard size={18} /> },
@@ -82,8 +85,8 @@ export function AdminLayout() {
     <div className="flex min-h-screen flex-col bg-neutral-50 dark:bg-[#131314]">
       <header className="sticky top-0 z-40 h-14 border-b bg-white dark:border-white/10 dark:bg-[#1a1a1b]">
         <div className="mx-auto flex h-full max-w-[1400px] items-center gap-4 px-4">
-          <Link to="/events" className="flex items-center gap-2 shrink-0" aria-label="4S home">
-            <img src="/4s_logo_symbol_black.svg" alt="4S" className="h-6 w-6 dark:invert" />
+          <Link to="/events" className="flex items-center gap-2 shrink-0" aria-label="WAIC Side Events 首页">
+            <BrandMark size={24} />
           </Link>
           <Link to="/manage/events" className="flex items-center gap-1 text-sm text-ink/60 hover:text-ink dark:text-white/60 dark:hover:text-white">
             <ChevronLeft size={16} /> 我管理的活动
@@ -103,9 +106,28 @@ export function AdminLayout() {
         </div>
       </header>
 
+      {/* 移动端：横滑导航条（现场签到等页面是手机场景） */}
+      <nav className="sticky top-14 z-30 flex gap-1 overflow-x-auto border-b bg-white px-3 py-2 dark:border-white/10 dark:bg-[#1a1a1b] lg:hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        {nav.map((item) => (
+          <a
+            key={item.to}
+            href={item.to}
+            className={
+              'flex shrink-0 items-center gap-1.5 rounded-full px-3 py-1.5 text-sm transition ' +
+              (isActive(item.to)
+                ? 'bg-ink font-medium text-white dark:bg-white dark:text-ink'
+                : 'text-ink/60 dark:text-white/60')
+            }
+          >
+            {item.icon}
+            {item.label}
+          </a>
+        ))}
+      </nav>
+
       <div className="mx-auto flex w-full max-w-[1400px] flex-1 gap-6 px-4 py-6">
-        {/* 左侧导航 */}
-        <aside className="w-56 shrink-0">
+        {/* 左侧导航（桌面） */}
+        <aside className="hidden w-56 shrink-0 lg:block">
           <div className="sticky top-20 rounded-xl border bg-white p-2 dark:border-white/10 dark:bg-[#1a1a1b]">
             <div className="mb-2 border-b px-3 pb-3 dark:border-white/10">
               <div className="truncate text-sm font-semibold">{event?.title || '活动名称'}</div>

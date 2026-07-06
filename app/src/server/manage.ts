@@ -7,6 +7,7 @@ import { eq, desc, and, sql as sqlExpr } from 'drizzle-orm'
 import { requireAuth } from '@/lib/auth'
 import { sendEmail, registrationApprovedEmail } from '@/lib/email'
 import importApp from './import'
+import { signTicket, verifyTicket, ticketSecret, checkinCode } from '@/lib/ticket'
 
 const createEventSchema = z.object({
   title: z.string().min(1),
@@ -374,13 +375,78 @@ app.patch('/events/:id/participants/:pid', zValidator('json', statusSchema), asy
   if (body.status === 'APPROVED') {
     const resendKey = (c.env as any)?.RESEND_API_KEY
     if (resendKey) {
-      const eventUrl = `https://waic-side-events.ingle.workers.dev/${event.slug}`
+      const origin = new URL(c.req.url).origin
+      const eventUrl = `${origin}/${event.slug}`
+      const token = await signTicket(existing.id, ticketSecret(c.env))
       const emailFrom = (c.env as any)?.EMAIL_FROM
-      c.executionCtx?.waitUntil?.(sendEmail(resendKey, { to: existing.email, ...registrationApprovedEmail(event.title, eventUrl) }, emailFrom))
+      c.executionCtx?.waitUntil?.(
+        sendEmail(resendKey, { to: existing.email, ...registrationApprovedEmail(event.title, eventUrl, `${origin}/ticket/${token}`) }, emailFrom)
+      )
     }
   }
 
   return c.json({ ok: true })
+})
+
+// —— 现场签到核销 ——
+
+app.get('/events/:id/checkin/stats', async (c) => {
+  const db = getDb(c.env)
+  const id = c.req.param('id')
+  const event = await requireOwnedEvent(c, id)
+  if (!event) return c.json({ error: '活动不存在' }, 404)
+  const approvedRow = await db
+    .select({ count: sqlExpr`COUNT(*)`.mapWith(Number) })
+    .from(participants)
+    .where(and(eq(participants.eventId, id), eq(participants.status, 'APPROVED')))
+    .get()
+  const checkedRow = await db
+    .select({ count: sqlExpr`COUNT(*)`.mapWith(Number) })
+    .from(participants)
+    .where(and(eq(participants.eventId, id), eq(participants.checkedIn, true)))
+    .get()
+  return c.json({ approved: approvedRow?.count || 0, checkedIn: checkedRow?.count || 0 })
+})
+
+const checkinSchema = z
+  .object({ token: z.string().optional(), code: z.string().optional() })
+  .refine((v) => v.token || v.code, { message: 'token 或 code 至少提供一个' })
+
+app.post('/events/:id/checkin', zValidator('json', checkinSchema), async (c) => {
+  const db = getDb(c.env)
+  const id = c.req.param('id')
+  const event = await requireOwnedEvent(c, id)
+  if (!event) return c.json({ error: '活动不存在' }, 404)
+
+  const body = c.req.valid('json')
+  let p: typeof participants.$inferSelect | undefined
+
+  if (body.token) {
+    const pid = await verifyTicket(body.token.trim(), ticketSecret(c.env))
+    if (!pid) return c.json({ result: 'invalid', message: '无效票码（签名不匹配）' }, 200)
+    p = await db.select().from(participants).where(eq(participants.id, pid)).get()
+  } else {
+    const code = body.code!.trim().toUpperCase()
+    if (code.length < 6) return c.json({ result: 'invalid', message: '短码至少 6 位' }, 200)
+    const rows = await db.select().from(participants).where(eq(participants.eventId, id)).all()
+    const matches = rows.filter((r) => checkinCode(r.id).startsWith(code))
+    if (matches.length > 1) return c.json({ result: 'invalid', message: '短码有歧义，请输入完整 8 位' }, 200)
+    p = matches[0]
+  }
+
+  if (!p) return c.json({ result: 'invalid', message: '没有找到这张票' }, 200)
+  if (p.eventId !== id) return c.json({ result: 'wrong_event', message: '这张票不属于本活动' }, 200)
+  if (p.status !== 'APPROVED') {
+    const label = p.status === 'PENDING' ? '报名还在审核中' : p.status === 'REJECTED' ? '报名未通过' : '报名已取消'
+    return c.json({ result: 'not_approved', message: label, name: p.name }, 200)
+  }
+  if (p.checkedIn) {
+    return c.json({ result: 'already', message: '这张票已核销过', name: p.name, checkedInAt: p.checkedInAt }, 200)
+  }
+
+  const now = new Date().toISOString()
+  await db.update(participants).set({ checkedIn: true, checkedInAt: now, updatedAt: now }).where(eq(participants.id, p.id)).run()
+  return c.json({ result: 'ok', name: p.name, type: p.type, checkedInAt: now })
 })
 
 app.get('/events/:id/participants/export.csv', async (c) => {

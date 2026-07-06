@@ -8,6 +8,7 @@ import { getDb } from '@/db'
 import { events as eventsTable, participants as participantsTable } from '@/db/schema'
 import { eq, and, sql as sqlExpr } from 'drizzle-orm'
 import { sendEmail, registrationConfirmedEmail, registrationPendingEmail } from '@/lib/email'
+import { signTicket, verifyTicket, ticketSecret, checkinCode } from '@/lib/ticket'
 
 const app = new Hono()
 
@@ -188,17 +189,53 @@ app.post('/api/events/:slug/register', zValidator('json', registerSchema), async
   }
   await db.insert(participantsTable).values(participant).run()
 
+  const token = await signTicket(participant.id, ticketSecret(c.env))
+  const ticketUrl = `/ticket/${token}`
+
   const resendKey = (c.env as any)?.RESEND_API_KEY
   if (resendKey) {
-    const eventUrl = `https://waic-side-events.ingle.workers.dev/${event.slug}`
+    const origin = new URL(c.req.url).origin
+    const eventUrl = `${origin}/${event.slug}`
     const email = participant.status === 'APPROVED'
-      ? registrationConfirmedEmail(event.title, eventUrl)
+      ? registrationConfirmedEmail(event.title, eventUrl, `${origin}${ticketUrl}`)
       : registrationPendingEmail(event.title)
     const emailFrom = (c.env as any)?.EMAIL_FROM
     c.executionCtx?.waitUntil?.(sendEmail(resendKey, { to: participant.email, ...email }, emailFrom))
   }
 
-  return c.json({ ok: true, status: participant.status })
+  return c.json({ ok: true, status: participant.status, ticketUrl })
+})
+
+// —— 电子票（公开，凭签名 token 访问）——
+app.get('/api/ticket/:token', async (c) => {
+  const token = c.req.param('token')
+  const pid = await verifyTicket(token, ticketSecret(c.env))
+  if (!pid) return c.json({ error: 'invalid_ticket' }, 404)
+
+  const db = getDb(c.env)
+  const p = await db.select().from(participantsTable).where(eq(participantsTable.id, pid)).get()
+  if (!p) return c.json({ error: 'invalid_ticket' }, 404)
+  const event = await db.select().from(eventsTable).where(eq(eventsTable.id, p.eventId)).get()
+  if (!event) return c.json({ error: 'invalid_ticket' }, 404)
+
+  return c.json({
+    participant: {
+      name: p.name,
+      status: p.status,
+      type: p.type,
+      checkedIn: !!p.checkedIn,
+      checkedInAt: p.checkedInAt || null,
+      code: checkinCode(p.id),
+    },
+    event: {
+      title: event.title,
+      slug: event.slug,
+      schedules: event.schedules,
+      location: event.location,
+      eventType: event.eventType,
+      mainImageUrl: event.mainImageUrl,
+    },
+  })
 })
 
 // 防盗链图片代理：仅放行微信图床（qpic/qlogo），带 Referer 取图后透传。

@@ -30,7 +30,6 @@ type Mode = 'import' | 'manual'
 
 export function EventCreatePage() {
   const { t } = useI18n()
-  const navigate = useNavigate()
   const [mode, setMode] = useState<Mode>('import')
 
   return (

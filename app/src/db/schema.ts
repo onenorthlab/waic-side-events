@@ -110,6 +110,7 @@ export const participants = sqliteTable('participants', {
   type: text('type').default('GENERAL'), // GENERAL | VIP | SPEAKER | STAFF | MEDIA
   ticketId: text('ticket_id'),
   checkedIn: integer('checked_in', { mode: 'boolean' }).default(false),
+  checkedInAt: text('checked_in_at'),
   notes: text('notes'),
   createdAt: text('created_at'),
   updatedAt: text('updated_at'),
@@ -122,7 +123,7 @@ export const CREATE_PARTICIPANTS = `
 CREATE TABLE IF NOT EXISTS participants (
   id TEXT PRIMARY KEY, event_id TEXT NOT NULL, user_id TEXT, email TEXT NOT NULL,
   name TEXT NOT NULL, status TEXT NOT NULL DEFAULT 'PENDING', type TEXT DEFAULT 'GENERAL',
-  ticket_id TEXT, checked_in INTEGER DEFAULT 0, notes TEXT,
+  ticket_id TEXT, checked_in INTEGER DEFAULT 0, checked_in_at TEXT, notes TEXT,
   created_at TEXT, updated_at TEXT, data TEXT
 );
 CREATE INDEX IF NOT EXISTS idx_participants_event ON participants(event_id);
