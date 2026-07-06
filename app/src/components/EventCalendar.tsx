@@ -57,7 +57,7 @@ export function EventCalendar({
     return { counts, selected: selectedDay }
   }, [events, selectedDate, year, month])
 
-  const weekdayLabels = ['S', 'M', 'T', 'W', 'T', 'F', 'S']
+  const weekdayLabels = ['日', '一', '二', '三', '四', '五', '六']
 
   const handleDayClick = (day: number, isCurrentMonth: boolean) => {
     if (!isCurrentMonth) {
@@ -78,7 +78,7 @@ export function EventCalendar({
   }
 
   return (
-    <div className="rounded-xl border border-black/10 bg-white p-4 dark:border-white/10 dark:bg-neutral-900">
+    <div className="rounded-2xl border border-black/[0.07] bg-white p-4 dark:border-white/10 dark:bg-neutral-900">
       <div className="mb-3 flex items-center justify-between">
         <h4 className="text-sm font-bold text-ink dark:text-white">日期</h4>
         <div className="relative flex items-center gap-1">
@@ -93,7 +93,7 @@ export function EventCalendar({
             onClick={() => setShowMonthPicker((s) => !s)}
             className="flex items-center gap-1 rounded px-2 py-1 text-sm font-semibold hover:bg-black/5 dark:hover:bg-white/10"
           >
-            {current.toLocaleDateString('en-US', { year: 'numeric', month: 'short' })}
+            {current.toLocaleDateString('zh-CN', { year: 'numeric', month: 'long' })}
             <ChevronDown size={14} />
           </button>
           {showMonthPicker && (
@@ -160,7 +160,7 @@ export function EventCalendar({
         <div className="mt-3 flex justify-end">
           <button
             onClick={() => onSelectDate(null)}
-            className="flex items-center gap-1 text-xs font-medium text-brand-600 hover:underline"
+            className="flex items-center gap-1 text-xs font-medium text-brand hover:underline"
           >
             <X size={12} /> 清除选择
           </button>
@@ -203,7 +203,7 @@ function DayCell({
       <button
         onClick={onClick}
         title={`${count} 个活动`}
-        className={`${base} bg-brand-600 font-semibold text-white hover:bg-brand-700`}
+        className={`${base} bg-brand font-semibold text-white hover:bg-brand-600`}
       >
         {day}
       </button>
@@ -214,7 +214,7 @@ function DayCell({
       <button
         onClick={onClick}
         title={`${count} 个活动`}
-        className={`${base} border-2 border-brand-600 font-semibold text-brand-600 hover:bg-brand-50 dark:hover:bg-brand-900/20`}
+        className={`${base} border-2 border-brand font-semibold text-brand hover:bg-brand-50 dark:hover:bg-white/10`}
       >
         {day}
       </button>
@@ -223,7 +223,7 @@ function DayCell({
   return (
     <button
       onClick={onClick}
-      className={`${base} text-ink/70 hover:bg-black/5 dark:text-white/70 dark:hover:bg-white/10 ${today ? 'font-bold text-brand-600' : ''}`}
+      className={`${base} text-ink/70 hover:bg-black/5 dark:text-white/70 dark:hover:bg-white/10 ${today ? 'font-bold text-brand' : ''}`}
     >
       {day}
     </button>

@@ -4,11 +4,13 @@ import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
 import { fetchEvent } from '../lib/api'
 import type { EventItem } from '../lib/types'
-import { detailDateLabel, timeLabel } from '../lib/format'
+import { detailDateLabel, timeLabel, isLiveToday } from '../lib/format'
 import { downloadIcs } from '../lib/ics'
 import { EventProgram } from '../components/EventProgram'
+import { EventContent } from '../components/EventContent'
+import { LiveBadge } from '../components/EventCard'
 import { useI18n } from '../lib/i18n'
-import { CalendarPlus, Clock, MapPin, Wifi, ArrowLeft, ExternalLink, Ticket, CheckCircle } from 'lucide-react'
+import { CalendarPlus, Clock, MapPin, Wifi, ArrowLeft, ExternalLink, CheckCircle, Users, ShieldCheck } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
@@ -36,7 +38,7 @@ function Organizers({ ev }: { ev: EventItem }) {
   if (!uniq.length) return null
   return (
     <div className="flex flex-col gap-3">
-      <h3 className="text-sm font-bold">{t('detail.organizers')}</h3>
+      <h3 className="text-sm font-bold text-ink dark:text-white">{t('detail.organizers')}</h3>
       {uniq.slice(0, 8).map((x, i) => {
         const u = x.user || x.community
         const name = x.user ? u.nativeName || [u.firstName, u.lastName].filter(Boolean).join(' ') : u.name
@@ -46,11 +48,13 @@ function Organizers({ ev }: { ev: EventItem }) {
             {img ? (
               <img src={img} alt="" className="h-9 w-9 shrink-0 rounded-full object-cover" />
             ) : (
-              <div className="h-9 w-9 shrink-0 rounded-full bg-black/10 dark:bg-white/15" />
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-brand-50 text-xs font-bold text-brand dark:bg-white/10 dark:text-white">
+                {(name || 'O').slice(0, 1)}
+              </div>
             )}
             <div className="min-w-0">
-              <div className="truncate text-sm font-medium">{name || 'Organizer'}</div>
-              {x.user?.title && <div className="truncate text-xs opacity-60">{u.title}</div>}
+              <div className="truncate text-sm font-medium text-ink dark:text-white">{name || '主办方'}</div>
+              {x.user?.title && <div className="truncate text-xs text-ink/50 dark:text-white/50">{u.title}</div>}
             </div>
           </div>
         )
@@ -59,15 +63,14 @@ function Organizers({ ev }: { ev: EventItem }) {
   )
 }
 
-function Registration({ ev }: { ev: EventItem }) {
+function useRegistration(ev: EventItem) {
   const [open, setOpen] = useState(false)
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [submitting, setSubmitting] = useState(false)
-  const [done, setDone] = useState(false)
+  const [result, setResult] = useState<{ status: string; ticketUrl?: string } | null>(null)
   const hasSurvey = Array.isArray(ev.surveySchema) && ev.surveySchema.length > 0
-  const surveyJson = hasSurvey ? { elements: ev.surveySchema } : null
-  const [surveyModel] = useState(() => surveyJson ? new Model(surveyJson) : null)
+  const [surveyModel] = useState(() => (hasSurvey ? new Model({ elements: ev.surveySchema }) : null))
 
   const submit = async (e?: React.FormEvent) => {
     e?.preventDefault()
@@ -85,9 +88,13 @@ function Registration({ ev }: { ev: EventItem }) {
         body: JSON.stringify(payload),
       })
       const data = await res.json()
-      if (!res.ok) throw new Error(data.error || '报名失败')
-      setDone(true)
-      toast.success(data.status === 'APPROVED' ? '报名成功' : '报名已提交，等待审批')
+      if (!res.ok) {
+        const msg =
+          data.error === 'already_registered' ? '该邮箱已报名过本活动' : data.error === 'sold_out' ? '名额已满' : '报名失败，请稍后重试'
+        throw new Error(msg)
+      }
+      setResult({ status: data.status, ticketUrl: data.ticketUrl })
+      toast.success(data.status === 'APPROVED' ? '报名成功' : '报名已提交，等待主办方审核')
     } catch (err: any) {
       toast.error(err.message || '报名失败')
     } finally {
@@ -95,51 +102,64 @@ function Registration({ ev }: { ev: EventItem }) {
     }
   }
 
+  return { open, setOpen, name, setName, email, setEmail, submitting, result, submit, hasSurvey, surveyModel }
+}
+
+function RegistrationDialog({ ev, reg }: { ev: EventItem; reg: ReturnType<typeof useRegistration> }) {
   return (
-    <>
-      <Button
-        size="lg"
-        className="mt-4 w-full"
-        onClick={() => setOpen(true)}
-        style={{ backgroundColor: ev.customStyle?.primaryColor || undefined }}
-      >
-        <Ticket size={18} className="mr-2" /> 立即报名
-      </Button>
-      <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="max-w-lg">
-          <DialogHeader>
-            <DialogTitle>报名：{ev.title}</DialogTitle>
-          </DialogHeader>
-          {done ? (
-            <div className="py-6 text-center">
-              <CheckCircle size={48} className="mx-auto text-green-500" />
-              <p className="mt-4 font-medium">报名成功</p>
-              <p className="text-sm text-ink/50">确认邮件已发送，请查收。</p>
-              <Button className="mt-4" onClick={() => setOpen(false)}>关闭</Button>
-            </div>
-          ) : (
-            <form onSubmit={submit} className="space-y-4">
-              <div className="space-y-2">
-                <Label>姓名</Label>
-                <Input value={name} onChange={(e) => setName(e.target.value)} required />
-              </div>
-              <div className="space-y-2">
-                <Label>邮箱</Label>
-                <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-              </div>
-              {hasSurvey && surveyModel && (
-                <div className="rounded-lg border p-3 dark:border-white/10">
-                  <Survey model={surveyModel} />
-                </div>
-              )}
-              <Button type="submit" className="w-full" disabled={submitting}>
-                {submitting ? '提交中…' : '确认报名'}
+    <Dialog open={reg.open} onOpenChange={reg.setOpen}>
+      <DialogContent className="max-w-lg">
+        <DialogHeader>
+          <DialogTitle className="pr-6 leading-snug">报名 · {ev.title}</DialogTitle>
+        </DialogHeader>
+        {reg.result ? (
+          <div className="py-6 text-center">
+            <CheckCircle size={44} className="mx-auto text-brand" />
+            <p className="mt-4 font-semibold text-ink dark:text-white">
+              {reg.result.status === 'APPROVED' ? '报名成功' : '已提交，等待审核'}
+            </p>
+            <p className="mt-1 text-sm text-ink/55 dark:text-white/55">
+              {reg.result.status === 'APPROVED'
+                ? '确认邮件已发送。凭邮件中的电子票入场。'
+                : '审核通过后会通过邮件通知你，并附上电子票。'}
+            </p>
+            {reg.result.ticketUrl && (
+              <a
+                href={reg.result.ticketUrl}
+                className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-600"
+              >
+                查看电子票
+              </a>
+            )}
+            <div className="mt-4">
+              <Button variant="outline" onClick={() => reg.setOpen(false)}>
+                关闭
               </Button>
-            </form>
-          )}
-        </DialogContent>
-      </Dialog>
-    </>
+            </div>
+          </div>
+        ) : (
+          <form onSubmit={reg.submit} className="space-y-4">
+            <div className="space-y-2">
+              <Label>姓名</Label>
+              <Input value={reg.name} onChange={(e) => reg.setName(e.target.value)} required />
+            </div>
+            <div className="space-y-2">
+              <Label>邮箱</Label>
+              <Input type="email" value={reg.email} onChange={(e) => reg.setEmail(e.target.value)} required />
+              <p className="text-xs text-ink/45 dark:text-white/45">电子票和活动通知会发送到这个邮箱</p>
+            </div>
+            {reg.hasSurvey && reg.surveyModel && (
+              <div className="rounded-xl border border-black/[0.08] p-3 dark:border-white/12">
+                <Survey model={reg.surveyModel} />
+              </div>
+            )}
+            <Button type="submit" className="w-full rounded-full" size="lg" disabled={reg.submitting}>
+              {reg.submitting ? '提交中…' : '确认报名'}
+            </Button>
+          </form>
+        )}
+      </DialogContent>
+    </Dialog>
   )
 }
 
@@ -160,126 +180,219 @@ export function EventDetailPage() {
     }
   }, [slug])
 
-  const cs = ev?.customStyle
-  const themed = !!(cs && (cs.backgroundColor || cs.textColor))
-  const wrapStyle = themed ? { backgroundColor: cs!.backgroundColor || undefined, color: cs!.textColor || undefined } : undefined
-  const accent = cs?.primaryColor
-  const venue = ev?.location?.[0]
-
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
-      {state === 'loading' && <div className="flex-1 py-24 text-center text-sm text-ink/40">Loading…</div>}
+      {state === 'loading' && <DetailSkeleton />}
       {state === 'notfound' && (
         <div className="flex flex-1 flex-col items-center justify-center gap-3 py-24">
           <p className="text-ink/60 dark:text-white/60">{t('events.notFound')}</p>
-          <Link to="/events" className="text-sm font-semibold text-brand-600 hover:underline">
+          <Link to="/events" className="text-sm font-semibold text-brand hover:underline">
             {t('events.backToList')}
           </Link>
         </div>
       )}
-      {state === 'ok' && ev && (
-        <main className="flex-1" style={wrapStyle}>
-          {/* 事件标题条 */}
-          <div className="border-b border-black/10 bg-neutral-900 dark:border-white/10" style={themed ? { background: cs!.backgroundColor, borderColor: 'rgba(255,255,255,.12)' } : undefined}>
-            <div className="mx-auto max-w-[1200px] px-4 py-3">
-              <p className="truncate text-sm font-medium text-white/90" style={themed ? { color: cs!.textColor } : undefined}>
-                {ev.title}
-              </p>
+      {state === 'ok' && ev && <DetailBody ev={ev} />}
+      <Footer />
+    </div>
+  )
+}
+
+function DetailBody({ ev }: { ev: EventItem }) {
+  const { t } = useI18n()
+  const reg = useRegistration(ev)
+  const venue = ev.location?.[0]
+  const accent = ev.customStyle?.primaryColor
+  const ended = !!ev.hasEnded
+
+  const registerCta = (
+    <button
+      onClick={() => reg.setOpen(true)}
+      disabled={ended}
+      className="w-full rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white transition hover:bg-brand-600 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-40"
+      style={accent ? { backgroundColor: accent } : undefined}
+    >
+      {ended ? '活动已结束' : reg.result ? '已报名 ✓' : '立即报名'}
+    </button>
+  )
+
+  return (
+    <main className="mx-auto w-full max-w-[1100px] flex-1 px-4 pb-28 pt-6 lg:pb-10">
+      <Link
+        to="/events"
+        className="inline-flex items-center gap-1 text-sm text-ink/50 transition hover:text-ink dark:text-white/50 dark:hover:text-white"
+      >
+        <ArrowLeft size={15} /> {t('nav.events')}
+      </Link>
+
+      {/* 海报：主办方自己设计的图直接完整呈现 */}
+      {ev.mainImageUrl && (
+        <div className="mt-4 overflow-hidden rounded-2xl bg-neutral-100 dark:bg-neutral-900">
+          <img src={ev.mainImageUrl} alt={ev.title} className="mx-auto max-h-[520px] w-auto max-w-full object-contain" />
+        </div>
+      )}
+
+      <div className="mt-6 grid gap-10 lg:grid-cols-[1fr_320px]">
+        <article>
+          <div className="flex items-center gap-2 text-sm font-semibold text-brand">
+            {detailDateLabel(ev.schedules)}
+            {isLiveToday(ev.schedules) && !ended && <LiveBadge />}
+          </div>
+          <h1 className="mt-2 text-2xl font-bold leading-snug tracking-tight text-ink dark:text-white md:text-[32px]">
+            {ev.title}
+          </h1>
+          {ev.catchphrase && <p className="mt-2 text-base text-ink/60 dark:text-white/60">{ev.catchphrase}</p>}
+
+          {/* 关键信息卡：30 秒决策所需的一切 */}
+          <div className="mt-5 flex flex-col gap-3 rounded-2xl border border-black/[0.07] bg-white p-4 dark:border-white/10 dark:bg-neutral-900">
+            {ev.schedules?.length > 0 && (
+              <div className="flex items-center justify-between gap-3">
+                <span className="flex items-center gap-2.5 text-sm text-ink/80 dark:text-white/80">
+                  <Clock size={16} className="shrink-0 text-ink/40 dark:text-white/40" />
+                  {timeLabel(ev.schedules)}
+                </span>
+                <button
+                  onClick={() => downloadIcs(ev)}
+                  className="inline-flex shrink-0 items-center gap-1 text-xs font-semibold text-brand hover:underline"
+                >
+                  <CalendarPlus size={13} /> {t('detail.addToCalendar')}
+                </button>
+              </div>
+            )}
+            <div className="flex items-start gap-2.5 text-sm text-ink/80 dark:text-white/80">
+              {ev.eventType === 'ONLINE' ? (
+                <>
+                  <Wifi size={16} className="mt-0.5 shrink-0 text-ink/40 dark:text-white/40" />
+                  <span>{t('common.online')}</span>
+                </>
+              ) : (
+                <>
+                  <MapPin size={16} className="mt-0.5 shrink-0 text-ink/40 dark:text-white/40" />
+                  <span>
+                    {venue ? (
+                      <>
+                        {venue.title && <b className="font-semibold">{venue.title}</b>}
+                        {venue.title && venue.displayText && ' · '}
+                        {venue.displayText}
+                        {venue.googleMapsURI && (
+                          <a
+                            href={venue.googleMapsURI}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="ml-1.5 inline-flex items-center gap-0.5 text-xs font-semibold text-brand hover:underline"
+                          >
+                            导航 <ExternalLink size={11} />
+                          </a>
+                        )}
+                      </>
+                    ) : (
+                      t('common.offline')
+                    )}
+                  </span>
+                </>
+              )}
             </div>
+            {(ev.maxParticipants || ev.requiresApproval) && (
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-ink/50 dark:text-white/50">
+                {ev.maxParticipants && (
+                  <span className="inline-flex items-center gap-1">
+                    <Users size={13} /> 限 {ev.maxParticipants} 人
+                  </span>
+                )}
+                {ev.requiresApproval && (
+                  <span className="inline-flex items-center gap-1">
+                    <ShieldCheck size={13} /> 报名需主办方审核
+                  </span>
+                )}
+              </div>
+            )}
           </div>
 
-          {ev.mainImageUrl && (
-            <div className="bg-neutral-900" style={themed ? { background: cs!.backgroundColor } : undefined}>
-              <div className="mx-auto max-w-[900px] px-4 py-6">
-                <img src={ev.mainImageUrl} alt={ev.title} className="mx-auto max-h-[560px] w-full rounded-xl object-contain" />
-              </div>
+          {ev.tags?.length > 0 && (
+            <div className="mt-4 flex flex-wrap gap-1.5">
+              {ev.tags.map((tg) => (
+                <span
+                  key={tg}
+                  className="rounded-full bg-black/[0.05] px-2.5 py-1 text-xs text-ink/60 dark:bg-white/10 dark:text-white/60"
+                >
+                  {tg}
+                </span>
+              ))}
             </div>
           )}
 
-          <div className="mx-auto grid max-w-[1200px] gap-8 px-4 py-8 lg:grid-cols-[1fr_300px]">
-            <article className={themed ? '' : 'text-ink dark:text-white'}>
-              <Link to="/events" className="mb-4 inline-flex items-center gap-1 text-sm opacity-60 hover:opacity-100">
-                <ArrowLeft size={15} /> {t('nav.events')}
-              </Link>
-              <h1 className="font-display text-3xl font-bold leading-tight" style={cs?.titleTextColor ? { color: cs.titleTextColor } : undefined}>
-                {ev.title}
-              </h1>
-              {ev.catchphrase && <p className="mt-1 text-base opacity-70">{ev.catchphrase}</p>}
+          <div className="mt-8">
+            {ev.description ? (
+              <EventContent content={ev.description} format={ev.descriptionFormat} />
+            ) : (
+              <p className="text-ink/50 dark:text-white/50">{t('detail.noDescription')}</p>
+            )}
+          </div>
+        </article>
 
-              <div className="mt-3 flex flex-wrap items-center gap-3">
-                <span className="text-lg font-semibold">{detailDateLabel(ev.schedules)}</span>
-                <button
-                  onClick={() => downloadIcs(ev)}
-                  className="inline-flex items-center gap-1.5 rounded-lg border px-3 py-1.5 text-sm font-medium transition hover:opacity-80"
-                  style={{ borderColor: accent || 'currentColor', color: accent || undefined }}
-                >
-                  <CalendarPlus size={15} /> {t('detail.addToCalendar')}
-                </button>
-              </div>
-
-              <div className="mt-2 flex flex-wrap items-center gap-4 text-sm opacity-80">
-                {ev.schedules?.length > 0 && (
-                  <span className="inline-flex items-center gap-1.5">
-                    <Clock size={15} /> {timeLabel(ev.schedules)}
-                  </span>
-                )}
-                <span className="inline-flex items-center gap-1.5">
-                  {ev.eventType === 'ONLINE' ? <Wifi size={15} /> : <MapPin size={15} />}
-                  {ev.eventType === 'ONLINE' ? t('common.online') : t('common.offline')}
-                </span>
-              </div>
-
-              {venue && (
-                <a
-                  href={venue.googleMapsURI || '#'}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-3 flex items-start gap-1.5 text-sm opacity-80 hover:opacity-100"
-                >
-                  <MapPin size={15} className="mt-0.5 shrink-0" />
-                  <span>
-                    {venue.title && <b>{venue.title} · </b>}
-                    {venue.displayText}
-                    {venue.googleMapsURI && <ExternalLink size={12} className="ml-1 inline" />}
-                  </span>
-                </a>
-              )}
-
-              {ev.tags?.length > 0 && (
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {ev.tags.map((t) => (
-                    <span key={t} className="rounded-full bg-black/[0.06] px-2.5 py-1 text-xs opacity-80 dark:bg-white/10">
-                      #{t}
-                    </span>
+        {/* 桌面右栏：报名 + 主办方 */}
+        <aside className="hidden lg:block">
+          <div className="sticky top-24 flex flex-col gap-5">
+            <div className="rounded-2xl border border-black/[0.07] bg-white p-5 dark:border-white/10 dark:bg-neutral-900">
+              <p className="text-sm font-bold text-ink dark:text-white">报名参加</p>
+              <p className="mt-1 text-xs text-ink/50 dark:text-white/50">
+                {ev.requiresApproval ? '提交后等待主办方审核，通过后发电子票' : '免费报名，确认邮件附电子票'}
+              </p>
+              <div className="mt-4">{registerCta}</div>
+            </div>
+            <div className="rounded-2xl border border-black/[0.07] bg-white p-5 dark:border-white/10 dark:bg-neutral-900">
+              <Organizers ev={ev} />
+              {(ev.organizerContact?.length ?? 0) > 0 && (
+                <div className="mt-4 flex flex-col gap-1.5 border-t border-black/[0.06] pt-3 dark:border-white/10">
+                  {ev.organizerContact!.map((c, i) => (
+                    <a
+                      key={i}
+                      href={c.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1 text-xs font-medium text-brand hover:underline"
+                    >
+                      {c.label || c.url} <ExternalLink size={11} />
+                    </a>
                   ))}
                 </div>
               )}
-
-              {ev.description ? (
-                <div className="prose-4s mt-6 max-w-none text-[15px] opacity-95" dangerouslySetInnerHTML={{ __html: ev.description }} />
-              ) : (
-                <p className="mt-6 opacity-60">{t('detail.noDescription')}</p>
-              )}
-
-              <div className="mt-6 lg:hidden">
-                <Registration ev={ev} />
-              </div>
-            </article>
-
-            <aside className="hidden space-y-6 lg:block">
-              <Registration ev={ev} />
-              <Organizers ev={ev} />
-            </aside>
+            </div>
           </div>
+        </aside>
+      </div>
 
-          {/* 议程 + 嘉宾(大会型活动有 sessions/stages/speakers 时显示) */}
-          <div className="mx-auto max-w-[1200px] px-4 pb-10">
-            <EventProgram ev={ev} />
-          </div>
-        </main>
-      )}
-      <Footer />
+      {/* 议程 + 嘉宾 */}
+      <div className="mt-10">
+        <EventProgram ev={ev} />
+      </div>
+
+      {/* 移动端底部固定操作条 */}
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-black/[0.07] bg-white/95 px-4 pb-[max(env(safe-area-inset-bottom),12px)] pt-3 backdrop-blur dark:border-white/10 dark:bg-neutral-900/95 lg:hidden">
+        <div className="mx-auto flex max-w-[640px] items-center gap-3">
+          <button
+            onClick={() => downloadIcs(ev)}
+            aria-label={t('detail.addToCalendar')}
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-black/12 text-ink/70 transition active:scale-95 dark:border-white/20 dark:text-white/70"
+          >
+            <CalendarPlus size={18} />
+          </button>
+          <div className="flex-1">{registerCta}</div>
+        </div>
+      </div>
+
+      <RegistrationDialog ev={ev} reg={reg} />
+    </main>
+  )
+}
+
+function DetailSkeleton() {
+  return (
+    <div className="mx-auto w-full max-w-[1100px] flex-1 px-4 pt-6">
+      <div className="mt-4 aspect-[16/7] w-full animate-pulse rounded-2xl bg-black/[0.06] dark:bg-white/10" />
+      <div className="mt-6 h-4 w-32 animate-pulse rounded bg-black/[0.06] dark:bg-white/10" />
+      <div className="mt-3 h-8 w-3/4 animate-pulse rounded bg-black/[0.06] dark:bg-white/10" />
+      <div className="mt-5 h-28 w-full animate-pulse rounded-2xl bg-black/[0.06] dark:bg-white/10 lg:w-2/3" />
     </div>
   )
 }

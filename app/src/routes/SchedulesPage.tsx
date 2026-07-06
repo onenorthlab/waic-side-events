@@ -4,7 +4,10 @@ import { Footer } from '../components/Footer'
 
 import { fetchEvents } from '../lib/api'
 import type { EventItem } from '../lib/types'
-import { Clock, MapPin, Calendar, ExternalLink } from 'lucide-react'
+import { Clock, MapPin, ExternalLink } from 'lucide-react'
+import { groupDateLabel } from '../lib/format'
+
+const formatDay = (d: string) => groupDateLabel(d)
 
 interface Session {
   id: string
@@ -64,13 +67,10 @@ export function SchedulesPage() {
   return (
     <div className="flex min-h-screen flex-col">
       <Header showCreate />
-      <main className="mx-auto w-full max-w-[1200px] flex-1 px-4 py-6">
-        <div className="mb-4 flex items-center gap-2">
-          <Calendar size={20} />
-          <h1 className="font-display text-2xl font-bold text-ink dark:text-white">活动日程总表</h1>
-        </div>
-        <p className="mb-6 text-sm text-ink/60 dark:text-white/60">
-          聚合 WAIC 2026 所有周边活动的公开场次，按日期浏览。
+      <main className="mx-auto w-full max-w-[1200px] flex-1 px-4 pb-8 pt-8 md:pt-12">
+        <h1 className="text-3xl font-bold tracking-tight text-ink dark:text-white">日程总表</h1>
+        <p className="mb-8 mt-1.5 text-sm text-ink/55 dark:text-white/55">
+          全部周边活动的公开场次，按日期与时间排好，方便你规划每一天。
         </p>
 
         {loading ? (
@@ -81,17 +81,17 @@ export function SchedulesPage() {
           <div className="space-y-8">
             {groups.map((g) => (
               <section key={g.date}>
-                <h2 className="mb-3 text-lg font-bold">{g.date}</h2>
-                <div className="divide-y divide-current/10 rounded-xl border border-current/10 dark:border-white/10">
+                <h2 className="mb-3 text-sm font-bold text-ink dark:text-white">{formatDay(g.date)}</h2>
+                <div className="divide-y divide-black/[0.06] rounded-2xl border border-black/[0.07] bg-white dark:divide-white/10 dark:border-white/10 dark:bg-neutral-900">
                   {g.sessions.map((s) => (
                     <div key={s.id} className="flex flex-col gap-2 p-4 sm:flex-row sm:gap-4">
                       <div className="w-28 shrink-0 text-sm font-medium tabular-nums opacity-70">
-                        {s.startTime} – {s.endTime}
+                        {s.startTime} - {s.endTime}
                       </div>
                       <div className="min-w-0 flex-1">
                         <a
                           href={`/${s.event.slug}`}
-                          className="text-base font-semibold hover:text-brand-600 hover:underline"
+                          className="text-base font-semibold hover:text-brand hover:underline"
                         >
                           {s.title}
                           <ExternalLink size={12} className="ml-1 inline opacity-50" />

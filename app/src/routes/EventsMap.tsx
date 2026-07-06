@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from '@tanstack/react-router'
 import { Header } from '../components/Header'
 import { useI18n } from '../lib/i18n'
-import { List, Map as MapIcon, Loader2 } from 'lucide-react'
+import { List, Loader2 } from 'lucide-react'
 
 declare global {
   interface Window {
@@ -136,18 +136,19 @@ export function EventsMapPage() {
     <div className="flex min-h-screen flex-col">
       <Header showCreate />
       <main className="mx-auto flex w-full max-w-[1200px] flex-1 flex-col px-4 py-6">
-        <div className="mb-3 flex items-center justify-between">
-          <h1 className="font-display text-2xl font-bold text-ink dark:text-white">{t('events.title')}</h1>
-          <div className="flex gap-1">
-            <Link to="/events" className="rounded-md p-1.5 text-ink/50 hover:bg-black/5 dark:hover:bg-white/10" aria-label="List view">
-              <List size={16} />
-            </Link>
-            <span className="rounded-md bg-black/5 p-1.5 text-ink dark:bg-white/10 dark:text-white" aria-label="Map view">
-              <MapIcon size={16} />
-            </span>
+        <div className="mb-4 flex items-center justify-between">
+          <div>
+            <h1 className="text-2xl font-bold tracking-tight text-ink dark:text-white">活动地图</h1>
+            <p className="mt-1 text-sm text-ink/55 dark:text-white/55">看看每个局离你有多远</p>
           </div>
+          <Link
+            to="/events"
+            className="inline-flex items-center gap-1.5 rounded-full border border-black/[0.08] bg-white px-4 py-2 text-sm font-medium text-ink/70 transition hover:text-ink dark:border-white/12 dark:bg-neutral-900 dark:text-white/70 dark:hover:text-white"
+          >
+            <List size={15} /> 列表
+          </Link>
         </div>
-        <div className="relative h-[70vh] w-full overflow-hidden rounded-xl border border-black/10 dark:border-white/10">
+        <div className="relative h-[70vh] w-full overflow-hidden rounded-2xl border border-black/[0.07] dark:border-white/10">
           <div ref={ref} className="h-full w-full" />
           {loading && (
             <div className="absolute inset-0 flex items-center justify-center bg-white/80 dark:bg-black/60">

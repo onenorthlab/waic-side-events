@@ -2,13 +2,15 @@ import { useEffect, useMemo, useState } from 'react'
 import { Link } from '@tanstack/react-router'
 import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
-import { FilterSidebar } from '../components/FilterSidebar'
-import { PickupCard, EventRow } from '../components/EventCard'
+import { FeaturedCard, EventRow } from '../components/EventCard'
+import { DateStrip } from '../components/DateStrip'
+import { MiniEventMap } from '../components/MiniEventMap'
+import { EventCalendar } from '../components/EventCalendar'
 import { fetchEvents, fetchTags } from '../lib/api'
 import type { EventsResponse, EventItem } from '../lib/types'
 import { groupDateLabel, dayKey, firstDate } from '../lib/format'
 import { useI18n } from '../lib/i18n'
-import { List, Map as MapIcon, X, Calendar } from 'lucide-react'
+import { Search, X, Map as MapIcon } from 'lucide-react'
 
 type Tab = 'upcoming' | 'past'
 
@@ -22,9 +24,8 @@ export function EventsListPage() {
   const [tags, setTags] = useState<string[]>([])
   const [loading, setLoading] = useState(true)
 
-  // 一次性: pickup(featured) + tag 云
   useEffect(() => {
-    fetchEvents({ featured: true, timeFilter: 'upcoming', perPage: 2 }).then((r) => setPickup(r.events)).catch(() => {})
+    fetchEvents({ featured: true, timeFilter: 'upcoming', perPage: 1 }).then((r) => setPickup(r.events)).catch(() => {})
     fetchTags().then(setTags).catch(() => {})
   }, [])
 
@@ -43,6 +44,7 @@ export function EventsListPage() {
   }, [tab, tag, q, date])
 
   const { t } = useI18n()
+  const filtering = !!(tag || q || date)
   const groups = useMemo(() => {
     if (!data) return []
     const map = new Map<string, { label: string; items: EventItem[] }>()
@@ -58,24 +60,52 @@ export function EventsListPage() {
   return (
     <div className="flex min-h-screen flex-col">
       <Header showCreate />
-      <main className="mx-auto w-full max-w-[1200px] flex-1 px-4 py-6">
-        <h1 className="font-display text-2xl font-bold text-ink dark:text-white">{t('events.title')}</h1>
+      <main className="mx-auto w-full max-w-[1200px] flex-1 px-4 pb-8 pt-8 md:pt-12">
+        {/* 页头：编辑感标题区 */}
+        <div className="flex flex-col gap-1.5">
+          <h1 className="text-3xl font-bold tracking-tight text-ink dark:text-white md:text-[40px] md:leading-[1.15]">
+            这一周，AI 圈都在哪儿
+          </h1>
+          <p className="text-sm text-ink/55 dark:text-white/55 md:text-base">
+            WAIC 世界人工智能大会期间的周边聚会、路演、峰会与夜局，一站看全、一键报名。
+          </p>
+        </div>
 
-        {pickup.length > 0 && (
+        {/* 日期条：首要筛选轴 */}
+        <div className="mt-6">
+          <DateStrip selectedDate={date} onSelectDate={setDate} />
+        </div>
+
+        {/* 置顶活动（无筛选时展示） */}
+        {pickup.length > 0 && !filtering && tab === 'upcoming' && (
           <section className="mt-4">
-            <h2 className="mb-2 text-sm font-semibold text-ink/70 dark:text-white/70">{t('events.pickup')}</h2>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {pickup.map((e) => (
-                <PickupCard key={e.slug} ev={e} />
-              ))}
-            </div>
+            <FeaturedCard ev={pickup[0]} />
           </section>
         )}
 
-        <div className="mt-6 grid gap-8 lg:grid-cols-[1fr_300px]">
-          <div>
-            <div className="flex items-center justify-between border-b border-black/10 pb-2 dark:border-white/10">
-              <div className="flex gap-1">
+        <div className="mt-8 grid gap-10 lg:grid-cols-[minmax(0,1fr)_300px]">
+          <div className="min-w-0">
+            {/* 工具行：搜索 + 时态切换 + 地图入口 */}
+            <div className="flex flex-wrap items-center gap-2">
+              <div className="relative min-w-0 flex-1 basis-56">
+                <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-ink/35 dark:text-white/35" />
+                <input
+                  value={q}
+                  onChange={(e) => setQ(e.target.value)}
+                  placeholder={t('filter.searchEvents')}
+                  className="w-full rounded-lg border border-black/[0.08] bg-white py-2.5 pl-10 pr-9 text-sm text-ink outline-none transition placeholder:text-ink/35 focus:border-brand dark:border-white/12 dark:bg-neutral-900 dark:text-white dark:placeholder:text-white/35"
+                />
+                {q && (
+                  <button
+                    onClick={() => setQ('')}
+                    aria-label="清除搜索"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-ink/40 hover:text-ink dark:text-white/40 dark:hover:text-white"
+                  >
+                    <X size={15} />
+                  </button>
+                )}
+              </div>
+              <div className="flex rounded-lg border border-black/[0.08] bg-white p-0.5 dark:border-white/12 dark:bg-neutral-900">
                 {(['upcoming', 'past'] as Tab[]).map((tf) => (
                   <button
                     key={tf}
@@ -84,71 +114,96 @@ export function EventsListPage() {
                       'rounded-md px-3 py-1.5 text-sm font-medium transition ' +
                       (tab === tf
                         ? 'bg-ink text-white dark:bg-white dark:text-ink'
-                        : 'text-ink/60 hover:bg-black/5 dark:text-white/60 dark:hover:bg-white/10')
+                        : 'text-ink/55 hover:text-ink dark:text-white/55 dark:hover:text-white')
                     }
                   >
                     {tf === 'upcoming' ? t('events.upcoming') : t('events.past')}
                   </button>
                 ))}
               </div>
-              <div className="flex items-center gap-2">
-                {date && (
-                  <span className="inline-flex items-center gap-1 rounded-full bg-brand/10 px-2.5 py-1 text-xs font-medium text-brand-700">
-                    <Calendar size={12} />
-                    {new Date(date + 'T00:00:00').toLocaleDateString('zh-CN', { year: 'numeric', month: 'short', day: 'numeric' })}
-                    <button onClick={() => setDate(null)} className="ml-0.5 rounded-full hover:bg-brand/20">
-                      <X size={12} />
-                    </button>
-                  </span>
-                )}
-                {data && <span className="text-xs text-ink/40 dark:text-white/40">{t('events.count', { n: data.pageInfo.totalCount })}</span>}
-                <div className="flex gap-1">
-                  <button className="rounded-md bg-black/5 p-1.5 text-ink dark:bg-white/10 dark:text-white" aria-label="List view">
-                    <List size={16} />
-                  </button>
-                  <Link
-                    to="/events/maps"
-                    className="rounded-md p-1.5 text-ink/50 hover:bg-black/5 dark:hover:bg-white/10"
-                    aria-label="Map view"
-                  >
-                    <MapIcon size={16} />
-                  </Link>
-                </div>
-              </div>
+              <Link
+                to="/events/maps"
+                className="inline-flex items-center gap-1.5 rounded-lg border border-black/[0.08] bg-white px-3 py-2.5 text-sm font-medium text-ink/70 transition hover:text-ink dark:border-white/12 dark:bg-neutral-900 dark:text-white/70 dark:hover:text-white lg:hidden"
+              >
+                <MapIcon size={15} /> 地图
+              </Link>
             </div>
 
+            {/* 标签行：横滑 */}
+            {tags.length > 0 && (
+              <div className="-mx-4 mt-3 overflow-x-auto px-4 scrollbar-none">
+                <div className="flex gap-1.5 pb-1">
+                  {tags.map((tg) => {
+                    const active = tag === tg
+                    return (
+                      <button
+                        key={tg}
+                        onClick={() => setTag(active ? '' : tg)}
+                        className={
+                          'shrink-0 rounded-full border px-3 py-1 text-xs font-medium transition active:scale-[0.97] ' +
+                          (active
+                            ? 'border-ink bg-ink text-white dark:border-white dark:bg-white dark:text-ink'
+                            : 'border-black/[0.08] bg-white text-ink/60 hover:border-black/20 hover:text-ink dark:border-white/12 dark:bg-neutral-900 dark:text-white/60 dark:hover:border-white/30 dark:hover:text-white')
+                        }
+                      >
+                        {tg}
+                      </button>
+                    )
+                  })}
+                </div>
+              </div>
+            )}
+
+            {/* 结果计数 */}
+            {data && (
+              <p className="mt-4 text-xs text-ink/40 dark:text-white/40">{t('events.count', { n: data.pageInfo.totalCount })}</p>
+            )}
+
+            {/* 按日分组的活动流 */}
             {loading && !data ? (
               <ListSkeleton />
             ) : groups.length === 0 ? (
-              <p className="py-16 text-center text-sm text-ink/50 dark:text-white/50">
-                {tab === 'upcoming' ? t('events.emptyUpcoming') : t('events.emptyPast')}
-              </p>
+              <div className="py-20 text-center">
+                <p className="text-sm text-ink/50 dark:text-white/50">
+                  {tab === 'upcoming' ? t('events.emptyUpcoming') : t('events.emptyPast')}
+                </p>
+                {filtering && (
+                  <button
+                    onClick={() => {
+                      setTag('')
+                      setQ('')
+                      setDate(null)
+                    }}
+                    className="mt-3 text-sm font-semibold text-brand hover:underline"
+                  >
+                    清除全部筛选
+                  </button>
+                )}
+              </div>
             ) : (
-              <div className="mt-4 flex flex-col gap-7">
+              <div className="mt-2 flex flex-col gap-8">
                 {groups.map((g) => (
-                  <div key={g.label}>
-                    <h3 className="mb-2 border-l-2 border-brand pl-2 text-sm font-bold text-ink dark:text-white">{g.label}</h3>
-                    <div className="flex flex-col gap-1">
+                  <section key={g.label}>
+                    <h2 className="sticky top-16 z-10 -mx-4 bg-paper/95 px-4 py-2 text-sm font-bold text-ink backdrop-blur dark:bg-[#131316]/95 dark:text-white sm:static sm:mx-0 sm:bg-transparent sm:px-0 sm:backdrop-blur-none sm:dark:bg-transparent">
+                      {g.label}
+                      <span className="ml-2 font-normal text-ink/40 dark:text-white/40">{g.items.length} 场</span>
+                    </h2>
+                    <div className="mt-1 flex flex-col gap-1">
                       {g.items.map((e) => (
                         <EventRow key={e.slug} ev={e} />
                       ))}
                     </div>
-                  </div>
+                  </section>
                 ))}
               </div>
             )}
           </div>
 
-          <FilterSidebar
-            tags={tags}
-            selectedTag={tag}
-            q={q}
-            onTag={setTag}
-            onQ={setQ}
-            events={data?.events || []}
-            selectedDate={date}
-            onSelectDate={setDate}
-          />
+          {/* 桌面右栏：地图 + 月历 */}
+          <aside className="hidden flex-col gap-5 lg:flex">
+            <MiniEventMap />
+            <EventCalendar events={data?.events || []} selectedDate={date} onSelectDate={setDate} />
+          </aside>
         </div>
       </main>
       <Footer />
@@ -158,14 +213,15 @@ export function EventsListPage() {
 
 function ListSkeleton() {
   return (
-    <div className="mt-4 flex flex-col gap-3">
-      {Array.from({ length: 4 }).map((_, i) => (
-        <div key={i} className="flex gap-4">
-          <div className="aspect-video w-52 shrink-0 animate-pulse rounded-lg bg-black/5 dark:bg-white/10" />
-          <div className="flex-1 space-y-2 py-1">
-            <div className="h-4 w-3/4 animate-pulse rounded bg-black/5 dark:bg-white/10" />
-            <div className="h-3 w-1/3 animate-pulse rounded bg-black/5 dark:bg-white/10" />
+    <div className="mt-6 flex flex-col gap-3">
+      {Array.from({ length: 5 }).map((_, i) => (
+        <div key={i} className="flex gap-4 p-3">
+          <div className="flex-1 space-y-2.5 py-1">
+            <div className="h-3 w-16 animate-pulse rounded bg-black/[0.06] dark:bg-white/10" />
+            <div className="h-4 w-3/4 animate-pulse rounded bg-black/[0.06] dark:bg-white/10" />
+            <div className="h-3 w-1/3 animate-pulse rounded bg-black/[0.06] dark:bg-white/10" />
           </div>
+          <div className="aspect-[4/3] w-28 animate-pulse rounded-xl bg-black/[0.06] dark:bg-white/10 sm:aspect-[16/10] sm:w-48" />
         </div>
       ))}
     </div>

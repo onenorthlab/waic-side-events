@@ -1,8 +1,8 @@
 import { Link } from '@tanstack/react-router'
-import { Calendar, Plus, LogOut, User, Clock } from 'lucide-react'
+import { Plus, LogOut, User } from 'lucide-react'
 import { useAuth } from '@/lib/auth-context'
 import { useI18n } from '@/lib/i18n'
-import { Button } from '@/components/ui/button'
+import { BrandWordmark } from './Brand'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,43 +11,45 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 
+const navCls =
+  'rounded-full px-3 py-1.5 text-sm font-medium text-ink/65 transition hover:text-ink dark:text-white/65 dark:hover:text-white [&.active]:bg-ink [&.active]:text-white dark:[&.active]:bg-white dark:[&.active]:text-ink'
+
 export function Header({ showCreate = false }: { showCreate?: boolean }) {
   const { t } = useI18n()
   const { user, logout } = useAuth()
 
   return (
-    <header className="sticky top-0 z-40 h-14 border-b border-black/10 bg-white/95 backdrop-blur dark:border-white/10 dark:bg-[#131314]/95">
-      <div className="mx-auto flex h-full max-w-[1200px] items-center gap-6 px-4">
-        <Link to="/events" className="flex items-center gap-2 shrink-0" aria-label="4S home">
-          <img src="/4s_logo_symbol_black.svg" alt="4S" className="h-6 w-6 dark:invert" />
-        </Link>
+    <header className="sticky top-0 z-40 border-b border-black/[0.07] bg-paper/90 backdrop-blur dark:border-white/10 dark:bg-[#131316]/90">
+      <div className="mx-auto flex h-16 max-w-[1200px] items-center gap-4 px-4">
+        <BrandWordmark />
 
-        <nav className="flex items-center gap-5 text-sm">
-          <Link
-            to="/events"
-            className="flex items-center gap-1.5 font-medium text-ink/80 hover:text-ink dark:text-white/80 dark:hover:text-white [&.active]:font-semibold [&.active]:text-ink dark:[&.active]:text-white"
-          >
-            <Calendar size={16} /> {t('nav.events')}
+        <nav className="ml-2 hidden items-center gap-1 sm:flex">
+          <Link to="/events" className={navCls}>
+            {t('nav.events')}
           </Link>
-          <Link
-            to="/schedules"
-            className="flex items-center gap-1.5 font-medium text-ink/80 hover:text-ink dark:text-white/80 dark:hover:text-white [&.active]:font-semibold [&.active]:text-ink dark:[&.active]:text-white"
-          >
-            <Clock size={16} /> 日程
+          <Link to="/schedules" className={navCls}>
+            日程
+          </Link>
+          <Link to="/events/maps" className={navCls}>
+            地图
           </Link>
         </nav>
 
-        <div className="ml-auto flex items-center gap-3">
+        <div className="ml-auto flex items-center gap-2.5">
           {user ? (
             <>
               {showCreate && (
-                <Link to="/manage/events/new">
-                  <Button size="sm">
-                    <Plus size={16} className="mr-1.5" /> {t('nav.createEvent')}
-                  </Button>
+                <Link
+                  to="/manage/events/new"
+                  className="hidden items-center gap-1.5 rounded-full bg-brand px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-600 active:scale-[0.98] sm:inline-flex"
+                >
+                  <Plus size={15} /> {t('nav.createEvent')}
                 </Link>
               )}
-              <Link to="/manage/events" className="text-sm font-semibold text-ink hover:text-brand-600 dark:text-white">
+              <Link
+                to="/manage/events"
+                className="text-sm font-medium text-ink/70 hover:text-ink dark:text-white/70 dark:hover:text-white"
+              >
                 {t('nav.managedEvents')}
               </Link>
               <DropdownMenu>
@@ -70,14 +72,28 @@ export function Header({ showCreate = false }: { showCreate?: boolean }) {
               </DropdownMenu>
             </>
           ) : (
-            <Link to="/login">
-              <Button variant="ghost" size="sm">
-                {t('nav.signUpLogin')}
-              </Button>
+            <Link
+              to="/login"
+              className="rounded-full border border-black/12 px-4 py-2 text-sm font-semibold text-ink transition hover:border-black/25 dark:border-white/20 dark:text-white dark:hover:border-white/40"
+            >
+              发布活动
             </Link>
           )}
         </div>
       </div>
+
+      {/* 移动端次级导航：一行放下三个入口 */}
+      <nav className="flex items-center gap-1 overflow-x-auto px-4 pb-2 scrollbar-none sm:hidden">
+        <Link to="/events" className={navCls}>
+          {t('nav.events')}
+        </Link>
+        <Link to="/schedules" className={navCls}>
+          日程
+        </Link>
+        <Link to="/events/maps" className={navCls}>
+          地图
+        </Link>
+      </nav>
     </header>
   )
 }

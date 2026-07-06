@@ -1,38 +1,43 @@
-// 日期/时间格式化 —— 基于真实 schedules(date/startTime 为 JST 墙钟字符串, 直接展示不做时区换算)。
+// 日期/时间格式化 —— 中文站：schedules 的 date/startTime 是 Asia/Shanghai 墙钟字符串，直接展示不换算。
 import type { Schedule } from './types'
 
-const WD = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-const WD_SHORT = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-const MO = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+const WD_CN = ['周日', '周一', '周二', '周三', '周四', '周五', '周六']
 
 function ymd(d: string) {
   const [y, m, day] = d.split('-').map(Number)
   return { y, m: m - 1, day, wd: new Date(Date.UTC(y, m - 1, day)).getUTCDay() }
 }
 
+const thisYear = new Date().getFullYear()
+
 export function groupDateLabel(dateStr: string | null): string {
-  if (!dateStr) return 'Date TBD'
+  if (!dateStr) return '日期待定'
   const d = ymd(dateStr)
-  return `${MO[d.m]} ${d.day}, ${d.y} ${WD[d.wd]}`
+  const yearPrefix = d.y !== thisYear ? `${d.y}年` : ''
+  return `${yearPrefix}${d.m + 1}月${d.day}日 ${WD_CN[d.wd]}`
 }
 
 export function detailDateLabel(schedules?: Schedule[]): string {
-  if (!schedules?.length) return 'Date TBD'
+  if (!schedules?.length) return '日期待定'
   const f = ymd(schedules[0].date)
   const last = schedules[schedules.length - 1].date
-  if (schedules[0].date === last) return `${MO[f.m]} ${f.day}, ${f.y} (${WD_SHORT[f.wd]})`
+  const yearPrefix = f.y !== thisYear ? `${f.y}年` : ''
+  if (schedules[0].date === last) return `${yearPrefix}${f.m + 1}月${f.day}日 ${WD_CN[f.wd]}`
   const l = ymd(last)
-  if (f.y === l.y && f.m === l.m) return `${MO[f.m]} ${f.day}–${l.day}, ${f.y}`
-  return `${MO[f.m]} ${f.day} – ${MO[l.m]} ${l.day}, ${l.y}`
+  if (f.y === l.y && f.m === l.m) return `${yearPrefix}${f.m + 1}月${f.day}日 - ${l.day}日`
+  return `${yearPrefix}${f.m + 1}月${f.day}日 - ${l.m + 1}月${l.day}日`
+}
+
+/** 短日期：日期条 chip 用，如「7/26 周六」 */
+export function shortDateLabel(dateStr: string): { md: string; wd: string } {
+  const d = ymd(dateStr)
+  return { md: `${d.m + 1}/${d.day}`, wd: WD_CN[d.wd] }
 }
 
 export function timeLabel(schedules?: Schedule[]): string {
-  const t = schedules?.[0]?.startTime
-  if (!t) return ''
-  const [h, mm] = t.split(':').map(Number)
-  const ap = h >= 12 ? 'PM' : 'AM'
-  const hh = h % 12 || 12
-  return `${hh}:${String(mm).padStart(2, '0')} ${ap}-`
+  const s = schedules?.[0]
+  if (!s?.startTime) return ''
+  return s.endTime ? `${s.startTime} - ${s.endTime}` : `${s.startTime} 开始`
 }
 
 export function firstDate(schedules?: Schedule[]): string | null {
@@ -43,14 +48,22 @@ export function dayKey(dateStr: string | null): string {
   return dateStr || 'tbd'
 }
 
-// —— session 时间(ISO 带 Z, 转 Asia/Tokyo 显示) ——
-const JST = 'Asia/Tokyo'
-function jstParts(iso: string) {
+/** 判断活动当天是否正在进行（仅按日期粒度） */
+export function isLiveToday(schedules?: Schedule[]): boolean {
+  if (!schedules?.length) return false
+  const today = new Date()
+  const key = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`
+  return schedules.some((s) => s.date === key)
+}
+
+// —— session 时间(ISO 带 Z, 转 Asia/Shanghai 显示) ——
+const TZ = 'Asia/Shanghai'
+function tzParts(iso: string) {
   const p: Record<string, string> = {}
-  const f = new Intl.DateTimeFormat('en-US', {
-    timeZone: JST,
+  const f = new Intl.DateTimeFormat('zh-CN', {
+    timeZone: TZ,
     year: 'numeric',
-    month: 'short',
+    month: 'numeric',
     day: 'numeric',
     weekday: 'short',
     hour: '2-digit',
@@ -63,20 +76,19 @@ function jstParts(iso: string) {
 
 export function sessionTimeRange(startISO: string, endISO?: string): string {
   if (!startISO) return ''
-  const s = jstParts(startISO)
+  const s = tzParts(startISO)
   const start = `${s.hour}:${s.minute}`
   if (!endISO) return start
-  const e = jstParts(endISO)
-  return `${start}–${e.hour}:${e.minute}`
+  const e = tzParts(endISO)
+  return `${start} - ${e.hour}:${e.minute}`
 }
 
 export function sessionDayKey(iso: string): string {
-  const p = jstParts(iso)
-  return `${p.month} ${p.day}`
+  const p = tzParts(iso)
+  return `${p.month}月${p.day}日`
 }
 
 export function sessionDayLabel(iso: string): string {
-  const p = jstParts(iso)
-  return `${p.month} ${p.day} (${p.weekday})`
+  const p = tzParts(iso)
+  return `${p.month}月${p.day}日 ${p.weekday}`
 }
-

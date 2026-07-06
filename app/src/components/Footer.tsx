@@ -1,7 +1,6 @@
 import { Link } from '@tanstack/react-router'
 import { Sun, Moon } from 'lucide-react'
-import { toast } from '../lib/toast'
-import { useI18n } from '../lib/i18n'
+import { BrandMark } from './Brand'
 
 function toggleTheme() {
   const el = document.documentElement
@@ -11,71 +10,44 @@ function toggleTheme() {
   } catch {}
 }
 
-function Col({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div className="flex flex-col gap-3">
-      <h4 className="text-xs font-bold uppercase tracking-wider text-ink/50 dark:text-white/50">{title}</h4>
-      <div className="flex flex-col gap-2 text-sm text-ink/80 dark:text-white/75">{children}</div>
-    </div>
-  )
-}
-
-const linkCls = 'text-left hover:text-brand-600 dark:hover:text-brand transition'
+const linkCls = 'text-sm text-ink/60 transition hover:text-ink dark:text-white/60 dark:hover:text-white'
 
 export function Footer() {
-  const { t } = useI18n()
   return (
-    <footer className="mt-16 border-t border-black/10 bg-white dark:border-white/10 dark:bg-[#131314]">
-      <div className="mx-auto grid max-w-[1200px] grid-cols-2 gap-10 px-4 py-12 md:grid-cols-[1.4fr_1fr_1fr_1.3fr]">
-        <div className="col-span-2 flex flex-col gap-4 md:col-span-1">
-          <div className="flex items-center gap-2">
-            <img src="/4s_logo.svg" alt="4S" className="h-7 dark:invert" />
-          </div>
-          <div className="flex items-center gap-2">
-            <button
-              onClick={toggleTheme}
-              aria-label="切换主题"
-              className="flex items-center gap-1 rounded-lg border border-black/15 px-2.5 py-1.5 dark:border-white/20"
-            >
-              <Sun size={15} className="hidden dark:block" />
-              <Moon size={15} className="dark:hidden" />
-            </button>
-          </div>
+    <footer className="mt-20 border-t border-black/[0.07] dark:border-white/10">
+      <div className="mx-auto flex max-w-[1200px] flex-col gap-6 px-4 py-10 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex items-center gap-3">
+          <BrandMark size={22} />
+          <span className="text-sm font-semibold text-ink dark:text-white">WAIC Side Events</span>
         </div>
 
-        <Col title={t('footer.sitemap')}>
+        <nav className="flex flex-wrap items-center gap-x-6 gap-y-2">
           <Link to="/events" className={linkCls}>
-            {t('nav.events')}
+            活动
           </Link>
           <Link to="/schedules" className={linkCls}>
             日程
           </Link>
-        </Col>
+          <Link to="/events/maps" className={linkCls}>
+            地图
+          </Link>
+          <Link to="/login" className={linkCls}>
+            发布活动
+          </Link>
+        </nav>
 
-        <Col title={t('footer.company')}>
-          <button className={linkCls} onClick={() => toast(t('common.notInSlice'))}>
-            {t('footer.about')}
-          </button>
-          <button className={linkCls} onClick={() => toast(t('common.notInSlice'))}>
-            {t('footer.contact')}
-          </button>
-        </Col>
-
-        <Col title={t('footer.legal')}>
-          <button className={linkCls} onClick={() => toast(t('common.notInSlice'))}>
-            {t('footer.terms')}
-          </button>
-          <button className={linkCls} onClick={() => toast(t('common.notInSlice'))}>
-            {t('footer.privacy')}
-          </button>
-          <button className={linkCls} onClick={() => toast(t('common.notInSlice'))}>
-            {t('footer.commercial')}
-          </button>
-          <img src="/iso-27001.jpg" alt="ISO/IEC 27001 certified" className="mt-2 h-14 w-auto rounded" />
-        </Col>
+        <button
+          onClick={toggleTheme}
+          aria-label="切换深浅色主题"
+          className="flex w-fit items-center gap-1 rounded-full border border-black/12 px-3 py-1.5 text-ink/70 transition hover:border-black/25 dark:border-white/20 dark:text-white/70 dark:hover:border-white/40"
+        >
+          <Sun size={14} className="hidden dark:block" />
+          <Moon size={14} className="dark:hidden" />
+          <span className="text-xs font-medium">主题</span>
+        </button>
       </div>
-      <div className="border-t border-black/5 py-5 text-center text-xs text-ink/50 dark:border-white/5 dark:text-white/40">
-        {t('footer.rights')}
+      <div className="border-t border-black/[0.05] py-5 text-center text-xs text-ink/40 dark:border-white/[0.06] dark:text-white/35">
+        © 2026 WAIC Side Events
       </div>
     </footer>
   )

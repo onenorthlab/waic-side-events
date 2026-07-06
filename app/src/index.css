@@ -6,15 +6,22 @@
 /* 深色模式：html.dark 时启用（footer 主题切换） */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/*
+ * WAIC Side Events 设计 token
+ * 形状体系：卡片 rounded-2xl(16px) / 按钮与 chip 全圆角 pill / 输入框 rounded-lg(10px)
+ * 唯一强调色：钴蓝 cobalt；amber 只用于「进行中」等状态语义，不作装饰
+ */
 @theme {
-  --color-brand: #1ad861;
-  --color-brand-600: #14b551;
-  --color-ink: #131314;
+  --color-brand: #2745e8;
+  --color-brand-600: #1c34c4;
+  --color-brand-50: #eef1fe;
+  --color-ink: #17181c;
+  --color-paper: #fafaf8;
+  --color-live: #f59e0b;
 
-  --font-sans: 'Inter', system-ui, -apple-system, 'Hiragino Kaku Gothic ProN',
-    'Noto Sans JP', sans-serif;
-  --font-display: 'Oswald', 'Inter', sans-serif;
-  --font-wordmark: 'Special Elite', 'Oswald', serif;
+  --font-sans: 'Geist Variable', -apple-system, 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+  --font-display: var(--font-sans);
 }
 
 html {
@@ -25,31 +32,115 @@ html {
 
 body {
   margin: 0;
-  background: #fff;
+  background: var(--color-paper);
   color: var(--color-ink);
 }
 
 html.dark body {
-  background: #131314;
+  background: #131316;
   color: #f4f4f5;
 }
 
-/* 富文本简介（详情页 description）基础排版 */
-.prose-4s {
-  line-height: 1.75;
+/* 活动正文排版：兼容旧 HTML 描述与新 Markdown 渲染 */
+.prose-event {
+  line-height: 1.8;
+  word-break: break-word;
 }
-.prose-4s h2,
-.prose-4s h3 {
+.prose-event h1,
+.prose-event h2,
+.prose-event h3 {
   font-weight: 700;
-  margin: 1.4em 0 0.5em;
+  line-height: 1.35;
+  margin: 1.5em 0 0.5em;
 }
-.prose-4s ul {
+.prose-event h1 { font-size: 1.35em; }
+.prose-event h2 { font-size: 1.2em; }
+.prose-event h3 { font-size: 1.05em; }
+.prose-event ul {
   list-style: disc;
   padding-left: 1.4em;
   margin: 0.6em 0;
 }
-.prose-4s p {
-  margin: 0.7em 0;
+.prose-event ol {
+  list-style: decimal;
+  padding-left: 1.4em;
+  margin: 0.6em 0;
+}
+.prose-event p {
+  margin: 0.75em 0;
+}
+.prose-event img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 1em 0;
+}
+.prose-event a {
+  color: var(--color-brand);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.prose-event blockquote {
+  border-left: 3px solid var(--color-brand);
+  padding-left: 1em;
+  margin: 1em 0;
+  opacity: 0.85;
+}
+.prose-event hr {
+  border: none;
+  border-top: 1px solid currentColor;
+  opacity: 0.12;
+  margin: 1.6em 0;
+}
+.prose-event code {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  font-size: 0.9em;
+  background: rgb(0 0 0 / 0.05);
+  border-radius: 4px;
+  padding: 0.1em 0.35em;
+}
+html.dark .prose-event code {
+  background: rgb(255 255 255 / 0.1);
+}
+.prose-event pre {
+  overflow-x: auto;
+  background: rgb(0 0 0 / 0.04);
+  border-radius: 12px;
+  padding: 0.9em 1.1em;
+  margin: 1em 0;
+}
+html.dark .prose-event pre {
+  background: rgb(255 255 255 / 0.06);
+}
+.prose-event pre code {
+  background: none;
+  padding: 0;
+}
+.prose-event table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1em 0;
+  font-size: 0.92em;
+  display: block;
+  overflow-x: auto;
+}
+.prose-event th,
+.prose-event td {
+  border: 1px solid rgb(0 0 0 / 0.1);
+  padding: 0.45em 0.7em;
+  text-align: left;
+}
+html.dark .prose-event th,
+html.dark .prose-event td {
+  border-color: rgb(255 255 255 / 0.14);
+}
+
+/* 横向滚动条隐藏（日期条/标签条移动端横滑） */
+.scrollbar-none {
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
 }
 
 @theme inline {
