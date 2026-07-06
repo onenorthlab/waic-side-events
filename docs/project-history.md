@@ -218,3 +218,17 @@
 - 固化 Agent Skill 的 URL 解析规则，减少 LLM 不确定性。
 - 接入微信登录，降低参会者注册门槛。
 - 增加活动数据统计看板。
+
+## 2026-07-07 大改版：品牌独立 + 整站重设计
+
+本次改版由五件事构成（对应 git 提交 a677c10…1b56353）：
+
+1. **移除社区(BETA)与活动播单**：复刻期遗留模块整体下线（前端路由、API、schema、生产 D1 表全删），本地种子数据换为生产库的真实 WAIC 活动。
+2. **前端完全重设计**：确立「编辑感实用主义」设计语言 —— 钴蓝 `#2745e8` 单一强调色 + 暖纸白底 + Geist/PingFang 字体栈；信息架构围绕三条用户旅程重排（参会者 30 秒决策报名 / 主办方贴链接上线 / 工作人员扫码核销）；首页以 WAIC 会期日期条为首要筛选轴；移动端 375px 一等公民（底部固定报名条、横滑导航）。waytoagi.com 设计规范提取存于 `docs/design-reference/`（配色刻意未沿用其紫色）。
+3. **站内导入**：`POST /api/manage/import` 抓公众号 SSR 页（UA+Referer），懒加载图修复，mmbiz 防盗链图走 `/api/images/proxy`（域名白名单防 SSRF），正文保真转 Markdown（**绝不让 LLM 改写主办方原文**），MiniMax 2.7（GeneralCompute）只抽结构化字段，高德地理编码。详情页 `EventContent` 组件按 `descriptionFormat` 渲染 Markdown（react-markdown+GFM）或旧 HTML。
+4. **电子票 + 现场签到**：HMAC-SHA256 签名票据（`TICKET_SECRET`），`/ticket/:token` 登机牌式电子票页（QR + 8 位短码），报名/审核邮件附票链；`/manage/events/:id/checkin` 工作人员核销台（jsQR 摄像头扫码 + 短码兜底 + 防重复核销 + 实时统计）。`participants` 表新增 `checked_in_at` 列（生产已 ALTER）。
+5. **去 4S 化**：package 名、logo、favicon、title、ICS PRODID/UID/URL、版权文案、注释、本地 db 文件名、旧种子数据全部清除，换用自制 WAIC 品牌字标（`Brand.tsx` / `brand-mark.svg`）。
+
+**踩坑记录**：CSS Grid `1fr` 列内放不换行横滑条会把列撑爆（侧栏被挤出屏幕），修法是 `minmax(0,1fr)` + 子元素 `min-w-0`；vite dev 的 Hono 中间件不热载服务端新路由，改服务端代码要重启 dev server。
+
+**新增 secrets**：`GENERALCOMPUTE_API_KEY`、`TICKET_SECRET`（均已在生产设置）。
