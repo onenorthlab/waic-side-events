@@ -4,6 +4,7 @@ import { z } from 'zod'
 import tagsUsage from '../data/tags-usage.json'
 import authApp from './auth'
 import manageApp from './manage'
+import attendeeApp from './attendee'
 import { getDb } from '@/db'
 import { events as eventsTable, participants as participantsTable } from '@/db/schema'
 import { eq, and, sql as sqlExpr } from 'drizzle-orm'
@@ -14,6 +15,7 @@ const app = new Hono()
 
 app.route('/api/auth', authApp)
 app.route('/api/manage', manageApp)
+app.route('/api/attendee', attendeeApp)
 
 const eventPublicFields = (r: any) => ({
   ...(r.data as any),

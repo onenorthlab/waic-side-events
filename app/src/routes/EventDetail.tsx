@@ -10,6 +10,7 @@ import { EventProgram } from '../components/EventProgram'
 import { EventContent } from '../components/EventContent'
 import { LiveBadge } from '../components/EventCard'
 import { useI18n } from '../lib/i18n'
+import { useAttendee } from '../lib/attendee-context'
 import { CalendarPlus, Clock, MapPin, Wifi, ArrowLeft, ExternalLink, CheckCircle, Users, ShieldCheck } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -64,9 +65,13 @@ function Organizers({ ev }: { ev: EventItem }) {
 }
 
 function useRegistration(ev: EventItem) {
+  const { email: attendeeEmail } = useAttendee()
   const [open, setOpen] = useState(false)
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
+  useEffect(() => {
+    if (attendeeEmail) setEmail((prev) => prev || attendeeEmail)
+  }, [attendeeEmail])
   const [submitting, setSubmitting] = useState(false)
   const [result, setResult] = useState<{ status: string; ticketUrl?: string } | null>(null)
   const hasSurvey = Array.isArray(ev.surveySchema) && ev.surveySchema.length > 0

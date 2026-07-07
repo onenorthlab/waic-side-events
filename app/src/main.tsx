@@ -4,6 +4,7 @@ import { RouterProvider } from '@tanstack/react-router'
 import { router } from './router'
 import { LocaleProvider } from './lib/i18n'
 import { AuthProvider } from './lib/auth-context'
+import { AttendeeProvider } from './lib/attendee-context'
 import { Toaster } from '@/components/ui/sonner'
 import './index.css'
 
@@ -17,8 +18,10 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <LocaleProvider>
       <AuthProvider>
-        <RouterProvider router={router} />
-        <Toaster position="top-center" />
+        <AttendeeProvider>
+          <RouterProvider router={router} />
+          <Toaster position="top-center" />
+        </AttendeeProvider>
       </AuthProvider>
     </LocaleProvider>
   </StrictMode>

@@ -33,6 +33,9 @@ export function Header({ showCreate = false }: { showCreate?: boolean }) {
           <Link to="/events/maps" className={navCls}>
             地图
           </Link>
+          <Link to="/me" className={navCls}>
+            我的
+          </Link>
         </nav>
 
         <div className="ml-auto flex items-center gap-2.5">
@@ -92,6 +95,9 @@ export function Header({ showCreate = false }: { showCreate?: boolean }) {
         </Link>
         <Link to="/events/maps" className={navCls}>
           地图
+        </Link>
+        <Link to="/me" className={navCls}>
+          我的
         </Link>
       </nav>
     </header>

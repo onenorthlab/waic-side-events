@@ -130,6 +130,22 @@ CREATE INDEX IF NOT EXISTS idx_participants_status ON participants(status);
 CREATE INDEX IF NOT EXISTS idx_participants_email ON participants(event_id, email);
 `
 
+// email_otps 表 —— 参会者邮箱验证码（邮箱即账号，无密码）
+export const emailOtps = sqliteTable('email_otps', {
+  email: text('email').primaryKey(),
+  code: text('code').notNull(),
+  expiresAt: text('expires_at').notNull(),
+  attempts: integer('attempts').default(0),
+  createdAt: text('created_at'),
+})
+
+export const CREATE_EMAIL_OTPS = `
+CREATE TABLE IF NOT EXISTS email_otps (
+  email TEXT PRIMARY KEY, code TEXT NOT NULL, expires_at TEXT NOT NULL,
+  attempts INTEGER DEFAULT 0, created_at TEXT
+);
+`
+
 // tickets 表 —— 票种（当前仅支持免费/现场票）
 export const tickets = sqliteTable('tickets', {
   id: text('id').primaryKey(),
