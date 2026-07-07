@@ -4,7 +4,7 @@ import { notifications } from '@/db/schema'
 export interface NotifyInput {
   email: string
   eventId?: string | null
-  kind: 'REVIEW_APPROVED' | 'REVIEW_REJECTED' | 'ANNOUNCEMENT' | 'ROLE_ASSIGNED'
+  kind: 'REVIEW_APPROVED' | 'REVIEW_REJECTED' | 'ANNOUNCEMENT' | 'ROLE_ASSIGNED' | 'FEEDBACK_INVITE'
   title: string
   body?: string | null
   link?: string | null

@@ -1,4 +1,5 @@
 import app from './server'
+import { runFeedbackInviteSweep } from './server/feedback-sweep'
 import { getDb } from './db'
 import { events as eventsTable } from './db/schema'
 import { eq } from 'drizzle-orm'
@@ -49,6 +50,18 @@ async function withOgMeta(request: Request, env: Env, slug: string): Promise<Res
   }
 }
 
+/** 基础安全响应头（对 HTML 文档）；CSP 涉及高德/Feedlog 等第三方，另行专项处理 */
+function withSecurityHeaders(res: Response): Response {
+  const ct = res.headers.get('content-type') || ''
+  if (!ct.includes('text/html')) return res
+  const out = new Response(res.body, res)
+  out.headers.set('X-Content-Type-Options', 'nosniff')
+  out.headers.set('X-Frame-Options', 'DENY')
+  out.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin')
+  out.headers.set('Permissions-Policy', 'camera=(self), geolocation=(), microphone=()')
+  return out
+}
+
 export default {
   async fetch(request: Request, env: Env, _ctx: Ctx): Promise<Response> {
     const url = new URL(request.url)
@@ -60,9 +73,14 @@ export default {
     if (!isKnown && single && request.method === 'GET') {
       const slug = decodeURIComponent(url.pathname.slice(1))
       const withMeta = await withOgMeta(request, env, slug)
-      if (withMeta) return withMeta
+      if (withMeta) return withSecurityHeaders(withMeta)
     }
 
-    return env.ASSETS.fetch(request)
+    return withSecurityHeaders(await env.ASSETS.fetch(request))
+  },
+
+  // Cron Trigger：每日北京时间 09:00 扫描已结束活动，站内邀约填写反馈
+  async scheduled(_event: unknown, env: Env, ctx: Ctx): Promise<void> {
+    ctx.waitUntil(runFeedbackInviteSweep(env))
   },
 }

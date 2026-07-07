@@ -19,9 +19,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { toast } from 'sonner'
-import { Survey } from 'survey-react-ui'
-import { Model } from 'survey-core'
-import 'survey-core/survey-core.css'
+import { SurveyBlock } from '../components/SurveyBlock'
 
 function Organizers({ ev }: { ev: EventItem }) {
   const { t } = useI18n()
@@ -79,7 +77,7 @@ function useRegistration(ev: EventItem) {
   const [submitting, setSubmitting] = useState(false)
   const [result, setResult] = useState<{ status: string; ticketUrl?: string } | null>(null)
   const hasSurvey = Array.isArray(ev.surveySchema) && ev.surveySchema.length > 0
-  const [surveyModel] = useState(() => (hasSurvey ? new Model({ elements: ev.surveySchema }) : null))
+  const [surveyModel, setSurveyModel] = useState<any>(null)
 
   const submit = async (e?: React.FormEvent) => {
     e?.preventDefault()
@@ -115,7 +113,7 @@ function useRegistration(ev: EventItem) {
     }
   }
 
-  return { open, setOpen, name, setName, email, setEmail, showInList, setShowInList, submitting, result, submit, hasSurvey, surveyModel }
+  return { open, setOpen, name, setName, email, setEmail, showInList, setShowInList, submitting, result, submit, hasSurvey, surveyModel, setSurveyModel, surveySchema: ev.surveySchema }
 }
 
 function RegistrationDialog({ ev, reg }: { ev: EventItem; reg: ReturnType<typeof useRegistration> }) {
@@ -169,9 +167,9 @@ function RegistrationDialog({ ev, reg }: { ev: EventItem; reg: ReturnType<typeof
               />
               {t('detail.showInParticipantList')}
             </label>
-            {reg.hasSurvey && reg.surveyModel && (
+            {reg.hasSurvey && (
               <div className="rounded-xl border border-black/[0.08] p-3 dark:border-white/12">
-                <Survey model={reg.surveyModel} />
+                <SurveyBlock elements={reg.surveySchema as any[]} onModel={reg.setSurveyModel} />
               </div>
             )}
             <Button type="submit" className="w-full rounded-full" size="lg" disabled={reg.submitting}>

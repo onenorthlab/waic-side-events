@@ -11,6 +11,7 @@
     "not_found_handling": "single-page-application"
   },
   "observability": { "enabled": true },
+  "triggers": { "crons": ["0 1 * * *"] },
   "vars": {
     "GENERALCOMPUTE_BASE_URL": "https://api.generalcompute.com/v1",
     "GENERALCOMPUTE_MODEL": "minimax-m2.7"

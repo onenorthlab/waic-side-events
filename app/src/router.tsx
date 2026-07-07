@@ -1,36 +1,60 @@
+import { lazy, Suspense } from 'react'
 import { createRootRoute, createRoute, createRouter, Outlet, redirect } from '@tanstack/react-router'
 import { EventsListPage } from './routes/EventsList'
-import { EventsMapPage } from './routes/EventsMap'
-import { EventDetailPage } from './routes/EventDetail'
-import { SchedulesPage } from './routes/SchedulesPage'
-import { TicketPage } from './routes/TicketPage'
-import { MePage } from './routes/MePage'
-import { StaffCheckinPage } from './routes/StaffCheckin'
-import { NotificationsPage } from './routes/NotificationsPage'
-import { CheckinPage } from './routes/admin/CheckinPage'
-import { ManagedEventsListPage } from './routes/ManagedEventsList'
-import { EventCreatePage } from './routes/EventCreate'
-import { LoginPage } from './routes/Login'
-import { RegisterPage } from './routes/Register'
-import { AdminLayout } from './components/admin/AdminLayout'
-import { AdminDashboardPage } from './routes/admin/AdminDashboard'
-import { AdminPlaceholderPage } from './routes/admin/AdminPlaceholder'
-import { EventSettingsPage } from './routes/admin/EventSettings'
-import { ParticipantsPage } from './routes/admin/ParticipantsPage'
-import { TicketsPage } from './routes/admin/TicketsPage'
-import { SpeakersPage } from './routes/admin/SpeakersPage'
-import { AnnouncementsPage } from './routes/admin/AnnouncementsPage'
-import { StagesPage } from './routes/admin/StagesPage'
-import { SessionsPage } from './routes/admin/SessionsPage'
-import { TimetablePage } from './routes/admin/TimetablePage'
-import { EventFeaturesPage } from './routes/admin/EventFeaturesPage'
-import { PageDesignPage } from './routes/admin/PageDesignPage'
-import { SurveyEditorPage } from './routes/admin/SurveyEditorPage'
-import { FeedbackPage } from './routes/admin/FeedbackPage'
-import { StaffPage } from './routes/admin/StaffPage'
-import { FeedbackFormPage } from './routes/FeedbackPage'
+import { BrandMark } from './components/Brand'
 
-const rootRoute = createRootRoute({ component: () => <Outlet /> })
+// 代码分割策略：首页（最高频入口）留主包；其余页面全部懒加载。
+// 后台系（含 survey-creator）与扫码/二维码等重依赖只会进各自的 chunk，不拖累首屏。
+const EventsMapPage = lazy(() => import('./routes/EventsMap').then((m) => ({ default: m.EventsMapPage })))
+const EventDetailPage = lazy(() => import('./routes/EventDetail').then((m) => ({ default: m.EventDetailPage })))
+const SchedulesPage = lazy(() => import('./routes/SchedulesPage').then((m) => ({ default: m.SchedulesPage })))
+const TicketPage = lazy(() => import('./routes/TicketPage').then((m) => ({ default: m.TicketPage })))
+const MePage = lazy(() => import('./routes/MePage').then((m) => ({ default: m.MePage })))
+const StaffCheckinPage = lazy(() => import('./routes/StaffCheckin').then((m) => ({ default: m.StaffCheckinPage })))
+const NotificationsPage = lazy(() => import('./routes/NotificationsPage').then((m) => ({ default: m.NotificationsPage })))
+const FeedbackFormPage = lazy(() => import('./routes/FeedbackPage').then((m) => ({ default: m.FeedbackFormPage })))
+const LoginPage = lazy(() => import('./routes/Login').then((m) => ({ default: m.LoginPage })))
+const RegisterPage = lazy(() => import('./routes/Register').then((m) => ({ default: m.RegisterPage })))
+const ManagedEventsListPage = lazy(() => import('./routes/ManagedEventsList').then((m) => ({ default: m.ManagedEventsListPage })))
+const EventCreatePage = lazy(() => import('./routes/EventCreate').then((m) => ({ default: m.EventCreatePage })))
+const AdminLayout = lazy(() => import('./components/admin/AdminLayout').then((m) => ({ default: m.AdminLayout })))
+const AdminDashboardPage = lazy(() => import('./routes/admin/AdminDashboard').then((m) => ({ default: m.AdminDashboardPage })))
+const AdminPlaceholderPage = lazy(() => import('./routes/admin/AdminPlaceholder').then((m) => ({ default: m.AdminPlaceholderPage })))
+const EventSettingsPage = lazy(() => import('./routes/admin/EventSettings').then((m) => ({ default: m.EventSettingsPage })))
+const ParticipantsPage = lazy(() => import('./routes/admin/ParticipantsPage').then((m) => ({ default: m.ParticipantsPage })))
+const TicketsPage = lazy(() => import('./routes/admin/TicketsPage').then((m) => ({ default: m.TicketsPage })))
+const SpeakersPage = lazy(() => import('./routes/admin/SpeakersPage').then((m) => ({ default: m.SpeakersPage })))
+const AnnouncementsPage = lazy(() => import('./routes/admin/AnnouncementsPage').then((m) => ({ default: m.AnnouncementsPage })))
+const StagesPage = lazy(() => import('./routes/admin/StagesPage').then((m) => ({ default: m.StagesPage })))
+const SessionsPage = lazy(() => import('./routes/admin/SessionsPage').then((m) => ({ default: m.SessionsPage })))
+const TimetablePage = lazy(() => import('./routes/admin/TimetablePage').then((m) => ({ default: m.TimetablePage })))
+const EventFeaturesPage = lazy(() => import('./routes/admin/EventFeaturesPage').then((m) => ({ default: m.EventFeaturesPage })))
+const PageDesignPage = lazy(() => import('./routes/admin/PageDesignPage').then((m) => ({ default: m.PageDesignPage })))
+const SurveyEditorPage = lazy(() => import('./routes/admin/SurveyEditorPage').then((m) => ({ default: m.SurveyEditorPage })))
+const AdminFeedbackPage = lazy(() => import('./routes/admin/FeedbackPage').then((m) => ({ default: m.FeedbackPage })))
+const CheckinPage = lazy(() => import('./routes/admin/CheckinPage').then((m) => ({ default: m.CheckinPage })))
+const StaffPage = lazy(() => import('./routes/admin/StaffPage').then((m) => ({ default: m.StaffPage })))
+
+function RouteFallback() {
+  return (
+    <div className="flex min-h-[60vh] items-center justify-center">
+      <div className="flex flex-col items-center gap-3">
+        <BrandMark size={32} />
+        <div className="h-1 w-24 overflow-hidden rounded-full bg-black/[0.06] dark:bg-white/10">
+          <div className="h-full w-1/3 animate-pulse rounded-full bg-brand" />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+const rootRoute = createRootRoute({
+  component: () => (
+    <Suspense fallback={<RouteFallback />}>
+      <Outlet />
+    </Suspense>
+  ),
+})
 
 // "/" → /events
 const indexRoute = createRoute({
@@ -55,7 +79,7 @@ const staffCheckinRoute = createRoute({ getParentRoute: () => rootRoute, path: '
 const notificationsRoute = createRoute({ getParentRoute: () => rootRoute, path: '/notifications', component: NotificationsPage })
 const feedbackFormRoute = createRoute({ getParentRoute: () => rootRoute, path: '/feedback/$eventId', component: FeedbackFormPage })
 
-// 活动详情:归档真实路由是 /en/<slug>;切片单 locale,简化为 /<slug>(放最后, 让静态路由优先)
+// 活动详情: /<slug>(放最后, 让静态路由优先)
 const detailRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/$slug',
@@ -120,7 +144,7 @@ const adminPaymentsRoute = createRoute({ getParentRoute: () => adminLayoutRoute,
 const adminSurveysRoute = createRoute({ getParentRoute: () => adminLayoutRoute, path: '/surveys', component: SurveyEditorPage })
 const adminSpeakersRoute = createRoute({ getParentRoute: () => adminLayoutRoute, path: '/speakers', component: SpeakersPage })
 const adminAnnouncementsRoute = createRoute({ getParentRoute: () => adminLayoutRoute, path: '/announcements', component: AnnouncementsPage })
-const adminFeedbackRoute = createRoute({ getParentRoute: () => adminLayoutRoute, path: '/feedback', component: FeedbackPage })
+const adminFeedbackRoute = createRoute({ getParentRoute: () => adminLayoutRoute, path: '/feedback', component: AdminFeedbackPage })
 const adminStaffRoute = createRoute({ getParentRoute: () => adminLayoutRoute, path: '/staff', component: StaffPage })
 const adminSettingsRoute = createRoute({ getParentRoute: () => adminLayoutRoute, path: '/settings', component: EventSettingsPage })
 const adminFeaturesRoute = createRoute({ getParentRoute: () => adminLayoutRoute, path: '/features', component: EventFeaturesPage })

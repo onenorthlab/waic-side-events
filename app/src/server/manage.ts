@@ -9,6 +9,7 @@ import { sendEmail, registrationApprovedEmail, registrationRejectedEmail } from 
 import importApp from './import'
 import { signTicket, ticketSecret } from '@/lib/ticket'
 import { performCheckin } from './checkin-core'
+import { runFeedbackInviteSweep } from './feedback-sweep'
 import { notify, notifyMany, roleLabel } from './notify'
 
 const createEventSchema = z.object({
@@ -628,6 +629,13 @@ app.get('/events/:id/feedback-responses', async (c) => {
     averageRating: aggRow?.avg ?? null,
     ratedCount: aggRow?.ratedCount || 0,
   })
+})
+
+// 手动触发反馈邀约扫描（Cron 每日自动跑，这里供验证/补发）
+app.post('/feedback-invite-sweep', async (c) => {
+  await requireAuth(c)
+  const result = await runFeedbackInviteSweep(c.env)
+  return c.json(result)
 })
 
 export default app

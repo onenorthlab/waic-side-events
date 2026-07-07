@@ -5,9 +5,7 @@ import { Footer } from '../components/Footer'
 import { useAttendee } from '../lib/attendee-context'
 import { Button } from '@/components/ui/button'
 import { toast } from 'sonner'
-import { Survey } from 'survey-react-ui'
-import { Model } from 'survey-core'
-import 'survey-core/survey-core.css'
+import { SurveyBlock } from '../components/SurveyBlock'
 import { Star, CheckCircle2 } from 'lucide-react'
 import { useI18n } from '../lib/i18n'
 
@@ -57,7 +55,8 @@ export function FeedbackFormPage() {
   const [data, setData] = useState<FeedbackFormData | null>(null)
   const [message, setMessage] = useState('')
   const [rating, setRating] = useState(0)
-  const [surveyModel, setSurveyModel] = useState<Model | null>(null)
+  const [surveyModel, setSurveyModel] = useState<any>(null)
+  const [surveyElements, setSurveyElements] = useState<any[] | null>(null)
   const [submitting, setSubmitting] = useState(false)
   const [done, setDone] = useState(false)
 
@@ -81,9 +80,7 @@ export function FeedbackFormPage() {
           setDone(true)
         }
         if (Array.isArray(d.feedbackSchema) && d.feedbackSchema.length > 0) {
-          const model = new Model({ elements: d.feedbackSchema })
-          if (d.response?.answers) model.data = d.response.answers
-          setSurveyModel(model)
+          setSurveyElements(d.feedbackSchema)
         }
         setState('ok')
       })
@@ -164,9 +161,9 @@ export function FeedbackFormPage() {
               </div>
             </div>
 
-            {surveyModel && (
+            {surveyElements && surveyElements.length > 0 && (
               <div className="mt-4 rounded-2xl border border-black/[0.06] bg-white p-2 shadow-card dark:border-white/10 dark:bg-neutral-900">
-                <Survey model={surveyModel} />
+                <SurveyBlock elements={surveyElements!} onModel={setSurveyModel} />
               </div>
             )}
 

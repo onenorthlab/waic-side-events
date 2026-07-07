@@ -50,9 +50,15 @@ app.post('/otp', zValidator('json', z.object({ email: z.string().email() })), as
     if (!r.ok) return c.json({ error: 'send_failed', message: '验证码发送失败，请稍后重试' }, 502)
     return c.json({ ok: true })
   }
-  // 本地开发无邮件通道：明示降级并回传验证码，便于联调
-  console.error(`[attendee] DEV otp for ${email}: ${code}`)
-  return c.json({ ok: true, devCode: code })
+  // devCode 回传仅限本地开发（无 D1 binding 时走 better-sqlite3 的场景）。
+  // 生产（有 DB binding）无邮件 key 一律报错，绝不泄露验证码。nodejs_compat 会给 Workers 注入 process shim，不能用 process 判定。
+  const isLocalDev = !(c.env as any)?.DB
+  if (isLocalDev) {
+    console.error(`[attendee] DEV otp for ${email}: ${code}`)
+    return c.json({ ok: true, devCode: code })
+  }
+  await db.delete(emailOtps).where(eq(emailOtps.email, email)).run()
+  return c.json({ error: 'email_not_configured', message: '邮件服务未配置，请联系管理员' }, 503)
 })
 
 // —— 校验验证码换 session ——
