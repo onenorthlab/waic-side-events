@@ -3,6 +3,7 @@ import jsQR from 'jsqr'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { CheckCircle2, XCircle, AlertCircle, Camera, CameraOff, KeyboardIcon } from 'lucide-react'
+import { useI18n } from '@/lib/i18n'
 
 interface CheckinResult {
   result: 'ok' | 'already' | 'invalid' | 'not_approved' | 'wrong_event'
@@ -17,6 +18,7 @@ interface CheckinResult {
  * 设计目标：单手、强反馈（颜色+大字）、断网重试友好、扫不了码有短码兜底。
  */
 export function CheckinConsole({ apiBase }: { apiBase: string }) {
+  const { t } = useI18n()
   const videoRef = useRef<HTMLVideoElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const [cameraOn, setCameraOn] = useState(false)
@@ -56,12 +58,12 @@ export function CheckinConsole({ apiBase }: { apiBase: string }) {
           if (navigator.vibrate) navigator.vibrate(80)
         }
       } catch {
-        setResult({ result: 'invalid', message: '网络异常，请重试' })
+        setResult({ result: 'invalid', message: t('checkin.networkError') })
       } finally {
         setBusy(false)
       }
     },
-    [apiBase, loadStats]
+    [apiBase, loadStats, t]
   )
 
   // 扫码循环
@@ -83,7 +85,7 @@ export function CheckinConsole({ apiBase }: { apiBase: string }) {
         await video.play()
         scan()
       } catch (e: any) {
-        setCameraError(e?.name === 'NotAllowedError' ? '相机权限被拒绝，请在浏览器设置里允许，或改用短码输入' : '相机启动失败，请改用短码输入')
+        setCameraError(e?.name === 'NotAllowedError' ? t('checkin.cameraPermissionDenied') : t('checkin.cameraStartFailed'))
         setCameraOn(false)
       }
     }
@@ -120,23 +122,23 @@ export function CheckinConsole({ apiBase }: { apiBase: string }) {
   }, [cameraOn, submit])
 
   const resultStyle: Record<CheckinResult['result'], { bg: string; icon: React.ReactNode; label: string }> = {
-    ok: { bg: 'bg-emerald-600', icon: <CheckCircle2 size={40} />, label: '核销成功' },
-    already: { bg: 'bg-live', icon: <AlertCircle size={40} />, label: '重复核销' },
-    not_approved: { bg: 'bg-live', icon: <AlertCircle size={40} />, label: '不可入场' },
-    wrong_event: { bg: 'bg-red-600', icon: <XCircle size={40} />, label: '票不对' },
-    invalid: { bg: 'bg-red-600', icon: <XCircle size={40} />, label: '无效票' },
+    ok: { bg: 'bg-emerald-600', icon: <CheckCircle2 size={40} />, label: t('checkin.success') },
+    already: { bg: 'bg-live', icon: <AlertCircle size={40} />, label: t('checkin.duplicate') },
+    not_approved: { bg: 'bg-live', icon: <AlertCircle size={40} />, label: t('checkin.notAllowed') },
+    wrong_event: { bg: 'bg-red-600', icon: <XCircle size={40} />, label: t('checkin.wrongTicket') },
+    invalid: { bg: 'bg-red-600', icon: <XCircle size={40} />, label: t('checkin.invalidTicket') },
   }
 
   return (
     <div className="mx-auto max-w-[560px]">
       <div className="flex items-end justify-between">
         <div>
-          <h2 className="text-2xl font-bold">现场签到</h2>
-          <p className="mt-1 text-sm opacity-60">扫参会者电子票二维码，或输入票面短码</p>
+          <h2 className="text-2xl font-bold">{t('checkin.title')}</h2>
+          <p className="mt-1 text-sm opacity-60">{t('checkin.subtitle')}</p>
         </div>
         {stats && (
           <p className="text-sm tabular-nums opacity-70">
-            <b className="text-lg text-brand">{stats.checkedIn}</b> / {stats.approved} 已入场
+            <b className="text-lg text-brand">{stats.checkedIn}</b> / {stats.approved} {t('checkin.checkedInOf')}
           </p>
         )}
       </div>
@@ -153,7 +155,7 @@ export function CheckinConsole({ apiBase }: { apiBase: string }) {
             <p className="text-sm opacity-90">
               {result.result === 'already' && result.checkedInAt
                 ? `${result.message}（${new Date(result.checkedInAt).toLocaleTimeString('zh-CN')}）`
-                : result.message || (result.type && result.type !== 'GENERAL' ? `类型：${result.type}` : '欢迎入场')}
+                : result.message || (result.type && result.type !== 'GENERAL' ? t('checkin.type', { type: result.type }) : t('checkin.welcome'))}
             </p>
           </div>
         </div>
@@ -172,7 +174,7 @@ export function CheckinConsole({ apiBase }: { apiBase: string }) {
               onClick={() => setCameraOn(false)}
               className="absolute bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-1.5 rounded-full bg-white/90 px-4 py-2 text-sm font-semibold text-ink"
             >
-              <CameraOff size={15} /> 关闭相机
+              <CameraOff size={15} /> {t('checkin.closeCamera')}
             </button>
           </div>
         ) : (
@@ -184,7 +186,7 @@ export function CheckinConsole({ apiBase }: { apiBase: string }) {
             className="flex aspect-[2/1] w-full flex-col items-center justify-center gap-2 text-white/85 transition hover:text-white"
           >
             <Camera size={32} />
-            <span className="text-sm font-semibold">开启相机扫码</span>
+            <span className="text-sm font-semibold">{t('checkin.openCamera')}</span>
             {cameraError && <span className="max-w-[80%] text-center text-xs text-red-300">{cameraError}</span>}
           </button>
         )}
@@ -203,20 +205,20 @@ export function CheckinConsole({ apiBase }: { apiBase: string }) {
           <Input
             value={code}
             onChange={(e) => setCode(e.target.value.toUpperCase())}
-            placeholder="输入票面 8 位短码"
+            placeholder={t('checkin.shortCodePlaceholder')}
             className="pl-10 font-mono uppercase"
             maxLength={8}
           />
         </div>
         <Button type="submit" disabled={busy || code.trim().length < 6} className="rounded-full px-6">
-          核销
+          {t('checkin.submit')}
         </Button>
       </form>
 
       {/* 本机最近核销记录 */}
       {recent.length > 0 && (
         <div className="mt-6">
-          <h3 className="text-sm font-bold opacity-70">本机核销记录</h3>
+          <h3 className="text-sm font-bold opacity-70">{t('checkin.recentRecords')}</h3>
           <ul className="mt-2 divide-y divide-black/[0.05] rounded-2xl border border-black/[0.07] bg-white text-sm dark:divide-white/10 dark:border-white/10 dark:bg-neutral-900">
             {recent.map((r, i) => (
               <li key={i} className="flex items-center justify-between px-4 py-2.5">

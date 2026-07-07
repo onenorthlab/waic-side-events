@@ -7,6 +7,7 @@ import type { EventItem } from '../lib/types'
 import { Clock, MapPin, ExternalLink } from 'lucide-react'
 import { groupDateLabel, shortDateLabel } from '../lib/format'
 import { BrandDot, LiveBadge } from '../components/EventCard'
+import { useI18n } from '../lib/i18n'
 
 interface Session {
   id: string
@@ -68,6 +69,7 @@ function SpeakerChip({ sp }: { sp: Speaker }) {
 }
 
 export function SchedulesPage() {
+  const { t } = useI18n()
   const [events, setEvents] = useState<EventItem[]>([])
   const [loading, setLoading] = useState(true)
 
@@ -108,9 +110,9 @@ export function SchedulesPage() {
     <div className="flex min-h-screen flex-col">
       <Header showCreate />
       <main className="mx-auto w-full max-w-[900px] flex-1 px-4 pb-8 pt-8 md:pt-12">
-        <h1 className="text-3xl font-bold tracking-tight text-ink dark:text-white">日程总表</h1>
+        <h1 className="text-3xl font-bold tracking-tight text-ink dark:text-white">{t('schedules.title')}</h1>
         <p className="mt-1.5 text-sm text-ink/55 dark:text-white/55">
-          全部周边活动的公开场次，按日期与时间排好，方便你规划每一天。
+          {t('schedules.subtitle')}
         </p>
 
         {/* 日期跳转条：与列表页日期条同语言 */}
@@ -132,7 +134,7 @@ export function SchedulesPage() {
                     }
                   >
                     <span className="text-sm font-bold tabular-nums">{md}</span>
-                    <span className={`mt-1 text-[11px] ${isToday ? 'opacity-80' : 'opacity-50'}`}>{isToday ? '今天' : wd}</span>
+                    <span className={`mt-1 text-[11px] ${isToday ? 'opacity-80' : 'opacity-50'}`}>{isToday ? t('dateStrip.today') : wd}</span>
                   </button>
                 )
               })}
@@ -147,7 +149,7 @@ export function SchedulesPage() {
             ))}
           </div>
         ) : groups.length === 0 ? (
-          <div className="py-20 text-center text-sm text-ink/50">暂无公开日程。</div>
+          <div className="py-20 text-center text-sm text-ink/50">{t('schedules.empty')}</div>
         ) : (
           <div className="mt-6 space-y-10">
             {groups.map((g) => (
@@ -155,7 +157,7 @@ export function SchedulesPage() {
                 <h2 className="sticky top-16 z-10 -mx-4 flex items-center gap-2 bg-paper/95 px-4 py-2 text-sm font-bold text-ink backdrop-blur dark:bg-[#131316]/95 dark:text-white">
                   <BrandDot />
                   {groupDateLabel(g.date)}
-                  <span className="font-normal text-ink/40 dark:text-white/40">{g.sessions.length} 场</span>
+                  <span className="font-normal text-ink/40 dark:text-white/40">{t('events.sessionsCount', { n: g.sessions.length })}</span>
                 </h2>
                 <div className="mt-2 flex flex-col gap-2.5">
                   {g.sessions.map((s) => {
@@ -188,7 +190,7 @@ export function SchedulesPage() {
                             {live && <LiveBadge />}
                             {upcomingSoon && (
                               <span className="rounded-full bg-brand-50 px-2 py-0.5 text-[11px] font-semibold text-brand dark:bg-brand/20">
-                                即将开始
+                                {t('card.upcomingSoon')}
                               </span>
                             )}
                             <ExternalLink size={12} className="opacity-40" />

@@ -12,7 +12,14 @@ import './index.css'
 try {
   if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark')
 } catch {}
-document.documentElement.lang = 'zh'
+// 语言初始化(持久化)：LocaleProvider 会在挂载后同步 document.documentElement.lang，
+// 这里先做一次同步读取，避免首次渲染前出现闪烁。
+try {
+  const savedLocale = localStorage.getItem('locale')
+  document.documentElement.lang = savedLocale === 'en' ? 'en' : 'zh'
+} catch {
+  document.documentElement.lang = 'zh'
+}
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

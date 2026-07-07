@@ -4,6 +4,7 @@ import QRCode from 'qrcode'
 import { BrandMark } from '../components/Brand'
 import { detailDateLabel, timeLabel } from '../lib/format'
 import { CheckCircle, Clock3, MapPin } from 'lucide-react'
+import { useI18n } from '../lib/i18n'
 
 interface TicketData {
   participant: { name: string; status: string; type: string; checkedIn: boolean; checkedInAt: string | null; code: string }
@@ -12,6 +13,7 @@ interface TicketData {
 
 /** 电子票：报名者凭邮件链接打开，现场出示二维码。单手出示场景，暗底高对比。 */
 export function TicketPage() {
+  const { t } = useI18n()
   const { token } = useParams({ from: '/ticket/$token' })
   const [data, setData] = useState<TicketData | null>(null)
   const [qr, setQr] = useState('')
@@ -48,9 +50,9 @@ export function TicketPage() {
 
       {state === 'invalid' && (
         <div className="mt-24 text-center">
-          <p className="text-white/85">票码无效或已失效</p>
+          <p className="text-white/85">{t('ticket.invalidTicket')}</p>
           <Link to="/events" className="mt-3 inline-block text-sm font-semibold text-white underline underline-offset-4">
-            返回活动列表
+            {t('ticket.backToEvents')}
           </Link>
         </div>
       )}
@@ -58,7 +60,7 @@ export function TicketPage() {
       {state === 'ok' && data && (
         <div className="mt-8 w-full max-w-sm overflow-hidden rounded-3xl bg-white text-ink shadow-2xl">
           <div className="px-6 pb-4 pt-6">
-            <p className="text-xs font-semibold text-brand">电子票 · {data.participant.code}</p>
+            <p className="text-xs font-semibold text-brand">{t('ticket.eTicket')} · {data.participant.code}</p>
             <h1 className="mt-1.5 text-lg font-bold leading-snug">{data.event.title}</h1>
             <div className="mt-3 flex flex-col gap-1.5 text-sm text-ink/70">
               <span className="inline-flex items-center gap-1.5">
@@ -88,24 +90,24 @@ export function TicketPage() {
               data.participant.checkedIn ? (
                 <div className="mt-4 flex flex-col items-center gap-2 py-8">
                   <CheckCircle size={44} className="text-brand" />
-                  <p className="font-semibold">已入场</p>
+                  <p className="font-semibold">{t('ticket.checkedIn')}</p>
                   {data.participant.checkedInAt && (
                     <p className="text-xs text-ink/50">{new Date(data.participant.checkedInAt).toLocaleString('zh-CN')}</p>
                   )}
                 </div>
               ) : (
                 <>
-                  {qr && <img src={qr} alt="入场二维码" className="mt-3 h-56 w-56" />}
+                  {qr && <img src={qr} alt={t('ticket.qrAlt')} className="mt-3 h-56 w-56" />}
                   <p className="mt-2 text-center text-xs text-ink/50">
-                    入场时向工作人员出示此二维码
+                    {t('ticket.showQrHint')}
                     <br />
-                    扫码不便时报短码：<b className="font-mono text-ink">{data.participant.code}</b>
+                    {t('ticket.shortCodeHint')}<b className="font-mono text-ink">{data.participant.code}</b>
                   </p>
                 </>
               )
             ) : (
               <div className="mt-4 rounded-xl bg-live/10 px-4 py-3 text-center text-sm text-ink/75">
-                {data.participant.status === 'PENDING' ? '报名审核中，通过后此页面会显示入场二维码' : '报名未通过或已取消'}
+                {data.participant.status === 'PENDING' ? t('ticket.underReview') : t('ticket.notApprovedOrCancelled')}
               </div>
             )}
           </div>
@@ -114,7 +116,7 @@ export function TicketPage() {
 
       {state === 'ok' && data && (
         <Link to="/$slug" params={{ slug: data.event.slug }} className="mt-5 text-sm text-white/60 transition hover:text-white">
-          查看活动详情 →
+          {t('ticket.viewEventDetail')}
         </Link>
       )}
     </div>

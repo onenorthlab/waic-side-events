@@ -39,10 +39,11 @@ function CoverImg({ ev, className }: { ev: EventItem; className?: string }) {
 }
 
 export function LiveBadge() {
+  const { t } = useI18n()
   return (
     <span className="inline-flex items-center gap-1 rounded-full bg-live px-2 py-0.5 text-[11px] font-semibold text-white">
       <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-white" />
-      进行中
+      {t('card.live')}
     </span>
   )
 }

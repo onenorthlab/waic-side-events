@@ -5,6 +5,7 @@ import { useAttendee } from '@/lib/attendee-context'
 import { useAuth } from '@/lib/auth-context'
 import { useI18n } from '@/lib/i18n'
 import { BrandWordmark } from './Brand'
+import { LocaleToggle } from './LocaleToggle'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,6 +18,7 @@ const navCls =
   'rounded-full px-3 py-1.5 text-sm font-medium text-ink/65 transition hover:text-ink dark:text-white/65 dark:hover:text-white [&.active]:bg-ink [&.active]:text-white dark:[&.active]:bg-white dark:[&.active]:text-ink'
 
 function NotificationBell() {
+  const { t } = useI18n()
   const { email } = useAttendee()
   const [count, setCount] = useState(0)
   useEffect(() => {
@@ -41,7 +43,7 @@ function NotificationBell() {
   return (
     <Link
       to="/notifications"
-      aria-label="通知"
+      aria-label={t('nav.notifications')}
       className="relative flex h-9 w-9 items-center justify-center rounded-full text-ink/60 transition hover:bg-black/5 hover:text-ink dark:text-white/60 dark:hover:bg-white/10 dark:hover:text-white"
     >
       <Bell size={17} />
@@ -68,17 +70,18 @@ export function Header({ showCreate = false }: { showCreate?: boolean }) {
             {t('nav.events')}
           </Link>
           <Link to="/schedules" className={navCls}>
-            日程
+            {t('nav.schedules')}
           </Link>
           <Link to="/events/maps" className={navCls}>
-            地图
+            {t('nav.map')}
           </Link>
           <Link to="/me" className={navCls}>
-            我的
+            {t('nav.me')}
           </Link>
         </nav>
 
         <div className="ml-auto flex items-center gap-2.5">
+          <LocaleToggle className="hidden sm:inline-flex" />
           <NotificationBell />
           {user ? (
             <>
@@ -120,7 +123,7 @@ export function Header({ showCreate = false }: { showCreate?: boolean }) {
               to="/login"
               className="rounded-full border border-black/12 px-4 py-2 text-sm font-semibold text-ink transition hover:border-black/25 dark:border-white/20 dark:text-white dark:hover:border-white/40"
             >
-              发布活动
+              {t('nav.publishEvent')}
             </Link>
           )}
         </div>
@@ -132,14 +135,15 @@ export function Header({ showCreate = false }: { showCreate?: boolean }) {
           {t('nav.events')}
         </Link>
         <Link to="/schedules" className={navCls}>
-          日程
+          {t('nav.schedules')}
         </Link>
         <Link to="/events/maps" className={navCls}>
-          地图
+          {t('nav.map')}
         </Link>
         <Link to="/me" className={navCls}>
-          我的
+          {t('nav.me')}
         </Link>
+        <LocaleToggle className="ml-1 shrink-0" />
       </nav>
     </header>
   )

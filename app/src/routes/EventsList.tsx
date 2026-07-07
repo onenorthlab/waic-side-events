@@ -64,10 +64,10 @@ export function EventsListPage() {
         {/* 页头：编辑感标题区 */}
         <div className="flex flex-col gap-1.5">
           <h1 className="text-3xl font-bold tracking-tight text-ink dark:text-white md:text-[40px] md:leading-[1.15]">
-            这一周，AI 圈都在哪儿
+            {t('events.heroTitle')}
           </h1>
           <p className="text-sm text-ink/55 dark:text-white/55 md:text-base">
-            WAIC 世界人工智能大会期间的周边聚会、路演、峰会与夜局，一站看全、一键报名。
+            {t('events.heroSubtitle')}
           </p>
         </div>
 
@@ -98,7 +98,7 @@ export function EventsListPage() {
                 {q && (
                   <button
                     onClick={() => setQ('')}
-                    aria-label="清除搜索"
+                    aria-label={t('common.clearSearch')}
                     className="absolute right-3 top-1/2 -translate-y-1/2 text-ink/40 hover:text-ink dark:text-white/40 dark:hover:text-white"
                   >
                     <X size={15} />
@@ -125,7 +125,7 @@ export function EventsListPage() {
                 to="/events/maps"
                 className="inline-flex items-center gap-1.5 rounded-lg border border-black/[0.08] bg-white px-3 py-2.5 text-sm font-medium text-ink/70 transition hover:text-ink dark:border-white/12 dark:bg-neutral-900 dark:text-white/70 dark:hover:text-white lg:hidden"
               >
-                <MapIcon size={15} /> 地图
+                <MapIcon size={15} /> {t('events.mapEntry')}
               </Link>
             </div>
 
@@ -176,7 +176,7 @@ export function EventsListPage() {
                     }}
                     className="mt-3 text-sm font-semibold text-brand hover:underline"
                   >
-                    清除全部筛选
+                    {t('events.clearAllFilters')}
                   </button>
                 )}
               </div>
@@ -187,7 +187,7 @@ export function EventsListPage() {
                     <h2 className="sticky top-16 z-10 -mx-4 flex items-center gap-2 bg-paper/95 px-4 py-2 text-sm font-bold text-ink backdrop-blur dark:bg-[#131316]/95 dark:text-white sm:static sm:mx-0 sm:bg-transparent sm:px-0 sm:backdrop-blur-none sm:dark:bg-transparent">
                       <BrandDot />
                       {g.label}
-                      <span className="font-normal text-ink/40 dark:text-white/40">{g.items.length} 场</span>
+                      <span className="font-normal text-ink/40 dark:text-white/40">{t('events.sessionsCount', { n: g.items.length })}</span>
                     </h2>
                     <div className="mt-1 flex flex-col gap-1">
                       {g.items.map((e) => (

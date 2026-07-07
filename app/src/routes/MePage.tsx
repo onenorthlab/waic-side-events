@@ -11,6 +11,7 @@ import { Label } from '@/components/ui/label'
 import { toast } from 'sonner'
 import QRCode from 'qrcode'
 import { Ticket, LogOut, MailCheck, MapPin, Wifi, CheckCircle2, ScanLine, QrCode, Heart, Star } from 'lucide-react'
+import { useI18n } from '../lib/i18n'
 
 interface MyRegistration {
   id: string
@@ -32,11 +33,11 @@ interface MyRegistration {
   }
 }
 
-const STATUS_STYLE: Record<string, { label: string; cls: string }> = {
-  APPROVED: { label: '已确认', cls: 'bg-emerald-600 text-white' },
-  PENDING: { label: '审核中', cls: 'bg-live text-white' },
-  REJECTED: { label: '未通过', cls: 'bg-neutral-400 text-white dark:bg-neutral-600' },
-  CANCELLED: { label: '已取消', cls: 'bg-neutral-400 text-white dark:bg-neutral-600' },
+const STATUS_STYLE: Record<string, { key: string; cls: string }> = {
+  APPROVED: { key: 'me.statusApproved', cls: 'bg-emerald-600 text-white' },
+  PENDING: { key: 'me.statusPending', cls: 'bg-live text-white' },
+  REJECTED: { key: 'me.statusRejected', cls: 'bg-neutral-400 text-white dark:bg-neutral-600' },
+  CANCELLED: { key: 'me.statusCancelled', cls: 'bg-neutral-400 text-white dark:bg-neutral-600' },
 }
 
 export function MePage() {
@@ -59,6 +60,7 @@ export function MePage() {
 }
 
 function LoginCard() {
+  const { t } = useI18n()
   const { requestOtp, verify } = useAttendee()
   const [email, setEmail] = useState('')
   const [code, setCode] = useState('')
@@ -74,7 +76,7 @@ function LoginCard() {
 
   const send = async () => {
     if (!email.includes('@')) {
-      toast.error('请输入有效邮箱')
+      toast.error(t('me.invalidEmail'))
       return
     }
     setBusy(true)
@@ -84,12 +86,12 @@ function LoginCard() {
       setCooldown(60)
       if (devCode) {
         setCode(devCode)
-        toast.info(`本地开发模式：验证码 ${devCode} 已自动填入`)
+        toast.info(t('me.devCodeAutofill', { code: devCode }))
       } else {
-        toast.success('验证码已发送到邮箱')
+        toast.success(t('me.codeSent'))
       }
     } catch (e: any) {
-      toast.error(e.message || '发送失败')
+      toast.error(e.message || t('me.sendFailed'))
     } finally {
       setBusy(false)
     }
@@ -100,9 +102,9 @@ function LoginCard() {
     setBusy(true)
     try {
       await verify(email, code)
-      toast.success('登录成功')
+      toast.success(t('me.loginSuccess'))
     } catch (err: any) {
-      toast.error(err.message || '验证失败')
+      toast.error(err.message || t('me.verifyFailed'))
     } finally {
       setBusy(false)
     }
@@ -110,36 +112,36 @@ function LoginCard() {
 
   return (
     <div className="mx-auto mt-6 max-w-md">
-      <h1 className="text-3xl font-bold tracking-tight text-ink dark:text-white">我的</h1>
+      <h1 className="text-3xl font-bold tracking-tight text-ink dark:text-white">{t('me.title')}</h1>
       <p className="mt-1.5 text-sm text-ink/55 dark:text-white/55">
-        用报名时的邮箱登录，就能看到你所有的报名记录和电子票。无需注册、无需密码。
+        {t('me.loginSubtitle')}
       </p>
       <form onSubmit={submit} className="mt-6 flex flex-col gap-4 rounded-2xl border border-black/[0.06] bg-white p-6 shadow-card dark:border-white/10 dark:bg-neutral-900">
         <div className="space-y-2">
-          <Label htmlFor="me-email">邮箱</Label>
+          <Label htmlFor="me-email">{t('me.email')}</Label>
           <div className="flex gap-2">
             <Input
               id="me-email"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="your@email.com"
+              placeholder={t('me.emailPlaceholder')}
               className="flex-1"
               required
             />
             <Button type="button" variant="outline" className="shrink-0 rounded-full" onClick={send} disabled={busy || cooldown > 0}>
-              {cooldown > 0 ? `${cooldown}s` : sent ? '重新发送' : '发验证码'}
+              {cooldown > 0 ? `${cooldown}s` : sent ? t('me.resend') : t('me.sendCode')}
             </Button>
           </div>
         </div>
         {sent && (
           <div className="space-y-2">
-            <Label htmlFor="me-code">验证码</Label>
+            <Label htmlFor="me-code">{t('me.code')}</Label>
             <Input
               id="me-code"
               value={code}
               onChange={(e) => setCode(e.target.value.replace(/\D/g, ''))}
-              placeholder="6 位数字"
+              placeholder={t('me.codePlaceholder')}
               maxLength={6}
               inputMode="numeric"
               className="font-mono tracking-[0.3em]"
@@ -148,7 +150,7 @@ function LoginCard() {
           </div>
         )}
         <Button type="submit" size="lg" className="w-full rounded-full" disabled={busy || !sent || code.length < 6}>
-          <MailCheck size={16} className="mr-1.5" /> 登录
+          <MailCheck size={16} className="mr-1.5" /> {t('me.login')}
         </Button>
       </form>
     </div>
@@ -156,6 +158,7 @@ function LoginCard() {
 }
 
 function MyRegistrations() {
+  const { t } = useI18n()
   const { email, logout } = useAttendee()
   const [regs, setRegs] = useState<MyRegistration[] | null>(null)
 
@@ -173,14 +176,14 @@ function MyRegistrations() {
     <div>
       <div className="flex items-end justify-between gap-3">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight text-ink dark:text-white">我的报名</h1>
+          <h1 className="text-3xl font-bold tracking-tight text-ink dark:text-white">{t('me.myRegistrations')}</h1>
           <p className="mt-1.5 text-sm text-ink/55 dark:text-white/55">{email}</p>
         </div>
         <button
           onClick={logout}
           className="inline-flex items-center gap-1 rounded-full border border-black/12 px-3.5 py-1.5 text-xs font-medium text-ink/60 transition hover:text-ink dark:border-white/20 dark:text-white/60 dark:hover:text-white"
         >
-          <LogOut size={13} /> 退出
+          <LogOut size={13} /> {t('me.logout')}
         </button>
       </div>
 
@@ -194,15 +197,15 @@ function MyRegistrations() {
         </div>
       ) : regs.length === 0 ? (
         <div className="mt-10 rounded-2xl border border-black/[0.06] bg-white py-16 text-center shadow-card dark:border-white/10 dark:bg-neutral-900">
-          <p className="text-sm text-ink/55 dark:text-white/55">这个邮箱还没有报名记录</p>
+          <p className="text-sm text-ink/55 dark:text-white/55">{t('me.noRegistrationsYet')}</p>
           <Link to="/events" className="mt-3 inline-block text-sm font-semibold text-brand hover:underline">
-            去看看有什么活动 →
+            {t('me.browseEvents')}
           </Link>
         </div>
       ) : (
         <div className="mt-6 flex flex-col gap-8">
-          {upcoming.length > 0 && <RegGroup title="即将参加" items={upcoming} />}
-          {past.length > 0 && <RegGroup title="已结束" items={past} dim />}
+          {upcoming.length > 0 && <RegGroup title={t('me.upcoming')} items={upcoming} />}
+          {past.length > 0 && <RegGroup title={t('me.past')} items={past} dim />}
         </div>
       )}
 
@@ -213,6 +216,7 @@ function MyRegistrations() {
 
 /** 一人一码：所有活动通用的个人入场码（现场也可作名片交换） */
 function PersonalCode() {
+  const { t } = useI18n()
   const [open, setOpen] = useState(false)
   const [qr, setQr] = useState('')
 
@@ -229,7 +233,7 @@ function PersonalCode() {
       setQr(url)
       setOpen(true)
     } catch {
-      toast.error('获取个人码失败')
+      toast.error(t('me.getEntryCodeFailed'))
     }
   }
 
@@ -240,15 +244,15 @@ function PersonalCode() {
           <QrCode size={20} />
         </span>
         <span className="flex-1">
-          <span className="block text-sm font-bold text-ink dark:text-white">我的入场码</span>
-          <span className="block text-xs text-ink/55 dark:text-white/55">一码通用：所有报名过的活动都能凭它入场</span>
+          <span className="block text-sm font-bold text-ink dark:text-white">{t('me.myEntryCode')}</span>
+          <span className="block text-xs text-ink/55 dark:text-white/55">{t('me.entryCodeHint')}</span>
         </span>
-        <span className="text-xs font-semibold text-brand">{open ? '收起' : '出示'}</span>
+        <span className="text-xs font-semibold text-brand">{open ? t('me.collapse') : t('me.show')}</span>
       </button>
       {open && qr && (
         <div className="flex flex-col items-center gap-2 border-t border-brand/10 bg-white pb-6 pt-4 dark:bg-neutral-900">
-          <img src={qr} alt="个人入场码" className="h-52 w-52" />
-          <p className="text-xs text-ink/45 dark:text-white/45">向工作人员出示此码完成签到</p>
+          <img src={qr} alt={t('me.entryCodeAlt')} className="h-52 w-52" />
+          <p className="text-xs text-ink/45 dark:text-white/45">{t('me.entryCodeShowStaffHint')}</p>
         </div>
       )}
     </div>
@@ -268,6 +272,7 @@ interface BookmarkItem {
 }
 
 function MyBookmarks() {
+  const { t } = useI18n()
   const [items, setItems] = useState<BookmarkItem[] | null>(null)
 
   useEffect(() => {
@@ -283,7 +288,7 @@ function MyBookmarks() {
     <section className="mt-8">
       <h2 className="flex items-center gap-2 text-sm font-bold text-ink dark:text-white">
         <Heart size={13} className="fill-brand text-brand" />
-        我的收藏
+        {t('me.myBookmarks')}
         <span className="font-normal text-ink/40 dark:text-white/40">{items.length}</span>
       </h2>
       <div className="mt-2 flex flex-col gap-2.5">
@@ -316,6 +321,7 @@ function MyBookmarks() {
 }
 
 function RegGroup({ title, items, dim }: { title: string; items: MyRegistration[]; dim?: boolean }) {
+  const { t } = useI18n()
   return (
     <section>
       <h2 className="flex items-center gap-2 text-sm font-bold text-ink dark:text-white">
@@ -342,16 +348,16 @@ function RegGroup({ title, items, dim }: { title: string; items: MyRegistration[
               </Link>
               <div className="flex min-w-0 flex-1 flex-col justify-center gap-1.5">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${st.cls}`}>{st.label}</span>
+                  <span className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${st.cls}`}>{t(st.key)}</span>
                   {r.type === 'STAFF' && (
-                    <span className="rounded-full bg-ink px-2 py-0.5 text-[11px] font-semibold text-white dark:bg-white dark:text-ink">工作人员</span>
+                    <span className="rounded-full bg-ink px-2 py-0.5 text-[11px] font-semibold text-white dark:bg-white dark:text-ink">{t('me.staffTag')}</span>
                   )}
                   {r.type === 'SPEAKER' && (
-                    <span className="rounded-full bg-brand px-2 py-0.5 text-[11px] font-semibold text-white">嘉宾</span>
+                    <span className="rounded-full bg-brand px-2 py-0.5 text-[11px] font-semibold text-white">{t('me.speakerTag')}</span>
                   )}
                   {r.checkedIn && (
                     <span className="inline-flex items-center gap-0.5 text-[11px] font-semibold text-emerald-600">
-                      <CheckCircle2 size={12} /> 已入场
+                      <CheckCircle2 size={12} /> {t('me.checkedIn')}
                     </span>
                   )}
                 </div>
@@ -366,7 +372,7 @@ function RegGroup({ title, items, dim }: { title: string; items: MyRegistration[
                   <span className="font-medium text-brand">{detailDateLabel(r.event.schedules)}</span>
                   <span className="inline-flex min-w-0 items-center gap-1">
                     {r.event.eventType === 'ONLINE' ? <Wifi size={12} /> : <MapPin size={12} />}
-                    <span className="truncate">{r.event.eventType === 'ONLINE' ? '线上' : venue?.title || venue?.displayText || '线下'}</span>
+                    <span className="truncate">{r.event.eventType === 'ONLINE' ? t('common.online') : venue?.title || venue?.displayText || t('common.offline')}</span>
                   </span>
                 </div>
                 <div className="mt-1 flex flex-wrap items-center gap-2">
@@ -375,7 +381,7 @@ function RegGroup({ title, items, dim }: { title: string; items: MyRegistration[
                       href={r.ticketUrl}
                       className="inline-flex w-fit items-center gap-1.5 rounded-full bg-brand px-3.5 py-1.5 text-xs font-semibold text-white transition hover:bg-brand-600 active:scale-[0.97]"
                     >
-                      <Ticket size={13} /> 电子票
+                      <Ticket size={13} /> {t('me.eTicket')}
                     </a>
                   )}
                   {r.type === 'STAFF' && r.status === 'APPROVED' && !r.event.hasEnded && (
@@ -384,7 +390,7 @@ function RegGroup({ title, items, dim }: { title: string; items: MyRegistration[
                       params={{ id: r.eventId }}
                       className="inline-flex w-fit items-center gap-1.5 rounded-full border border-brand px-3.5 py-1.5 text-xs font-semibold text-brand transition hover:bg-brand-50 active:scale-[0.97]"
                     >
-                      <ScanLine size={13} /> 工作人员核销台
+                      <ScanLine size={13} /> {t('me.staffCheckinConsole')}
                     </Link>
                   )}
                   {r.status === 'APPROVED' && r.event.hasEnded && (
@@ -393,7 +399,7 @@ function RegGroup({ title, items, dim }: { title: string; items: MyRegistration[
                       params={{ eventId: r.eventId }}
                       className="inline-flex w-fit items-center gap-1.5 rounded-full border border-brand px-3.5 py-1.5 text-xs font-semibold text-brand transition hover:bg-brand-50 active:scale-[0.97]"
                     >
-                      <Star size={13} /> 写反馈
+                      <Star size={13} /> {t('me.writeFeedback')}
                     </Link>
                   )}
                 </div>

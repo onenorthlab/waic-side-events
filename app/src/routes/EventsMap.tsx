@@ -126,7 +126,7 @@ export function EventsMapPage() {
         }
         setLoading(false)
       } catch (err: any) {
-        setError(err.message || '地图加载失败')
+        setError(err.message || t('map.loadFailed'))
         setLoading(false)
       }
     }
@@ -148,14 +148,14 @@ export function EventsMapPage() {
       <main className="mx-auto flex w-full max-w-[1200px] flex-1 flex-col px-4 py-6">
         <div className="mb-4 flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold tracking-tight text-ink dark:text-white">活动地图</h1>
-            <p className="mt-1 text-sm text-ink/55 dark:text-white/55">看看每个局离你有多远</p>
+            <h1 className="text-2xl font-bold tracking-tight text-ink dark:text-white">{t('map.title')}</h1>
+            <p className="mt-1 text-sm text-ink/55 dark:text-white/55">{t('map.subtitle')}</p>
           </div>
           <Link
             to="/events"
             className="inline-flex items-center gap-1.5 rounded-full border border-black/[0.08] bg-white px-4 py-2 text-sm font-medium text-ink/70 transition hover:text-ink dark:border-white/12 dark:bg-neutral-900 dark:text-white/70 dark:hover:text-white"
           >
-            <List size={15} /> 列表
+            <List size={15} /> {t('map.listEntry')}
           </Link>
         </div>
         <div className="relative h-[70vh] w-full overflow-hidden rounded-2xl border border-black/[0.07] dark:border-white/10">

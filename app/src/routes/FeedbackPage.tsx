@@ -9,6 +9,7 @@ import { Survey } from 'survey-react-ui'
 import { Model } from 'survey-core'
 import 'survey-core/survey-core.css'
 import { Star, CheckCircle2 } from 'lucide-react'
+import { useI18n } from '../lib/i18n'
 
 interface FeedbackFormData {
   event: { id: string; title: string; slug: string }
@@ -21,6 +22,7 @@ type LoadState = 'loading' | 'ok' | 'unauthorized' | 'forbidden' | 'not_found'
 
 /** 星星评分：1-5，必填。 */
 function StarRating({ value, onChange }: { value: number; onChange: (v: number) => void }) {
+  const { t } = useI18n()
   const [hover, setHover] = useState(0)
   return (
     <div className="flex items-center gap-1.5">
@@ -34,7 +36,7 @@ function StarRating({ value, onChange }: { value: number; onChange: (v: number) 
             onMouseEnter={() => setHover(n)}
             onMouseLeave={() => setHover(0)}
             className="p-0.5 transition active:scale-90"
-            aria-label={`${n} 星`}
+            aria-label={t('feedback.starAriaLabel', { n })}
           >
             <Star
               size={36}
@@ -48,6 +50,7 @@ function StarRating({ value, onChange }: { value: number; onChange: (v: number) 
 }
 
 export function FeedbackFormPage() {
+  const { t } = useI18n()
   const { eventId } = useParams({ from: '/feedback/$eventId' })
   const { email, loading: attendeeLoading } = useAttendee()
   const [state, setState] = useState<LoadState>('loading')
@@ -68,7 +71,7 @@ export function FeedbackFormPage() {
       .then(async (r) => {
         const d = await r.json()
         if (!r.ok) {
-          setMessage(d.message || '无法加载反馈表单')
+          setMessage(d.message || t('feedback.loadFailed'))
           setState(d.error === 'not_found' ? 'not_found' : 'forbidden')
           return
         }
@@ -85,14 +88,14 @@ export function FeedbackFormPage() {
         setState('ok')
       })
       .catch(() => {
-        setMessage('网络错误，请稍后重试')
+        setMessage(t('feedback.networkError'))
         setState('forbidden')
       })
-  }, [eventId, email, attendeeLoading])
+  }, [eventId, email, attendeeLoading, t])
 
   const submit = async () => {
     if (rating < 1) {
-      toast.error('请先给出总体评分')
+      toast.error(t('feedback.ratingRequired'))
       return
     }
     if (surveyModel && surveyModel.hasErrors(false)) return
@@ -105,11 +108,11 @@ export function FeedbackFormPage() {
         body: JSON.stringify({ rating, answers: surveyModel ? surveyModel.data : {} }),
       })
       const d = await res.json()
-      if (!res.ok) throw new Error(d.message || '提交失败')
+      if (!res.ok) throw new Error(d.message || t('feedback.submitFailed'))
       setDone(true)
-      toast.success('反馈已提交，感谢你的支持')
+      toast.success(t('feedback.submitSuccess'))
     } catch (e: any) {
-      toast.error(e.message || '提交失败')
+      toast.error(e.message || t('feedback.submitFailed'))
     } finally {
       setSubmitting(false)
     }
@@ -125,37 +128,37 @@ export function FeedbackFormPage() {
 
         {state === 'unauthorized' && (
           <div className="mt-10 rounded-2xl border border-black/[0.06] bg-white p-8 text-center shadow-card dark:border-white/10 dark:bg-neutral-900">
-            <h1 className="text-xl font-bold text-ink dark:text-white">请先登录</h1>
+            <h1 className="text-xl font-bold text-ink dark:text-white">{t('feedback.pleaseLogin')}</h1>
             <p className="mt-2 text-sm text-ink/55 dark:text-white/55">
-              用报名时的邮箱登录后，才能填写活动反馈。
+              {t('feedback.loginHint')}
             </p>
             <Link
               to="/me"
               className="mt-5 inline-flex items-center justify-center rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-600"
             >
-              去登录
+              {t('actions.goLogin')}
             </Link>
           </div>
         )}
 
         {(state === 'forbidden' || state === 'not_found') && (
           <div className="mt-10 rounded-2xl border border-black/[0.06] bg-white p-8 text-center shadow-card dark:border-white/10 dark:bg-neutral-900">
-            <h1 className="text-xl font-bold text-ink dark:text-white">暂时无法填写</h1>
-            <p className="mt-2 text-sm text-ink/55 dark:text-white/55">{message || '活动不存在或你还没有资格填写反馈'}</p>
+            <h1 className="text-xl font-bold text-ink dark:text-white">{t('feedback.unavailable')}</h1>
+            <p className="mt-2 text-sm text-ink/55 dark:text-white/55">{message || t('feedback.unavailableHint')}</p>
             <Link to="/me" className="mt-5 inline-block text-sm font-semibold text-brand hover:underline">
-              返回我的报名 →
+              {t('feedback.backToRegistrations')}
             </Link>
           </div>
         )}
 
         {state === 'ok' && data && !done && (
           <div>
-            <h1 className="text-2xl font-bold tracking-tight text-ink dark:text-white">活动反馈</h1>
+            <h1 className="text-2xl font-bold tracking-tight text-ink dark:text-white">{t('feedback.title')}</h1>
             <p className="mt-1.5 text-sm text-ink/55 dark:text-white/55">{data.event.title}</p>
 
             <div className="mt-6 rounded-2xl border border-black/[0.06] bg-white p-6 shadow-card dark:border-white/10 dark:bg-neutral-900">
-              <p className="text-sm font-semibold text-ink dark:text-white">总体评分</p>
-              <p className="mt-1 text-xs text-ink/50 dark:text-white/50">你对这次活动的整体体验打几分？</p>
+              <p className="text-sm font-semibold text-ink dark:text-white">{t('feedback.overallRating')}</p>
+              <p className="mt-1 text-xs text-ink/50 dark:text-white/50">{t('feedback.overallRatingHint')}</p>
               <div className="mt-3">
                 <StarRating value={rating} onChange={setRating} />
               </div>
@@ -168,7 +171,7 @@ export function FeedbackFormPage() {
             )}
 
             <Button size="lg" className="mt-6 w-full rounded-full" onClick={submit} disabled={submitting}>
-              {submitting ? '提交中…' : '提交反馈'}
+              {submitting ? t('feedback.submitting') : t('feedback.submit')}
             </Button>
           </div>
         )}
@@ -176,12 +179,12 @@ export function FeedbackFormPage() {
         {state === 'ok' && data && done && (
           <div className="mt-10 flex flex-col items-center rounded-2xl border border-black/[0.06] bg-white p-8 text-center shadow-card dark:border-white/10 dark:bg-neutral-900">
             <CheckCircle2 size={40} className="text-brand" />
-            <h1 className="mt-3 text-xl font-bold text-ink dark:text-white">感谢你的反馈</h1>
+            <h1 className="mt-3 text-xl font-bold text-ink dark:text-white">{t('feedback.thankYou')}</h1>
             <p className="mt-2 text-sm text-ink/55 dark:text-white/55">
-              你的评分：<span className="font-semibold text-brand">{rating} / 5</span>
+              {t('feedback.yourRating')}<span className="font-semibold text-brand">{rating} / 5</span>
             </p>
             <Link to="/me" className="mt-5 text-sm font-semibold text-brand hover:underline">
-              返回我的报名 →
+              {t('feedback.backToRegistrations')}
             </Link>
           </div>
         )}

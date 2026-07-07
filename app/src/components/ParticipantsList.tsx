@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Users } from 'lucide-react'
+import { useI18n } from '../lib/i18n'
 
 interface PublicParticipant {
   name: string
@@ -15,6 +16,7 @@ function avatarColor(name: string) {
 
 /** 详情页参会者板块：社会认同（"谁会来"是报名决策的关键）。尊重主办方可见性设置与个人隐藏选项。 */
 export function ParticipantsList({ slug }: { slug: string }) {
+  const { t } = useI18n()
   const [data, setData] = useState<{ visibility: string; total: number; participants: PublicParticipant[] } | null>(null)
 
   useEffect(() => {
@@ -33,12 +35,12 @@ export function ParticipantsList({ slug }: { slug: string }) {
     <div className="flex flex-col gap-3">
       <h3 className="flex items-center gap-1.5 text-sm font-bold text-ink dark:text-white">
         <Users size={14} className="text-ink/40 dark:text-white/40" />
-        谁会来
-        <span className="font-normal text-ink/40 dark:text-white/40">{data.total} 人已确认</span>
+        {t('participants.title')}
+        <span className="font-normal text-ink/40 dark:text-white/40">{t('participants.confirmed', { n: data.total })}</span>
       </h3>
       {data.participants.length === 0 ? (
         <p className="text-xs text-ink/45 dark:text-white/45">
-          {data.visibility === 'APPROVED_ONLY' ? '报名通过后可查看参会者名单' : '参会者选择了不公开展示'}
+          {data.visibility === 'APPROVED_ONLY' ? t('participants.approvedOnlyHint') : t('participants.hiddenByChoice')}
         </p>
       ) : (
         <>
@@ -53,12 +55,12 @@ export function ParticipantsList({ slug }: { slug: string }) {
                 </span>
                 <span className="max-w-24 truncate text-xs text-ink/75 dark:text-white/75">{p.name}</span>
                 {p.isSpeaker && (
-                  <span className="rounded-full bg-brand px-1.5 py-px text-[10px] font-semibold text-white">嘉宾</span>
+                  <span className="rounded-full bg-brand px-1.5 py-px text-[10px] font-semibold text-white">{t('participants.speakerTag')}</span>
                 )}
               </span>
             ))}
           </div>
-          {hiddenCount > 0 && <p className="text-xs text-ink/40 dark:text-white/40">还有 {hiddenCount} 人</p>}
+          {hiddenCount > 0 && <p className="text-xs text-ink/40 dark:text-white/40">{t('participants.moreCount', { n: hiddenCount })}</p>}
         </>
       )}
     </div>

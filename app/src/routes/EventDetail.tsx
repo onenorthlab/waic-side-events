@@ -56,7 +56,7 @@ function Organizers({ ev }: { ev: EventItem }) {
               </div>
             )}
             <div className="min-w-0">
-              <div className="truncate text-sm font-medium text-ink dark:text-white">{name || '主办方'}</div>
+              <div className="truncate text-sm font-medium text-ink dark:text-white">{name || t('detail.organizerFallback')}</div>
               {x.user?.title && <div className="truncate text-xs text-ink/50 dark:text-white/50">{u.title}</div>}
             </div>
           </div>
@@ -67,6 +67,7 @@ function Organizers({ ev }: { ev: EventItem }) {
 }
 
 function useRegistration(ev: EventItem) {
+  const { t } = useI18n()
   const { email: attendeeEmail } = useAttendee()
   const [open, setOpen] = useState(false)
   const [name, setName] = useState('')
@@ -83,7 +84,7 @@ function useRegistration(ev: EventItem) {
   const submit = async (e?: React.FormEvent) => {
     e?.preventDefault()
     if (hasSurvey && surveyModel && surveyModel.hasErrors(false)) {
-      toast.error('请完整填写报名表单')
+      toast.error(t('detail.fillSurveyRequired'))
       return
     }
     setSubmitting(true)
@@ -98,13 +99,17 @@ function useRegistration(ev: EventItem) {
       const data = await res.json()
       if (!res.ok) {
         const msg =
-          data.error === 'already_registered' ? '该邮箱已报名过本活动' : data.error === 'sold_out' ? '名额已满' : '报名失败，请稍后重试'
+          data.error === 'already_registered'
+            ? t('detail.alreadyRegisteredError')
+            : data.error === 'sold_out'
+              ? t('detail.soldOut')
+              : t('detail.registerFailed')
         throw new Error(msg)
       }
       setResult({ status: data.status, ticketUrl: data.ticketUrl })
-      toast.success(data.status === 'APPROVED' ? '报名成功' : '报名已提交，等待主办方审核')
+      toast.success(data.status === 'APPROVED' ? t('detail.registrationSuccess') : t('detail.registrationPendingReview'))
     } catch (err: any) {
-      toast.error(err.message || '报名失败')
+      toast.error(err.message || t('detail.registerFailedGeneric'))
     } finally {
       setSubmitting(false)
     }
@@ -114,47 +119,46 @@ function useRegistration(ev: EventItem) {
 }
 
 function RegistrationDialog({ ev, reg }: { ev: EventItem; reg: ReturnType<typeof useRegistration> }) {
+  const { t } = useI18n()
   return (
     <Dialog open={reg.open} onOpenChange={reg.setOpen}>
       <DialogContent className="max-w-lg">
         <DialogHeader>
-          <DialogTitle className="pr-6 leading-snug">报名 · {ev.title}</DialogTitle>
+          <DialogTitle className="pr-6 leading-snug">{t('detail.registerDialogTitle', { title: ev.title })}</DialogTitle>
         </DialogHeader>
         {reg.result ? (
           <div className="py-6 text-center">
             <CheckCircle size={44} className="mx-auto text-brand" />
             <p className="mt-4 font-semibold text-ink dark:text-white">
-              {reg.result.status === 'APPROVED' ? '报名成功' : '已提交，等待审核'}
+              {reg.result.status === 'APPROVED' ? t('detail.registrationSuccess') : t('detail.registrationPendingReview')}
             </p>
             <p className="mt-1 text-sm text-ink/55 dark:text-white/55">
-              {reg.result.status === 'APPROVED'
-                ? '确认邮件已发送。凭邮件中的电子票入场。'
-                : '审核通过后会通过邮件通知你，并附上电子票。'}
+              {reg.result.status === 'APPROVED' ? t('detail.confirmationEmailSent') : t('detail.pendingReviewNotice')}
             </p>
             {reg.result.ticketUrl && (
               <a
                 href={reg.result.ticketUrl}
                 className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-600"
               >
-                查看电子票
+                {t('detail.viewTicket')}
               </a>
             )}
             <div className="mt-4">
               <Button variant="outline" onClick={() => reg.setOpen(false)}>
-                关闭
+                {t('detail.close')}
               </Button>
             </div>
           </div>
         ) : (
           <form onSubmit={reg.submit} className="space-y-4">
             <div className="space-y-2">
-              <Label>姓名</Label>
+              <Label>{t('detail.name')}</Label>
               <Input value={reg.name} onChange={(e) => reg.setName(e.target.value)} required />
             </div>
             <div className="space-y-2">
-              <Label>邮箱</Label>
+              <Label>{t('detail.email')}</Label>
               <Input type="email" value={reg.email} onChange={(e) => reg.setEmail(e.target.value)} required />
-              <p className="text-xs text-ink/45 dark:text-white/45">电子票和活动通知会发送到这个邮箱</p>
+              <p className="text-xs text-ink/45 dark:text-white/45">{t('detail.ticketEmailHint')}</p>
             </div>
             <label className="flex cursor-pointer items-center gap-2 text-sm text-ink/70 dark:text-white/70">
               <input
@@ -163,7 +167,7 @@ function RegistrationDialog({ ev, reg }: { ev: EventItem; reg: ReturnType<typeof
                 onChange={(e) => reg.setShowInList(e.target.checked)}
                 className="h-4 w-4 accent-[#2745e8]"
               />
-              在「谁会来」名单中展示我的名字
+              {t('detail.showInParticipantList')}
             </label>
             {reg.hasSurvey && reg.surveyModel && (
               <div className="rounded-xl border border-black/[0.08] p-3 dark:border-white/12">
@@ -171,7 +175,7 @@ function RegistrationDialog({ ev, reg }: { ev: EventItem; reg: ReturnType<typeof
               </div>
             )}
             <Button type="submit" className="w-full rounded-full" size="lg" disabled={reg.submitting}>
-              {reg.submitting ? '提交中…' : '确认报名'}
+              {reg.submitting ? t('detail.submitting') : t('detail.confirmRegistration')}
             </Button>
           </form>
         )}
@@ -229,7 +233,7 @@ function DetailBody({ ev }: { ev: EventItem }) {
       className="w-full rounded-full bg-brand px-6 py-3 text-sm font-semibold text-white transition hover:bg-brand-600 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-40"
       style={accent ? { backgroundColor: accent } : undefined}
     >
-      {ended ? '活动已结束' : reg.result ? '已报名 ✓' : '立即报名'}
+      {ended ? t('detail.ended') : reg.result ? t('detail.alreadyRegistered') : t('detail.registerNow')}
     </button>
   )
 
@@ -308,7 +312,7 @@ function DetailBody({ ev }: { ev: EventItem }) {
                       rel="noreferrer"
                       className="inline-flex items-center gap-1 font-semibold text-brand hover:underline"
                     >
-                      进入线上会场 <ExternalLink size={12} />
+                      {t('detail.enterOnlineVenue')} <ExternalLink size={12} />
                     </a>
                   )}
                   {ev.onlineDescription && <span className="block text-xs text-ink/50 dark:text-white/50">{ev.onlineDescription}</span>}
@@ -337,7 +341,7 @@ function DetailBody({ ev }: { ev: EventItem }) {
                             rel="noreferrer"
                             className="ml-1.5 inline-flex items-center gap-0.5 text-xs font-semibold text-brand hover:underline"
                           >
-                            导航 <ExternalLink size={11} />
+                            {t('detail.navigate')} <ExternalLink size={11} />
                           </a>
                         )}
                       </>
@@ -352,12 +356,12 @@ function DetailBody({ ev }: { ev: EventItem }) {
               <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-ink/50 dark:text-white/50">
                 {ev.maxParticipants && (
                   <span className="inline-flex items-center gap-1">
-                    <Users size={13} /> 限 {ev.maxParticipants} 人
+                    <Users size={13} /> {t('detail.limitedTo', { n: ev.maxParticipants })}
                   </span>
                 )}
                 {ev.requiresApproval && (
                   <span className="inline-flex items-center gap-1">
-                    <ShieldCheck size={13} /> 报名需主办方审核
+                    <ShieldCheck size={13} /> {t('detail.requiresApproval')}
                   </span>
                 )}
               </div>
@@ -391,9 +395,9 @@ function DetailBody({ ev }: { ev: EventItem }) {
           <div className="sticky top-24 flex flex-col gap-5">
             {/* 报名卡：全页最重要动作，钴蓝浅底 + 更强投影，视觉权重高于信息卡 */}
             <div className="rounded-2xl border border-brand/15 bg-brand-50 p-5 shadow-card-hover dark:border-brand/30 dark:bg-brand/10">
-              <p className="text-sm font-bold text-ink dark:text-white">报名参加</p>
+              <p className="text-sm font-bold text-ink dark:text-white">{t('detail.registerTitle')}</p>
               <p className="mt-1 text-xs text-ink/55 dark:text-white/55">
-                {ev.requiresApproval ? '提交后等待主办方审核，通过后发电子票' : '免费报名，确认邮件附电子票'}
+                {ev.requiresApproval ? t('detail.registerHintApproval') : t('detail.registerHintFree')}
               </p>
               <div className="mt-4">{registerCta}</div>
             </div>

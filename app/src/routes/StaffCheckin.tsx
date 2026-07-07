@@ -3,12 +3,14 @@ import { Link, useParams } from '@tanstack/react-router'
 import { Header } from '../components/Header'
 import { CheckinConsole } from '@/components/CheckinConsole'
 import { useAttendee } from '../lib/attendee-context'
+import { useI18n } from '../lib/i18n'
 
 /**
  * 工作人员核销台（参会者身份进入）：
  * 被主办方指派为 STAFF 的报名者，从「我的」页进来即可扫码核销，无需主办方账号。
  */
 export function StaffCheckinPage() {
+  const { t } = useI18n()
   const { id } = useParams({ from: '/staff/$id/checkin' })
   const { email, loading } = useAttendee()
   const [ctx, setCtx] = useState<{ event?: { title: string; slug: string }; error?: string } | null>(null)
@@ -18,27 +20,27 @@ export function StaffCheckinPage() {
     fetch(`/api/attendee/events/${id}/staff-context`)
       .then(async (r) => {
         const d = await r.json()
-        if (!r.ok) return { error: d.message || '没有权限' }
+        if (!r.ok) return { error: d.message || t('staffCheckin.noPermission') }
         return { event: d.event }
       })
       .then(setCtx)
-      .catch(() => setCtx({ error: '加载失败，请重试' }))
-  }, [id, email, loading])
+      .catch(() => setCtx({ error: t('staffCheckin.loadFailed') }))
+  }, [id, email, loading, t])
 
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
       <main className="mx-auto w-full max-w-[640px] flex-1 px-4 pb-12 pt-6">
         {loading ? null : !email ? (
-          <Notice text="请先在「我的」页面用邮箱登录，再打开核销台。" cta={{ to: '/me', label: '去登录' }} />
+          <Notice text={t('staffCheckin.loginRequired')} cta={{ to: '/me', label: t('staffCheckin.goLogin') }} />
         ) : ctx === null ? (
           <div className="mt-8 h-48 animate-pulse rounded-2xl bg-black/[0.05] dark:bg-white/10" />
         ) : ctx.error ? (
-          <Notice text={ctx.error} cta={{ to: '/me', label: '返回我的' }} />
+          <Notice text={ctx.error} cta={{ to: '/me', label: t('staffCheckin.backToMe') }} />
         ) : (
           <>
             <p className="mb-4 truncate text-sm text-ink/55 dark:text-white/55">
-              {ctx.event!.title} · 工作人员核销台
+              {ctx.event!.title} · {t('staffCheckin.consoleLabel')}
             </p>
             <CheckinConsole apiBase={`/api/attendee/events/${id}`} />
           </>

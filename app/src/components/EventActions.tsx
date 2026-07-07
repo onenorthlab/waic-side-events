@@ -5,9 +5,11 @@ import { toast } from 'sonner'
 import { useAttendee } from '../lib/attendee-context'
 import type { EventItem } from '../lib/types'
 import { detailDateLabel } from '../lib/format'
+import { useI18n } from '../lib/i18n'
 
 /** 详情页动作组：收藏（需登录）+ 分享（系统分享/复制文案） */
 export function EventActions({ ev }: { ev: EventItem }) {
+  const { t } = useI18n()
   const { email } = useAttendee()
   const navigate = useNavigate()
   const [bookmarked, setBookmarked] = useState(false)
@@ -23,7 +25,7 @@ export function EventActions({ ev }: { ev: EventItem }) {
 
   const toggleBookmark = async () => {
     if (!email) {
-      toast('登录后可以收藏活动', { action: { label: '去登录', onClick: () => navigate({ to: '/me' }) } })
+      toast(t('actions.loginToBookmark'), { action: { label: t('actions.goLogin'), onClick: () => navigate({ to: '/me' }) } })
       return
     }
     setBusy(true)
@@ -32,9 +34,9 @@ export function EventActions({ ev }: { ev: EventItem }) {
       const d = await res.json()
       if (!res.ok) throw new Error()
       setBookmarked(!!d.bookmarked)
-      toast.success(d.bookmarked ? '已收藏，可在「我的」查看' : '已取消收藏')
+      toast.success(d.bookmarked ? t('actions.bookmarkedHint') : t('actions.unbookmarkedHint'))
     } catch {
-      toast.error('操作失败，请重试')
+      toast.error(t('actions.actionFailed'))
     } finally {
       setBusy(false)
     }
@@ -53,9 +55,9 @@ export function EventActions({ ev }: { ev: EventItem }) {
     }
     try {
       await navigator.clipboard.writeText(`${text}\n${url}`)
-      toast.success('活动链接已复制，去分享给朋友吧')
+      toast.success(t('actions.linkCopied'))
     } catch {
-      toast.error('复制失败，请手动复制地址栏链接')
+      toast.error(t('actions.copyFailed'))
     }
   }
 
@@ -64,10 +66,10 @@ export function EventActions({ ev }: { ev: EventItem }) {
 
   return (
     <div className="flex items-center gap-2">
-      <button onClick={toggleBookmark} disabled={busy} aria-label={bookmarked ? '取消收藏' : '收藏'} className={btn}>
+      <button onClick={toggleBookmark} disabled={busy} aria-label={bookmarked ? t('actions.unbookmark') : t('actions.bookmark')} className={btn}>
         <Heart size={16} className={bookmarked ? 'fill-brand text-brand' : ''} />
       </button>
-      <button onClick={share} aria-label="分享" className={btn}>
+      <button onClick={share} aria-label={t('actions.share')} className={btn}>
         <Share2 size={16} />
       </button>
     </div>

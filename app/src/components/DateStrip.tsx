@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { shortDateLabel } from '../lib/format'
+import { useI18n } from '../lib/i18n'
 
 /**
  * 会期日期条：WAIC 是一周内的活动集群，「哪天有什么局」是参会者的第一心智，
@@ -12,6 +13,7 @@ export function DateStrip({
   selectedDate: string | null
   onSelectDate: (d: string | null) => void
 }) {
+  const { t } = useI18n()
   const [dates, setDates] = useState<string[]>([])
 
   useEffect(() => {
@@ -36,7 +38,7 @@ export function DateStrip({
           onClick={() => onSelectDate(null)}
           className={`${base} justify-center ${selectedDate === null ? active : idle}`}
         >
-          <span className="text-sm font-semibold">全部</span>
+          <span className="text-sm font-semibold">{t('dateStrip.all')}</span>
         </button>
         {dates.map((d) => {
           const { md, wd } = shortDateLabel(d)

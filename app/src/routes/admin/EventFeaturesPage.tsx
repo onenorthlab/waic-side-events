@@ -36,10 +36,10 @@ export function EventFeaturesPage() {
         setLoading(false)
       })
       .catch(() => {
-        toast.error('加载失败')
+        toast.error(t('admin.eventFeaturesPage.loadFailed'))
         setLoading(false)
       })
-  }, [id])
+  }, [id, t])
 
   const save = async () => {
     try {
@@ -56,34 +56,36 @@ export function EventFeaturesPage() {
           participantListVisibility,
         }),
       })
-      if (!res.ok) throw new Error('保存失败')
-      toast.success('保存成功')
+      if (!res.ok) throw new Error(t('admin.eventFeaturesPage.saveFailed'))
+      toast.success(t('admin.eventFeaturesPage.saveSuccess'))
     } catch {
-      toast.error('保存失败')
+      toast.error(t('admin.eventFeaturesPage.saveFailed'))
     }
   }
 
-  if (loading) return <div className="py-12 text-center text-sm text-ink/50">加载中…</div>
+  if (loading) return <div className="py-12 text-center text-sm text-ink/50">{t('admin.eventFeaturesPage.loading')}</div>
+
+  const toggles = [
+    { label: t('admin.eventFeaturesPage.enableTickets'), desc: t('admin.eventFeaturesPage.enableTicketsDesc'), value: enabledTickets, onChange: setEnabledTickets },
+    { label: t('admin.eventFeaturesPage.enableMeetings'), desc: t('admin.eventFeaturesPage.enableMeetingsDesc'), value: enabledMeetings, onChange: setEnabledMeetings },
+    { label: t('admin.eventFeaturesPage.enableChat'), desc: t('admin.eventFeaturesPage.enableChatDesc'), value: enabledChat, onChange: setEnabledChat },
+    { label: t('admin.eventFeaturesPage.enableSideEvents'), desc: t('admin.eventFeaturesPage.enableSideEventsDesc'), value: enabledSideEvents, onChange: setEnabledSideEvents },
+    { label: t('admin.eventFeaturesPage.requiresApproval'), desc: t('admin.eventFeaturesPage.requiresApprovalDesc'), value: requiresApproval, onChange: setRequiresApproval },
+  ]
 
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h2 className="font-display text-2xl font-bold">{t('admin.eventFeatures')}</h2>
-        <Button onClick={save}>保存</Button>
+        <Button onClick={save}>{t('admin.eventFeaturesPage.save')}</Button>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle>功能开关</CardTitle>
+          <CardTitle>{t('admin.eventFeaturesPage.featureToggles')}</CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
-          {[
-            { label: '启用票务', desc: '开启后参与者可选择票种报名', value: enabledTickets, onChange: setEnabledTickets },
-            { label: '启用会议预约', desc: '允许参与者预约 1:1 会议', value: enabledMeetings, onChange: setEnabledMeetings },
-            { label: '启用聊天', desc: '活动内参与者可互相聊天', value: enabledChat, onChange: setEnabledChat },
-            { label: '启用周边活动', desc: '显示并管理子活动/边会', value: enabledSideEvents, onChange: setEnabledSideEvents },
-            { label: '报名需审批', desc: '新报名默认待审批，需手动确认', value: requiresApproval, onChange: setRequiresApproval },
-          ].map((item) => (
+          {toggles.map((item) => (
             <div key={item.label} className="flex items-center justify-between">
               <div>
                 <p className="font-medium">{item.label}</p>
@@ -97,23 +99,23 @@ export function EventFeaturesPage() {
 
       <Card>
         <CardHeader>
-          <CardTitle>报名限制</CardTitle>
+          <CardTitle>{t('admin.eventFeaturesPage.registrationLimits')}</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="space-y-2">
-            <Label>最大参与人数（空表示不限）</Label>
+            <Label>{t('admin.eventFeaturesPage.maxParticipants')}</Label>
             <Input type="number" min={1} value={maxParticipants} onChange={(e) => setMaxParticipants(e.target.value)} />
           </div>
           <div className="space-y-2">
-            <Label>参与者名单可见性</Label>
+            <Label>{t('admin.eventFeaturesPage.participantVisibility')}</Label>
             <Select value={participantListVisibility} onValueChange={(v) => setParticipantListVisibility(v ?? 'PUBLIC')}>
               <SelectTrigger className="w-64">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="PUBLIC">公开</SelectItem>
-                <SelectItem value="APPROVED_ONLY">仅已确认者可见</SelectItem>
-                <SelectItem value="PRIVATE">仅组织者可见</SelectItem>
+                <SelectItem value="PUBLIC">{t('admin.eventFeaturesPage.visibilityPublic')}</SelectItem>
+                <SelectItem value="APPROVED_ONLY">{t('admin.eventFeaturesPage.visibilityApprovedOnly')}</SelectItem>
+                <SelectItem value="PRIVATE">{t('admin.eventFeaturesPage.visibilityPrivate')}</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -121,7 +123,7 @@ export function EventFeaturesPage() {
       </Card>
 
       <div className="flex justify-end">
-        <Button onClick={save} size="lg">保存</Button>
+        <Button onClick={save} size="lg">{t('admin.eventFeaturesPage.save')}</Button>
       </div>
     </div>
   )
