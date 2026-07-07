@@ -7,7 +7,8 @@ import { eq, desc, and, sql as sqlExpr } from 'drizzle-orm'
 import { requireAuth } from '@/lib/auth'
 import { sendEmail, registrationApprovedEmail, registrationRejectedEmail } from '@/lib/email'
 import importApp from './import'
-import { signTicket, verifyTicket, ticketSecret, checkinCode } from '@/lib/ticket'
+import { signTicket, ticketSecret } from '@/lib/ticket'
+import { performCheckin } from './checkin-core'
 
 const createEventSchema = z.object({
   title: z.string().min(1),
@@ -354,9 +355,15 @@ app.get('/events/:id/participants', async (c) => {
   return c.json({ participants: list, total, page, pageSize, counts })
 })
 
-const statusSchema = z.object({ status: z.enum(['PENDING', 'APPROVED', 'REJECTED', 'CANCELLED']) })
+const participantPatchSchema = z
+  .object({
+    status: z.enum(['PENDING', 'APPROVED', 'REJECTED', 'CANCELLED']).optional(),
+    // 主办方指派身份：工作人员(获现场核销权限)/嘉宾/VIP/媒体；被指派者自己也是参会的一员
+    type: z.enum(['GENERAL', 'VIP', 'SPEAKER', 'STAFF', 'MEDIA']).optional(),
+  })
+  .refine((v) => v.status || v.type, { message: 'status 或 type 至少提供一个' })
 
-app.patch('/events/:id/participants/:pid', zValidator('json', statusSchema), async (c) => {
+app.patch('/events/:id/participants/:pid', zValidator('json', participantPatchSchema), async (c) => {
   const db = getDb(c.env)
   const id = c.req.param('id')
   const pid = c.req.param('pid')
@@ -368,7 +375,11 @@ app.patch('/events/:id/participants/:pid', zValidator('json', statusSchema), asy
   if (!existing || existing.eventId !== id) return c.json({ error: '记录不存在' }, 404)
 
   await db.update(participants)
-    .set({ status: body.status, updatedAt: new Date().toISOString() })
+    .set({
+      ...(body.status ? { status: body.status } : {}),
+      ...(body.type ? { type: body.type } : {}),
+      updatedAt: new Date().toISOString(),
+    })
     .where(eq(participants.id, pid))
     .run()
 
@@ -421,75 +432,9 @@ app.post('/events/:id/checkin', zValidator('json', checkinSchema), async (c) => 
   const id = c.req.param('id')
   const event = await requireOwnedEvent(c, id)
   if (!event) return c.json({ error: '活动不存在' }, 404)
-
-  const body = c.req.valid('json')
-  let p: typeof participants.$inferSelect | undefined
-
-  if (body.token) {
-    const pid = await verifyTicket(body.token.trim(), ticketSecret(c.env))
-    if (!pid) return c.json({ result: 'invalid', message: '无效票码（签名不匹配）' }, 200)
-    p = await db.select().from(participants).where(eq(participants.id, pid)).get()
-  } else {
-    const code = body.code!.trim().toUpperCase()
-    if (code.length < 6) return c.json({ result: 'invalid', message: '短码至少 6 位' }, 200)
-    const rows = await db.select().from(participants).where(eq(participants.eventId, id)).all()
-    const matches = rows.filter((r) => checkinCode(r.id).startsWith(code))
-    if (matches.length > 1) return c.json({ result: 'invalid', message: '短码有歧义，请输入完整 8 位' }, 200)
-    p = matches[0]
-  }
-
-  if (!p) return c.json({ result: 'invalid', message: '没有找到这张票' }, 200)
-  if (p.eventId !== id) return c.json({ result: 'wrong_event', message: '这张票不属于本活动' }, 200)
-  if (p.status !== 'APPROVED') {
-    const label = p.status === 'PENDING' ? '报名还在审核中' : p.status === 'REJECTED' ? '报名未通过' : '报名已取消'
-    return c.json({ result: 'not_approved', message: label, name: p.name }, 200)
-  }
-  if (p.checkedIn) {
-    return c.json({ result: 'already', message: '这张票已核销过', name: p.name, checkedInAt: p.checkedInAt }, 200)
-  }
-
-  const now = new Date().toISOString()
-  await db.update(participants).set({ checkedIn: true, checkedInAt: now, updatedAt: now }).where(eq(participants.id, p.id)).run()
-  return c.json({ result: 'ok', name: p.name, type: p.type, checkedInAt: now })
+  const result = await performCheckin(db, c.env, id, c.req.valid('json'))
+  return c.json(result)
 })
-
-app.get('/events/:id/participants/export.csv', async (c) => {
-  const db = getDb(c.env)
-  const id = c.req.param('id')
-  const event = await requireOwnedEvent(c, id)
-  if (!event) return c.json({ error: '活动不存在' }, 404)
-
-  const rows = await db
-    .select()
-    .from(participants)
-    .where(eq(participants.eventId, id))
-    .orderBy(desc(participants.createdAt))
-    .all()
-
-  const header = ['姓名', '邮箱', '状态', '类型', '签到', '报名时间', '备注']
-  const lines = rows.map((p) => [
-    p.name,
-    p.email,
-    p.status,
-    p.type,
-    p.checkedIn ? '是' : '否',
-    p.createdAt || '',
-    (p.notes || '').replace(/\n/g, ' '),
-  ])
-  const csv = [header, ...lines].map((r) => r.map(escapeCsv).join(',')).join('\n')
-
-  c.header('Content-Type', 'text/csv; charset=utf-8')
-  c.header('Content-Disposition', `attachment; filename="participants-${id.slice(0, 8)}.csv"`)
-  return c.body('\uFEFF' + csv)
-})
-
-function escapeCsv(v: string | null | undefined) {
-  const s = String(v ?? '')
-  if (s.includes(',') || s.includes('"') || s.includes('\n')) {
-    return '"' + s.replace(/"/g, '""') + '"'
-  }
-  return s
-}
 
 // —— Tickets ——
 

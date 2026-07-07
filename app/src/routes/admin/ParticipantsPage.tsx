@@ -90,6 +90,25 @@ export function ParticipantsPage() {
     }
   }
 
+  // 指派身份：工作人员获得本活动核销台权限（从「我的」页进入），嘉宾/VIP/媒体用于运营区分
+  const updateType = async (pid: string, next: string) => {
+    setActionId(pid)
+    try {
+      const res = await fetch(`/api/manage/events/${id}/participants/${pid}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: next }),
+      })
+      if (!res.ok) throw new Error('更新失败')
+      toast.success(next === 'STAFF' ? '已指派为工作人员，TA 登录「我的」即可打开核销台' : '身份已更新')
+      fetchData()
+    } catch {
+      toast.error('更新失败')
+    } finally {
+      setActionId(null)
+    }
+  }
+
   const exportCsv = () => {
     window.open(`/api/manage/events/${id}/participants/export.csv`)
   }
@@ -154,7 +173,21 @@ export function ParticipantsPage() {
                   <TableRow key={p.id}>
                     <TableCell className="font-medium">{p.name}</TableCell>
                     <TableCell>{p.email}</TableCell>
-                    <TableCell>{p.type}</TableCell>
+                    <TableCell>
+                      <select
+                        value={p.type}
+                        disabled={actionId === p.id}
+                        onChange={(e) => updateType(p.id, e.target.value)}
+                        className="rounded-lg border border-black/10 bg-transparent px-2 py-1 text-sm dark:border-white/15"
+                        title="指派身份（工作人员将获得核销台权限）"
+                      >
+                        <option value="GENERAL">普通</option>
+                        <option value="VIP">VIP</option>
+                        <option value="SPEAKER">嘉宾</option>
+                        <option value="STAFF">工作人员</option>
+                        <option value="MEDIA">媒体</option>
+                      </select>
+                    </TableCell>
                     <TableCell><Badge variant={STATUS_COLORS[p.status]}>{STATUS_LABELS[p.status]}</Badge></TableCell>
                     <TableCell>{p.checkedIn ? <UserCheck size={16} className="text-green-500" /> : '-'}</TableCell>
                     <TableCell className="text-sm text-ink/50">{p.createdAt ? new Date(p.createdAt).toLocaleString('zh-CN') : '-'}</TableCell>

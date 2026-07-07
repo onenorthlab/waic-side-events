@@ -9,10 +9,11 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { toast } from 'sonner'
-import { Ticket, LogOut, MailCheck, MapPin, Wifi, CheckCircle2 } from 'lucide-react'
+import { Ticket, LogOut, MailCheck, MapPin, Wifi, CheckCircle2, ScanLine } from 'lucide-react'
 
 interface MyRegistration {
   id: string
+  eventId: string
   status: string
   type: string
   checkedIn: boolean
@@ -233,6 +234,12 @@ function RegGroup({ title, items, dim }: { title: string; items: MyRegistration[
               <div className="flex min-w-0 flex-1 flex-col justify-center gap-1.5">
                 <div className="flex flex-wrap items-center gap-2">
                   <span className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${st.cls}`}>{st.label}</span>
+                  {r.type === 'STAFF' && (
+                    <span className="rounded-full bg-ink px-2 py-0.5 text-[11px] font-semibold text-white dark:bg-white dark:text-ink">工作人员</span>
+                  )}
+                  {r.type === 'SPEAKER' && (
+                    <span className="rounded-full bg-brand px-2 py-0.5 text-[11px] font-semibold text-white">嘉宾</span>
+                  )}
                   {r.checkedIn && (
                     <span className="inline-flex items-center gap-0.5 text-[11px] font-semibold text-emerald-600">
                       <CheckCircle2 size={12} /> 已入场
@@ -253,14 +260,25 @@ function RegGroup({ title, items, dim }: { title: string; items: MyRegistration[
                     <span className="truncate">{r.event.eventType === 'ONLINE' ? '线上' : venue?.title || venue?.displayText || '线下'}</span>
                   </span>
                 </div>
-                {r.ticketUrl && (
-                  <a
-                    href={r.ticketUrl}
-                    className="mt-1 inline-flex w-fit items-center gap-1.5 rounded-full bg-brand px-3.5 py-1.5 text-xs font-semibold text-white transition hover:bg-brand-600 active:scale-[0.97]"
-                  >
-                    <Ticket size={13} /> 电子票
-                  </a>
-                )}
+                <div className="mt-1 flex flex-wrap items-center gap-2">
+                  {r.ticketUrl && (
+                    <a
+                      href={r.ticketUrl}
+                      className="inline-flex w-fit items-center gap-1.5 rounded-full bg-brand px-3.5 py-1.5 text-xs font-semibold text-white transition hover:bg-brand-600 active:scale-[0.97]"
+                    >
+                      <Ticket size={13} /> 电子票
+                    </a>
+                  )}
+                  {r.type === 'STAFF' && r.status === 'APPROVED' && !r.event.hasEnded && (
+                    <Link
+                      to="/staff/$id/checkin"
+                      params={{ id: r.eventId }}
+                      className="inline-flex w-fit items-center gap-1.5 rounded-full border border-brand px-3.5 py-1.5 text-xs font-semibold text-brand transition hover:bg-brand-50 active:scale-[0.97]"
+                    >
+                      <ScanLine size={13} /> 工作人员核销台
+                    </Link>
+                  )}
+                </div>
               </div>
             </div>
           )

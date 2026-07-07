@@ -9,6 +9,8 @@ import { eq, desc } from 'drizzle-orm'
 import { sendEmail } from '@/lib/email'
 import { signAttendeeSession, verifyAttendeeSession, attendeeSecret, generateOtp, otpEmail } from '@/lib/attendee'
 import { signTicket, ticketSecret } from '@/lib/ticket'
+import { performCheckin, isEventStaff } from './checkin-core'
+import { and, sql as sqlExpr } from 'drizzle-orm'
 
 const app = new Hono()
 
@@ -105,6 +107,7 @@ app.get('/registrations', async (c) => {
     if (!ev) continue
     result.push({
       id: p.id,
+      eventId: p.eventId,
       status: p.status,
       type: p.type,
       checkedIn: !!p.checkedIn,
@@ -124,5 +127,58 @@ app.get('/registrations', async (c) => {
   }
   return c.json({ registrations: result })
 })
+
+// —— 工作人员核销通道 ——
+// 模型：工作人员 = 报名本活动且被主办方指派为 STAFF 的参会者（自己也参加活动）。
+// 指派即授权：STAFF + APPROVED 就能打开本活动核销台，无需主办方账号。
+
+async function requireStaff(c: any): Promise<{ email: string; eventId: string } | Response> {
+  const email = await currentAttendee(c)
+  if (!email) return c.json({ error: 'unauthorized', message: '请先登录' }, 401)
+  const eventId = c.req.param('id')
+  const db = getDb(c.env)
+  if (!(await isEventStaff(db, eventId, email))) {
+    return c.json({ error: 'forbidden', message: '你不是本活动的工作人员（需要主办方指派）' }, 403)
+  }
+  return { email, eventId }
+}
+
+app.get('/events/:id/staff-context', async (c) => {
+  const auth = await requireStaff(c)
+  if (auth instanceof Response) return auth
+  const db = getDb(c.env)
+  const ev = await db.select().from(eventsTable).where(eq(eventsTable.id, auth.eventId)).get()
+  if (!ev) return c.json({ error: 'not_found' }, 404)
+  return c.json({ event: { id: ev.id, title: ev.title, slug: ev.slug } })
+})
+
+app.get('/events/:id/checkin/stats', async (c) => {
+  const auth = await requireStaff(c)
+  if (auth instanceof Response) return auth
+  const db = getDb(c.env)
+  const approvedRow = await db
+    .select({ count: sqlExpr`COUNT(*)`.mapWith(Number) })
+    .from(participantsTable)
+    .where(and(eq(participantsTable.eventId, auth.eventId), eq(participantsTable.status, 'APPROVED')))
+    .get()
+  const checkedRow = await db
+    .select({ count: sqlExpr`COUNT(*)`.mapWith(Number) })
+    .from(participantsTable)
+    .where(and(eq(participantsTable.eventId, auth.eventId), eq(participantsTable.checkedIn, true)))
+    .get()
+  return c.json({ approved: approvedRow?.count || 0, checkedIn: checkedRow?.count || 0 })
+})
+
+app.post(
+  '/events/:id/checkin',
+  zValidator('json', z.object({ token: z.string().optional(), code: z.string().optional() }).refine((v) => v.token || v.code)),
+  async (c) => {
+    const auth = await requireStaff(c)
+    if (auth instanceof Response) return auth
+    const db = getDb(c.env)
+    const result = await performCheckin(db, c.env, auth.eventId, c.req.valid('json'))
+    return c.json(result)
+  }
+)
 
 export default app
