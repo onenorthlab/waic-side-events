@@ -143,7 +143,7 @@ export function Header({ showCreate = false }: { showCreate?: boolean }) {
         <Link to="/me" className={navCls}>
           {t('nav.me')}
         </Link>
-        <LocaleToggle className="ml-1 shrink-0" />
+        <LocaleToggle className="inline-flex ml-1 shrink-0" />
       </nav>
     </header>
   )

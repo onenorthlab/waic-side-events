@@ -15,7 +15,7 @@ export function LocaleToggle({ className }: { className?: string }) {
       role="group"
       aria-label="Language"
       className={
-        'inline-flex items-center gap-0.5 rounded-full border border-black/12 p-0.5 dark:border-white/20 ' + (className || '')
+        'items-center gap-0.5 rounded-full border border-black/12 p-0.5 dark:border-white/20 ' + (className || 'inline-flex')
       }
     >
       <button type="button" onClick={() => setLocale('en')} className={itemCls(locale === 'en')}>
