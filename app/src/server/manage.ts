@@ -2,7 +2,7 @@ import { Hono } from 'hono'
 import { zValidator } from '@hono/zod-validator'
 import { z } from 'zod'
 import { getDb } from '@/db'
-import { events, participants, tickets } from '@/db/schema'
+import { events, participants, tickets, feedbackResponses } from '@/db/schema'
 import { eq, desc, and, sql as sqlExpr } from 'drizzle-orm'
 import { requireAuth } from '@/lib/auth'
 import { sendEmail, registrationApprovedEmail, registrationRejectedEmail } from '@/lib/email'
@@ -557,6 +557,77 @@ app.delete('/events/:id/tickets/:tid', async (c) => {
   if (!existing || existing.eventId !== id) return c.json({ error: '票种不存在' }, 404)
   await db.delete(tickets).where(eq(tickets.id, tid)).run()
   return c.json({ ok: true })
+})
+
+// —— 满意度反馈 ——
+// schema 存在 events.data.feedbackSchema 里（SurveyJS elements 数组），不新增列。
+
+app.get('/events/:id/feedback-schema', async (c) => {
+  const id = c.req.param('id')
+  const event = await requireOwnedEvent(c, id)
+  if (!event) return c.json({ error: '活动不存在' }, 404)
+  const data = (event.data || {}) as any
+  return c.json({ feedbackSchema: Array.isArray(data.feedbackSchema) ? data.feedbackSchema : [] })
+})
+
+const feedbackSchemaSchema = z.object({
+  feedbackSchema: z.array(z.any()),
+})
+
+app.put('/events/:id/feedback-schema', zValidator('json', feedbackSchemaSchema), async (c) => {
+  const db = getDb(c.env)
+  const id = c.req.param('id')
+  const event = await requireOwnedEvent(c, id)
+  if (!event) return c.json({ error: '活动不存在' }, 404)
+  const { feedbackSchema } = c.req.valid('json')
+  const now = new Date().toISOString()
+  const data = { ...(event.data as any || {}), feedbackSchema, updatedAt: now }
+  await db.update(events).set({ data, updatedAt: now }).where(eq(events.id, id)).run()
+  return c.json({ ok: true, feedbackSchema })
+})
+
+app.get('/events/:id/feedback-responses', async (c) => {
+  const db = getDb(c.env)
+  const id = c.req.param('id')
+  const event = await requireOwnedEvent(c, id)
+  if (!event) return c.json({ error: '活动不存在' }, 404)
+
+  const page = Math.max(1, parseInt(c.req.query('page') || '1', 10))
+  const pageSize = Math.min(100, Math.max(1, parseInt(c.req.query('pageSize') || '20', 10)))
+
+  const list = await db
+    .select()
+    .from(feedbackResponses)
+    .where(eq(feedbackResponses.eventId, id))
+    .orderBy(desc(feedbackResponses.createdAt))
+    .limit(pageSize)
+    .offset((page - 1) * pageSize)
+    .all()
+
+  const totalRow = await db
+    .select({ count: sqlExpr`COUNT(*)`.mapWith(Number) })
+    .from(feedbackResponses)
+    .where(eq(feedbackResponses.eventId, id))
+    .get()
+  const total = totalRow?.count || 0
+
+  const aggRow = await db
+    .select({
+      avg: sqlExpr`AVG(${feedbackResponses.rating})`.mapWith(Number),
+      ratedCount: sqlExpr`COUNT(${feedbackResponses.rating})`.mapWith(Number),
+    })
+    .from(feedbackResponses)
+    .where(eq(feedbackResponses.eventId, id))
+    .get()
+
+  return c.json({
+    responses: list,
+    total,
+    page,
+    pageSize,
+    averageRating: aggRow?.avg ?? null,
+    ratedCount: aggRow?.ratedCount || 0,
+  })
 })
 
 export default app

@@ -4,7 +4,7 @@ import { zValidator } from '@hono/zod-validator'
 import { z } from 'zod'
 import { getCookie, setCookie, deleteCookie } from 'hono/cookie'
 import { getDb } from '@/db'
-import { events as eventsTable, participants as participantsTable, emailOtps, notifications, bookmarks } from '@/db/schema'
+import { events as eventsTable, participants as participantsTable, emailOtps, notifications, bookmarks, feedbackResponses } from '@/db/schema'
 import { eq, desc } from 'drizzle-orm'
 import { sendEmail } from '@/lib/email'
 import { signAttendeeSession, verifyAttendeeSession, attendeeSecret, generateOtp, otpEmail } from '@/lib/attendee'
@@ -277,5 +277,107 @@ app.post(
     return c.json(result)
   }
 )
+
+// —— 活动后满意度反馈 ——
+// 校验：本人已报名且 APPROVED，且（活动已结束 或 已现场签到）才可填写。
+//
+// TODO: 活动结束后邀请参会者填反馈的站内通知/邮件，目前没有定时任务基建（无 cron/队列），
+// 暂不实现"活动结束时批量触发通知"，需要主办方或参会者自行发现入口（我的页面 / 活动详情页）。
+
+app.get('/events/:id/feedback-form', async (c) => {
+  const email = await currentAttendee(c)
+  if (!email) return c.json({ error: 'unauthorized' }, 401)
+  const db = getDb(c.env)
+  const eventId = c.req.param('id')
+
+  const ev = await db.select().from(eventsTable).where(eq(eventsTable.id, eventId)).get()
+  if (!ev) return c.json({ error: 'not_found', message: '活动不存在' }, 404)
+
+  const reg = await db
+    .select()
+    .from(participantsTable)
+    .where(and(eq(participantsTable.eventId, eventId), eq(participantsTable.email, email)))
+    .get()
+  if (!reg || reg.status !== 'APPROVED') {
+    return c.json({ error: 'forbidden', message: '你还没有确认通过的报名' }, 403)
+  }
+  if (!ev.hasEnded && !reg.checkedIn) {
+    return c.json({ error: 'not_eligible', message: '活动结束或完成签到后才能填写反馈' }, 403)
+  }
+
+  const data = (ev.data || {}) as any
+  const feedbackSchema = Array.isArray(data.feedbackSchema) ? data.feedbackSchema : []
+
+  const existing = await db
+    .select()
+    .from(feedbackResponses)
+    .where(and(eq(feedbackResponses.eventId, eventId), eq(feedbackResponses.email, email)))
+    .get()
+
+  return c.json({
+    event: { id: ev.id, title: ev.title, slug: ev.slug },
+    feedbackSchema,
+    submitted: !!existing,
+    response: existing ? { rating: existing.rating, answers: existing.answers } : null,
+  })
+})
+
+const feedbackSubmitSchema = z.object({
+  rating: z.number().int().min(1).max(5),
+  answers: z.record(z.string(), z.any()).optional(),
+})
+
+app.post('/events/:id/feedback', zValidator('json', feedbackSubmitSchema), async (c) => {
+  const email = await currentAttendee(c)
+  if (!email) return c.json({ error: 'unauthorized' }, 401)
+  const db = getDb(c.env)
+  const eventId = c.req.param('id')
+
+  const ev = await db.select().from(eventsTable).where(eq(eventsTable.id, eventId)).get()
+  if (!ev) return c.json({ error: 'not_found', message: '活动不存在' }, 404)
+
+  const reg = await db
+    .select()
+    .from(participantsTable)
+    .where(and(eq(participantsTable.eventId, eventId), eq(participantsTable.email, email)))
+    .get()
+  if (!reg || reg.status !== 'APPROVED') {
+    return c.json({ error: 'forbidden', message: '你还没有确认通过的报名' }, 403)
+  }
+  if (!ev.hasEnded && !reg.checkedIn) {
+    return c.json({ error: 'not_eligible', message: '活动结束或完成签到后才能填写反馈' }, 403)
+  }
+
+  const { rating, answers } = c.req.valid('json')
+  const now = new Date().toISOString()
+
+  const existing = await db
+    .select()
+    .from(feedbackResponses)
+    .where(and(eq(feedbackResponses.eventId, eventId), eq(feedbackResponses.email, email)))
+    .get()
+
+  if (existing) {
+    await db
+      .update(feedbackResponses)
+      .set({ rating, answers: answers ?? {}, createdAt: existing.createdAt || now })
+      .where(eq(feedbackResponses.id, existing.id))
+      .run()
+  } else {
+    await db
+      .insert(feedbackResponses)
+      .values({
+        id: crypto.randomUUID(),
+        eventId,
+        email,
+        rating,
+        answers: answers ?? {},
+        createdAt: now,
+      })
+      .run()
+  }
+
+  return c.json({ ok: true })
+})
 
 export default app

@@ -71,8 +71,8 @@ export function AdminLayout() {
     { to: `${base}/announcements`, label: t('admin.announcements'), icon: <Megaphone size={18} /> },
     { to: `${base}/features`, label: t('admin.eventFeatures'), icon: <ToggleLeft size={18} /> },
     { to: `${base}/design`, label: t('admin.pageDesign'), icon: <Palette size={18} /> },
+    { to: `${base}/feedback`, label: t('admin.feedback'), icon: <Star size={18} /> },
     // —— 以下为待上线模块：置灰外显（团队备忘，尽快做掉）——
-    { to: `${base}/feedback`, label: t('admin.feedback'), icon: <Star size={18} />, pending: true },
     { to: `${base}/meetings`, label: t('admin.meetings'), icon: <MessageSquare size={18} />, pending: true },
     { to: `${base}/payments`, label: t('admin.payments'), icon: <CreditCard size={18} />, pending: true },
   ]

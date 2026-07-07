@@ -211,3 +211,24 @@ CREATE TABLE IF NOT EXISTS tickets (
 );
 CREATE INDEX IF NOT EXISTS idx_tickets_event ON tickets(event_id);
 `
+
+// feedback_responses 表 —— 活动后满意度反馈（一人一活动一份，可覆盖更新）
+export const feedbackResponses = sqliteTable('feedback_responses', {
+  id: text('id').primaryKey(),
+  eventId: text('event_id').notNull(),
+  email: text('email').notNull(),
+  answers: text('answers', { mode: 'json' }),
+  rating: integer('rating'),
+  createdAt: text('created_at'),
+})
+
+export type FeedbackResponseRow = typeof feedbackResponses.$inferSelect
+
+export const CREATE_FEEDBACK_RESPONSES = `
+CREATE TABLE IF NOT EXISTS feedback_responses (
+  id TEXT PRIMARY KEY, event_id TEXT NOT NULL, email TEXT NOT NULL,
+  answers TEXT, rating INTEGER, created_at TEXT,
+  UNIQUE (event_id, email)
+);
+CREATE INDEX IF NOT EXISTS idx_feedback_event ON feedback_responses(event_id);
+`

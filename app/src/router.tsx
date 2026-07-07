@@ -26,7 +26,9 @@ import { TimetablePage } from './routes/admin/TimetablePage'
 import { EventFeaturesPage } from './routes/admin/EventFeaturesPage'
 import { PageDesignPage } from './routes/admin/PageDesignPage'
 import { SurveyEditorPage } from './routes/admin/SurveyEditorPage'
+import { FeedbackPage } from './routes/admin/FeedbackPage'
 import { StaffPage } from './routes/admin/StaffPage'
+import { FeedbackFormPage } from './routes/FeedbackPage'
 
 const rootRoute = createRootRoute({ component: () => <Outlet /> })
 
@@ -51,6 +53,7 @@ const ticketRoute = createRoute({ getParentRoute: () => rootRoute, path: '/ticke
 const meRoute = createRoute({ getParentRoute: () => rootRoute, path: '/me', component: MePage })
 const staffCheckinRoute = createRoute({ getParentRoute: () => rootRoute, path: '/staff/$id/checkin', component: StaffCheckinPage })
 const notificationsRoute = createRoute({ getParentRoute: () => rootRoute, path: '/notifications', component: NotificationsPage })
+const feedbackFormRoute = createRoute({ getParentRoute: () => rootRoute, path: '/feedback/$eventId', component: FeedbackFormPage })
 
 // 活动详情:归档真实路由是 /en/<slug>;切片单 locale,简化为 /<slug>(放最后, 让静态路由优先)
 const detailRoute = createRoute({
@@ -117,7 +120,7 @@ const adminPaymentsRoute = createRoute({ getParentRoute: () => adminLayoutRoute,
 const adminSurveysRoute = createRoute({ getParentRoute: () => adminLayoutRoute, path: '/surveys', component: SurveyEditorPage })
 const adminSpeakersRoute = createRoute({ getParentRoute: () => adminLayoutRoute, path: '/speakers', component: SpeakersPage })
 const adminAnnouncementsRoute = createRoute({ getParentRoute: () => adminLayoutRoute, path: '/announcements', component: AnnouncementsPage })
-const adminFeedbackRoute = createRoute({ getParentRoute: () => adminLayoutRoute, path: '/feedback', component: placeholder('admin.feedback') })
+const adminFeedbackRoute = createRoute({ getParentRoute: () => adminLayoutRoute, path: '/feedback', component: FeedbackPage })
 const adminStaffRoute = createRoute({ getParentRoute: () => adminLayoutRoute, path: '/staff', component: StaffPage })
 const adminSettingsRoute = createRoute({ getParentRoute: () => adminLayoutRoute, path: '/settings', component: EventSettingsPage })
 const adminFeaturesRoute = createRoute({ getParentRoute: () => adminLayoutRoute, path: '/features', component: EventFeaturesPage })
@@ -135,6 +138,7 @@ const routeTree = rootRoute.addChildren([
   meRoute,
   staffCheckinRoute,
   notificationsRoute,
+  feedbackFormRoute,
   loginRoute,
   registerRoute,
   manageEventsRoute,

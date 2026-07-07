@@ -10,7 +10,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { toast } from 'sonner'
 import QRCode from 'qrcode'
-import { Ticket, LogOut, MailCheck, MapPin, Wifi, CheckCircle2, ScanLine, QrCode, Heart } from 'lucide-react'
+import { Ticket, LogOut, MailCheck, MapPin, Wifi, CheckCircle2, ScanLine, QrCode, Heart, Star } from 'lucide-react'
 
 interface MyRegistration {
   id: string
@@ -385,6 +385,15 @@ function RegGroup({ title, items, dim }: { title: string; items: MyRegistration[
                       className="inline-flex w-fit items-center gap-1.5 rounded-full border border-brand px-3.5 py-1.5 text-xs font-semibold text-brand transition hover:bg-brand-50 active:scale-[0.97]"
                     >
                       <ScanLine size={13} /> 工作人员核销台
+                    </Link>
+                  )}
+                  {r.status === 'APPROVED' && r.event.hasEnded && (
+                    <Link
+                      to="/feedback/$eventId"
+                      params={{ eventId: r.eventId }}
+                      className="inline-flex w-fit items-center gap-1.5 rounded-full border border-brand px-3.5 py-1.5 text-xs font-semibold text-brand transition hover:bg-brand-50 active:scale-[0.97]"
+                    >
+                      <Star size={13} /> 写反馈
                     </Link>
                   )}
                 </div>

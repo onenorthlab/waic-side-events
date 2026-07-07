@@ -5,12 +5,12 @@ import Database from 'better-sqlite3'
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { events, users, participants, tickets, emailOtps, notifications, bookmarks } from './schema'
-import { CREATE_EVENTS, CREATE_USERS, CREATE_PARTICIPANTS, CREATE_TICKETS, CREATE_EMAIL_OTPS, CREATE_NOTIFICATIONS, CREATE_BOOKMARKS } from './schema'
+import { events, users, participants, tickets, emailOtps, notifications, bookmarks, feedbackResponses } from './schema'
+import { CREATE_EVENTS, CREATE_USERS, CREATE_PARTICIPANTS, CREATE_TICKETS, CREATE_EMAIL_OTPS, CREATE_NOTIFICATIONS, CREATE_BOOKMARKS, CREATE_FEEDBACK_RESPONSES } from './schema'
 import seedEvents from '../data/events.json'
 
-export const schema = { events, users, participants, tickets, emailOtps, notifications, bookmarks }
-export { events, users, participants, tickets, emailOtps, notifications, bookmarks }
+export const schema = { events, users, participants, tickets, emailOtps, notifications, bookmarks, feedbackResponses }
+export { events, users, participants, tickets, emailOtps, notifications, bookmarks, feedbackResponses }
 export { sql } from 'drizzle-orm'
 
 let sqliteDb: ReturnType<typeof drizzleSqlite> | null = null
@@ -32,6 +32,7 @@ function initSqlite() {
   sqliteRaw.exec(CREATE_EMAIL_OTPS)
   sqliteRaw.exec(CREATE_NOTIFICATIONS)
   sqliteRaw.exec(CREATE_BOOKMARKS)
+  sqliteRaw.exec(CREATE_FEEDBACK_RESPONSES)
 
   // 种子（空库才灌）
   const count = (sqliteRaw.prepare('SELECT COUNT(*) AS c FROM events').get() as { c: number }).c
