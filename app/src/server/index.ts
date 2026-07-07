@@ -4,7 +4,7 @@ import { z } from 'zod'
 import tagsUsage from '../data/tags-usage.json'
 import authApp from './auth'
 import manageApp from './manage'
-import attendeeApp from './attendee'
+import attendeeApp, { currentAttendee } from './attendee'
 import { getDb } from '@/db'
 import { events as eventsTable, participants as participantsTable } from '@/db/schema'
 import { eq, and, sql as sqlExpr } from 'drizzle-orm'
@@ -149,11 +149,47 @@ app.get('/api/events/:slug', async (c) => {
   return c.json(eventPublicFields(row))
 })
 
+// —— 参会者列表（公开面）——
+// 可见性三档由主办方设置；参会者报名时可选择不出现在列表（hideFromList）。
+// 公开面刻意不显示 STAFF/VIP/MEDIA 徽章（管理面才需要），只露嘉宾。
+app.get('/api/events/:slug/participants', async (c) => {
+  const db = getDb(c.env)
+  const slug = c.req.param('slug')
+  const event = (await db.select().from(eventsTable).where(eq(eventsTable.slug, slug)).get()) || (await db.select().from(eventsTable).where(eq(eventsTable.id, slug)).get())
+  if (!event) return c.json({ error: 'not_found' }, 404)
+
+  const visibility = event.participantListVisibility || 'PUBLIC'
+  if (visibility === 'PRIVATE') return c.json({ visibility, participants: [], total: 0 })
+
+  const rows = await db
+    .select()
+    .from(participantsTable)
+    .where(and(eq(participantsTable.eventId, event.id), eq(participantsTable.status, 'APPROVED')))
+    .all()
+
+  if (visibility === 'APPROVED_ONLY') {
+    const email = await currentAttendee(c)
+    const isApproved = !!email && rows.some((r) => r.email === email)
+    if (!isApproved) return c.json({ visibility, participants: [], total: rows.length })
+  }
+
+  const visible = rows.filter((r) => !(r.data as any)?.hideFromList)
+  return c.json({
+    visibility,
+    total: rows.length,
+    participants: visible.slice(0, 100).map((r) => ({
+      name: r.name,
+      isSpeaker: r.type === 'SPEAKER',
+    })),
+  })
+})
+
 const registerSchema = z.object({
   name: z.string().min(1),
   email: z.string().email(),
   ticketId: z.string().optional(),
   type: z.enum(['GENERAL', 'VIP', 'SPEAKER', 'STAFF', 'MEDIA']).default('GENERAL'),
+  showInList: z.boolean().default(true),
   answers: z.record(z.string(), z.any()).optional(),
 })
 
@@ -185,7 +221,7 @@ app.post('/api/events/:slug/register', zValidator('json', registerSchema), async
     type: body.type,
     ticketId: body.ticketId || null,
     checkedIn: false,
-    data: { answers: body.answers || {} },
+    data: { answers: body.answers || {}, hideFromList: !body.showInList },
     createdAt: now,
     updatedAt: now,
   }

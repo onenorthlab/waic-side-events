@@ -9,6 +9,7 @@ import { downloadIcs } from '../lib/ics'
 import { EventProgram } from '../components/EventProgram'
 import { EventContent } from '../components/EventContent'
 import { LiveBadge } from '../components/EventCard'
+import { ParticipantsList } from '../components/ParticipantsList'
 import { useI18n } from '../lib/i18n'
 import { useAttendee } from '../lib/attendee-context'
 import { CalendarPlus, Clock, MapPin, Wifi, ArrowLeft, ExternalLink, CheckCircle, Users, ShieldCheck } from 'lucide-react'
@@ -72,6 +73,7 @@ function useRegistration(ev: EventItem) {
   useEffect(() => {
     if (attendeeEmail) setEmail((prev) => prev || attendeeEmail)
   }, [attendeeEmail])
+  const [showInList, setShowInList] = useState(true)
   const [submitting, setSubmitting] = useState(false)
   const [result, setResult] = useState<{ status: string; ticketUrl?: string } | null>(null)
   const hasSurvey = Array.isArray(ev.surveySchema) && ev.surveySchema.length > 0
@@ -85,7 +87,7 @@ function useRegistration(ev: EventItem) {
     }
     setSubmitting(true)
     try {
-      const payload: any = { name, email }
+      const payload: any = { name, email, showInList }
       if (hasSurvey && surveyModel) payload.answers = surveyModel.data
       const res = await fetch(`/api/events/${ev.slug}/register`, {
         method: 'POST',
@@ -107,7 +109,7 @@ function useRegistration(ev: EventItem) {
     }
   }
 
-  return { open, setOpen, name, setName, email, setEmail, submitting, result, submit, hasSurvey, surveyModel }
+  return { open, setOpen, name, setName, email, setEmail, showInList, setShowInList, submitting, result, submit, hasSurvey, surveyModel }
 }
 
 function RegistrationDialog({ ev, reg }: { ev: EventItem; reg: ReturnType<typeof useRegistration> }) {
@@ -153,6 +155,15 @@ function RegistrationDialog({ ev, reg }: { ev: EventItem; reg: ReturnType<typeof
               <Input type="email" value={reg.email} onChange={(e) => reg.setEmail(e.target.value)} required />
               <p className="text-xs text-ink/45 dark:text-white/45">电子票和活动通知会发送到这个邮箱</p>
             </div>
+            <label className="flex cursor-pointer items-center gap-2 text-sm text-ink/70 dark:text-white/70">
+              <input
+                type="checkbox"
+                checked={reg.showInList}
+                onChange={(e) => reg.setShowInList(e.target.checked)}
+                className="h-4 w-4 accent-[#2745e8]"
+              />
+              在「谁会来」名单中展示我的名字
+            </label>
             {reg.hasSurvey && reg.surveyModel && (
               <div className="rounded-xl border border-black/[0.08] p-3 dark:border-white/12">
                 <Survey model={reg.surveyModel} />
@@ -383,6 +394,9 @@ function DetailBody({ ev }: { ev: EventItem }) {
               <div className="mt-4">{registerCta}</div>
             </div>
             <div className="rounded-2xl border border-black/[0.06] bg-white p-5 shadow-card dark:border-white/10 dark:bg-neutral-900">
+              <ParticipantsList slug={ev.slug} />
+            </div>
+            <div className="rounded-2xl border border-black/[0.06] bg-white p-5 shadow-card dark:border-white/10 dark:bg-neutral-900">
               <Organizers ev={ev} />
               {(ev.organizerContact?.length ?? 0) > 0 && (
                 <div className="mt-4 flex flex-col gap-1.5 border-t border-black/[0.06] pt-3 dark:border-white/10">
@@ -402,6 +416,13 @@ function DetailBody({ ev }: { ev: EventItem }) {
             </div>
           </div>
         </aside>
+      </div>
+
+      {/* 移动端：谁会来（桌面在右栏） */}
+      <div className="mt-8 lg:hidden">
+        <div className="rounded-2xl border border-black/[0.06] bg-white p-5 shadow-card dark:border-white/10 dark:bg-neutral-900">
+          <ParticipantsList slug={ev.slug} />
+        </div>
       </div>
 
       {/* 议程 + 嘉宾 */}
