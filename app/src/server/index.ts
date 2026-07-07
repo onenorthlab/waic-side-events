@@ -13,9 +13,46 @@ import { signTicket, verifyTicket, ticketSecret, checkinCode } from '@/lib/ticke
 
 const app = new Hono()
 
+/**
+ * 公开读接口的边缘缓存：活动数据分钟级才会变，同 URL 命中 CF Cache 直接回，
+ * 峰值时到 D1 的读 QPS 降两个数量级。本地开发无 caches 自动跳过。
+ * 写操作后最长 TTL 内可见旧数据（60s），对活动浏览场景可接受。
+ */
+function edgeCache(seconds: number) {
+  return async (c: any, next: any) => {
+    const cache = (globalThis as any).caches?.default
+    if (!cache || c.req.method !== 'GET') return next()
+    const key = new Request(c.req.url, { method: 'GET' })
+    const hit = await cache.match(key)
+    if (hit) {
+      const res = new Response(hit.body, hit)
+      res.headers.set('X-Edge-Cache', 'HIT')
+      return res
+    }
+    await next()
+    if (c.res && c.res.status === 200) {
+      const res = c.res.clone()
+      const cached = new Response(res.body, res)
+      cached.headers.set('Cache-Control', `public, s-maxage=${seconds}`)
+      try {
+        c.executionCtx.waitUntil(cache.put(key, cached))
+      } catch {
+        await cache.put(key, cached)
+      }
+      c.res.headers.set('X-Edge-Cache', 'MISS')
+    }
+  }
+}
+
 app.route('/api/auth', authApp)
 app.route('/api/manage', manageApp)
 app.route('/api/attendee', attendeeApp)
+
+// 高频公开读接口缓存（参会者列表因按登录态差异化，不缓存）
+app.use('/api/events', edgeCache(60))
+app.use('/api/events/counts-by-date', edgeCache(300))
+app.use('/api/events/geojson', edgeCache(120))
+app.use('/api/tags/usage', edgeCache(300))
 
 const eventPublicFields = (r: any) => ({
   ...(r.data as any),
@@ -49,6 +86,29 @@ const eventPublicFields = (r: any) => ({
   createdBy: r.createdBy,
   organizers: r.organizers,
   organizerContact: r.organizerContact,
+  hasEnded: !!r.hasEnded,
+})
+
+// 列表瘦身版：不带 description（导入活动的正文可达几十 KB/条）和 data 全量快照，
+// 响应体和 D1 rows_read 都大幅下降。日程页需要的 stages/sessions/speakers 保留。
+const eventListFields = (r: any) => ({
+  id: r.id,
+  slug: r.slug,
+  title: r.title,
+  catchphrase: r.catchphrase,
+  eventType: r.eventType,
+  state: r.state,
+  timezone: r.timezone,
+  schedules: r.schedules,
+  location: r.location,
+  tags: r.tags,
+  mainImageUrl: r.mainImageUrl,
+  thumbnailUrl: r.thumbnailUrl,
+  featured: r.featured,
+  hasEnded: !!r.hasEnded,
+  stages: r.stages,
+  sessions: r.sessions,
+  speakers: r.speakers,
 })
 
 // 公开 API。前端统一走 /api/*。
@@ -75,7 +135,7 @@ app.get('/api/events', async (c) => {
   const totalCount = rows.length
   const slice = rows.slice((page - 1) * perPage, page * perPage)
   return c.json({
-    events: slice.map(eventPublicFields),
+    events: slice.map(eventListFields),
     pageInfo: { totalCount, totalPages: Math.max(1, Math.ceil(totalCount / perPage)), page, perPage },
   })
 })

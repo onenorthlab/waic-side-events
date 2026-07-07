@@ -63,9 +63,9 @@ function withSecurityHeaders(res: Response): Response {
 }
 
 export default {
-  async fetch(request: Request, env: Env, _ctx: Ctx): Promise<Response> {
+  async fetch(request: Request, env: Env, ctx: Ctx): Promise<Response> {
     const url = new URL(request.url)
-    if (url.pathname.startsWith('/api')) return app.fetch(request, env)
+    if (url.pathname.startsWith('/api')) return app.fetch(request, env, ctx as any)
 
     // 形如 /<slug> 的单段路径且非已知静态路由 → 尝试 OG 注入
     const isKnown = STATIC_PREFIXES.some((p) => url.pathname === p || url.pathname.startsWith(p + '/'))
