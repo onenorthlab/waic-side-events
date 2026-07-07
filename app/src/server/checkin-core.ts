@@ -1,7 +1,7 @@
 // 核销核心：主办方核销台与工作人员核销台共用同一套校验/落库逻辑。
 import { eq } from 'drizzle-orm'
 import { participants } from '@/db/schema'
-import { verifyTicket, ticketSecret, checkinCode } from '@/lib/ticket'
+import { verifyTicket, ticketSecret, checkinCode, isPersonalCode, verifyPersonalCode } from '@/lib/ticket'
 
 export interface CheckinResult {
   result: 'ok' | 'already' | 'invalid' | 'wrong_event' | 'not_approved'
@@ -20,9 +20,19 @@ export async function performCheckin(
   let p: typeof participants.$inferSelect | undefined
 
   if (input.token) {
-    const pid = await verifyTicket(input.token.trim(), ticketSecret(env))
-    if (!pid) return { result: 'invalid', message: '无效票码（签名不匹配）' }
-    p = await db.select().from(participants).where(eq(participants.id, pid)).get()
+    const token = input.token.trim()
+    if (isPersonalCode(token)) {
+      // 一人一码：解析邮箱 → 匹配该活动的报名记录
+      const email = await verifyPersonalCode(token, ticketSecret(env))
+      if (!email) return { result: 'invalid', message: '无效个人码（签名不匹配）' }
+      const rows = await db.select().from(participants).where(eq(participants.eventId, eventId)).all()
+      p = rows.find((r: any) => r.email === email)
+      if (!p) return { result: 'invalid', message: '该用户没有报名本活动' }
+    } else {
+      const pid = await verifyTicket(token, ticketSecret(env))
+      if (!pid) return { result: 'invalid', message: '无效票码（签名不匹配）' }
+      p = await db.select().from(participants).where(eq(participants.id, pid)).get()
+    }
   } else if (input.code) {
     const code = input.code.trim().toUpperCase()
     if (code.length < 6) return { result: 'invalid', message: '短码至少 6 位' }

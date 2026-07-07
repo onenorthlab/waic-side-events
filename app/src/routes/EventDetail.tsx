@@ -10,6 +10,7 @@ import { EventProgram } from '../components/EventProgram'
 import { EventContent } from '../components/EventContent'
 import { LiveBadge } from '../components/EventCard'
 import { ParticipantsList } from '../components/ParticipantsList'
+import { EventActions } from '../components/EventActions'
 import { useI18n } from '../lib/i18n'
 import { useAttendee } from '../lib/attendee-context'
 import { CalendarPlus, Clock, MapPin, Wifi, ArrowLeft, ExternalLink, CheckCircle, Users, ShieldCheck } from 'lucide-react'
@@ -267,9 +268,12 @@ function DetailBody({ ev }: { ev: EventItem }) {
 
       <div className="mt-6 grid gap-10 lg:grid-cols-[1fr_320px]">
         <article>
-          <div className="flex items-center gap-2 text-sm font-semibold text-brand">
-            {detailDateLabel(ev.schedules)}
-            {isLiveToday(ev.schedules) && !ended && <LiveBadge />}
+          <div className="flex items-center justify-between gap-3">
+            <div className="flex items-center gap-2 text-sm font-semibold text-brand">
+              {detailDateLabel(ev.schedules)}
+              {isLiveToday(ev.schedules) && !ended && <LiveBadge />}
+            </div>
+            <EventActions ev={ev} />
           </div>
           <h1 className="mt-2 text-2xl font-bold leading-snug tracking-tight text-ink dark:text-white md:text-[32px]">
             {ev.title}

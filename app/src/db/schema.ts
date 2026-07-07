@@ -167,6 +167,20 @@ CREATE TABLE IF NOT EXISTS notifications (
 CREATE INDEX IF NOT EXISTS idx_notif_email ON notifications(email, read);
 `
 
+// bookmarks 表 —— 参会者收藏（邮箱标识）
+export const bookmarks = sqliteTable('bookmarks', {
+  email: text('email').notNull(),
+  eventId: text('event_id').notNull(),
+  createdAt: text('created_at'),
+})
+
+export const CREATE_BOOKMARKS = `
+CREATE TABLE IF NOT EXISTS bookmarks (
+  email TEXT NOT NULL, event_id TEXT NOT NULL, created_at TEXT,
+  PRIMARY KEY (email, event_id)
+);
+`
+
 // tickets 表 —— 票种（当前仅支持免费/现场票）
 export const tickets = sqliteTable('tickets', {
   id: text('id').primaryKey(),

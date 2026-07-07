@@ -4,11 +4,11 @@ import { zValidator } from '@hono/zod-validator'
 import { z } from 'zod'
 import { getCookie, setCookie, deleteCookie } from 'hono/cookie'
 import { getDb } from '@/db'
-import { events as eventsTable, participants as participantsTable, emailOtps, notifications } from '@/db/schema'
+import { events as eventsTable, participants as participantsTable, emailOtps, notifications, bookmarks } from '@/db/schema'
 import { eq, desc } from 'drizzle-orm'
 import { sendEmail } from '@/lib/email'
 import { signAttendeeSession, verifyAttendeeSession, attendeeSecret, generateOtp, otpEmail } from '@/lib/attendee'
-import { signTicket, ticketSecret } from '@/lib/ticket'
+import { signTicket, ticketSecret, signPersonalCode } from '@/lib/ticket'
 import { performCheckin, isEventStaff } from './checkin-core'
 import { and, sql as sqlExpr } from 'drizzle-orm'
 
@@ -126,6 +126,68 @@ app.get('/registrations', async (c) => {
     })
   }
   return c.json({ registrations: result })
+})
+
+// —— 一人一码：个人通用入场码 ——
+app.get('/personal-code', async (c) => {
+  const email = await currentAttendee(c)
+  if (!email) return c.json({ error: 'unauthorized' }, 401)
+  const token = await signPersonalCode(email, ticketSecret(c.env))
+  return c.json({ token, email })
+})
+
+// —— 收藏 ——
+app.get('/bookmarks', async (c) => {
+  const email = await currentAttendee(c)
+  if (!email) return c.json({ error: 'unauthorized' }, 401)
+  const db = getDb(c.env)
+  const rows = await db.select().from(bookmarks).where(eq(bookmarks.email, email)).all()
+  const result = []
+  for (const b of rows) {
+    const ev = await db.select().from(eventsTable).where(eq(eventsTable.id, b.eventId)).get()
+    if (!ev || ev.state !== 'PUBLISHED') continue
+    result.push({
+      eventId: ev.id,
+      slug: ev.slug,
+      title: ev.title,
+      schedules: ev.schedules,
+      location: ev.location,
+      eventType: ev.eventType,
+      thumbnailUrl: ev.thumbnailUrl,
+      mainImageUrl: ev.mainImageUrl,
+      hasEnded: !!ev.hasEnded,
+    })
+  }
+  return c.json({ bookmarks: result })
+})
+
+app.get('/bookmarks/:eventId', async (c) => {
+  const email = await currentAttendee(c)
+  if (!email) return c.json({ bookmarked: false })
+  const db = getDb(c.env)
+  const rows = await db.select().from(bookmarks).where(eq(bookmarks.email, email)).all()
+  return c.json({ bookmarked: rows.some((r) => r.eventId === c.req.param('eventId')) })
+})
+
+app.put('/bookmarks/:eventId', async (c) => {
+  const email = await currentAttendee(c)
+  if (!email) return c.json({ error: 'unauthorized' }, 401)
+  const db = getDb(c.env)
+  const eventId = c.req.param('eventId')
+  const exists = (await db.select().from(bookmarks).where(eq(bookmarks.email, email)).all()).some((r) => r.eventId === eventId)
+  if (!exists) {
+    await db.insert(bookmarks).values({ email, eventId, createdAt: new Date().toISOString() }).run()
+  }
+  return c.json({ ok: true, bookmarked: true })
+})
+
+app.delete('/bookmarks/:eventId', async (c) => {
+  const email = await currentAttendee(c)
+  if (!email) return c.json({ error: 'unauthorized' }, 401)
+  const db = getDb(c.env)
+  const eventId = c.req.param('eventId')
+  await db.delete(bookmarks).where(and(eq(bookmarks.email, email), eq(bookmarks.eventId, eventId))).run()
+  return c.json({ ok: true, bookmarked: false })
 })
 
 // —— 站内通知 ——

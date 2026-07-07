@@ -50,3 +50,30 @@ export async function verifyTicket(token: string, secret: string): Promise<strin
 export function checkinCode(participantId: string): string {
   return participantId.replace(/-/g, '').slice(0, 8).toUpperCase()
 }
+
+// —— 一人一码：个人通用入场码（按邮箱签名，跨活动通用；核销时匹配该活动的报名记录）——
+const PERSONAL_PREFIX = 'U.'
+
+export async function signPersonalCode(email: string, secret: string): Promise<string> {
+  const msg = `personal.${email.toLowerCase()}`
+  const sig = await hmacSign(msg, secret)
+  return `${PERSONAL_PREFIX}${b64url(new TextEncoder().encode(email.toLowerCase()))}.${b64url(sig.slice(0, 16))}`
+}
+
+export function isPersonalCode(token: string): boolean {
+  return token.startsWith(PERSONAL_PREFIX)
+}
+
+export async function verifyPersonalCode(token: string, secret: string): Promise<string | null> {
+  if (!isPersonalCode(token)) return null
+  const rest = token.slice(PERSONAL_PREFIX.length)
+  const dot = rest.indexOf('.')
+  if (dot < 0) return null
+  try {
+    const email = b64urlDecode(rest.slice(0, dot))
+    const expected = await signPersonalCode(email, secret)
+    return expected === token ? email : null
+  } catch {
+    return null
+  }
+}

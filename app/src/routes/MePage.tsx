@@ -9,7 +9,8 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { toast } from 'sonner'
-import { Ticket, LogOut, MailCheck, MapPin, Wifi, CheckCircle2, ScanLine } from 'lucide-react'
+import QRCode from 'qrcode'
+import { Ticket, LogOut, MailCheck, MapPin, Wifi, CheckCircle2, ScanLine, QrCode, Heart } from 'lucide-react'
 
 interface MyRegistration {
   id: string
@@ -183,6 +184,8 @@ function MyRegistrations() {
         </button>
       </div>
 
+      <PersonalCode />
+
       {regs === null ? (
         <div className="mt-6 flex flex-col gap-3">
           {[0, 1].map((i) => (
@@ -202,7 +205,113 @@ function MyRegistrations() {
           {past.length > 0 && <RegGroup title="已结束" items={past} dim />}
         </div>
       )}
+
+      <MyBookmarks />
     </div>
+  )
+}
+
+/** 一人一码：所有活动通用的个人入场码（现场也可作名片交换） */
+function PersonalCode() {
+  const [open, setOpen] = useState(false)
+  const [qr, setQr] = useState('')
+
+  const load = async () => {
+    if (qr) {
+      setOpen((o) => !o)
+      return
+    }
+    try {
+      const res = await fetch('/api/attendee/personal-code')
+      const d = await res.json()
+      if (!res.ok) throw new Error()
+      const url = await QRCode.toDataURL(d.token, { margin: 1, width: 400, color: { dark: '#17181c', light: '#ffffff' } })
+      setQr(url)
+      setOpen(true)
+    } catch {
+      toast.error('获取个人码失败')
+    }
+  }
+
+  return (
+    <div className="mt-6 overflow-hidden rounded-2xl border border-brand/15 bg-brand-50 shadow-card dark:border-brand/30 dark:bg-brand/10">
+      <button onClick={load} className="flex w-full items-center gap-3 p-4 text-left">
+        <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand text-white">
+          <QrCode size={20} />
+        </span>
+        <span className="flex-1">
+          <span className="block text-sm font-bold text-ink dark:text-white">我的入场码</span>
+          <span className="block text-xs text-ink/55 dark:text-white/55">一码通用：所有报名过的活动都能凭它入场</span>
+        </span>
+        <span className="text-xs font-semibold text-brand">{open ? '收起' : '出示'}</span>
+      </button>
+      {open && qr && (
+        <div className="flex flex-col items-center gap-2 border-t border-brand/10 bg-white pb-6 pt-4 dark:bg-neutral-900">
+          <img src={qr} alt="个人入场码" className="h-52 w-52" />
+          <p className="text-xs text-ink/45 dark:text-white/45">向工作人员出示此码完成签到</p>
+        </div>
+      )}
+    </div>
+  )
+}
+
+interface BookmarkItem {
+  eventId: string
+  slug: string
+  title: string
+  schedules: any[]
+  location: any[] | null
+  eventType: string
+  thumbnailUrl: string | null
+  mainImageUrl: string | null
+  hasEnded: boolean
+}
+
+function MyBookmarks() {
+  const [items, setItems] = useState<BookmarkItem[] | null>(null)
+
+  useEffect(() => {
+    fetch('/api/attendee/bookmarks')
+      .then((r) => r.json())
+      .then((d) => setItems(d.bookmarks || []))
+      .catch(() => setItems([]))
+  }, [])
+
+  if (!items || items.length === 0) return null
+
+  return (
+    <section className="mt-8">
+      <h2 className="flex items-center gap-2 text-sm font-bold text-ink dark:text-white">
+        <Heart size={13} className="fill-brand text-brand" />
+        我的收藏
+        <span className="font-normal text-ink/40 dark:text-white/40">{items.length}</span>
+      </h2>
+      <div className="mt-2 flex flex-col gap-2.5">
+        {items.map((b) => {
+          const cover = b.thumbnailUrl || b.mainImageUrl
+          return (
+            <Link
+              key={b.eventId}
+              to="/$slug"
+              params={{ slug: b.slug }}
+              className="flex gap-4 rounded-2xl border border-black/[0.05] bg-white p-3 shadow-card transition hover:-translate-y-0.5 hover:shadow-card-hover dark:border-white/[0.07] dark:bg-neutral-900"
+            >
+              <div className="relative aspect-[4/3] w-20 shrink-0 self-center overflow-hidden rounded-xl">
+                {cover ? (
+                  <img src={cover} alt="" className="absolute inset-0 h-full w-full object-cover" />
+                ) : (
+                  <CoverFallback title={b.title} className="absolute inset-0" />
+                )}
+              </div>
+              <div className="flex min-w-0 flex-1 flex-col justify-center gap-1">
+                <p className="line-clamp-2 text-sm font-semibold text-ink dark:text-white">{b.title}</p>
+                <p className="text-xs font-medium text-brand">{detailDateLabel(b.schedules)}</p>
+              </div>
+            </Link>
+          )
+        })}
+      </div>
+    </section>
   )
 }
 
