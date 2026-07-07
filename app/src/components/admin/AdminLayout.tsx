@@ -29,6 +29,8 @@ interface NavItem {
   label: string
   icon: React.ReactNode
   children?: { to: string; label: string; icon: React.ReactNode }[]
+  /** 尚未实现的模块：置灰外显，提醒尽快补齐 */
+  pending?: boolean
 }
 
 export function AdminLayout() {
@@ -49,11 +51,12 @@ export function AdminLayout() {
 
   const nav: NavItem[] = [
     { to: `${base}/dashboard`, label: t('admin.dashboard'), icon: <LayoutDashboard size={18} /> },
+    // 元信息类：紧跟概览，主办方最常回访的配置入口（用户反馈：原来埋太深）
+    { to: `${base}/settings`, label: t('admin.eventSettings'), icon: <Settings size={18} /> },
     { to: `${base}/participants`, label: t('admin.participants'), icon: <Users size={18} /> },
     { to: `${base}/checkin`, label: '现场签到', icon: <ScanLine size={18} /> },
-    { to: `${base}/meetings`, label: t('admin.meetings'), icon: <MessageSquare size={18} /> },
+    { to: `${base}/staff`, label: t('admin.staff'), icon: <UserCog size={18} /> },
     { to: `${base}/tickets`, label: t('admin.tickets'), icon: <Ticket size={18} /> },
-    { to: `${base}/payments`, label: t('admin.payments'), icon: <CreditCard size={18} /> },
     { to: `${base}/surveys`, label: t('admin.surveys'), icon: <FileText size={18} /> },
     { to: `${base}/speakers`, label: t('admin.speakers'), icon: <Mic2 size={18} /> },
     {
@@ -66,11 +69,12 @@ export function AdminLayout() {
       ],
     },
     { to: `${base}/announcements`, label: t('admin.announcements'), icon: <Megaphone size={18} /> },
-    { to: `${base}/feedback`, label: t('admin.feedback'), icon: <Star size={18} /> },
-    { to: `${base}/staff`, label: t('admin.staff'), icon: <UserCog size={18} /> },
-    { to: `${base}/settings`, label: t('admin.eventSettings'), icon: <Settings size={18} /> },
     { to: `${base}/features`, label: t('admin.eventFeatures'), icon: <ToggleLeft size={18} /> },
     { to: `${base}/design`, label: t('admin.pageDesign'), icon: <Palette size={18} /> },
+    // —— 以下为待上线模块：置灰外显（团队备忘，尽快做掉）——
+    { to: `${base}/feedback`, label: t('admin.feedback'), icon: <Star size={18} />, pending: true },
+    { to: `${base}/meetings`, label: t('admin.meetings'), icon: <MessageSquare size={18} />, pending: true },
+    { to: `${base}/payments`, label: t('admin.payments'), icon: <CreditCard size={18} />, pending: true },
   ]
 
   const isActive = (path: string) => currentPath === path || currentPath.startsWith(`${path}/`)
@@ -114,9 +118,11 @@ export function AdminLayout() {
             href={item.to}
             className={
               'flex shrink-0 items-center gap-1.5 rounded-full px-3 py-1.5 text-sm transition ' +
-              (isActive(item.to)
-                ? 'bg-ink font-medium text-white dark:bg-white dark:text-ink'
-                : 'text-ink/60 dark:text-white/60')
+              (item.pending
+                ? 'text-ink/30 dark:text-white/25'
+                : isActive(item.to)
+                  ? 'bg-ink font-medium text-white dark:bg-white dark:text-ink'
+                  : 'text-ink/60 dark:text-white/60')
             }
           >
             {item.icon}
@@ -140,13 +146,20 @@ export function AdminLayout() {
                     href={item.to}
                     className={
                       'flex items-center gap-2 rounded-lg px-3 py-2 text-sm transition ' +
-                      (isActive(item.to)
-                        ? 'bg-brand/10 font-medium text-brand-600 dark:bg-brand/15 dark:text-brand'
-                        : 'text-ink/70 hover:bg-black/5 dark:text-white/70 dark:hover:bg-white/10')
+                      (item.pending
+                        ? 'text-ink/35 hover:bg-black/[0.03] dark:text-white/30 dark:hover:bg-white/5'
+                        : isActive(item.to)
+                          ? 'bg-brand/10 font-medium text-brand-600 dark:bg-brand/15 dark:text-brand'
+                          : 'text-ink/70 hover:bg-black/5 dark:text-white/70 dark:hover:bg-white/10')
                     }
                   >
                     {item.icon}
                     {item.label}
+                    {item.pending && (
+                      <span className="ml-auto rounded bg-black/[0.06] px-1.5 py-0.5 text-[10px] font-medium text-ink/40 dark:bg-white/10 dark:text-white/40">
+                        待上线
+                      </span>
+                    )}
                   </a>
                   {item.children && isActive(item.to) && (
                     <div className="ml-4 mt-0.5 flex flex-col gap-0.5 border-l pl-2 dark:border-white/10">

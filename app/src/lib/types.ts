@@ -47,6 +47,8 @@ export interface EventItem {
   // 详情独有
   description?: string
   descriptionFormat?: 'html' | 'markdown' | null
+  onlineUrl?: string | null
+  onlineDescription?: string | null
   customStyle?: CustomStyle | null
   organizers?: any[]
   organizerContact?: { url: string; label: string }[]

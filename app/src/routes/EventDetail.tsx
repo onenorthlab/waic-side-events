@@ -259,7 +259,26 @@ function DetailBody({ ev }: { ev: EventItem }) {
                 </button>
               </div>
             )}
-            <div className="flex items-start gap-2.5 text-sm text-ink/80 dark:text-white/80">
+            {/* 线上参会入口：主办方填了 onlineUrl 就展示（线上活动的核心信息） */}
+            {(ev.onlineUrl || ev.onlineDescription) && (
+              <div className="flex items-start gap-2.5 text-sm text-ink/80 dark:text-white/80">
+                <Wifi size={16} className="mt-0.5 shrink-0 text-ink/40 dark:text-white/40" />
+                <span className="min-w-0">
+                  {ev.onlineUrl && (
+                    <a
+                      href={ev.onlineUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1 font-semibold text-brand hover:underline"
+                    >
+                      进入线上会场 <ExternalLink size={12} />
+                    </a>
+                  )}
+                  {ev.onlineDescription && <span className="block text-xs text-ink/50 dark:text-white/50">{ev.onlineDescription}</span>}
+                </span>
+              </div>
+            )}
+            <div className={`flex items-start gap-2.5 text-sm text-ink/80 dark:text-white/80 ${ev.eventType === 'ONLINE' && ev.onlineUrl ? 'hidden' : ''}`}>
               {ev.eventType === 'ONLINE' ? (
                 <>
                   <Wifi size={16} className="mt-0.5 shrink-0 text-ink/40 dark:text-white/40" />

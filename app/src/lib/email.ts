@@ -67,3 +67,11 @@ export function registrationApprovedEmail(eventTitle: string, eventUrl: string, 
     text: `您好，\n\n恭喜！您的 ${eventTitle} 报名申请已通过审核。${ticketText}\n\n活动详情：${eventUrl}\n\n期待与您见面！`,
   }
 }
+
+export function registrationRejectedEmail(eventTitle: string, eventUrl: string) {
+  return {
+    subject: `【报名结果】${eventTitle}`,
+    html: `<p>您好，</p><p>很抱歉，您对 <b>${eventTitle}</b> 的报名申请未能通过审核（可能因名额有限或不符合本场活动的参与条件）。</p><p>您可以继续浏览其他活动：<a href="${eventUrl}">${eventUrl}</a></p><p>感谢您的关注！</p>`,
+    text: `您好，\n\n很抱歉，您对 ${eventTitle} 的报名申请未能通过审核（可能因名额有限或不符合本场活动的参与条件）。\n\n您可以继续浏览其他活动：${eventUrl}\n\n感谢您的关注！`,
+  }
+}

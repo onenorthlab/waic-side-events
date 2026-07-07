@@ -5,7 +5,7 @@ import { getDb } from '@/db'
 import { events, participants, tickets } from '@/db/schema'
 import { eq, desc, and, sql as sqlExpr } from 'drizzle-orm'
 import { requireAuth } from '@/lib/auth'
-import { sendEmail, registrationApprovedEmail } from '@/lib/email'
+import { sendEmail, registrationApprovedEmail, registrationRejectedEmail } from '@/lib/email'
 import importApp from './import'
 import { signTicket, verifyTicket, ticketSecret, checkinCode } from '@/lib/ticket'
 
@@ -372,15 +372,19 @@ app.patch('/events/:id/participants/:pid', zValidator('json', statusSchema), asy
     .where(eq(participants.id, pid))
     .run()
 
-  if (body.status === 'APPROVED') {
-    const resendKey = (c.env as any)?.RESEND_API_KEY
-    if (resendKey) {
-      const origin = new URL(c.req.url).origin
-      const eventUrl = `${origin}/${event.slug}`
+  const resendKey = (c.env as any)?.RESEND_API_KEY
+  if (resendKey && (body.status === 'APPROVED' || body.status === 'REJECTED')) {
+    const origin = new URL(c.req.url).origin
+    const eventUrl = `${origin}/${event.slug}`
+    const emailFrom = (c.env as any)?.EMAIL_FROM
+    if (body.status === 'APPROVED') {
       const token = await signTicket(existing.id, ticketSecret(c.env))
-      const emailFrom = (c.env as any)?.EMAIL_FROM
       c.executionCtx?.waitUntil?.(
         sendEmail(resendKey, { to: existing.email, ...registrationApprovedEmail(event.title, eventUrl, `${origin}/ticket/${token}`) }, emailFrom)
+      )
+    } else {
+      c.executionCtx?.waitUntil?.(
+        sendEmail(resendKey, { to: existing.email, ...registrationRejectedEmail(event.title, `${origin}/events`) }, emailFrom)
       )
     }
   }

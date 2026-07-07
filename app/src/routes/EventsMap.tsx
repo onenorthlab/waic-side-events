@@ -102,7 +102,7 @@ export function EventsMapPage() {
                 ${ev.thumbnailUrl ? `<img src="${ev.thumbnailUrl}" style="width:100%;height:120px;object-fit:cover;border-radius:6px;margin-bottom:8px;" />` : ''}
                 <div style="font-weight:700;font-size:15px;color:#111;margin-bottom:4px;">${ev.title}</div>
                 ${ev.catchphrase ? `<div style="font-size:12px;color:#666;margin-bottom:8px;">${ev.catchphrase}</div>` : ''}
-                <a href="/${ev.slug}" style="color:#14b551;font-weight:600;font-size:13px;text-decoration:none;">${t('map.viewEvent')}</a>
+                <a href="/${ev.slug}" style="color:#2745e8;font-weight:600;font-size:13px;text-decoration:none;">${t('map.viewEvent')}</a>
               </div>
             `
             infoWindow.setContent(content)

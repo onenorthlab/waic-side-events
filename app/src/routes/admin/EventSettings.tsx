@@ -476,10 +476,12 @@ export function EventSettingsPage() {
         <CardContent className="space-y-4">
           <div className="grid gap-4 md:grid-cols-2">
             {[
+              { key: 'xiaohongshu', label: '小红书', prefix: 'xiaohongshu.com/user/profile/' },
+              { key: 'weibo', label: '微博', prefix: 'weibo.com/' },
+              { key: 'bilibili', label: 'B站', prefix: 'space.bilibili.com/' },
+              { key: 'douyin', label: '抖音', prefix: 'douyin.com/user/' },
+              { key: 'wechat', label: '微信公众号', prefix: '公众号名称：' },
               { key: 'x', label: 'X (Twitter)', prefix: 'x.com/' },
-              { key: 'instagram', label: 'Instagram', prefix: 'instagram.com/' },
-              { key: 'facebook', label: 'Facebook', prefix: 'facebook.com/' },
-              { key: 'youtube', label: 'YouTube', prefix: 'youtube.com/@' },
             ].map(({ key, label, prefix }) => (
               <div key={key} className="space-y-2">
                 <Label htmlFor={`sns-${key}`}>{label}</Label>
