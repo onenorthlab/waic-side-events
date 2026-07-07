@@ -24,10 +24,10 @@ export function DateStrip({
   if (!dates.length) return null
 
   const base =
-    'flex shrink-0 flex-col items-center rounded-xl border px-3.5 py-2 leading-none transition active:scale-[0.97]'
+    'flex shrink-0 flex-col items-center rounded-xl border px-3.5 py-2 leading-none shadow-card transition active:scale-[0.97]'
   const idle =
     'border-black/[0.08] bg-white text-ink/70 hover:border-black/20 dark:border-white/12 dark:bg-neutral-900 dark:text-white/70 dark:hover:border-white/30'
-  const active = 'border-ink bg-ink text-white dark:border-white dark:bg-white dark:text-ink'
+  const active = 'border-brand bg-brand text-white shadow-card-hover dark:border-brand dark:bg-brand dark:text-white'
 
   return (
     <div className="-mx-4 overflow-x-auto px-4 scrollbar-none">

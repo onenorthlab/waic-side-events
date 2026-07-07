@@ -225,10 +225,27 @@ function DetailBody({ ev }: { ev: EventItem }) {
         <ArrowLeft size={15} /> {t('nav.events')}
       </Link>
 
-      {/* 海报：主办方自己设计的图直接完整呈现 */}
-      {ev.mainImageUrl && (
-        <div className="mt-4 overflow-hidden rounded-2xl bg-neutral-100 dark:bg-neutral-900">
-          <img src={ev.mainImageUrl} alt={ev.title} className="mx-auto max-h-[520px] w-auto max-w-full object-contain" />
+      {/* 海报：主办方自己设计的图完整呈现（模糊放大同图做衬底，letterbox 不显灰）；无图时用品牌化 hero，页面不塌陷 */}
+      {ev.mainImageUrl ? (
+        <div className="relative mt-4 overflow-hidden rounded-2xl shadow-card">
+          <img src={ev.mainImageUrl} alt="" aria-hidden="true" className="absolute inset-0 h-full w-full scale-110 object-cover blur-2xl brightness-[0.72] saturate-[1.2]" />
+          <img src={ev.mainImageUrl} alt={ev.title} className="relative mx-auto max-h-[520px] w-auto max-w-full object-contain" />
+        </div>
+      ) : (
+        <div className="relative mt-4 flex min-h-[220px] flex-col justify-end overflow-hidden rounded-2xl bg-gradient-to-br from-brand via-[#1e37cf] to-[#141f7a] p-6 shadow-card md:min-h-[280px] md:p-8">
+          <svg className="absolute inset-0 h-full w-full opacity-[0.16]" aria-hidden="true">
+            <defs>
+              <pattern id="hero-dotgrid" width="20" height="20" patternUnits="userSpaceOnUse">
+                <circle cx="2" cy="2" r="1.4" fill="white" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#hero-dotgrid)" />
+          </svg>
+          <span className="pointer-events-none absolute -right-4 -top-10 select-none text-[10rem] font-bold leading-none text-white/15">
+            {(ev.title || 'W').trim().slice(0, 1)}
+          </span>
+          <p className="relative text-sm font-semibold text-white/85">{detailDateLabel(ev.schedules)}</p>
+          <p className="relative mt-1 line-clamp-2 text-2xl font-bold leading-snug text-white md:text-3xl">{ev.title}</p>
         </div>
       )}
 
@@ -244,7 +261,7 @@ function DetailBody({ ev }: { ev: EventItem }) {
           {ev.catchphrase && <p className="mt-2 text-base text-ink/60 dark:text-white/60">{ev.catchphrase}</p>}
 
           {/* 关键信息卡：30 秒决策所需的一切 */}
-          <div className="mt-5 flex flex-col gap-3 rounded-2xl border border-black/[0.07] bg-white p-4 dark:border-white/10 dark:bg-neutral-900">
+          <div className="mt-5 flex flex-col gap-3 rounded-2xl border border-black/[0.06] bg-white p-4 shadow-card dark:border-white/10 dark:bg-neutral-900">
             {ev.schedules?.length > 0 && (
               <div className="flex items-center justify-between gap-3">
                 <span className="flex items-center gap-2.5 text-sm text-ink/80 dark:text-white/80">
@@ -352,14 +369,15 @@ function DetailBody({ ev }: { ev: EventItem }) {
         {/* 桌面右栏：报名 + 主办方 */}
         <aside className="hidden lg:block">
           <div className="sticky top-24 flex flex-col gap-5">
-            <div className="rounded-2xl border border-black/[0.07] bg-white p-5 dark:border-white/10 dark:bg-neutral-900">
+            {/* 报名卡：全页最重要动作，钴蓝浅底 + 更强投影，视觉权重高于信息卡 */}
+            <div className="rounded-2xl border border-brand/15 bg-brand-50 p-5 shadow-card-hover dark:border-brand/30 dark:bg-brand/10">
               <p className="text-sm font-bold text-ink dark:text-white">报名参加</p>
-              <p className="mt-1 text-xs text-ink/50 dark:text-white/50">
+              <p className="mt-1 text-xs text-ink/55 dark:text-white/55">
                 {ev.requiresApproval ? '提交后等待主办方审核，通过后发电子票' : '免费报名，确认邮件附电子票'}
               </p>
               <div className="mt-4">{registerCta}</div>
             </div>
-            <div className="rounded-2xl border border-black/[0.07] bg-white p-5 dark:border-white/10 dark:bg-neutral-900">
+            <div className="rounded-2xl border border-black/[0.06] bg-white p-5 shadow-card dark:border-white/10 dark:bg-neutral-900">
               <Organizers ev={ev} />
               {(ev.organizerContact?.length ?? 0) > 0 && (
                 <div className="mt-4 flex flex-col gap-1.5 border-t border-black/[0.06] pt-3 dark:border-white/10">
@@ -387,7 +405,7 @@ function DetailBody({ ev }: { ev: EventItem }) {
       </div>
 
       {/* 移动端底部固定操作条 */}
-      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-black/[0.07] bg-white/95 px-4 pb-[max(env(safe-area-inset-bottom),12px)] pt-3 backdrop-blur dark:border-white/10 dark:bg-neutral-900/95 lg:hidden">
+      <div className="fixed inset-x-0 bottom-0 z-40 border-t border-black/[0.08] bg-white/92 px-4 pb-[max(env(safe-area-inset-bottom),12px)] pt-3 shadow-bar backdrop-blur-md dark:border-white/12 dark:bg-neutral-900/92 lg:hidden">
         <div className="mx-auto flex max-w-[640px] items-center gap-3">
           <button
             onClick={() => downloadIcs(ev)}

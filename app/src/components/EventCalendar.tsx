@@ -78,7 +78,7 @@ export function EventCalendar({
   }
 
   return (
-    <div className="rounded-2xl border border-black/[0.07] bg-white p-4 dark:border-white/10 dark:bg-neutral-900">
+    <div className="rounded-2xl border border-black/[0.06] bg-white p-4 shadow-card dark:border-white/10 dark:bg-neutral-900">
       <div className="mb-3 flex items-center justify-between">
         <h4 className="text-sm font-bold text-ink dark:text-white">日期</h4>
         <div className="relative flex items-center gap-1">

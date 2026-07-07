@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { Link } from '@tanstack/react-router'
 import { Header } from '../components/Header'
 import { Footer } from '../components/Footer'
-import { FeaturedCard, EventRow } from '../components/EventCard'
+import { FeaturedCard, EventRow, BrandDot } from '../components/EventCard'
 import { DateStrip } from '../components/DateStrip'
 import { MiniEventMap } from '../components/MiniEventMap'
 import { EventCalendar } from '../components/EventCalendar'
@@ -142,7 +142,7 @@ export function EventsListPage() {
                         className={
                           'shrink-0 rounded-full border px-3 py-1 text-xs font-medium transition active:scale-[0.97] ' +
                           (active
-                            ? 'border-ink bg-ink text-white dark:border-white dark:bg-white dark:text-ink'
+                            ? 'border-brand bg-brand text-white'
                             : 'border-black/[0.08] bg-white text-ink/60 hover:border-black/20 hover:text-ink dark:border-white/12 dark:bg-neutral-900 dark:text-white/60 dark:hover:border-white/30 dark:hover:text-white')
                         }
                       >
@@ -184,9 +184,10 @@ export function EventsListPage() {
               <div className="mt-2 flex flex-col gap-8">
                 {groups.map((g) => (
                   <section key={g.label}>
-                    <h2 className="sticky top-16 z-10 -mx-4 bg-paper/95 px-4 py-2 text-sm font-bold text-ink backdrop-blur dark:bg-[#131316]/95 dark:text-white sm:static sm:mx-0 sm:bg-transparent sm:px-0 sm:backdrop-blur-none sm:dark:bg-transparent">
+                    <h2 className="sticky top-16 z-10 -mx-4 flex items-center gap-2 bg-paper/95 px-4 py-2 text-sm font-bold text-ink backdrop-blur dark:bg-[#131316]/95 dark:text-white sm:static sm:mx-0 sm:bg-transparent sm:px-0 sm:backdrop-blur-none sm:dark:bg-transparent">
+                      <BrandDot />
                       {g.label}
-                      <span className="ml-2 font-normal text-ink/40 dark:text-white/40">{g.items.length} 场</span>
+                      <span className="font-normal text-ink/40 dark:text-white/40">{g.items.length} 场</span>
                     </h2>
                     <div className="mt-1 flex flex-col gap-1">
                       {g.items.map((e) => (

@@ -84,6 +84,7 @@ export function EventsMapPage() {
           zoom: 11,
           center,
           viewMode: '2D',
+          mapStyle: 'amap://styles/whitesmoke',
         })
 
         const infoWindow = new AMap.InfoWindow({
@@ -91,18 +92,27 @@ export function EventsMapPage() {
           closeWhenClickMap: true,
         })
 
+        const markerHtml = `
+          <div style="position:relative;width:28px;height:36px;">
+            <svg width="28" height="36" viewBox="0 0 28 36" xmlns="http://www.w3.org/2000/svg">
+              <path d="M14 0C6.3 0 0 6.2 0 13.9 0 24.3 14 36 14 36S28 24.3 28 13.9C28 6.2 21.7 0 14 0Z" fill="#2745e8"/>
+              <circle cx="14" cy="13.5" r="4.5" fill="white"/>
+            </svg>
+          </div>`
         events.forEach((ev) => {
           const marker = new AMap.Marker({
             position: [ev.lng, ev.lat],
             title: ev.title,
+            content: markerHtml,
+            offset: new AMap.Pixel(-14, -36),
           })
           marker.on('click', () => {
             const content = `
-              <div style="min-width:220px;max-width:280px;font-family:sans-serif;">
-                ${ev.thumbnailUrl ? `<img src="${ev.thumbnailUrl}" style="width:100%;height:120px;object-fit:cover;border-radius:6px;margin-bottom:8px;" />` : ''}
-                <div style="font-weight:700;font-size:15px;color:#111;margin-bottom:4px;">${ev.title}</div>
-                ${ev.catchphrase ? `<div style="font-size:12px;color:#666;margin-bottom:8px;">${ev.catchphrase}</div>` : ''}
-                <a href="/${ev.slug}" style="color:#2745e8;font-weight:600;font-size:13px;text-decoration:none;">${t('map.viewEvent')}</a>
+              <div style="min-width:220px;max-width:280px;padding:4px 2px;font-family:'Geist Variable',-apple-system,'PingFang SC',sans-serif;">
+                ${ev.thumbnailUrl ? `<img src="${ev.thumbnailUrl}" style="width:100%;height:120px;object-fit:cover;border-radius:10px;margin-bottom:10px;" />` : ''}
+                <div style="font-weight:700;font-size:15px;line-height:1.4;color:#17181c;margin-bottom:4px;">${ev.title}</div>
+                ${ev.catchphrase ? `<div style="font-size:12px;color:#6b6c72;margin-bottom:10px;">${ev.catchphrase}</div>` : ''}
+                <a href="/${ev.slug}" style="display:inline-block;background:#2745e8;color:#fff;font-weight:600;font-size:12px;padding:6px 14px;border-radius:999px;text-decoration:none;">${t('map.viewEvent')}</a>
               </div>
             `
             infoWindow.setContent(content)

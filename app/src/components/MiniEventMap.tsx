@@ -74,13 +74,17 @@ export function MiniEventMap() {
           zoom: 10,
           center,
           viewMode: '2D',
-          mapStyle: 'amap://styles/normal',
+          mapStyle: 'amap://styles/whitesmoke',
         })
 
+        const dotHtml =
+          '<div style="width:14px;height:14px;border-radius:50%;background:#2745e8;border:2.5px solid #fff;box-shadow:0 1px 4px rgb(23 24 28 / 0.35);"></div>'
         events.forEach((ev) => {
           const marker = new AMap.Marker({
             position: [ev.lng, ev.lat],
             title: ev.title,
+            content: dotHtml,
+            offset: new AMap.Pixel(-7, -7),
           })
           map.add(marker)
         })
@@ -107,7 +111,7 @@ export function MiniEventMap() {
   }, [])
 
   return (
-    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl border border-black/10 dark:border-white/10">
+    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-black/[0.06] shadow-card dark:border-white/10">
       <div ref={ref} className="h-full w-full" />
       <Link
         to="/events/maps"
