@@ -146,6 +146,27 @@ CREATE TABLE IF NOT EXISTS email_otps (
 );
 `
 
+// notifications 表 —— 站内通知（参会者按邮箱标识）
+export const notifications = sqliteTable('notifications', {
+  id: text('id').primaryKey(),
+  email: text('email').notNull(),
+  eventId: text('event_id'),
+  kind: text('kind').notNull(), // REVIEW_APPROVED | REVIEW_REJECTED | ANNOUNCEMENT | ROLE_ASSIGNED
+  title: text('title').notNull(),
+  body: text('body'),
+  link: text('link'),
+  read: integer('read', { mode: 'boolean' }).default(false),
+  createdAt: text('created_at'),
+})
+
+export const CREATE_NOTIFICATIONS = `
+CREATE TABLE IF NOT EXISTS notifications (
+  id TEXT PRIMARY KEY, email TEXT NOT NULL, event_id TEXT, kind TEXT NOT NULL,
+  title TEXT NOT NULL, body TEXT, link TEXT, read INTEGER DEFAULT 0, created_at TEXT
+);
+CREATE INDEX IF NOT EXISTS idx_notif_email ON notifications(email, read);
+`
+
 // tickets 表 —— 票种（当前仅支持免费/现场票）
 export const tickets = sqliteTable('tickets', {
   id: text('id').primaryKey(),

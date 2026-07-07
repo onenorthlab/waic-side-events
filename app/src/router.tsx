@@ -6,6 +6,7 @@ import { SchedulesPage } from './routes/SchedulesPage'
 import { TicketPage } from './routes/TicketPage'
 import { MePage } from './routes/MePage'
 import { StaffCheckinPage } from './routes/StaffCheckin'
+import { NotificationsPage } from './routes/NotificationsPage'
 import { CheckinPage } from './routes/admin/CheckinPage'
 import { ManagedEventsListPage } from './routes/ManagedEventsList'
 import { EventCreatePage } from './routes/EventCreate'
@@ -49,6 +50,7 @@ const schedulesRoute = createRoute({ getParentRoute: () => rootRoute, path: '/sc
 const ticketRoute = createRoute({ getParentRoute: () => rootRoute, path: '/ticket/$token', component: TicketPage })
 const meRoute = createRoute({ getParentRoute: () => rootRoute, path: '/me', component: MePage })
 const staffCheckinRoute = createRoute({ getParentRoute: () => rootRoute, path: '/staff/$id/checkin', component: StaffCheckinPage })
+const notificationsRoute = createRoute({ getParentRoute: () => rootRoute, path: '/notifications', component: NotificationsPage })
 
 // 活动详情:归档真实路由是 /en/<slug>;切片单 locale,简化为 /<slug>(放最后, 让静态路由优先)
 const detailRoute = createRoute({
@@ -132,6 +134,7 @@ const routeTree = rootRoute.addChildren([
   ticketRoute,
   meRoute,
   staffCheckinRoute,
+  notificationsRoute,
   loginRoute,
   registerRoute,
   manageEventsRoute,

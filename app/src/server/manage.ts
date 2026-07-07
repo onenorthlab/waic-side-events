@@ -9,6 +9,7 @@ import { sendEmail, registrationApprovedEmail, registrationRejectedEmail } from 
 import importApp from './import'
 import { signTicket, ticketSecret } from '@/lib/ticket'
 import { performCheckin } from './checkin-core'
+import { notify, notifyMany, roleLabel } from './notify'
 
 const createEventSchema = z.object({
   title: z.string().min(1),
@@ -296,6 +297,25 @@ app.patch('/events/:id', zValidator('json', updateEventSchema), async (c) => {
     .where(eq(events.id, id))
     .run()
 
+  // 新公告 → 通知全体已报名者（含待审核）
+  if (body.announcements !== undefined) {
+    const prevIds = new Set(((prevData.announcements || []) as any[]).map((a: any) => a?.id).filter(Boolean))
+    const fresh = (body.announcements as any[]).filter((a: any) => a?.id && !prevIds.has(a.id))
+    if (fresh.length) {
+      const regs = await db.select({ email: participants.email, status: participants.status }).from(participants).where(eq(participants.eventId, id)).all()
+      const emails = regs.filter((r) => r.status === 'APPROVED' || r.status === 'PENDING').map((r) => r.email)
+      for (const a of fresh) {
+        await notifyMany(db, emails, {
+          eventId: id,
+          kind: 'ANNOUNCEMENT',
+          title: `活动公告：${title}`,
+          body: a.title || (a.body || '').slice(0, 80),
+          link: `/${slug}`,
+        })
+      }
+    }
+  }
+
   return c.json(data)
 })
 
@@ -382,6 +402,38 @@ app.patch('/events/:id/participants/:pid', zValidator('json', participantPatchSc
     })
     .where(eq(participants.id, pid))
     .run()
+
+  // 站内通知（邮件为辅助通道，站内为主）
+  if (body.status === 'APPROVED') {
+    const token = await signTicket(existing.id, ticketSecret(c.env))
+    await notify(db, {
+      email: existing.email,
+      eventId: id,
+      kind: 'REVIEW_APPROVED',
+      title: `报名通过：${event.title}`,
+      body: '你的报名已通过审核，点击查看电子票。',
+      link: `/ticket/${token}`,
+    })
+  } else if (body.status === 'REJECTED') {
+    await notify(db, {
+      email: existing.email,
+      eventId: id,
+      kind: 'REVIEW_REJECTED',
+      title: `报名未通过：${event.title}`,
+      body: '很抱歉，你的报名未能通过审核（可能因名额有限）。',
+      link: '/events',
+    })
+  }
+  if (body.type && body.type !== 'GENERAL' && body.type !== existing.type) {
+    await notify(db, {
+      email: existing.email,
+      eventId: id,
+      kind: 'ROLE_ASSIGNED',
+      title: `你被指派为「${roleLabel(body.type)}」：${event.title}`,
+      body: body.type === 'STAFF' ? '你现在可以在「我的」页面打开本活动的核销台，现场帮忙扫码验票。' : null,
+      link: '/me',
+    })
+  }
 
   const resendKey = (c.env as any)?.RESEND_API_KEY
   if (resendKey && (body.status === 'APPROVED' || body.status === 'REJECTED')) {

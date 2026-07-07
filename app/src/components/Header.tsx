@@ -1,5 +1,7 @@
 import { Link } from '@tanstack/react-router'
-import { Plus, LogOut, User } from 'lucide-react'
+import { Plus, LogOut, User, Bell } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { useAttendee } from '@/lib/attendee-context'
 import { useAuth } from '@/lib/auth-context'
 import { useI18n } from '@/lib/i18n'
 import { BrandWordmark } from './Brand'
@@ -13,6 +15,44 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 
 const navCls =
   'rounded-full px-3 py-1.5 text-sm font-medium text-ink/65 transition hover:text-ink dark:text-white/65 dark:hover:text-white [&.active]:bg-ink [&.active]:text-white dark:[&.active]:bg-white dark:[&.active]:text-ink'
+
+function NotificationBell() {
+  const { email } = useAttendee()
+  const [count, setCount] = useState(0)
+  useEffect(() => {
+    if (!email) return
+    let alive = true
+    const load = () =>
+      fetch('/api/attendee/notifications/unread-count')
+        .then((r) => r.json())
+        .then((d) => alive && setCount(d.count || 0))
+        .catch(() => {})
+    load()
+    const h = setInterval(load, 30000)
+    const onRead = () => setCount(0)
+    window.addEventListener('notifications-read', onRead)
+    return () => {
+      alive = false
+      clearInterval(h)
+      window.removeEventListener('notifications-read', onRead)
+    }
+  }, [email])
+  if (!email) return null
+  return (
+    <Link
+      to="/notifications"
+      aria-label="通知"
+      className="relative flex h-9 w-9 items-center justify-center rounded-full text-ink/60 transition hover:bg-black/5 hover:text-ink dark:text-white/60 dark:hover:bg-white/10 dark:hover:text-white"
+    >
+      <Bell size={17} />
+      {count > 0 && (
+        <span className="absolute right-0.5 top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-brand px-1 text-[10px] font-bold text-white">
+          {count > 9 ? '9+' : count}
+        </span>
+      )}
+    </Link>
+  )
+}
 
 export function Header({ showCreate = false }: { showCreate?: boolean }) {
   const { t } = useI18n()
@@ -39,6 +79,7 @@ export function Header({ showCreate = false }: { showCreate?: boolean }) {
         </nav>
 
         <div className="ml-auto flex items-center gap-2.5">
+          <NotificationBell />
           {user ? (
             <>
               {showCreate && (

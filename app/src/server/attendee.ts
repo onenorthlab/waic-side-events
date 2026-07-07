@@ -4,7 +4,7 @@ import { zValidator } from '@hono/zod-validator'
 import { z } from 'zod'
 import { getCookie, setCookie, deleteCookie } from 'hono/cookie'
 import { getDb } from '@/db'
-import { events as eventsTable, participants as participantsTable, emailOtps } from '@/db/schema'
+import { events as eventsTable, participants as participantsTable, emailOtps, notifications } from '@/db/schema'
 import { eq, desc } from 'drizzle-orm'
 import { sendEmail } from '@/lib/email'
 import { signAttendeeSession, verifyAttendeeSession, attendeeSecret, generateOtp, otpEmail } from '@/lib/attendee'
@@ -126,6 +126,41 @@ app.get('/registrations', async (c) => {
     })
   }
   return c.json({ registrations: result })
+})
+
+// —— 站内通知 ——
+app.get('/notifications', async (c) => {
+  const email = await currentAttendee(c)
+  if (!email) return c.json({ error: 'unauthorized' }, 401)
+  const db = getDb(c.env)
+  const rows = await db
+    .select()
+    .from(notifications)
+    .where(eq(notifications.email, email))
+    .orderBy(desc(notifications.createdAt))
+    .limit(50)
+    .all()
+  return c.json({ notifications: rows })
+})
+
+app.get('/notifications/unread-count', async (c) => {
+  const email = await currentAttendee(c)
+  if (!email) return c.json({ count: 0 })
+  const db = getDb(c.env)
+  const row = await db
+    .select({ count: sqlExpr`COUNT(*)`.mapWith(Number) })
+    .from(notifications)
+    .where(and(eq(notifications.email, email), eq(notifications.read, false)))
+    .get()
+  return c.json({ count: row?.count || 0 })
+})
+
+app.post('/notifications/read-all', async (c) => {
+  const email = await currentAttendee(c)
+  if (!email) return c.json({ error: 'unauthorized' }, 401)
+  const db = getDb(c.env)
+  await db.update(notifications).set({ read: true }).where(eq(notifications.email, email)).run()
+  return c.json({ ok: true })
 })
 
 // —— 工作人员核销通道 ——
